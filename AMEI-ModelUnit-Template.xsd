@@ -1,22 +1,21 @@
 <?xml version="1.0" standalone="yes"?>
-<!-- edited with XMLSpy v2017 rel. 3 sp1 (x64) (http://www.altova.com) by simone bregaglio (CREA) -->
 <xs:schema xmlns:ns1="AMEI-ModelUnit" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="ModelUnitDeclarative">
 	<xs:element name="Attributes">
 		<xs:complexType>
-			<xs:sequence>
-				<xs:element name="Name" type="xs:string" minOccurs="1"/>
-				<xs:element name="Description" type="xs:string" minOccurs="1"/>
-				<xs:element name="MaxVal" type="xs:string" minOccurs="1"/>
-				<xs:element name="MinVal" type="xs:string" minOccurs="1"/>
-				<xs:element name="DefVal" type="xs:string" minOccurs="1"/>
-				<xs:element name="Units" type="xs:string" minOccurs="1"/>
-				<xs:element name="URL" type="xs:string" minOccurs="1"/>
+			<xs:sequence maxOccurs="1">
+				<xs:element name="Name" type="xs:string" minOccurs="1" maxOccurs="1"/>
+				<xs:element name="Description" type="xs:string" minOccurs="1" maxOccurs="1"/>
+				<xs:element name="MaxVal" type="xs:string" minOccurs="1" maxOccurs="1"/>
+				<xs:element name="MinVal" type="xs:string" minOccurs="1" maxOccurs="1"/>
+				<xs:element name="DefVal" type="xs:string" minOccurs="1" maxOccurs="1"/>
+				<xs:element name="Units" type="xs:string" minOccurs="1" maxOccurs="1"/>
+				<xs:element name="URL" type="xs:string" minOccurs="1" maxOccurs="1"/>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
 	<xs:element name="UnitTests">
 		<xs:complexType>
-			<xs:sequence maxOccurs="unbounded">
+			<xs:sequence maxOccurs="1">
 				<xs:element name="UT" type="xs:string" minOccurs="1"/>
 			</xs:sequence>
 		</xs:complexType>
@@ -24,54 +23,54 @@
 	<xs:element name="ModelUnit">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="Algorithm" type="xs:string" minOccurs="1"/>
+				<xs:element name="Algorithm" type="xs:string" minOccurs="1" maxOccurs="1"/>
 				<xs:element name="Description">
 					<xs:complexType>
-						<xs:sequence>
-							<xs:element name="Title" type="xs:string" minOccurs="1"/>
-							<xs:element name="Author" type="xs:string" minOccurs="1"/>
-							<xs:element name="Institution" type="xs:string" minOccurs="1"/>
-							<xs:element name="Reference" type="xs:string" minOccurs="1"/>
-							<xs:element name="Abstract" type="xs:string" minOccurs="1"/>
+						<xs:sequence maxOccurs="1">
+							<xs:element name="Title" type="xs:string" minOccurs="1" maxOccurs="1"/>
+							<xs:element name="Author" type="xs:string" minOccurs="1" maxOccurs="1"/>
+							<xs:element name="Institution" type="xs:string" minOccurs="1" maxOccurs="1"/>
+							<xs:element name="Reference" type="xs:string" minOccurs="1" maxOccurs="1"/>
+							<xs:element name="Abstract" type="xs:string" minOccurs="1" maxOccurs="1"/>
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
-				<xs:element name="Inputs" maxOccurs="unbounded">
+				<xs:element name="Inputs" maxOccurs="1">
 					<xs:complexType>
 						<xs:sequence>
 							<xs:element name="Input" minOccurs="1" maxOccurs="unbounded">
 								<xs:complexType>
 									<xs:sequence>
-										<xs:element ref="Attributes" minOccurs="1" maxOccurs="unbounded"/>
-										<xs:element ref="UnitTests" minOccurs="1" maxOccurs="unbounded"/>
+										<xs:element ref="Attributes" minOccurs="1" maxOccurs="1"/>
+										<xs:element ref="UnitTests" minOccurs="1" maxOccurs="1"/>
 									</xs:sequence>
 								</xs:complexType>
 							</xs:element>
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
-				<xs:element name="Ouputs" maxOccurs="unbounded">
+				<xs:element name="Outputs" maxOccurs="1">
 					<xs:complexType>
 						<xs:sequence>
 							<xs:element name="Output" minOccurs="0" maxOccurs="unbounded">
 								<xs:complexType>
 									<xs:sequence>
-										<xs:element ref="Attributes" maxOccurs="unbounded"/>
-										<xs:element ref="UnitTests" maxOccurs="unbounded"/>
+										<xs:element ref="Attributes" maxOccurs="1"/>
+										<xs:element ref="UnitTests" maxOccurs="1"/>
 									</xs:sequence>
 								</xs:complexType>
 							</xs:element>
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
-				<xs:element name="Parameters" maxOccurs="unbounded">
+				<xs:element name="Parameters" maxOccurs="1">
 					<xs:complexType>
 						<xs:sequence>
 							<xs:element name="Parameter" minOccurs="0" maxOccurs="unbounded">
 								<xs:complexType>
 									<xs:sequence>
-										<xs:element ref="Attributes" minOccurs="1" maxOccurs="unbounded"/>
-										<xs:element ref="UnitTests" minOccurs="1" maxOccurs="unbounded"/>
+										<xs:element ref="Attributes" minOccurs="1" maxOccurs="1"/>
+										<xs:element ref="UnitTests" minOccurs="1" maxOccurs="1"/>
 									</xs:sequence>
 								</xs:complexType>
 							</xs:element>
