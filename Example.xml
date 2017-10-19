@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ModelUnit xmlns="http://www.w3schools.com" 
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+          xsi:schemaLocation="AMEI-ModelUnit-Template.xsd">
+    <Description>
+        <Title>Mean Value Example</Title>
+        <Author>Andreas Enders</Author>
+        <Institution>Uni Bonn</Institution>
+        <Reference>some...</Reference>
+        <Abstract>Extremely complex mean value calculator</Abstract>
+    </Description>
+    <Inputs>
+        <Input>
+            <Attributes>
+                <Name>MaxTemp</Name>
+                <Description>Maximum Temperature above ground (2m)</Description>
+                <MaxVal>70</MaxVal>
+                <MinVal>-40</MinVal>
+                <DefVal>0</DefVal>
+                <Units>°C</Units>
+                <URL/>
+            </Attributes>
+            <UnitTests>
+                <UT>10</UT>
+                <UT>20</UT>
+            </UnitTests>
+        </Input>
+        <Input>
+            <Attributes>
+                <Name>MinTemp</Name>
+                <Description>Minimum Temperature above ground (2m)</Description>
+                <MaxVal>70</MaxVal>
+                <MinVal>-40</MinVal>
+                <DefVal>0</DefVal>
+                <Units>°C</Units>
+                <URL/>
+            </Attributes>
+            <UnitTests>
+                <UT>5</UT>
+                <UT>15</UT>
+            </UnitTests>
+        </Input>
+    </Inputs>
+    <Ouputs>
+        <Output>
+            <Attributes>
+                <Name>MeanTemp</Name>
+                <Description>Mean Temperature calculated from Min and Max Temperature</Description>
+                <MaxVal>70</MaxVal>
+                <MinVal>-40</MinVal>
+                <DefVal>0</DefVal>
+                <Units>°C</Units>
+                <URL/>
+            </Attributes>
+            <UnitTests>
+                <UT>7.5</UT>
+                <UT>17.5</UT>
+            </UnitTests>
+        </Output>
+    </Ouputs>
+    <Algorithm>MeanTemp = ( MaxTemp + MinTemp ) / 2</Algorithm>
+</ModelUnit>
