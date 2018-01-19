@@ -1,6 +1,6 @@
 <?xml encoding="UTF-8"?>
 
-<!ELEMENT ModelUnit (Description,Inputs,Ouputs,Algorithm,Parametersets,
+<!ELEMENT ModelUnit (Description,Inputs,Outputs,Algorithm,Parametersets,
                      Tests)>
 <!ATTLIST ModelUnit
   xmlns CDATA #FIXED ''>
@@ -13,8 +13,8 @@
 <!ATTLIST Inputs
   xmlns CDATA #FIXED ''>
 
-<!ELEMENT Ouputs (Output)>
-<!ATTLIST Ouputs
+<!ELEMENT Outputs (Output)>
+<!ATTLIST Outputs
   xmlns CDATA #FIXED ''>
 
 <!ELEMENT Algorithm (#PCDATA)>

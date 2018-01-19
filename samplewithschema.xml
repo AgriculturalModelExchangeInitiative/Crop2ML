@@ -50,7 +50,7 @@
               </xs:sequence>
             </xs:complexType>
           </xs:element>
-          <xs:element name="Ouputs" minOccurs="1" maxOccurs="unbounded">
+          <xs:element name="Outputs" minOccurs="1" maxOccurs="unbounded">
             <xs:complexType>
               <xs:sequence>
                 <xs:element name="Output" minOccurs="0" maxOccurs="unbounded">
@@ -116,7 +116,7 @@
         </UnitTests>
       </Input>
     </Inputs>
-    <Ouputs>
+    <Outputs>
       <Output>
         <Attributes>
           <Name />
@@ -131,7 +131,7 @@
           <UT />
         </UnitTests>
       </Output>
-    </Ouputs>
+    </Outputs>
     <Parameters>
       <Parameter>
         <Attributes>
