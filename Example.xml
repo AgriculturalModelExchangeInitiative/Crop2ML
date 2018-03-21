@@ -23,7 +23,7 @@
     <Outputs>
         <Output name="PlantGrowth" description="Growth of plant in hight (rate)" datatype="real" min="0" max="5" default="0" unit="mm" url="some url"/>
     </Outputs>
-    <Algorithm>
+    <Algorithm language="C">
        FW = ( ( PlantAvailableWater - AvailableWater ) / PlantAvailableWater ) **  DroughtSensitivity )
        FNLW = BoltzmannConstant * AtmosphericEmisivity *  MinTemp ** 4
        PlantGrowth = GrowthRate * ( BaseTemp - MinTemp ) * FW * FNLW
