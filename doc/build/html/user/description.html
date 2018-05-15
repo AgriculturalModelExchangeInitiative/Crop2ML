@@ -1,0 +1,419 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>2. CropML Description &#8212; CropML 0.0.2 documentation</title>
+    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="3. Usecases" href="usecases.html" />
+    <link rel="prev" title="1. What is CropML ?" href="overview.html" /> 
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="usecases.html" title="3. Usecases"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="overview.html" title="1. What is CropML ?"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">CropML 0.0.2 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="cropml-description">
+<h1>2. <strong>CropML Description</strong><a class="headerlink" href="#cropml-description" title="Permalink to this headline">¶</a></h1>
+<div class="line-block">
+<div class="line">In CropML, a model is either a model unit or a composition of models. A ModelUnit  represents the atomic unit of a crop model define by the
+modelers. A model composition  is a model resulting from the composition of two or more atomic model or composite models.</div>
+<div class="line">These models have a specific formal definition in CropML.</div>
+</div>
+<div class="section" id="formal-definition-of-a-model-unit-in-cropml">
+<h2>2.1. Formal definition of a Model Unit in CropML<a class="headerlink" href="#formal-definition-of-a-model-unit-in-cropml" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">The structure of a Model Unit in CropML MUST be conform to a specific Document Type Definition
+named <a class="reference external" href="https://github.com/AgriculturalModelExchangeInitiative/PyCropML/blob/version2/test/data/ModelUnit.dtd">ModelUnit.dtd</a> .</div>
+<div class="line">So a Model Unit CropML document is a XML document well-formed and also obeys the rules given in the ModelUnit structure.</div>
+<div class="line">This structure MAY be described by the below tree:</div>
+</div>
+<img alt="../_images/modelunit.png" src="../_images/modelunit.png" />
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Element</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>ModelUnit</td>
+<td><blockquote class="first last">
+<div>The root of an atomic model in CropML which make the difference from a composite model.</div></blockquote>
+</td>
+</tr>
+<tr class="row-odd"><td>Description</td>
+<td><blockquote class="first last">
+<div>some basic information related to the name of the model, its authors and others elements used to reference it.</div></blockquote>
+</td>
+</tr>
+<tr class="row-even"><td>Inputs</td>
+<td><blockquote class="first last">
+<div>A list of inputs characterized by their names, initial states, the range of values and others. Its input variables are related to climate, soil and cropping system</div></blockquote>
+</td>
+</tr>
+<tr class="row-odd"><td>Outputs</td>
+<td><blockquote class="first last">
+<div>A list of outputs defining the processes involved, the variables whose dynamics we want to observe.</div></blockquote>
+</td>
+</tr>
+<tr class="row-even"><td>Algorithm</td>
+<td><blockquote class="first last">
+<div>The description of the behaviour of the model made by the mathematical relationship between the inputs and the outputs with some control structure.</div></blockquote>
+</td>
+</tr>
+<tr class="row-odd"><td>Parametersets</td>
+<td><blockquote class="first last">
+<div>Some sets of parameters which are invariant and used for the simulation of the models.</div></blockquote>
+</td>
+</tr>
+<tr class="row-even"><td>Testsets</td>
+<td><blockquote class="first last">
+<div>Set of model configuration used to compare estimated and desired outputs  .</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line">In the next, we define the major elements of a CropML model unit.</div>
+</div>
+<div class="section" id="modelunit-element">
+<h3>2.1.1. ModelUnit element<a class="headerlink" href="#modelunit-element" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">An atomic model in CropML is declared with <a class="reference external" href="https://github.com/AgriculturalModelExchangeInitiative/PyCropML/blob/master/src/pycropml/modelunit.py">&lt;&lt;ModelUnit&gt;&gt;</a> element,
+the usual root of CropML ModelUnit document.</div>
+</div>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+<span class="cp">&lt;!DOCTYPE ModelUnit PUBLIC &quot;-//SIMPLACE/DTD SOL 1.0//EN&quot; &quot;https://raw.githubusercontent.com/AgriculturalModelExchangeInitiative/xml_representation/master/ModelUnit.dtd&quot;&gt;</span>
+<span class="nt">&lt;ModelUnit</span> <span class="na">modelid=</span><span class="s">&quot; &quot;</span> <span class="na">timestep=</span><span class="s">&quot; &quot;</span> <span class="na">name=</span><span class="s">&quot; &quot;</span> <span class="na">version=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;</span>
+        ....
+<span class="nt">&lt;/ModelUnit&gt;</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">This element MUST contain a Description, an Algorithm, Parametersets and Testsets elements and
+MAY optionally have Inputs and Outputs elements. The restriction of the length of different lists is not imposed.</div>
+<div class="line">ModelUnit element MUST have an modelid and name attributes which are used to reference an atomic model. It MUST also contain a timestep attribute to define the temporality of the model and
+a version attribute for each version of the model.</div>
+</div>
+</div>
+<div class="section" id="description-element">
+<h3>2.1.2. Description element<a class="headerlink" href="#description-element" title="Permalink to this headline">¶</a></h3>
+<p>This element gives the general information on the model and is composed by a set of character elements. It MUST contain
+Title, Authors, Institution and abstract elements and MAY optionally contain URI and Reference elements.</p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;ModelUnit</span> <span class="na">modelid=</span><span class="s">&quot; &quot;</span> <span class="na">timestep=</span><span class="s">&quot; &quot;</span> <span class="na">name=</span><span class="s">&quot; &quot;</span> <span class="na">version =</span><span class="s">&quot; &quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;Description&gt;</span>
+                <span class="nt">&lt;Title&gt;</span>title<span class="nt">&lt;/Title&gt;</span>
+                <span class="nt">&lt;Authors&gt;</span>authors<span class="nt">&lt;/Authors&gt;</span>
+                <span class="nt">&lt;Institution&gt;</span>institution<span class="nt">&lt;/Institution&gt;</span>
+                <span class="nt">&lt;URI&gt;</span>uri<span class="nt">&lt;/URI&gt;</span>
+                <span class="nt">&lt;Abstract&gt;</span><span class="cp">&lt;![CDATA[abstract]]&gt;</span><span class="nt">&lt;/Abstract&gt;</span>
+        <span class="nt">&lt;/Description&gt;</span>
+        ...
+<span class="nt">&lt;/ModelUnit&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="inputs-elements">
+<h3>2.1.3. Inputs elements<a class="headerlink" href="#inputs-elements" title="Permalink to this headline">¶</a></h3>
+<p>The inputs of Model are listed inside an XML element called Inputs within a <a class="reference external" href="https://github.com/AgriculturalModelExchangeInitiative/PyCropML/blob/version2/src/pycropml/inout.py">dictionary structure</a>
+composed by their attributes which declarations are optional(default, max, min, parametercategory, variablecategory and uri) or required(name, datatype, description, inputtype,
+unit ) and their corresponding value. <em>Inputs</em> element MUST contain one or more <em>Input</em> elements.</p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;ModelUnit</span> <span class="na">modelid=</span><span class="s">&quot; &quot;</span> <span class="na">timestep=</span><span class="s">&quot; &quot;</span> <span class="na">name=</span><span class="s">&quot; &quot;</span> <span class="na">version =</span><span class="s">&quot; &quot;</span><span class="nt">&gt;</span>
+   ...
+   <span class="nt">&lt;Inputs&gt;</span>
+      <span class="nt">&lt;Input</span> <span class="na">name=</span><span class="s">&quot; &quot;</span> <span class="na">description=</span><span class="s">&quot; &quot;</span> <span class="na">parametercategory=</span><span class="s">&quot; &quot;</span> <span class="na">datatype=</span><span class="s">&quot; &quot;</span> <span class="na">min=</span><span class="s">&quot; &quot;</span> <span class="na">max=</span><span class="s">&quot; &quot;</span> <span class="na">default=</span><span class="s">&quot; &quot;</span> <span class="na">unit=</span><span class="s">&quot; &quot;</span> <span class="na">uri=</span><span class="s">&quot;&quot;</span> <span class="na">inputtype=</span><span class="s">&quot; &quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;Input</span> <span class="na">name=</span><span class="s">&quot; &quot;</span> <span class="na">description=</span><span class="s">&quot; &quot;</span> <span class="na">parametercategory=</span><span class="s">&quot; &quot;</span> <span class="na">datatype=</span><span class="s">&quot; &quot;</span> <span class="na">min=</span><span class="s">&quot; &quot;</span> <span class="na">max=</span><span class="s">&quot; &quot;</span> <span class="na">default=</span><span class="s">&quot; &quot;</span> <span class="na">unit=</span><span class="s">&quot; &quot;</span> <span class="na">uri=</span><span class="s">&quot; &quot;</span> <span class="na">inputtype=</span><span class="s">&quot; &quot;</span><span class="nt">/&gt;</span>
+      ...
+   <span class="nt">&lt;/Inputs&gt;</span>
+   ...
+<span class="nt">&lt;/ModelUnit&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>The required <em>datatype</em> attribute is the type of input value specified in <em>default</em> (the default value in the input), <em>min</em> (the minimum value in the input) and <em>max</em> (the maximum value in the input). It MAY be one type of the set of types used in the existing crop modeling platform.</li>
+<li>The <em>inputtype</em> attribute makes it possible to distinguish the variables and the parameters of the model. So it MUST take one of two possible values: <em>parameter</em> and <em>variable</em>.</li>
+<li>The <em>parametercategory</em> attribute defines the category of parameter which is specified by one of the following values: <em>constant</em>, <em>species</em>, <em>soil</em> and <em>genotypic</em>.</li>
+<li>The <em>variablecategory</em> defines the category of variable depending on whether it is a <em>state</em>, a <em>rate</em> or an “auxiliary” variable.  State variable characterize the behavior of the model and rate variable characterizes the changes in state variables.</li>
+</ul>
+</div>
+<div class="section" id="outputs-element">
+<h3>2.1.4. Outputs element<a class="headerlink" href="#outputs-element" title="Permalink to this headline">¶</a></h3>
+<p>The outputs of Model are listed inside an XML element called Outputs within a <a class="reference external" href="https://github.com/AgriculturalModelExchangeInitiative/PyCropML/blob/version2/src/pycropml/inout.py">dictionary structure</a>
+composed by their attributes which declarations are:</p>
+<ul class="simple">
+<li>optional(variabletype and URI)</li>
+<li>required(name, datatype, description, unit, max and min )</li>
+<li>and their corresponding value</li>
+</ul>
+<p><em>Outputs</em> MUST contain zero or more output elements.</p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;ModelUnit</span> <span class="na">modelid=</span><span class="s">&quot; &quot;</span> <span class="na">timestep=</span><span class="s">&quot; &quot;</span> <span class="na">name=</span><span class="s">&quot; &quot;</span> <span class="na">version =</span><span class="s">&quot; &quot;</span><span class="nt">&gt;</span>
+   ...
+   <span class="nt">&lt;Outputs&gt;</span>
+      <span class="nt">&lt;Output</span> <span class="na">name=</span><span class="s">&quot; &quot;</span> <span class="na">description=</span><span class="s">&quot; &quot;</span> <span class="na">datatype=</span><span class="s">&quot; &quot;</span> <span class="na">min=</span><span class="s">&quot; &quot;</span> <span class="na">max=</span><span class="s">&quot; &quot;</span>  <span class="na">unit=</span><span class="s">&quot; &quot;</span> <span class="na">uri=</span><span class="s">&quot; &quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;Output</span> <span class="na">name=</span><span class="s">&quot; &quot;</span> <span class="na">description=</span><span class="s">&quot; &quot;</span> <span class="na">datatype=</span><span class="s">&quot; &quot;</span> <span class="na">min=</span><span class="s">&quot; &quot;</span> <span class="na">max=</span><span class="s">&quot; &quot;</span>  <span class="na">unit=</span><span class="s">&quot; &quot;</span> <span class="na">uri=</span><span class="s">&quot; &quot;</span><span class="nt">/&gt;</span>
+      ...
+   <span class="nt">&lt;/Outputs&gt;</span>
+   ...
+<span class="nt">&lt;/ModelUnit&gt;</span>
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">The definition of different attributes is same as Input’s attributes.</div>
+</div>
+</div>
+<div class="section" id="algorithm-element">
+<h3>2.1.5. Algorithm element<a class="headerlink" href="#algorithm-element" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">The <em>Algorithm</em> element defines the building block of CropML model unit and shows the computational method to determine
+the outputs from the inputs.</div>
+<div class="line">It consists of a set of mathematical equations (relation between inputs), loops and conditional instructions
+which are well structured in a specific <em>language</em>, the algorithm’s attribute.</div>
+</div>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;ModelUnit</span> <span class="na">modelid=</span><span class="s">&quot; &quot;</span> <span class="na">timestep=</span><span class="s">&quot; &quot;</span> <span class="na">name=</span><span class="s">&quot; &quot;</span> <span class="na">version =</span><span class="s">&quot; &quot;</span><span class="nt">&gt;</span>
+   ...
+   <span class="nt">&lt;Algorithm</span> <span class="na">language =</span><span class="s">&quot;&quot;</span><span class="nt">&gt;</span><span class="cp">&lt;![CDATA[</span>
+<span class="cp">      ...</span>
+<span class="cp">      ]]&gt;</span>
+   <span class="nt">&lt;/Algorithm&gt;</span>
+   ...
+<span class="nt">&lt;/ModelUnit&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="parametersets-element">
+<h3>2.1.6. Parametersets element<a class="headerlink" href="#parametersets-element" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line"><em>Parametersets</em> element contains one or more <em>Parameterset</em> elements that define the different ways of setting the model.
+Each <em>Parameterset</em> element MUST have <em>name</em> and <em>description</em> attributes that respectively represents the name and the description of each setting.</div>
+</div>
+<div class="line-block">
+<div class="line">The different parameterset MUST contain a list of Param elements that show in attribute the name of the parameter (an input
+which inputtype equals <em>parameter</em>) and the fixed value of this one.</div>
+</div>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;ModelUnit</span> <span class="na">modelid=</span><span class="s">&quot; &quot;</span> <span class="na">timestep=</span><span class="s">&quot; &quot;</span> <span class="na">name=</span><span class="s">&quot; &quot;</span> <span class="na">version =</span><span class="s">&quot; &quot;</span><span class="nt">&gt;</span>
+    ...
+    <span class="nt">&lt;Parametersets&gt;</span>
+       <span class="nt">&lt;Parameterset</span> <span class="na">name=</span><span class="s">&quot;&quot;</span> <span class="na">description=</span><span class="s">&quot;&quot;</span> <span class="na">uri =</span> <span class="s">&quot;&quot;</span><span class="nt">/&gt;</span>
+       <span class="nt">&lt;Parameterset</span> <span class="na">name=</span><span class="s">&quot;&quot;</span> <span class="na">description=</span><span class="s">&quot;&quot;</span> <span class="nt">&gt;</span>
+          <span class="nt">&lt;Param</span> <span class="na">name=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;</span>value<span class="nt">&lt;/Param&gt;</span>
+          <span class="nt">&lt;Param</span> <span class="na">name=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;</span>value<span class="nt">&lt;/Param&gt;</span>
+          ...
+       <span class="nt">&lt;/Parameterset&gt;</span>
+       ...
+    ...
+ <span class="nt">&lt;/ModelUnit&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="testsets-element">
+<h3>2.1.7. Testsets element<a class="headerlink" href="#testsets-element" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line"><em>Testsets</em> element contains one or more <em>Testset</em> elements that define the different run for evaluating the outputs of the model.</div>
+</div>
+<div class="line-block">
+<div class="line">Each <em>Testset</em> element MUST have <em>name</em>, <em>description</em> and <em>parameterset</em> attributes that respectively represents the name,
+the description of each run and the name of the parameterset related to the Testset. This one allow to retrieve the name and the value of different
+parameters includes in this parameterset.</div>
+</div>
+<div class="line-block">
+<div class="line">The different Testset MUST contain a list of InputValue and OutputValue elements corresponding respectively to the values
+of inputs used in the run and the values of Outputs that will be asserted.</div>
+</div>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;ModelUnit</span> <span class="na">modelid=</span><span class="s">&quot; &quot;</span> <span class="na">timestep=</span><span class="s">&quot; &quot;</span> <span class="na">name=</span><span class="s">&quot; &quot;</span> <span class="na">version =</span><span class="s">&quot; &quot;</span><span class="nt">&gt;</span>
+   ...
+   <span class="nt">&lt;Testsets&gt;</span>
+      <span class="nt">&lt;Testset</span> <span class="na">name=</span><span class="s">&quot;&quot;</span> <span class="na">parameterset =</span> <span class="s">&quot;&quot;</span> <span class="na">description=</span><span class="s">&quot;&quot;</span> <span class="na">uri =</span> <span class="s">&quot;&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;Testset</span> <span class="na">name=</span><span class="s">&quot;&quot;</span> <span class="na">parameterset =</span> <span class="s">&quot;&quot;</span> <span class="na">description=</span><span class="s">&quot;&quot;</span> <span class="nt">&gt;</span>
+         <span class="nt">&lt;Test</span> <span class="na">name=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;InputValue</span> <span class="na">name=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;</span>value<span class="nt">&lt;/InputValue&gt;</span>
+            ...
+            <span class="nt">&lt;OutputValue</span> <span class="na">name=</span><span class="s">&quot;&quot;</span> <span class="na">precision =</span><span class="s">&quot;&quot;</span><span class="nt">&gt;</span>value<span class="nt">&lt;/OutputValue&gt;</span>
+            ...
+         <span class="nt">&lt;/Test&gt;</span>
+         ...
+      <span class="nt">&lt;/Testset&gt;</span>
+      ...
+  <span class="nt">&lt;/Testsets&gt;</span>
+  ...
+<span class="nt">&lt;/ModelUnit&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="formal-definition-of-a-composite-model-in-cropml">
+<h2>2.2. Formal definition of a Composite Model in CropML<a class="headerlink" href="#formal-definition-of-a-composite-model-in-cropml" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">A Composite Model CropML is an assembly of processes which are described by a set of model units or a composition of models.
+Given a composite model is a model, this one has also inputs, outputs and internal state which describe the orchestration of different
+independent models composed.</div>
+</div>
+<div class="line-block">
+<div class="line">The structure of a Composite Model in CropML MUST conform to a specific Document Type Definition
+named <a class="reference external" href="https://github.com/AgriculturalModelExchangeInitiative/PyCropML/blob/version2/test/data/ModelComposition.dtd">ModelComposition.dtd</a> .</div>
+</div>
+<div class="line-block">
+<div class="line">The composition is represented as a directed port graph of models:</div>
+</div>
+<blockquote>
+<div><div class="line-block">
+<div class="line">Vertices are the different models that form the composition.</div>
+<div class="line">Ports are the inputs and outputs of each model.</div>
+<div class="line">Edges are directed and connect one output port to an input port of another model.</div>
+</div>
+</div></blockquote>
+<div class="line-block">
+<div class="line">It contains in addition to all Elements of a model unit a Composition Element for the composition of models.</div>
+<div class="line">This structure MAY be described by the below tree:</div>
+</div>
+<img alt="../_images/modelcomposition.png" src="../_images/modelcomposition.png" />
+<div class="line-block">
+<div class="line">In the next, we define the major elements of a CropML model unit.</div>
+</div>
+<div class="section" id="inputs-element">
+<h3>2.2.1. Inputs element<a class="headerlink" href="#inputs-element" title="Permalink to this headline">¶</a></h3>
+<p>It MUST contain one or more <em>input</em> element which provide a set of independent models entries.
+If two or more input variables of independent models are the same (same unit, interval, description)
+a link should be made to one input variable of the composite model.</p>
+</div>
+<div class="section" id="id2">
+<h3>2.2.2. Outputs element<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>It MUST contain one or more <em>output</em> element which provide a set of independent models outputs or a result of a combination of models .</p>
+</div>
+<div class="section" id="composition-element">
+<h3>2.2.3. Composition element<a class="headerlink" href="#composition-element" title="Permalink to this headline">¶</a></h3>
+<p>It’s a list of <em>models</em> elements which contains a list of <em>links</em> elements.
+Link provides the mechanism for mapping inputs declared within one modelUnit to output in another modelUnit,
+allowing information to be exchanged between the various atomic models in the composite model.</p>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>2.3. Algorithm element<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>The implementation differs from the platform:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Discrete Events Models and Formalisms (RECORD)</li>
+<li>Actor model framework (OpenAlea)</li>
+<li>A sequence of algorithmic instructions witch implement the control flow (BIOMA)</li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">2. <strong>CropML Description</strong></a><ul>
+<li><a class="reference internal" href="#formal-definition-of-a-model-unit-in-cropml">2.1. Formal definition of a Model Unit in CropML</a><ul>
+<li><a class="reference internal" href="#modelunit-element">2.1.1. ModelUnit element</a></li>
+<li><a class="reference internal" href="#description-element">2.1.2. Description element</a></li>
+<li><a class="reference internal" href="#inputs-elements">2.1.3. Inputs elements</a></li>
+<li><a class="reference internal" href="#outputs-element">2.1.4. Outputs element</a></li>
+<li><a class="reference internal" href="#algorithm-element">2.1.5. Algorithm element</a></li>
+<li><a class="reference internal" href="#parametersets-element">2.1.6. Parametersets element</a></li>
+<li><a class="reference internal" href="#testsets-element">2.1.7. Testsets element</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#formal-definition-of-a-composite-model-in-cropml">2.2. Formal definition of a Composite Model in CropML</a><ul>
+<li><a class="reference internal" href="#inputs-element">2.2.1. Inputs element</a></li>
+<li><a class="reference internal" href="#id2">2.2.2. Outputs element</a></li>
+<li><a class="reference internal" href="#composition-element">2.2.3. Composition element</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id3">2.3. Algorithm element</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="overview.html"
+                        title="previous chapter">1. What is CropML ?</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="usecases.html"
+                        title="next chapter">3. <strong>Usecases</strong></a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/user/description.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="usecases.html" title="3. Usecases"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="overview.html" title="1. What is CropML ?"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">CropML 0.0.2 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, CropML.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.6.
+    </div>
+  </body>
+</html>
