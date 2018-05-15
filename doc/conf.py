@@ -57,7 +57,7 @@ extensions = [
     'sphinx.ext.viewcode'
 	]
 
-   
+
 # try to add more extensions which are not default
 # but still useful
 # based on the fact that the extension is installed on the system
@@ -98,7 +98,7 @@ copyright = u'2017, CropML'
 
 # find version number in /src/$pkg_pth/version.py
 pkgver = {}
-with open("../version.py") as fp:
+with open("version.py") as fp:
     exec(fp.read(), pkgver)
 
 # The short X.Y version.
