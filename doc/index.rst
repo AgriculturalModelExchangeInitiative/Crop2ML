@@ -53,12 +53,12 @@ Contents:
    :width: 15%
    :figclass: align-left
    
-.. figure:: images/siriusquality.png
+.. figure:: images/siriusquality.PNG
    :target: http://www1.clermont.inra.fr/siriusquality/
    :width: 15%
    :figclass: align-left
    
-.. figure:: images/simplace.png
+.. figure:: images/simplace.PNG
    :target: http://www.simplace.net/Joomla/
    :width: 15%
    :figclass: align-right
