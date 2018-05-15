@@ -1,0 +1,201 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>pycropml.pparse module &#8212; pycropml 0.0.2 documentation</title>
+    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">pycropml 0.0.2 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-pycropml.pparse">
+<span id="pycropml-pparse-module"></span><h1>pycropml.pparse module<a class="headerlink" href="#module-pycropml.pparse" title="Permalink to this headline">¶</a></h1>
+<p>License, Header</p>
+<dl class="class">
+<dt id="pycropml.pparse.ModelParser">
+<em class="property">class </em><code class="descclassname">pycropml.pparse.</code><code class="descname">ModelParser</code><a class="reference internal" href="../_modules/pycropml/pparse.html#ModelParser"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycropml.pparse.ModelParser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pycropml.pparse.Parser" title="pycropml.pparse.Parser"><code class="xref py py-class docutils literal"><span class="pre">pycropml.pparse.Parser</span></code></a></p>
+<p>Read an XML file and transform it in our object model.</p>
+<dl class="method">
+<dt id="pycropml.pparse.ModelParser.Algorithm">
+<code class="descname">Algorithm</code><span class="sig-paren">(</span><em>elt</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pycropml/pparse.html#ModelParser.Algorithm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycropml.pparse.ModelParser.Algorithm" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pycropml.pparse.ModelParser.Description">
+<code class="descname">Description</code><span class="sig-paren">(</span><em>Title</em>, <em>Author</em>, <em>Institution</em>, <em>Reference</em>, <em>Abstract</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pycropml/pparse.html#ModelParser.Description"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycropml.pparse.ModelParser.Description" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pycropml.pparse.ModelParser.Input">
+<code class="descname">Input</code><span class="sig-paren">(</span><em>elts</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pycropml/pparse.html#ModelParser.Input"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycropml.pparse.ModelParser.Input" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pycropml.pparse.ModelParser.Inputs">
+<code class="descname">Inputs</code><span class="sig-paren">(</span><em>Input</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pycropml/pparse.html#ModelParser.Inputs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycropml.pparse.ModelParser.Inputs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pycropml.pparse.ModelParser.ModelUnit">
+<code class="descname">ModelUnit</code><span class="sig-paren">(</span><em>elts</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pycropml/pparse.html#ModelParser.ModelUnit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycropml.pparse.ModelParser.ModelUnit" title="Permalink to this definition">¶</a></dt>
+<dd><p>ModelUnit (Description,Inputs,Outputs,Algorithm,Parametersets,
+Testsets)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycropml.pparse.ModelParser.Output">
+<code class="descname">Output</code><span class="sig-paren">(</span><em>elts</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pycropml/pparse.html#ModelParser.Output"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycropml.pparse.ModelParser.Output" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pycropml.pparse.ModelParser.Outputs">
+<code class="descname">Outputs</code><span class="sig-paren">(</span><em>elts</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pycropml/pparse.html#ModelParser.Outputs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycropml.pparse.ModelParser.Outputs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ouputs (Output)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycropml.pparse.ModelParser.Parameterset">
+<code class="descname">Parameterset</code><span class="sig-paren">(</span><em>elts</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pycropml/pparse.html#ModelParser.Parameterset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycropml.pparse.ModelParser.Parameterset" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pycropml.pparse.ModelParser.Parametersets">
+<code class="descname">Parametersets</code><span class="sig-paren">(</span><em>Parameterset</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pycropml/pparse.html#ModelParser.Parametersets"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycropml.pparse.ModelParser.Parametersets" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pycropml.pparse.ModelParser.Testset">
+<code class="descname">Testset</code><span class="sig-paren">(</span><em>Test</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pycropml/pparse.html#ModelParser.Testset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycropml.pparse.ModelParser.Testset" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pycropml.pparse.ModelParser.Testsets">
+<code class="descname">Testsets</code><span class="sig-paren">(</span><em>Testset</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pycropml/pparse.html#ModelParser.Testsets"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycropml.pparse.ModelParser.Testsets" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pycropml.pparse.ModelParser.dispatch">
+<code class="descname">dispatch</code><span class="sig-paren">(</span><em>elt</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pycropml/pparse.html#ModelParser.dispatch"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycropml.pparse.ModelParser.dispatch" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pycropml.pparse.ModelParser.param">
+<code class="descname">param</code><span class="sig-paren">(</span><em>pset</em>, <em>elt</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pycropml/pparse.html#ModelParser.param"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycropml.pparse.ModelParser.param" title="Permalink to this definition">¶</a></dt>
+<dd><p>Param</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pycropml.pparse.ModelParser.parse">
+<code class="descname">parse</code><span class="sig-paren">(</span><em>fn</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pycropml/pparse.html#ModelParser.parse"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycropml.pparse.ModelParser.parse" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pycropml.pparse.Parser">
+<em class="property">class </em><code class="descclassname">pycropml.pparse.</code><code class="descname">Parser</code><a class="reference internal" href="../_modules/pycropml/pparse.html#Parser"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycropml.pparse.Parser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3.4/library/functions.html#object" title="(in Python v3.4)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>Read an XML file and transform it in our object model.</p>
+<dl class="method">
+<dt id="pycropml.pparse.Parser.dispatch">
+<code class="descname">dispatch</code><span class="sig-paren">(</span><em>elt</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pycropml/pparse.html#Parser.dispatch"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycropml.pparse.Parser.dispatch" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pycropml.pparse.Parser.parse">
+<code class="descname">parse</code><span class="sig-paren">(</span><em>fn</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pycropml/pparse.html#Parser.parse"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycropml.pparse.Parser.parse" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="pycropml.pparse.model_parser">
+<code class="descclassname">pycropml.pparse.</code><code class="descname">model_parser</code><span class="sig-paren">(</span><em>fn</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pycropml/pparse.html#model_parser"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pycropml.pparse.model_parser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse a set of models as xml files and return the models.</p>
+<p>Returns ModelUnit object of the CropML Model.</p>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/_dvlpt/pycropml.pparse.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">pycropml 0.0.2 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, pycropml.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.6.
+    </div>
+  </body>
+</html>

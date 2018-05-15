@@ -1,0 +1,393 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>pycropml.render_python &#8212; CropML 0.0.2 documentation</title>
+    <link rel="stylesheet" href="../../_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.0.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">CropML 0.0.2 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for pycropml.render_python</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot; License, Header</span>
+
+<span class="sd">Use pkglts</span>
+
+
+<span class="sd">Problems:</span>
+<span class="sd">- name of a model unit?</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">print_function</span>
+<span class="kn">from</span> <span class="nn">path</span> <span class="k">import</span> <span class="n">Path</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="k">import</span> <span class="n">double</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="k">import</span> <span class="n">array</span>
+
+<div class="viewcode-block" id="Model2Package"><a class="viewcode-back" href="../../_dvlpt/pycropml.html#pycropml.render_python.Model2Package">[docs]</a><span class="k">class</span> <span class="nc">Model2Package</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; TODO</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">DATATYPE</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">DATATYPE</span><span class="p">[</span><span class="s1">&#39;real&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span>
+    <span class="n">DATATYPE</span><span class="p">[</span><span class="s1">&#39;int&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span>
+    <span class="n">DATATYPE</span><span class="p">[</span><span class="s1">&#39;string&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span>
+    <span class="n">DATATYPE</span><span class="p">[</span><span class="s1">&#39;Double&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span>
+    <span class="n">DATATYPE</span><span class="p">[</span><span class="s1">&#39;DOUBLEARRAY&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">array</span>
+    
+    <span class="n">num</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">models</span><span class="p">,</span> <span class="nb">dir</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;TODO.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">models</span> <span class="o">=</span> <span class="n">models</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dir</span> <span class="o">=</span> <span class="nb">dir</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">with_import</span> <span class="o">=</span> <span class="kc">True</span>
+
+<div class="viewcode-block" id="Model2Package.run"><a class="viewcode-back" href="../../_dvlpt/pycropml.html#pycropml.render_python.Model2Package.run">[docs]</a>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;TODO.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">generate_package</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">write_tests</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="Model2Package.generate_package"><a class="viewcode-back" href="../../_dvlpt/pycropml.html#pycropml.render_python.Model2Package.generate_package">[docs]</a>    <span class="k">def</span> <span class="nf">generate_package</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Generate a Python package equivalent to the xml definition.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">        - models : a list of model</span>
+<span class="sd">        - dir: the directory where the code is generated.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">        - None or status</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Create a directory (mymodel)</span>
+        <span class="n">cwd</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
+        <span class="n">directory</span><span class="o">=</span><span class="n">cwd</span><span class="o">/</span><span class="s1">&#39;mymodel&#39;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">directory</span><span class="p">)</span><span class="o">.</span><span class="n">isdir</span><span class="p">()</span> <span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dir</span> <span class="o">=</span> <span class="n">directory</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dir</span> <span class="o">=</span> <span class="n">directory</span><span class="o">.</span><span class="n">mkdir</span><span class="p">()</span>
+        
+        <span class="n">files</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+            
+           
+        <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">models</span><span class="p">:</span>
+            
+            <span class="bp">self</span><span class="o">.</span><span class="n">generate_component</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+            <span class="n">ext</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span> <span class="k">if</span> <span class="n">count</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="nb">str</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
+            <span class="n">filename</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dir</span><span class="o">/</span><span class="s2">&quot;model</span><span class="si">%s</span><span class="s2">.py&quot;</span><span class="o">%</span><span class="n">ext</span>
+            
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">python_file</span><span class="p">:</span>
+                <span class="n">python_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">code</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">,</span><span class="s1">&#39;ignore&#39;</span><span class="p">))</span>
+                <span class="n">files</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+            <span class="n">count</span> <span class="o">+=</span><span class="mi">1</span>
+        <span class="k">return</span> <span class="n">files</span></div>
+
+
+
+<div class="viewcode-block" id="Model2Package.generate_component"><a class="viewcode-back" href="../../_dvlpt/pycropml.html#pycropml.render_python.Model2Package.generate_component">[docs]</a>    <span class="k">def</span> <span class="nf">generate_component</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_unit</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; Todo</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">code</span><span class="o">=</span> <span class="s2">&quot;import numpy as np </span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;from copy import copy</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">code</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">generate_function_signature</span><span class="p">(</span><span class="n">model_unit</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">code</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">generate_function_doc</span><span class="p">(</span><span class="n">model_unit</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">code</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">generate_algorithm</span><span class="p">(</span><span class="n">model_unit</span><span class="p">)</span>
+
+        <span class="nb">print</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">code</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">code</span></div>
+
+
+
+<div class="viewcode-block" id="Model2Package.generate_algorithm"><a class="viewcode-back" href="../../_dvlpt/pycropml.html#pycropml.render_python.Model2Package.generate_algorithm">[docs]</a>    <span class="k">def</span> <span class="nf">generate_algorithm</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_unit</span><span class="p">):</span>
+        
+
+
+        <span class="c1">#code =&quot;\n&quot;</span>
+        <span class="n">outputs</span> <span class="o">=</span> <span class="n">model_unit</span><span class="o">.</span><span class="n">outputs</span>
+        <span class="n">algo</span> <span class="o">=</span> <span class="n">model_unit</span><span class="o">.</span><span class="n">algorithm</span><span class="o">.</span><span class="n">development</span>
+
+        <span class="c1">#code = &#39;&#39;</span>
+        <span class="n">tab</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">*</span><span class="mi">4</span>
+        <span class="c1">#code += tab+&quot;try:&quot; + &quot;\n&quot;</span>
+        <span class="n">lines</span> <span class="o">=</span> <span class="p">[</span><span class="n">l</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">algo</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span> <span class="k">if</span> <span class="n">l</span><span class="o">.</span><span class="n">strip</span><span class="p">()]</span>
+        <span class="c1">#lines = [l for l in algo.split(&#39;\n&#39;)]</span>
+        <span class="c1">#for line in lines:</span>
+        <span class="c1">#   code += tab+line+&#39;\n&#39;</span>
+        <span class="k">def</span> <span class="nf">indentation</span><span class="p">(</span><span class="n">lines</span><span class="p">):</span>
+            <span class="n">code</span><span class="o">=</span><span class="s1">&#39;&#39;</span>
+            <span class="n">z</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="o">*</span><span class="mi">4</span>
+            <span class="n">tab</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="o">*</span><span class="mi">4</span>
+            <span class="n">i</span><span class="o">=</span><span class="mi">1</span>        
+            <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
+                <span class="n">pline</span> <span class="o">=</span> <span class="n">line</span>
+                <span class="k">if</span> <span class="n">line</span> <span class="o">==</span><span class="s2">&quot;{&quot;</span><span class="p">:</span>
+                    <span class="n">pline</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;{&#39;</span><span class="p">)</span>
+                    <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span>
+                    <span class="n">tab</span> <span class="o">=</span> <span class="n">z</span><span class="o">*</span><span class="n">i</span>
+                <span class="k">if</span> <span class="n">line</span> <span class="o">==</span><span class="s2">&quot;}&quot;</span><span class="p">:</span>
+                    <span class="n">pline</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s1">&#39;}&#39;</span><span class="p">)</span>    
+                    <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">-</span><span class="mi">1</span>
+                    <span class="n">tab</span> <span class="o">=</span> <span class="n">z</span><span class="o">*</span><span class="n">i</span>
+                <span class="n">code</span><span class="o">+=</span><span class="n">tab</span><span class="o">+</span><span class="n">pline</span><span class="o">+</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+            <span class="k">return</span> <span class="n">code</span>
+        
+        <span class="n">code</span> <span class="o">=</span> <span class="n">indentation</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span>            
+        
+        <span class="c1">#code = algo +&#39;\n&#39;</span>
+        
+        <span class="c1"># Outputs</span>
+        <span class="n">code</span> <span class="o">+=</span> <span class="n">tab</span> <span class="o">+</span> <span class="s1">&#39;return &#39;</span> <span class="o">+</span> <span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">o</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">outputs</span><span class="p">])</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
+
+        <span class="c1">#code += tab + &quot;except ValueError :&quot; + &#39;\n&#39;</span>
+
+        <span class="c1">#code += 2*tab + &#39;return&#39; + &quot;&#39;  No Real Solution&#39;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">code</span> <span class="o">=</span> <span class="n">code</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">code</span></div>
+
+    <span class="c1"># documentation</span>
+<div class="viewcode-block" id="Model2Package.generate_function_doc"><a class="viewcode-back" href="../../_dvlpt/pycropml.html#pycropml.render_python.Model2Package.generate_function_doc">[docs]</a>    <span class="k">def</span> <span class="nf">generate_function_doc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_unit</span><span class="p">):</span>
+
+        <span class="n">desc</span> <span class="o">=</span> <span class="n">model_unit</span><span class="o">.</span><span class="n">description</span>
+        <span class="n">_doc</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">    &quot;&quot;&quot; </span><span class="si">%s</span><span class="s1"></span>
+
+<span class="s1">    Author: </span><span class="si">%s</span><span class="s1"></span>
+<span class="s1">    Reference: </span><span class="si">%s</span><span class="s1"></span>
+<span class="s1">    Instituton: </span><span class="si">%s</span><span class="s1"></span>
+<span class="s1">    Abstract: </span><span class="si">%s</span><span class="s1"></span>
+<span class="s1">    &quot;&quot;&quot;</span>
+<span class="s1">&#39;&#39;&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">desc</span><span class="o">.</span><span class="n">Title</span><span class="p">,</span> <span class="n">desc</span><span class="o">.</span><span class="n">Author</span><span class="p">,</span> <span class="n">desc</span><span class="o">.</span><span class="n">Reference</span><span class="p">,</span> <span class="n">desc</span><span class="o">.</span><span class="n">Institution</span><span class="p">,</span> <span class="n">desc</span><span class="o">.</span><span class="n">Abstract</span><span class="p">)</span>
+
+        <span class="n">code</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
+        <span class="n">code</span> <span class="o">+=</span> <span class="n">_doc</span>
+
+        <span class="k">return</span> <span class="n">code</span></div>
+
+
+
+<div class="viewcode-block" id="Model2Package.generate_function_signature"><a class="viewcode-back" href="../../_dvlpt/pycropml.html#pycropml.render_python.Model2Package.generate_function_signature">[docs]</a>    <span class="k">def</span> <span class="nf">generate_function_signature</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_unit</span><span class="p">):</span>
+
+        <span class="n">desc</span> <span class="o">=</span> <span class="n">model_unit</span><span class="o">.</span><span class="n">description</span>
+        <span class="n">inputs</span> <span class="o">=</span> <span class="n">model_unit</span><span class="o">.</span><span class="n">inputs</span>
+
+        <span class="c1"># Compute name from title.</span>
+        <span class="c1"># We need an explicit name rather than infering it from Title</span>
+        <span class="c1">#name = desc.Title</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">model_unit</span><span class="o">.</span><span class="n">name</span>
+        <span class="n">name</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+
+        <span class="n">func_name</span> <span class="o">=</span> <span class="n">name</span>
+
+        <span class="n">code</span> <span class="o">=</span> <span class="s1">&#39;def </span><span class="si">%s</span><span class="s1">(&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">func_name</span><span class="p">,)</span>
+
+        <span class="n">code_size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">code</span><span class="p">)</span>
+
+        <span class="n">_input_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">inp</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">inp</span> <span class="ow">in</span> <span class="n">inputs</span><span class="p">]</span>
+
+
+        <span class="k">def</span> <span class="nf">my_input</span><span class="p">(</span><span class="n">_input</span><span class="p">):</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="n">_input</span><span class="o">.</span><span class="n">name</span>
+            <span class="n">_type</span> <span class="o">=</span> <span class="n">_input</span><span class="o">.</span><span class="n">datatype</span>
+            <span class="n">default</span> <span class="o">=</span> <span class="n">_input</span><span class="o">.</span><span class="n">default</span>
+            <span class="k">if</span> <span class="n">_type</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">DATATYPE</span><span class="p">:</span>
+                <span class="n">default</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">DATATYPE</span><span class="p">[</span><span class="n">_type</span><span class="p">](</span><span class="n">default</span><span class="p">)</span>
+
+            <span class="k">return</span> <span class="s1">&#39;</span><span class="si">%s</span><span class="s1">=</span><span class="si">%s</span><span class="s1">&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">default</span><span class="p">)</span>
+
+
+        <span class="n">ins</span> <span class="o">=</span> <span class="p">[</span> <span class="n">my_input</span><span class="p">(</span><span class="n">inp</span><span class="p">)</span> <span class="k">for</span> <span class="n">inp</span> <span class="ow">in</span> <span class="n">inputs</span><span class="p">]</span>
+        <span class="n">separator</span> <span class="o">=</span> <span class="s1">&#39;,</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">+</span> <span class="n">code_size</span><span class="o">*</span><span class="s1">&#39; &#39;</span>
+        <span class="n">code</span> <span class="o">+=</span> <span class="n">separator</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">ins</span><span class="p">)</span>
+        <span class="c1">#print (inputs)</span>
+        <span class="n">code</span><span class="o">+=</span> <span class="s1">&#39;):&#39;</span>
+
+        <span class="k">return</span> <span class="n">code</span></div>
+    
+<div class="viewcode-block" id="Model2Package.generate_test"><a class="viewcode-back" href="../../_dvlpt/pycropml.html#pycropml.render_python.Model2Package.generate_test">[docs]</a>    <span class="k">def</span> <span class="nf">generate_test</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_unit</span><span class="p">):</span>
+
+        <span class="n">tab</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">*</span><span class="mi">4</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="n">model_unit</span>
+        <span class="c1">#name = m.description.Title</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">name</span>
+        <span class="n">name</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="n">model_name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="n">psets</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">parametersets</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">codetest</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;if self.with_import:</span>
+<span class="sd">            self.codetest += &quot;from model import *\n&quot;+&quot;import numpy as np\n\n&quot;</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">for</span> <span class="n">v_tests</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">testsets</span><span class="p">:</span>
+
+            <span class="n">test_name</span> <span class="o">=</span> <span class="n">v_tests</span><span class="o">.</span><span class="n">name</span>  <span class="c1"># name of tests</span>
+            <span class="n">test_runs</span> <span class="o">=</span> <span class="n">v_tests</span><span class="o">.</span><span class="n">test</span>  <span class="c1"># different run in the thest</span>
+            <span class="n">test_paramsets</span> <span class="o">=</span> <span class="n">v_tests</span><span class="o">.</span><span class="n">parameterset</span>  <span class="c1"># name of paramsets</span>
+
+        <span class="c1"># map the paramsets</span>
+            <span class="n">params</span> <span class="o">=</span> <span class="p">{}</span>
+            
+            <span class="k">if</span>   <span class="n">test_paramsets</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">psets</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Unknow parameter </span><span class="si">%s</span><span class="s1">&#39;</span><span class="o">%</span><span class="n">test_paramsets</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">params</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">psets</span><span class="p">[</span><span class="n">test_paramsets</span><span class="p">]</span><span class="o">.</span><span class="n">params</span><span class="p">)</span>
+                     
+                <span class="k">for</span> <span class="n">each_run</span> <span class="ow">in</span> <span class="n">test_runs</span> <span class="p">:</span>
+                    <span class="n">test_codes</span> <span class="o">=</span> <span class="p">[]</span>
+
+                    <span class="c1"># make a function that transforms a title into a function name</span>
+                    <span class="n">tname</span> <span class="o">=</span> <span class="n">each_run</span><span class="o">.</span><span class="n">keys</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="p">)</span>
+                    <span class="n">tname</span> <span class="o">=</span> <span class="n">tname</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="p">)</span>
+
+
+                    <span class="p">(</span><span class="n">run</span><span class="p">,</span> <span class="n">inouts</span><span class="p">)</span> <span class="o">=</span> <span class="n">each_run</span><span class="o">.</span><span class="n">items</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+
+                    <span class="n">ins</span> <span class="o">=</span> <span class="n">inouts</span><span class="p">[</span><span class="s1">&#39;inputs&#39;</span><span class="p">]</span>
+                    <span class="n">outs</span> <span class="o">=</span> <span class="n">inouts</span><span class="p">[</span><span class="s1">&#39;outputs&#39;</span><span class="p">]</span>
+
+                    <span class="n">code</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span>
+                    <span class="n">test_codes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">code</span><span class="p">)</span>
+
+                    <span class="n">code</span> <span class="o">=</span> <span class="s2">&quot;def test_</span><span class="si">%s</span><span class="s2">():&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">tname</span><span class="p">)</span>
+                    <span class="n">test_codes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">code</span><span class="p">)</span>
+                    <span class="n">code</span> <span class="o">=</span> <span class="s2">&quot;    params= </span><span class="si">%s</span><span class="s2">(&quot;</span><span class="o">%</span><span class="n">model_name</span>
+                    <span class="n">test_codes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">code</span><span class="p">)</span>
+
+                    <span class="n">run_param</span> <span class="o">=</span> <span class="n">params</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+                    <span class="n">run_param</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">ins</span><span class="p">)</span>
+
+                    <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">run_param</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+                        <span class="n">code</span> <span class="o">=</span> <span class="s2">&quot;    </span><span class="si">%s</span><span class="s2"> = </span><span class="si">%s</span><span class="s2">,&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">v</span><span class="p">)</span>
+                        <span class="n">test_codes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">code</span><span class="p">)</span>
+                    <span class="n">code</span> <span class="o">=</span> <span class="s2">&quot;     )&quot;</span>
+                    <span class="n">test_codes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">code</span><span class="p">)</span>
+
+                    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">outs</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+                        <span class="n">decimal</span> <span class="o">=</span> <span class="n">outs</span><span class="o">.</span><span class="n">values</span><span class="p">()[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+                        <span class="n">code</span> <span class="o">=</span> <span class="n">tab</span> <span class="o">+</span> <span class="s2">&quot;params = np.around(params, </span><span class="si">{}</span><span class="s2">)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">decimal</span><span class="p">)</span>
+                        <span class="n">test_codes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">code</span><span class="p">)</span>
+
+                        <span class="n">code</span> <span class="o">=</span> <span class="n">tab</span> <span class="o">+</span> <span class="s2">&quot;out_computed = </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">((</span><span class="n">outs</span><span class="o">.</span><span class="n">values</span><span class="p">()[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]))</span>
+                        <span class="n">test_codes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">code</span><span class="p">)</span>
+
+                        <span class="n">code</span> <span class="o">=</span> <span class="n">tab</span> <span class="o">+</span> <span class="s2">&quot;assert np.all(params == out_computed)&quot;</span>
+                        <span class="n">test_codes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">code</span><span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">precision</span> <span class="o">=</span> <span class="n">outs</span><span class="o">.</span><span class="n">values</span><span class="p">()[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+                        <span class="n">code</span> <span class="o">=</span> <span class="n">tab</span> <span class="o">+</span> <span class="s2">&quot;params = [np.around(p, </span><span class="si">{}</span><span class="s2">) for p in params]&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">precision</span><span class="p">)</span>
+                        <span class="n">test_codes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">code</span><span class="p">)</span>
+
+                        <span class="n">code</span> <span class="o">=</span> <span class="n">tab</span> <span class="o">+</span> <span class="s2">&quot;out_computed = [&quot;</span><span class="o">+</span> <span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">outs</span><span class="p">[</span><span class="n">o</span><span class="o">.</span><span class="n">name</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">outputs</span><span class="p">])</span> <span class="o">+</span> <span class="s2">&quot;]&quot;</span>
+                        <span class="n">test_codes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">code</span><span class="p">)</span>
+
+                        <span class="n">code</span> <span class="o">=</span> <span class="n">tab</span> <span class="o">+</span> <span class="s2">&quot;assert np.all(params== out_computed)&quot;</span>
+                        <span class="n">test_codes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">code</span><span class="p">)</span>
+
+
+                    <span class="n">code</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">test_codes</span><span class="p">)</span>
+
+                    <span class="nb">print</span> <span class="p">(</span><span class="n">code</span><span class="p">)</span>
+
+                    <span class="bp">self</span><span class="o">.</span><span class="n">codetest</span> <span class="o">+=</span> <span class="n">code</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">codetest</span></div>
+
+<div class="viewcode-block" id="Model2Package.write_tests"><a class="viewcode-back" href="../../_dvlpt/pycropml.html#pycropml.render_python.Model2Package.write_tests">[docs]</a>    <span class="k">def</span> <span class="nf">write_tests</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; TODO: Manage several models rather than just one.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">files</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">models</span><span class="p">:</span>
+            <span class="n">codetest</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">generate_test</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+            <span class="n">ext</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span> <span class="k">if</span> <span class="n">count</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="nb">str</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
+            <span class="n">filename</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dir</span><span class="o">/</span><span class="s2">&quot;testrun</span><span class="si">%s</span><span class="s2">.py&quot;</span><span class="o">%</span><span class="n">ext</span>
+            
+            <span class="n">codetest</span> <span class="o">=</span> <span class="s2">&quot;&#39;Test generation&#39;</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="o">+</span><span class="s2">&quot;from model</span><span class="si">%s</span><span class="s2">&quot;</span><span class="o">%</span><span class="n">ext</span> <span class="o">+</span> <span class="s2">&quot; import *</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">+</span><span class="s2">&quot;import numpy as np</span><span class="se">\n\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="n">codetest</span>
+
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">python_file</span><span class="p">:</span>
+                <span class="n">python_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">codetest</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span>
+                <span class="n">files</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+            <span class="n">count</span> <span class="o">+=</span><span class="mi">1</span>
+        <span class="k">return</span> <span class="n">files</span></div></div>
+
+
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">CropML 0.0.2 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, CropML.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.6.
+    </div>
+  </body>
+</html>
