@@ -12,13 +12,11 @@
 		<Input name="PhotoInhibition" datatype="DOUBLE" inputtype="parameter" parametertype="constant" min="1" max="24" default="14" unit="hour" description="Daylenght to inhibit flowering" />
 		<Input name="PhotoInsensitivity" datatype="DOUBLE" inputtype="parameter" parametertype="constant" min="1" max="24" default="6" unit="hour" description="Daylenght for insensitivity of photoperiod" />		
 		<Input name="DayLenght" datatype="DOUBLE" inputtype="variable" min="0" max="24" default="12" unit="hour" description="Day lenght"/>		
-		
 	</Inputs>
 	<Outputs>
 		<Output name="PhotoPeriodFactor" datatype="DOUBLE" min="0" max="1"  unit="unitless" description="Photoperiod factor"/>
-		
 	</Outputs>
-	<Algorithm language="C#">
+	<Algorithm language="C#" platform="bioma">
 		<![CDATA[ 
 				double Dl = Daylenght;                
                 double DlIns = PhotoInsensitivity;

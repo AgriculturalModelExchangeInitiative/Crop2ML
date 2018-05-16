@@ -17,7 +17,8 @@
 
 <!ELEMENT Algorithm (#PCDATA)>
 <!ATTLIST Algorithm
-  language CDATA #REQUIRED>
+  language CDATA #REQUIRED
+  platform CDATA #REQUIRED>
 
 <!ELEMENT Parametersets (Parameterset+)>
 <!ATTLIST Parametersets>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//SIMPLACE/DTD GRP 1.0//EN" "http://simplace.net/dtd/GroupComponent.dtd">
+<configuration class="net.simplace.sim.components.experimental.amei.PotentialGrowth">
+	<simgroup>
+		<simcomponent id="Phenology" class="net.simplace.sim.components.models.lintul.LintulPhenology">
+			<input id="cAirTemperatureSumAnthesis" source="PotentialGrowth.cAirTemperatureSumAnthesis" />
+			<input id="cAirTemperatureSumMilkripeness" source="PotentialGrowth.cAirTemperatureSumMilkripeness" />
+			<input id="cAirTemperatureSumMaturity" source="PotentialGrowth.cAirTemperatureSumMaturity" />
+			<input id="cRelativeDayOfEmergence" source="PotentialGrowth.cRelativeDayOfEmergence" />
+			<input id="iRTEFFAnt" source="Vernalisation.RTSUM" />
+			<input id="iRTEFFMat" source="Vernalisation.RTSUM" />
+			<input id="iDoSow" source="PotentialGrowth.iDoSow" />
+			<input id="iDoHarvest" source="PotentialGrowth.iDoHarvest" />
+			<output id="sTSUM" destination="PotentialGrowth.sTSUM" />
+			<output id="sDevStage" destination="PotentialGrowth.sDevStage" />
+			<output id="RTEFF" destination="PotentialGrowth.RTEFF" />
+			<output id="SowingDate" destination="PotentialGrowth.SowingDate" />
+			<output id="EmergenceDate" destination="PotentialGrowth.EmergenceDate" />
+			<output id="MilkripenessDate" destination="PotentialGrowth.MilkripenessDate" />
+			<output id="AnthesisDate" destination="PotentialGrowth.AnthesisDate" />
+			<output id="MaturityDate" destination="PotentialGrowth.MaturityDate" />
+			<output id="SowingDOY" destination="PotentialGrowth.SowingDOY" />
+			<output id="EmergenceDOY" destination="PotentialGrowth.EmergenceDOY" />
+			<output id="MilkripenessDOY" destination="PotentialGrowth.MilkripenessDOY" />
+			<output id="AnthesisDOY" destination="PotentialGrowth.AnthesisDOY" />
+			<output id="MaturityDOY" destination="PotentialGrowth.MaturityDOY" />
+			<output id="CropCycleCount" destination="PotentialGrowth.CropCycleCount" />
+		</simcomponent>
+		<simcomponent id="DayLength" class="net.simplace.sim.components.experimental.amei.DayLength">
+			<input id="cLatitude" source="PotentialGrowth.cLatitude" />
+			<input id="iDayOfYear" source="PotentialGrowth.iDayOfYear" />
+			<output id="DayLength" destination="PotentialGrowth.DayLength" />
+		</simcomponent>
+		<simcomponent id="Photoperiod" class="net.simplace.sim.components.experimental.amei.Photoperiod">
+			<input id="iDayLength" source="DayLength.DayLength" />
+			<output id="PhotoPeriodFactor" destination="PotentialGrowth.PhotoPeriodFactor" />
+		</simcomponent>
+		<simcomponent id="Vernalisation" class="net.simplace.sim.components.experimental.amei.Vernalisation">
+			<input id="cVernalDaysMin" source="PotentialGrowth.cVernalDaysMin" />
+			<input id="cVernalDaysMax" source="PotentialGrowth.cVernalDaysMax" />
+			<input id="cApplyVernalisation" source="PotentialGrowth.cApplyVernalisation" />
+			<input id="cThighCritical" source="PotentialGrowth.cThighCritical" />
+			<input id="cThigh" source="PotentialGrowth.cThigh" />
+			<input id="cTlow" source="PotentialGrowth.cTlow" />
+			<input id="cTlowCritical" source="PotentialGrowth.cTlowCritical" />
+			<input id="iDAVTMP" source="PotentialGrowth.iDAVTMP" />
+			<input id="iTSumBaseAnt" source="PotentialGrowth.iTSumBaseAnt" />
+			<input id="iTSumBaseMat" source="PotentialGrowth.iTSumBaseMat" />
+			<input id="iDevStage" source="Phenology.sDevStage" />
+			<input id="iDoSow" source="PotentialGrowth.iDoSow" />
+			<input id="iPhotoPeriodFactor" source="Photoperiod.PhotoPeriodFactor" />
+			<output id="RTSUM" destination="PotentialGrowth.RTSUM" />
+		</simcomponent>
+		<simcomponent id="LintulPartitioning" class="net.simplace.sim.components.experimental.amei.Partitioning">
+			<input id="cPartitionNStressReduction" source="PotentialGrowth.cPartitionNStressReduction" />
+			<input id="cRootsPartitioningTableDVS" source="PotentialGrowth.cRootsPartitioningTableDVS" />
+			<input id="cRootsPartitioningTableFraction" source="PotentialGrowth.cRootsPartitioningTableFraction" />
+			<input id="cLeavesPartitioningTableDVS" source="PotentialGrowth.cLeavesPartitioningTableDVS" />
+			<input id="cLeavesPartitioningTableFraction" source="PotentialGrowth.cLeavesPartitioningTableFraction" />
+			<input id="cStemsPartitioningTableDVS" source="PotentialGrowth.cStemsPartitioningTableDVS" />
+			<input id="cStemsPartitioningTableFraction" source="PotentialGrowth.cStemsPartitioningTableFraction" />
+			<input id="cStorageOrgansPartitioningTableDVS" source="PotentialGrowth.cStorageOrgansPartitioningTableDVS" />
+			<input id="cStorageOrgansPartitioningTableFraction" source="PotentialGrowth.cStorageOrgansPartitioningTableFraction" />
+			<input id="iTRANRF">1</input>
+			<input id="iNitrogenNutritionIndex">1</input>
+			<input id="iDevStage" source="Phenology.sDevStage" />
+			<input id="iDoSow" source="PotentialGrowth.iDoSow" />
+			<output id="FractionRoot" destination="PotentialGrowth.FractionRoot" />
+			<output id="FractionLeaves" destination="PotentialGrowth.FractionLeaves" />
+			<output id="FractionStems" destination="PotentialGrowth.FractionStems" />
+			<output id="FractionStorageOrgans" destination="PotentialGrowth.FractionStorageOrgans" />
+		</simcomponent>
+		<simcomponent id="LintulBiomass" class="net.simplace.sim.components.models.lintul.LintulBiomass">
+			<input id="cK" source="PotentialGrowth.cK" />
+			<input id="cLaiCritical" source="PotentialGrowth.cLaiCritical" />
+			<input id="cRDRSHM" source="PotentialGrowth.cRDRSHM" />
+			<input id="cRDRNS" source="PotentialGrowth.cRDRNS" />
+			<input id="cRDRL" source="PotentialGrowth.cRDRL" />
+			<input id="cRGRL" source="PotentialGrowth.cRGRL" />
+			<input id="cSLA" source="PotentialGrowth.cSLA" />
+			<input id="cLaiNStressReduction">1</input>
+			<input id="cLueNStressReduction">1</input>
+			<input id="cSlaNStressReduction">1</input>
+			<input id="cRDRT" source="PotentialGrowth.cRDRT" />
+			<input id="cRDRLeavesTableMeanTemperature" source="PotentialGrowth.cRDRLeavesTableMeanTemperature" />
+			<input id="cRDRLeavesTableRelativeRate" source="PotentialGrowth.cRDRLeavesTableRelativeRate" />
+			<input id="cRelativeDayOfEmergence" source="PotentialGrowth.cRelativeDayOfEmergence" />
+			<input id="iDoSow" source="PotentialGrowth.iDoSow" />
+			<input id="iDoHarvest" source="PotentialGrowth.iDoHarvest" />
+			<input id="iUnusedRootBiomass">0</input>
+			<input id="iNitrogenNutritionIndex">1</input>
+			<input id="iEffectiveTempRateBeforeAnt" source="PotentialGrowth.iEffectiveTempRateBeforeAnt" />
+			<input id="iEffectiveTempRateAfterAnt" source="PotentialGrowth.iEffectiveTempRateAfterAnt" />
+			<input id="iAirTemperatureMean" source="PotentialGrowth.iAirTemperatureMean" />
+			<input id="iRadiation" source="PotentialGrowth.iRadiation" />
+			<input id="iDevStage" source="Phenology.sDevStage" />
+			<input id="iCropAvailWaterContent">0.23</input>
+			<input id="iTRANRF">1</input>
+			<input id="iPartRootFactor" source="LintulPartitioning.FractionRoot" />
+			<input id="iPartStemsFactor" source="LintulPartitioning.FractionStems" />
+			<input id="iPartStorageOrgansFactor" source="LintulPartitioning.FractionStorageOrgans" />
+			<input id="iPartLeavesFactor" source="LintulPartitioning.FractionLeaves" />
+			<input id="iLUE" source="PotentialGrowth.iLUE" />
+			<input id="cLAII" source="PotentialGrowth.cLAII" />
+			<input id="cDevStageRGRL" source="PotentialGrowth.cDevStageRGRL" />
+			<input id="cGrainToRootsDailyBiomass" source="PotentialGrowth.cGrainToRootsDailyBiomass" />
+			<input id="cGrainToRootsDevStage" source="PotentialGrowth.cGrainToRootsDevStage" />
+			<output id="sWLVD" destination="PotentialGrowth.sWLVD" />
+			<output id="sWLVG" destination="PotentialGrowth.sWLVG" />
+			<output id="sWRT" destination="PotentialGrowth.sWRT" />
+			<output id="sWSO" destination="PotentialGrowth.sWSO" />
+			<output id="sWST" destination="PotentialGrowth.sWST" />
+			<output id="rDeadStems" destination="PotentialGrowth.rDeadStems" />
+			<output id="rDeadLeaves" destination="PotentialGrowth.rDeadLeaves" />
+			<output id="sWLV" destination="PotentialGrowth.sWLV" />
+			<output id="sLAI" destination="PotentialGrowth.sLAI" />
+			<output id="rRWLVG" destination="PotentialGrowth.rRWLVG" />
+			<output id="rRWRT" destination="PotentialGrowth.rRWRT" />
+			<output id="rDLAI" destination="PotentialGrowth.rDLAI" />
+			<output id="GTOTAL" destination="PotentialGrowth.GTOTAL" />
+			<output id="AboveGroundBiomass" destination="PotentialGrowth.AboveGroundBiomass" />
+			<output id="PARINT" destination="PotentialGrowth.PARINT" />
+			<output id="sDaysSinceSowing" destination="PotentialGrowth.sDaysSinceSowing" />
+		</simcomponent>
+	</simgroup>
+</configuration>
+	
