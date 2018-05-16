@@ -1,0 +1,549 @@
+<ModelUnitGroup>
+  <Description>
+    <Name>PotentialGrowth</Name>
+    <Id>net.simplace.sim.components.experimental.amei.PotentialGrowth</Id>
+    <Author>Gunther Krauss, gk@uni-bonn.de</Author>
+    <Institution>INRES Pflanzenbau, Uni Bonn</Institution>
+    <Reference>as given in the documentation</Reference>
+    <Abstract>see documentation at http://www.simplace.net/doc/simplace_modules/class_net.simplace.sim.components.experimental.amei.PotentialGrowth.html</Abstract>
+  </Description>
+  <Composition>
+    <Input id="DayLength.cLatitude" source="PotentialGrowth.cLatitude" />
+    <Input id="DayLength.iDayOfYear" source="PotentialGrowth.iDayOfYear" />
+    <Input id="LintulBiomass.cDevStageRGRL" source="PotentialGrowth.cDevStageRGRL" />
+    <Input id="LintulBiomass.cGrainToRootsDailyBiomass" source="PotentialGrowth.cGrainToRootsDailyBiomass" />
+    <Input id="LintulBiomass.cGrainToRootsDevStage" source="PotentialGrowth.cGrainToRootsDevStage" />
+    <Input id="LintulBiomass.cK" source="PotentialGrowth.cK" />
+    <Input id="LintulBiomass.cLAII" source="PotentialGrowth.cLAII" />
+    <Input id="LintulBiomass.cLaiCritical" source="PotentialGrowth.cLaiCritical" />
+    <Input id="LintulBiomass.cRDRL" source="PotentialGrowth.cRDRL" />
+    <Input id="LintulBiomass.cRDRLeavesTableMeanTemperature" source="PotentialGrowth.cRDRLeavesTableMeanTemperature" />
+    <Input id="LintulBiomass.cRDRLeavesTableRelativeRate" source="PotentialGrowth.cRDRLeavesTableRelativeRate" />
+    <Input id="LintulBiomass.cRDRNS" source="PotentialGrowth.cRDRNS" />
+    <Input id="LintulBiomass.cRDRSHM" source="PotentialGrowth.cRDRSHM" />
+    <Input id="LintulBiomass.cRDRT" source="PotentialGrowth.cRDRT" />
+    <Input id="LintulBiomass.cRGRL" source="PotentialGrowth.cRGRL" />
+    <Input id="LintulBiomass.cRelativeDayOfEmergence" source="PotentialGrowth.cRelativeDayOfEmergence" />
+    <Input id="LintulBiomass.cSLA" source="PotentialGrowth.cSLA" />
+    <Input id="LintulBiomass.iAirTemperatureMean" source="PotentialGrowth.iAirTemperatureMean" />
+    <Input id="LintulBiomass.iDevStage" source="Phenology.sDevStage" />
+    <Input id="LintulBiomass.iDoHarvest" source="PotentialGrowth.iDoHarvest" />
+    <Input id="LintulBiomass.iDoSow" source="PotentialGrowth.iDoSow" />
+    <Input id="LintulBiomass.iEffectiveTempRateAfterAnt" source="PotentialGrowth.iEffectiveTempRateAfterAnt" />
+    <Input id="LintulBiomass.iEffectiveTempRateBeforeAnt" source="PotentialGrowth.iEffectiveTempRateBeforeAnt" />
+    <Input id="LintulBiomass.iLUE" source="PotentialGrowth.iLUE" />
+    <Input id="LintulBiomass.iPartLeavesFactor" source="Partitioning.FractionLeaves" />
+    <Input id="LintulBiomass.iPartRootFactor" source="Partitioning.FractionRoot" />
+    <Input id="LintulBiomass.iPartStemsFactor" source="Partitioning.FractionStems" />
+    <Input id="LintulBiomass.iPartStorageOrgansFactor" source="Partitioning.FractionStorageOrgans" />
+    <Input id="LintulBiomass.iRadiation" source="PotentialGrowth.iRadiation" />
+    <Input id="Partitioning.cLeavesPartitioningTableDVS" source="PotentialGrowth.cLeavesPartitioningTableDVS" />
+    <Input id="Partitioning.cLeavesPartitioningTableFraction" source="PotentialGrowth.cLeavesPartitioningTableFraction" />
+    <Input id="Partitioning.cPartitionNStressReduction" source="PotentialGrowth.cPartitionNStressReduction" />
+    <Input id="Partitioning.cRootsPartitioningTableDVS" source="PotentialGrowth.cRootsPartitioningTableDVS" />
+    <Input id="Partitioning.cRootsPartitioningTableFraction" source="PotentialGrowth.cRootsPartitioningTableFraction" />
+    <Input id="Partitioning.cStemsPartitioningTableDVS" source="PotentialGrowth.cStemsPartitioningTableDVS" />
+    <Input id="Partitioning.cStemsPartitioningTableFraction" source="PotentialGrowth.cStemsPartitioningTableFraction" />
+    <Input id="Partitioning.cStorageOrgansPartitioningTableDVS" source="PotentialGrowth.cStorageOrgansPartitioningTableDVS" />
+    <Input id="Partitioning.cStorageOrgansPartitioningTableFraction" source="PotentialGrowth.cStorageOrgansPartitioningTableFraction" />
+    <Input id="Partitioning.iDevStage" source="Phenology.sDevStage" />
+    <Input id="Partitioning.iDoSow" source="PotentialGrowth.iDoSow" />
+    <Input id="Phenology.cAirTemperatureSumAnthesis" source="PotentialGrowth.cAirTemperatureSumAnthesis" />
+    <Input id="Phenology.cAirTemperatureSumMaturity" source="PotentialGrowth.cAirTemperatureSumMaturity" />
+    <Input id="Phenology.cAirTemperatureSumMilkripeness" source="PotentialGrowth.cAirTemperatureSumMilkripeness" />
+    <Input id="Phenology.cRelativeDayOfEmergence" source="PotentialGrowth.cRelativeDayOfEmergence" />
+    <Input id="Phenology.iDoHarvest" source="PotentialGrowth.iDoHarvest" />
+    <Input id="Phenology.iDoSow" source="PotentialGrowth.iDoSow" />
+    <Input id="Phenology.iRTEFFAnt" source="Vernalisation.RTSUM" />
+    <Input id="Phenology.iRTEFFMat" source="Vernalisation.RTSUM" />
+    <Input id="Photoperiod.iDayLength" source="DayLength.DayLength" />
+    <Input id="Vernalisation.cApplyVernalisation" source="PotentialGrowth.cApplyVernalisation" />
+    <Input id="Vernalisation.cThigh" source="PotentialGrowth.cThigh" />
+    <Input id="Vernalisation.cThighCritical" source="PotentialGrowth.cThighCritical" />
+    <Input id="Vernalisation.cTlow" source="PotentialGrowth.cTlow" />
+    <Input id="Vernalisation.cTlowCritical" source="PotentialGrowth.cTlowCritical" />
+    <Input id="Vernalisation.cVernalDaysMax" source="PotentialGrowth.cVernalDaysMax" />
+    <Input id="Vernalisation.cVernalDaysMin" source="PotentialGrowth.cVernalDaysMin" />
+    <Input id="Vernalisation.iDAVTMP" source="PotentialGrowth.iDAVTMP" />
+    <Input id="Vernalisation.iDevStage" source="Phenology.sDevStage" />
+    <Input id="Vernalisation.iDoSow" source="PotentialGrowth.iDoSow" />
+    <Input id="Vernalisation.iPhotoPeriodFactor" source="Photoperiod.PhotoPeriodFactor" />
+    <Input id="Vernalisation.iTSumBaseAnt" source="PotentialGrowth.iTSumBaseAnt" />
+    <Input id="Vernalisation.iTSumBaseMat" source="PotentialGrowth.iTSumBaseMat" />
+    <Output source="DayLength.DayLength" id="PotentialGrowth.DayLength" />
+    <Output source="LintulBiomass.AboveGroundBiomass" id="PotentialGrowth.AboveGroundBiomass" />
+    <Output source="LintulBiomass.GTOTAL" id="PotentialGrowth.GTOTAL" />
+    <Output source="LintulBiomass.PARINT" id="PotentialGrowth.PARINT" />
+    <Output source="LintulBiomass.rDLAI" id="PotentialGrowth.rDLAI" />
+    <Output source="LintulBiomass.rDeadLeaves" id="PotentialGrowth.rDeadLeaves" />
+    <Output source="LintulBiomass.rDeadStems" id="PotentialGrowth.rDeadStems" />
+    <Output source="LintulBiomass.rRWLVG" id="PotentialGrowth.rRWLVG" />
+    <Output source="LintulBiomass.rRWRT" id="PotentialGrowth.rRWRT" />
+    <Output source="LintulBiomass.sDaysSinceSowing" id="PotentialGrowth.sDaysSinceSowing" />
+    <Output source="LintulBiomass.sLAI" id="PotentialGrowth.sLAI" />
+    <Output source="LintulBiomass.sWLV" id="PotentialGrowth.sWLV" />
+    <Output source="LintulBiomass.sWLVD" id="PotentialGrowth.sWLVD" />
+    <Output source="LintulBiomass.sWLVG" id="PotentialGrowth.sWLVG" />
+    <Output source="LintulBiomass.sWRT" id="PotentialGrowth.sWRT" />
+    <Output source="LintulBiomass.sWSO" id="PotentialGrowth.sWSO" />
+    <Output source="LintulBiomass.sWST" id="PotentialGrowth.sWST" />
+    <Output source="Partitioning.FractionLeaves" id="PotentialGrowth.FractionLeaves" />
+    <Output source="Partitioning.FractionRoot" id="PotentialGrowth.FractionRoot" />
+    <Output source="Partitioning.FractionStems" id="PotentialGrowth.FractionStems" />
+    <Output source="Partitioning.FractionStorageOrgans" id="PotentialGrowth.FractionStorageOrgans" />
+    <Output source="Phenology.AnthesisDOY" id="PotentialGrowth.AnthesisDOY" />
+    <Output source="Phenology.AnthesisDate" id="PotentialGrowth.AnthesisDate" />
+    <Output source="Phenology.CropCycleCount" id="PotentialGrowth.CropCycleCount" />
+    <Output source="Phenology.EmergenceDOY" id="PotentialGrowth.EmergenceDOY" />
+    <Output source="Phenology.EmergenceDate" id="PotentialGrowth.EmergenceDate" />
+    <Output source="Phenology.MaturityDOY" id="PotentialGrowth.MaturityDOY" />
+    <Output source="Phenology.MaturityDate" id="PotentialGrowth.MaturityDate" />
+    <Output source="Phenology.MilkripenessDOY" id="PotentialGrowth.MilkripenessDOY" />
+    <Output source="Phenology.MilkripenessDate" id="PotentialGrowth.MilkripenessDate" />
+    <Output source="Phenology.RTEFF" id="PotentialGrowth.RTEFF" />
+    <Output source="Phenology.SowingDOY" id="PotentialGrowth.SowingDOY" />
+    <Output source="Phenology.SowingDate" id="PotentialGrowth.SowingDate" />
+    <Output source="Phenology.sDevStage" id="PotentialGrowth.sDevStage" />
+    <Output source="Phenology.sTSUM" id="PotentialGrowth.sTSUM" />
+    <Output source="Photoperiod.PhotoPeriodFactor" id="PotentialGrowth.PhotoPeriodFactor" />
+    <Output source="Vernalisation.RTSUM" id="PotentialGrowth.RTSUM" />
+  </Composition>
+  <ModelUnit>
+    <Description>
+      <Name>LintulPhenology</Name>
+      <Id>net.simplace.sim.components.models.lintul.LintulPhenology</Id>
+      <Author>Gunther Krauss, gk@uni-bonn.de</Author>
+      <Institution>INRES Pflanzenbau, Uni Bonn</Institution>
+      <Reference>as given in the documentation</Reference>
+      <Abstract>see documentation at http://www.simplace.net/doc/simplace_modules/class_net.simplace.sim.components.models.lintul.LintulPhenology.html</Abstract>
+    </Description>
+    <Inputs>
+      <Input id="iDoSow" description="true at the day of sowing" datatype="BOOLEAN" default="false" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Input id="cAirTemperatureSumMilkripeness" description="Temperature sum when milk ripeness of plant is reached" datatype="DOUBLE" min="0.0" max="7000.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/degree_Celsius_day" />
+      <Input id="cAirTemperatureSumAnthesis" description="Temperature sum after energence when anthesis of plant is reached" datatype="DOUBLE" min="0.0" max="5000.0" default="650.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/degree_Celsius_day" />
+      <Input id="iDoHarvest" description="true at the day of harvest" datatype="BOOLEAN" default="false" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Input id="cAirTemperatureSumMaturity" description="Temperature sum after emergency when maturity of plant is reached" datatype="DOUBLE" min="0.0" max="10000.0" default="1350.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/degree_Celsius_day" />
+      <Input id="cRelativeDayOfEmergence" description="Days between sowing and emergence" datatype="INT" min="0" max="366" default="11" unit="http://www.wurvoc.org/vocabularies/om-1.8/day" />
+      <Input id="iRTEFFAnt" description="Daily effective temperature before anthesis" datatype="DOUBLE" min="0.0" max="40.0" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/degree_Celsius" />
+      <Input id="iRTEFFMat" description="Daily effective temperature after anthesis" datatype="DOUBLE" min="0.0" max="40.0" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/degree_Celsius" />
+    </Inputs>
+    <Outputs>
+      <Output id="MilkripenessDate" description="Date of Milkripeness" datatype="DATE" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Output id="EmergenceDOY" description="DOY of Emergence" datatype="INT" default="0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Output id="SowingDOY" description="DOY of Sowing" datatype="INT" default="0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Output id="EmergenceDate" description="Date of Emergence" datatype="DATE" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Output id="rDevStageRate" description="increment of the dev stage" datatype="DOUBLE" min="0.0" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/reciprocal_day" />
+      <Output id="IsEmergence" description="true at the emergence date" datatype="BOOLEAN" default="false" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Output id="SowingDate" description="Date of Sowing" datatype="DATE" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Output id="MaturityDate" description="Date of Maturity" datatype="DATE" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Output id="sTSUM" description="Temperature sum as accumulated effective temperature after emergence" datatype="DOUBLE" min="0.0" max="10000.0" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/degree_Celsius_day" />
+      <Output id="IsMilkripeness" description="true at the milkripeness date" datatype="BOOLEAN" default="false" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Output id="RTEFF" description="Daily effective temperature used to calculate the temperature sum and development stage at a given day" datatype="DOUBLE" min="0.0" max="40.0" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/degree_Celsius" />
+      <Output id="MaturityDOY" description="DOY of Maturity" datatype="INT" default="0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Output id="IsMaturity" description="true at the maturity date" datatype="BOOLEAN" default="false" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Output id="MilkripenessDOY" description="DOY of Milkripeness" datatype="INT" default="0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Output id="IsSowing" description="true at the sowing date" datatype="BOOLEAN" default="false" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Output id="IsPhenologyEvent" description="true if either sowing/emergence/anthesis/maturity date occured" datatype="BOOLEAN" default="false" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Output id="AnthesisDate" description="Date of Anthesis" datatype="DATE" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Output id="sDevStage" description="Development stage of the crop (1.0=anthesis, 2.0=physiological maturity" datatype="DOUBLE" min="0.0" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Output id="CropCycleCount" description="Number of growth periods, starting with 0 and incremented on harvest. Used for crop rotation." datatype="INT" min="0" max="100" default="0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Output id="AnthesisDOY" description="DOY of Anthesis" datatype="INT" default="0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Output id="IsAnthesis" description="true at the anthesis date" datatype="BOOLEAN" default="false" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+    </Outputs>
+    <Algorithm language="java" platform="simplace">LocalDateTime tCurrentDate = (LocalDateTime) getVariable(FWSimVarMap.CURRENT_DATE).getValue();
+    Integer tCurrentDOY = (Integer) getVariable(FWSimVarMap.CURRENT_DOY).getValue();
+    IsSowing.setValue(false, this);
+    IsEmergence.setValue(false, this);
+    IsAnthesis.setValue(false, this);
+    IsMilkripeness.setValue(false, this);
+    IsMaturity.setValue(false, this);
+    if (sDevStage.getValue() &gt; 0 &amp;&amp; iDoHarvest.getValue()) {
+        resetStates();
+        CropCycleCount.setValue((Integer) CropCycleCount.getValue() + 1, this);
+    } else if (iDoSow.getValue()) {
+        resetStates();
+        EmergenceDOY.setDefaultValue();
+        AnthesisDOY.setDefaultValue();
+        MilkripenessDOY.setDefaultValue();
+        MaturityDOY.setDefaultValue();
+        SowingDate.setValue(tCurrentDate, this);
+        SowingDOY.setValue(tCurrentDOY, this);
+        IsSowing.setValue(true, this);
+    } else if (SowingDate.getValue() != null) {
+        if (EmergenceDate.getValue() == null &amp;&amp; (SowingDate.getValue().isBefore(tCurrentDate) || SowingDate.getValue().isEqual(tCurrentDate))) {
+            sDevStage.setValue(0.0001, this);
+        }
+        if (AnthesisDate.getValue() == null) {
+            sTSUM.setValue(sTSUM.getValue() + iRTEFFAnt.getValue(), this);
+            RTEFF.setValue(iRTEFFAnt.getValue(), this);
+            double devstagebefore = sDevStage.getValue();
+            sDevStage.setValue(max(sTSUM.getValue() / cAirTemperatureSumAnthesis.getValue(), sDevStage.getValue()), this);
+            rDevStageRate.setValue(sDevStage.getValue() - devstagebefore, this);
+        } else {
+            sTSUM.setValue(sTSUM.getValue() + iRTEFFMat.getValue(), this);
+            RTEFF.setValue(iRTEFFMat.getValue(), this);
+            sDevStage.setValue(1 + (sTSUM.getValue() - cAirTemperatureSumAnthesis.getValue()) / (cAirTemperatureSumMaturity.getValue() - cAirTemperatureSumAnthesis.getValue()), this);
+            rDevStageRate.setValue(RTEFF.getValue() / (cAirTemperatureSumMaturity.getValue() - cAirTemperatureSumAnthesis.getValue()), this);
+        }
+        if (EmergenceDate.getValue() == null &amp;&amp; (SowingDate.getValue().plusDays(cRelativeDayOfEmergence.getValue()).isBefore(tCurrentDate) || SowingDate.getValue().plusDays(cRelativeDayOfEmergence.getValue()).isEqual(tCurrentDate))) {
+            EmergenceDate.setValue(tCurrentDate, this);
+            EmergenceDOY.setValue(tCurrentDOY, this);
+            IsEmergence.setValue(true, this);
+        }
+        if (AnthesisDate.getValue() == null &amp;&amp; sTSUM.getValue() &gt;= cAirTemperatureSumAnthesis.getValue()) {
+            AnthesisDate.setValue(tCurrentDate, this);
+            AnthesisDOY.setValue(tCurrentDOY, this);
+            IsAnthesis.setValue(true, this);
+        }
+        if (MilkripenessDate.getValue() == null &amp;&amp; cAirTemperatureSumMilkripeness.getValue() != null &amp;&amp; sTSUM.getValue() &gt;= cAirTemperatureSumMilkripeness.getValue()) {
+            MilkripenessDate.setValue(tCurrentDate, this);
+            MilkripenessDOY.setValue(tCurrentDOY, this);
+            IsMilkripeness.setValue(true, this);
+        }
+        if (MaturityDate.getValue() == null &amp;&amp; sTSUM.getValue() &gt;= cAirTemperatureSumMaturity.getValue()) {
+            MaturityDate.setValue(tCurrentDate, this);
+            MaturityDOY.setValue(tCurrentDOY, this);
+            IsMaturity.setValue(true, this);
+        }
+    }
+    IsPhenologyEvent.setValue(IsSowing.getValue() || IsEmergence.getValue() || IsAnthesis.getValue() || IsMilkripeness.getValue() || IsMaturity.getValue(), this);</Algorithm>
+  </ModelUnit>
+  <ModelUnit>
+    <Description>
+      <Name>DayLength</Name>
+      <Id>net.simplace.sim.components.experimental.amei.DayLength</Id>
+      <Author>Gunther Krauss, gk@uni-bonn.de</Author>
+      <Institution>INRES Pflanzenbau, Uni Bonn</Institution>
+      <Reference>as given in the documentation</Reference>
+      <Abstract>see documentation at http://www.simplace.net/doc/simplace_modules/class_net.simplace.sim.components.experimental.amei.DayLength.html</Abstract>
+    </Description>
+    <Inputs>
+      <Input id="iDayOfYear" description="Day Of Year" datatype="INT" min="1" max="366" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Input id="cLatitude" description="Latitude of the simulated location" datatype="DOUBLE" min="0.0" max="90.0" default="60.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/degree" />
+    </Inputs>
+    <Outputs>
+      <Output id="DayLength" description="Day Length in minutes" datatype="INT" min="0" max="1441" default="0" unit="http://www.wurvoc.org/vocabularies/om-1.8/minute-time" />
+      <Output id="pDaylength" description="Latitude of the simulated location" datatype="INTARRAY" min="0" max="1441" unit="http://www.wurvoc.org/vocabularies/om-1.8/minute-time" />
+    </Outputs>
+    <Algorithm language="java" platform="simplace">if (pDaylength.getValue() == null) {
+        Integer[] dayLengthArray = new Integer[370];
+        for (int i = 1; i &lt; 370; i++) {
+            int TIME = i;
+            double tDayLength;
+            double SINLAT = sin(PI * cLatitude.getValue() / 180);
+            double COSLAT = cos(PI * cLatitude.getValue() / 180);
+            double SINDCM = sin(PI * 23.45 / 180);
+            double SINDEC = -SINDCM * cos(2 * PI * (TIME + 10) / 365);
+            double COSDEC = sqrt(1 - SINDEC * SINDEC);
+            double A = SINLAT * SINDEC;
+            double B = COSLAT * COSDEC;
+            double arg = A / B;
+            if (arg &gt; 1)
+                arg = 1;
+            if (arg &lt; -1)
+                arg = -1;
+            tDayLength = 12 * (1 + (2 / PI) * asin(arg));
+            dayLengthArray[i] = (int) round(tDayLength * 60);
+        }
+        pDaylength.setValue(dayLengthArray, this);
+    }
+    DayLength.setValue((Integer) pDaylength.getArrayValue(iDayOfYear.getValue()), this);</Algorithm>
+  </ModelUnit>
+  <ModelUnit>
+    <Description>
+      <Name>Photoperiod</Name>
+      <Id>net.simplace.sim.components.experimental.amei.Photoperiod</Id>
+      <Author>Gunther Krauss, gk@uni-bonn.de</Author>
+      <Institution>INRES Pflanzenbau, Uni Bonn</Institution>
+      <Reference>as given in the documentation</Reference>
+      <Abstract>see documentation at http://www.simplace.net/doc/simplace_modules/class_net.simplace.sim.components.experimental.amei.Photoperiod.html</Abstract>
+    </Description>
+    <Inputs>
+      <Input id="iDayLength" description="Day length in minutes" datatype="INT" min="0" max="1440" unit="http://www.wurvoc.org/vocabularies/om-1.8/minute" />
+      <Input id="iPhotoInsensitivity" description="Daily effective temperature before anthesis" datatype="DOUBLE" min="0.0" max="24.0" default="6.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/hour" />
+      <Input id="iPhotoInhibition" description="Daily mean air temperature" datatype="DOUBLE" min="0.0" max="24.0" default="14.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/hour" />
+    </Inputs>
+    <Outputs>
+      <Output id="PhotoPeriodFactor" description="daily photoperiod factor" datatype="DOUBLE" min="0.0" max="1.0" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+    </Outputs>
+    <Algorithm language="java" platform="simplace">PhotoPeriodFactor.setValue((iPhotoInhibition.getValue() - iDayLength.getValue() / 60) / (iPhotoInhibition.getValue() - iPhotoInsensitivity.getValue()), this);
+    if (iPhotoInsensitivity.getValue() &gt; iPhotoInhibition.getValue()) {
+        PhotoPeriodFactor.setValue((iDayLength.getValue() / 60 - iPhotoInhibition.getValue()) / (iPhotoInsensitivity.getValue() - iPhotoInhibition.getValue()), this);
+    }
+    if (PhotoPeriodFactor.getValue() &lt; 0) {
+        PhotoPeriodFactor.setValue(0., this);
+    }
+    if (PhotoPeriodFactor.getValue() &gt; 1) {
+        PhotoPeriodFactor.setValue(1., this);
+    }</Algorithm>
+  </ModelUnit>
+  <ModelUnit>
+    <Description>
+      <Name>Vernalisation</Name>
+      <Id>net.simplace.sim.components.experimental.amei.Vernalisation</Id>
+      <Author>Gunther Krauss, gk@uni-bonn.de</Author>
+      <Institution>INRES Pflanzenbau, Uni Bonn</Institution>
+      <Reference>as given in the documentation</Reference>
+      <Abstract>see documentation at http://www.simplace.net/doc/simplace_modules/class_net.simplace.sim.components.experimental.amei.Vernalisation.html</Abstract>
+    </Description>
+    <Inputs>
+      <Input id="cTlow" description="Lower temperature threshold for vernalisation, days with lower mean air temperature are not fully considered as a vernalisation day" datatype="DOUBLE" min="-40.0" max="50.0" default="3.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/degree_Celsius" />
+      <Input id="cApplyVernalisation" description="Flag to activate vernalisation (True: crops requiring vernalisation for flower initialisation" datatype="BOOLEAN" default="true" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Input id="iPhotoPeriodFactor" description="PhotoPeriodFactor" datatype="DOUBLE" min="0.0" max="1.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Input id="iTSumBaseShoot" description="Daily effective temperature after shooting - if given" datatype="DOUBLE" min="0.0" max="10000.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/degree_Celsius" />
+      <Input id="cVernalDaysMax" description="Crop specific maximum number of days required for vernalisation" datatype="INT" min="0" max="400" default="70" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Input id="cTlowCritical" description="Lower critical temperature threshold for vernalisation, days with lower mean air temperature don't contribute at all for vernalisation day" datatype="DOUBLE" min="-40.0" max="50.0" default="-4.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/degree_Celsius" />
+      <Input id="cThigh" description="Upper temperature threshold for vernalisation; days with higher mean air temperature are not fully considered as a vernalisation day " datatype="DOUBLE" min="-40.0" max="50.0" default="10.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/degree_Celsius" />
+      <Input id="iDoSow" description="true if sowing day" datatype="BOOLEAN" default="false" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Input id="iDevStage" description="Development stage of the crop (1.0=anthesis, 2.0=physiological maturity)" datatype="DOUBLE" min="0.0" max="3.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Input id="iTSumBaseAnt" description="Daily effective temperature before anthesis" datatype="DOUBLE" min="0.0" max="10000.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/degree_Celsius" />
+      <Input id="cVernalDaysMin" description="Crop specific minimum number of days required for vernalisation" datatype="INT" min="0" max="100" default="10" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Input id="iDAVTMP" description="Daily mean air temperature" datatype="DOUBLE" min="0.0" max="50.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/degree_Celsius" />
+      <Input id="cThighCritical" description="Upper temperature threshold for vernalisation; days with higher mean air temperature don't contribute at all for vernalisation day " datatype="DOUBLE" min="-40.0" max="50.0" default="17.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/degree_Celsius" />
+      <Input id="iDevStageBaseShoot" description="Development stage for base shoot" datatype="DOUBLE" min="0.0" max="10000.0" default="0.5" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Input id="iTSumBaseMat" description="Daily effective temperature after anthesis" datatype="DOUBLE" min="0.0" max="10000.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/degree_Celsius" />
+    </Inputs>
+    <Outputs>
+      <Output id="VernalisationFactor" description="daily vernalisation factor" datatype="DOUBLE" min="0.0" max="1.0" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Output id="RTSUM" description="Daily effective temperature used to calculate the temperature sum and development stage at a given day" datatype="DOUBLE" min="0.0" max="50.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/degree_Celsius" />
+      <Output id="DayLength" description="Day Length in minutes" datatype="INT" min="0" max="1441" default="0" unit="http://www.wurvoc.org/vocabularies/om-1.8/minute-time" />
+      <Output id="sVernalDays" description="actual Vernal Days" datatype="DOUBLE" min="0.0" max="400.0" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+    </Outputs>
+    <Algorithm language="java" platform="simplace">boolean applyVernalisation = cApplyVernalisation.getValue();
+    if (applyVernalisation &amp;&amp; (cVernalDaysMax.getValue() &lt;= cVernalDaysMin.getValue() || cTlowCritical.getValue() &gt;= cTlow.getValue() || cTlow.getValue() &gt;= cThigh.getValue() || cThigh.getValue() &gt;= cThighCritical.getValue())) {
+        applyVernalisation = false;
+    }
+    if (iDoSow.getValue())
+        reset();
+    final double devstageAnthesis = 1d;
+    if (applyVernalisation &amp;&amp; sVernalDays.getValue() &lt; cVernalDaysMax.getValue()) {
+        if (iDAVTMP.getValue() &gt;= cThigh.getValue()) {
+            sVernalDays.setValue(sVernalDays.getValue() + max(0, 1 - ((iDAVTMP.getValue() - cThigh.getValue()) / (cThighCritical.getValue() - cThigh.getValue()))), this);
+        } else if (iDAVTMP.getValue() &lt;= cTlow.getValue()) {
+            sVernalDays.setValue(sVernalDays.getValue() + max(0, 1 - ((cTlow.getValue() - iDAVTMP.getValue()) / (cTlow.getValue() - cTlowCritical.getValue()))), this);
+        } else {
+            sVernalDays.setValue(sVernalDays.getValue() + 1, this);
+        }
+        if (sVernalDays.getValue() &lt; cVernalDaysMin.getValue()) {
+            VernalisationFactor.setValue(0d, this);
+        } else {
+            VernalisationFactor.setValue(max(0., min(1., (sVernalDays.getValue() - cVernalDaysMin.getValue()) / (cVernalDaysMax.getValue() - cVernalDaysMin.getValue()))), this);
+        }
+    } else {
+        VernalisationFactor.setValue(1d, this);
+    }
+    double rtsum;
+    if (iTSumBaseShoot.getValue() != null &amp;&amp; iDevStage.getValue() &lt; devstageAnthesis &amp;&amp; iDevStage.getValue() &gt; iDevStageBaseShoot.getValue()) {
+        rtsum = iTSumBaseShoot.getValue() * min(iPhotoPeriodFactor.getValue(), VernalisationFactor.getValue());
+    } else if (iDevStage.getValue() &lt; devstageAnthesis) {
+        rtsum = iTSumBaseAnt.getValue() * min(iPhotoPeriodFactor.getValue(), VernalisationFactor.getValue());
+    } else {
+        rtsum = iTSumBaseMat.getValue() * min(iPhotoPeriodFactor.getValue(), VernalisationFactor.getValue());
+    }
+    RTSUM.setValue(rtsum, this);</Algorithm>
+  </ModelUnit>
+  <ModelUnit>
+    <Description>
+      <Name>Partitioning</Name>
+      <Id>net.simplace.sim.components.experimental.amei.Partitioning</Id>
+      <Author>Gunther Krauss, gk@uni-bonn.de</Author>
+      <Institution>INRES Pflanzenbau, Uni Bonn</Institution>
+      <Reference>as given in the documentation</Reference>
+      <Abstract>see documentation at http://www.simplace.net/doc/simplace_modules/class_net.simplace.sim.components.experimental.amei.Partitioning.html</Abstract>
+    </Description>
+    <Inputs>
+      <Input id="cPartitionNStressReduction" description="N Stress on Partitioning" datatype="DOUBLE" min="0.0" max="1.0" default="1.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Input id="cLeavesPartitioningTableDVS" description="DVS for fraction of total dry matter to leaves (c.f. FLVTB)" datatype="DOUBLEARRAY" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Input id="iTRANRF" description="Transpiration reduction factor" datatype="DOUBLE" min="0.0" max="1.0" default="1.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Input id="cStemsPartitioningTableFraction" description="Fraction of total dry matter to stems as function of DVS (c.f. FSTTB)" datatype="DOUBLEARRAY" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Input id="cLeavesPartitioningTableFraction" description="Fraction of total dry matter to leaves as function of DVS (c.f. FLVTB)" datatype="DOUBLEARRAY" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Input id="cFSOTB" description="Fractions Table Storage Organs" datatype="DOUBLEARRAY" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Input id="cStemsPartitioningTableDVS" description="DVS for fraction of total dry matter to stems (c.f. FSTTB)" datatype="DOUBLEARRAY" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Input id="cFRTTB" description="Fractions Table Root" datatype="DOUBLEARRAY" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Input id="cFSTTB" description="Fractions Table Stems" datatype="DOUBLEARRAY" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Input id="cStorageOrgansPartitioningTableDVS" description="DVS for fraction of total dry matter to storage organs (c.f. FSOTB)" datatype="DOUBLEARRAY" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Input id="iNitrogenNutritionIndex" description="Nitrogen Nutrition Index" datatype="DOUBLE" min="0.0" max="1.0" default="1.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Input id="cRootsPartitioningTableDVS" description="DVS for fraction of total dry matter to roots (c.f. FRTTB)" datatype="DOUBLEARRAY" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Input id="iDoSow" description="if Sowingdate reached fraction tables are initialized" datatype="BOOLEAN" default="false" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Input id="cFLVTB" description="Fractions Table Leaves" datatype="DOUBLEARRAY" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Input id="cRootsPartitioningTableFraction" description="Fraction of total dry matter to roots as function of DVS (c.f. FRTTB)" datatype="DOUBLEARRAY" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Input id="iDevStage" description="Development stage of the plant" datatype="DOUBLE" min="0.0" max="3.0" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Input id="cStorageOrgansPartitioningTableFraction" description="Fraction of total dry matter to storage organs as function of DVS (c.f. FSOTB)" datatype="DOUBLEARRAY" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+    </Inputs>
+    <Outputs>
+      <Output id="FractionStems" description="Fraction part going to Stems compartment" datatype="DOUBLE" min="0.0" max="1.0" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Output id="FractionStorageOrgans" description="Fraction part going to Storage Organs compartment" datatype="DOUBLE" min="0.0" max="1.0" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Output id="FractionLeaves" description="Fraction part going to Leaves compartment" datatype="DOUBLE" min="0.0" max="1.0" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Output id="FractionRoot" description="Fraction part going to Root compartment" datatype="DOUBLE" min="0.0" max="1.0" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+    </Outputs>
+    <Algorithm language="java" platform="simplace">double FRTWET = FSTFunctions.AFGEN(cRootsPartitioningTableDVS, cRootsPartitioningTableFraction, DevStage.getValue());
+    if (TRANRF.getValue() &lt; NitrogenNutritionIndex.getValue()) {
+        double FRTMOD = max(1.0, 1.0 / (TRANRF.getValue() + 0.5));
+        FractionRoot.setValue(FRTWET * FRTMOD, this);
+        double FSHMOD = (1.0 - FractionRoot.getValue()) / (1.0 - FractionRoot.getValue() / FRTMOD);
+        FractionLeaves.setValue(FSTFunctions.AFGEN(cLeavesPartitioningTableDVS, cLeavesPartitioningTableFraction, DevStage.getValue()) * FSHMOD, this);
+        FractionStems.setValue(FSTFunctions.AFGEN(cStemsPartitioningTableDVS, cStemsPartitioningTableFraction, DevStage.getValue()) * FSHMOD, this);
+        FractionStorageOrgans.setValue(FSTFunctions.AFGEN(cStorageOrgansPartitioningTableDVS, cStorageOrgansPartitioningTableFraction, DevStage.getValue()) * FSHMOD, this);
+    } else {
+        double FLVMOD = exp(-PartitionNStressReduction.getValue() * (1 - NitrogenNutritionIndex.getValue()));
+        FractionRoot.setValue(FRTWET, this);
+        double FLVT = FSTFunctions.AFGEN(cLeavesPartitioningTableDVS, cLeavesPartitioningTableFraction, DevStage.getValue());
+        FractionLeaves.setValue(FLVT * FLVMOD, this);
+        FractionStems.setValue(FSTFunctions.AFGEN(cStemsPartitioningTableDVS, cStemsPartitioningTableFraction, DevStage.getValue()) + FLVT - FractionLeaves.getValue(), this);
+        FractionStorageOrgans.setValue(FSTFunctions.AFGEN(cStorageOrgansPartitioningTableDVS, cStorageOrgansPartitioningTableFraction, DevStage.getValue()), this);
+    }</Algorithm>
+  </ModelUnit>
+  <ModelUnit>
+    <Description>
+      <Name>LintulBiomass</Name>
+      <Id>net.simplace.sim.components.models.lintul.LintulBiomass</Id>
+      <Author>Gunther Krauss, gk@uni-bonn.de</Author>
+      <Institution>INRES Pflanzenbau, Uni Bonn</Institution>
+      <Reference>as given in the documentation</Reference>
+      <Abstract>see documentation at http://www.simplace.net/doc/simplace_modules/class_net.simplace.sim.components.models.lintul.LintulBiomass.html</Abstract>
+    </Description>
+    <Inputs>
+      <Input id="cRDRNS" description="max. relative death rate of leaves due to N stress" datatype="DOUBLE" min="0.0" max="1.0" default="0.05" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Input id="cK" description="Extinction coefficient for photosynthetically active radiation" datatype="DOUBLE" min="0.0" max="1.0" default="0.6" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Input id="iPartLeavesFactor" description="Proportion of daily total biomass increase partitioned to the leaves (input from LintulPartitioning.java)" datatype="DOUBLE" min="0.0" max="1.0" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Input id="cLaiCritical" description="Critical LAI beyond which leaves die due to self-shading" datatype="DOUBLE" min="0.0" max="6.0" default="4.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/square_metre_per_square_metre" />
+      <Input id="cSLA" description="Specific Leaf Area" datatype="DOUBLE" min="0.0" max="20.0" default="0.2" unit="http://www.wurvoc.org/vocabularies/om-1.8/square_metre_per_gram" />
+      <Input id="cRDRLeavesTableMeanTemperature" description="Daily mean temperature for relative death rate of leaves (c.f. RDRT)" datatype="DOUBLEARRAY" unit="http://www.wurvoc.org/vocabularies/om-1.8/degree_Celsius" />
+      <Input id="cLaiNStressReduction" description="N Stress effect on LAI growth rate" datatype="DOUBLE" min="0.0" max="1.0" default="1.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Input id="cLAII" description="Initial LAI" datatype="DOUBLE" min="0.0" max="0.1" default="0.012" unit="http://www.wurvoc.org/vocabularies/om-1.8/square_metre_per_square_metre" />
+      <Input id="iDoSow" description="Flag to specify the day of sowingt" datatype="BOOLEAN" default="false" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Input id="cLueNStressReduction" description="N Stress effect on LUE" datatype="DOUBLE" min="0.0" max="1.0" default="1.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Input id="cRDRT" description="Table of development specific leaves death rates" datatype="DOUBLEARRAY" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Input id="iTRANRF" description="Transpiration reduction factor (TRANRF) as ratio between actual and potential crop transpiration" datatype="DOUBLE" min="0.0" max="1.0" default="1.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Input id="iUnusedRootBiomass" description="Root Biomass which was not used by roots due to root growth limitations (is returned to biomass growth rate of the next day)" datatype="DOUBLE" min="0.0" max="20000.0" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/gram_per_square_metre_day" />
+      <Input id="cGrainToRootsDevStage" description="DevStage after emergence up to which root biomass is supplied by the seed" datatype="DOUBLE" min="0" max="2.0" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Input id="iRadiation" description="Daily global radiation (input from weather file)" datatype="DOUBLE" min="0.0" max="30.0" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/megajoule_per_square_metre" />
+      <Input id="cSlaNStressReduction" description="N Stress effect on Specific Leaf Area" datatype="DOUBLE" min="0.0" max="1.0" default="1.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Input id="iAirTemperatureMean" description="Measured daily average air temperature (input calculated from weather file)" datatype="DOUBLE" min="-50.0" max="60.0" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/degree_Celsius" />
+      <Input id="iEffectiveTempRateAfterAnt" description="Daily effective temperature after anthesis" datatype="DOUBLE" min="0.0" max="40.0" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/degree_Celsius" />
+      <Input id="cRDRL" description="max. rel. death rate of leaves due to water stress" datatype="DOUBLE" min="0.0" max="1.0" default="0.05" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Input id="cDevStageRGRL" description="Development stage of the crop up to which the growth rate of LAI is calculated based on the constant, user defined rate RGRL" datatype="DOUBLE" min="0" max="2.0" default="0.3" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Input id="iNitrogenNutritionIndex" description="Nitrogen Nutrition Index is the ratio between actual crop N concentration and critical N concentration (half of optimum N concentration which depends on crop and development stage)" datatype="DOUBLE" min="0.0" max="1.0" default="1.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Input id="cRDRLeavesTableRelativeRate" description="Relative death rate of leaves as a function of daily mean temperature (c.f. RDRT)" datatype="DOUBLEARRAY" unit="http://www.wurvoc.org/vocabularies/om-1.8/reciprocal_day" />
+      <Input id="iPartStemsFactor" description="Proportion of daily total biomass increase partitioned to the stem (input from LintulPartitioning.java)" datatype="DOUBLE" min="0.0" max="1.0" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Input id="iDevStage" description="Development stage of the plant (1.0=anthesis, 2.0=physiological maturity" datatype="DOUBLE" min="0.0" max="3.0" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Input id="iCropAvailWaterContent" description="Crop available water content in the soil" datatype="DOUBLE" min="0.0" max="20.0" default="1.0E-4" unit="http://www.wurvoc.org/vocabularies/om-1.8/millimetre" />
+      <Input id="cRDRSHM" description="Maximum relative death rate of leaves due to shading" datatype="DOUBLE" min="0.0" max="1.0" default="0.05" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Input id="iPartStorageOrgansFactor" description="Proportion of daily total biomass increase partitioned to the storage organs (input from LintulPartitioning.java)" datatype="DOUBLE" min="0.0" max="1.0" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Input id="cGrainToRootsDailyBiomass" description="Daily biomass, that is supplied from the seeds to the roots after emergency" datatype="DOUBLE" min="0" max="10.0" default="0.2" unit="http://www.wurvoc.org/vocabularies/om-1.8/gram_per_square_metre" />
+      <Input id="iPartRootFactor" description="Proportion of daily total biomass increase partitioned to the roots (input from LintulPartitioning.java)" datatype="DOUBLE" min="0.0" max="1.0" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Input id="iDoHarvest" description="Flag to specify the day of harvest" datatype="BOOLEAN" default="false" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Input id="cRelativeDayOfEmergence" description="Days between sowing and start of LAI development/plant growth" datatype="INT" min="0" max="366" default="12" unit="http://www.wurvoc.org/vocabularies/om-1.8/day" />
+      <Input id="iLeaveSenescenceHeatStressFactor" description="Factor that increases leaf senescence due to heat stress" datatype="DOUBLE" min="0.0" default="1.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Input id="iLUE" description="Light Use Efficiency" datatype="DOUBLE" min="0.0" max="10.0" default="3.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/gram_per_megajoule" />
+      <Input id="iEffectiveTempRateBeforeAnt" description="Daily effective temperature before anthesis" datatype="DOUBLE" min="0.0" max="40.0" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/degree_Celsius" />
+      <Input id="cRGRL" description="Relative growth rate of LAI during exponential growth" datatype="DOUBLE" min="0.0" max="1.0" default="0.05" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+    </Inputs>
+    <Outputs>
+      <Output id="rDLAI" description="Rate of change of Leaf area index" datatype="DOUBLE" min="-10.0" max="10.0" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/square_metre_per_square_metre" />
+      <Output id="PARINT" description="Intercepted photosynthetically active radiation" datatype="DOUBLE" min="0.0" max="30.0" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/megajoule_per_square_metre_day" />
+      <Output id="sWRT" description="Biomass of Roots" datatype="DOUBLE" min="0.0" max="2000.0" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/gram_per_square_metre" />
+      <Output id="AboveGroundBiomass" description="Sum of Biomass fractions above ground" datatype="DOUBLE" min="0.0" max="10000.0" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/gram_per_square_metre" />
+      <Output id="sDaysSinceSowing" description="Days since Sowing" datatype="INT" min="0" max="1000" default="0" unit="http://www.wurvoc.org/vocabularies/om-1.8/day" />
+      <Output id="sLAI" description="Leaf area index" datatype="DOUBLE" min="0.0" max="20.0" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/square_metre_per_square_metre" />
+      <Output id="GTOTAL" description="Growth rate of total crop dry matter" datatype="DOUBLE" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/gram_per_square_metre_day" />
+      <Output id="sWSO" description="Biomass of Storage Organs" datatype="DOUBLE" min="0.0" max="2000.0" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/gram_per_square_metre" />
+      <Output id="rDeadLeaves" description="Rate of dead leaves" datatype="DOUBLE" min="-200.0" max="200.0" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/gram_per_square_metre_day" />
+      <Output id="sWST" description="Biomass of stems" datatype="DOUBLE" min="0.0" max="2000.0" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/gram_per_square_metre" />
+      <Output id="sWLVD" description="Biomass of dead leaves" datatype="DOUBLE" min="0.0" max="2000.0" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/gram_per_square_metre" />
+      <Output id="rRWLVG" description="Rate of change in weight of green leaves" datatype="DOUBLE" min="-200.0" max="200.0" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/gram_per_square_metre_day" />
+      <Output id="sWLVG" description="Biomass of green leaves" datatype="DOUBLE" min="0.0" max="2000.0" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/gram_per_square_metre" />
+      <Output id="sWLV" description="Biomass of leaves" datatype="DOUBLE" min="0.0" max="2000.0" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/gram_per_square_metre" />
+      <Output id="rDeadStems" description="Rate of dead stems" datatype="DOUBLE" min="-200.0" max="200.0" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/gram_per_square_metre_day" />
+      <Output id="rRWRT" description="Rate of change in weight of roots" datatype="DOUBLE" min="-200.0" max="200.0" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/gram_per_square_metre_day" />
+    </Outputs>
+    <Algorithm language="java" platform="simplace">if (iDoHarvest.getValue())
+        resetOnHarvest();
+    if (iDoSow.getValue()) {
+        resetOnSowing();
+    } else if (RDRT_interpol.getXValues() == null)
+        return;
+    double tRLAI = 0;
+    double tRWLVG = 0;
+    double RWST = 0;
+    double RWSO = 0;
+    double tRWRT = 0;
+    double DTR = RDD.getValue();
+    double PARINT_Neu = 0.5 * DTR * (1.0 - exp(-cK.getValue() * sLAI.getValue()));
+    double LueReductionToNStress = FSTFunctions.LIMIT(0, 1, 1 - cLueNStressReduction.getValue() * pow(1.000 - iNitrogenNutritionIndex.getValue(), 2));
+    if (iTRANRF.getValue() &lt; LueReductionToNStress) {
+        GTOTAL.setValue(iLUE.getValue() * PARINT.getValue() * iTRANRF.getValue(), this);
+    } else {
+        GTOTAL.setValue(iLUE.getValue() * PARINT.getValue() * LueReductionToNStress, this);
+    }
+    GTOTAL.setValue(GTOTAL.getValue() + iUnusedRootBiomass.getValue(), this);
+    double DLV;
+    double DLAI;
+    if (iDevStage.getValue() &gt; 0 &amp;&amp; sDaysSinceSowing.getValue() &gt;= cRelativeDayOfEmergence.getValue()) {
+        double tSLA = cSLA.getValue() * exp(-cSlaNStressReduction.getValue() * (1 - iNitrogenNutritionIndex.getValue()));
+        double RDRDV = 0;
+        if (iDevStage.getValue() &gt; 1) {
+            RDRDV = FSTFunctions.INSW(iDevStage.getValue() - 1, 0, RDRT_interpol.getValueAt(DAVTMP.getValue()));
+        }
+        double RDRSH = max(0, cRDRSHM.getValue() * (sLAI.getValue() - cLaiCritical.getValue()) / cLaiCritical.getValue());
+        double RDRDRY = (1 - iTRANRF.getValue()) * cRDRL.getValue();
+        double RDR = max(max(RDRDV, RDRSH), RDRDRY) * iLeaveSenescenceHeatStressFactor.getValue();
+        double DLVNS = 0;
+        double DLAINS = 0;
+        if (iNitrogenNutritionIndex.getValue() &lt; 1) {
+            DLVNS = sWLVG.getValue() * cRDRNS.getValue() * (1 - iNitrogenNutritionIndex.getValue());
+            DLAINS = DLVNS * tSLA;
+        }
+        double DLVS = sWLVG.getValue() * RDR;
+        double DLAIS = sLAI.getValue() * RDR;
+        DLV = DLVS + DLVNS;
+        DLAI = DLAIS + DLAINS;
+    } else {
+        DLAI = 0d;
+        DLV = 0d;
+    }
+    if (0 &lt; iDevStage.getValue() &amp;&amp; iDevStage.getValue() &lt; cGrainToRootsDevStage.getValue()) {
+        tRWRT = cGrainToRootsDailyBiomass.getValue() + GTOTAL.getValue() * FRT.getValue();
+        RWST = GTOTAL.getValue() * FST.getValue();
+        RWSO = GTOTAL.getValue() * FSO.getValue();
+        tRWLVG = GTOTAL.getValue() * FLV.getValue() - DLV;
+    } else {
+        tRWRT = GTOTAL.getValue() * FRT.getValue();
+        RWST = GTOTAL.getValue() * FST.getValue();
+        RWSO = GTOTAL.getValue() * FSO.getValue();
+        tRWLVG = GTOTAL.getValue() * FLV.getValue() - DLV;
+    }
+    double GLV = FLV.getValue() * GTOTAL.getValue();
+    double tSLA = cSLA.getValue() * exp(-cSlaNStressReduction.getValue() * (1 - iNitrogenNutritionIndex.getValue()));
+    double GLAI = tSLA * GLV;
+    if (iDevStage.getValue() &lt; cDevStageRGRL.getValue() &amp;&amp; sLAI.getValue() &lt; 0.1875 * cLaiCritical.getValue()) {
+        GLAI = sLAI.getValue() * (exp(cRGRL.getValue() * DTEFF.getValue()) - 1.0) * iTRANRF.getValue() * exp(-cLaiNStressReduction.getValue() * (1 - iNitrogenNutritionIndex.getValue()));
+    }
+    if (iDevStage.getValue() == 0) {
+        GLAI = 0;
+    } else if (sLAI.getValue() == 0.0 &amp;&amp; WCA.getValue() &gt; 0 &amp;&amp; sDaysSinceSowing.getValue() &gt;= cRelativeDayOfEmergence.getValue()) {
+        GLAI = cLAII.getValue();
+    }
+    tRLAI = GLAI - DLAI;
+    sDaysSinceSowing.setValue(sDaysSinceSowing.getValue() + 1, this);
+    sLAI.setValue(sLAI.getValue() + tRLAI, this);
+    sWLVG.setValue(sWLVG.getValue() + tRWLVG, this);
+    sWLVD.setValue(sWLVD.getValue() + DLV, this);
+    sWST.setValue(sWST.getValue() + RWST, this);
+    sWSO.setValue(sWSO.getValue() + RWSO, this);
+    sWRT.setValue(sWRT.getValue() + tRWRT - iUnusedRootBiomass.getValue(), this);
+    sWLV.setValue(sWLVG.getValue() + sWLVD.getValue(), this);
+    rRWLVG.setValue(tRWLVG, this);
+    rRWRT.setValue(tRWRT, this);
+    if (iDoSow.getValue() &amp;&amp; rRWRT.getValue() == 0.0)
+        rRWRT.setValue(0.0001, this);
+    rDLAI.setValue(tRLAI, this);
+    rDeadLeaves.setValue(DLV, this);
+    if (iDevStage.getValue() &gt; 1.5)
+        rDeadStems.setValue(0.02 * sWST.getValue(), this);
+    else
+        rDeadStems.setValue(0d, this);
+    AGBM.setValue(sWLV.getValue() + sWST.getValue() + sWSO.getValue(), this);
+    PARINT.setValue(PARINT_Neu, this);</Algorithm>
+  </ModelUnit>
+</ModelUnitGroup>
