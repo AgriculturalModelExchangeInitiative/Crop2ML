@@ -1,0 +1,64 @@
+<Model id="net.simplace.sim.components.experimental.amei.Vernalisation" name="Vernalisation">
+  <Description>
+    <Title>Vernalisation</Title>
+    <Authors>Gunther Krauss, gk@uni-bonn.de</Authors>
+    <Institution>INRES Pflanzenbau, Uni Bonn</Institution>
+    <Reference>as given in the documentation</Reference>
+    <Abstract>see documentation at http://www.simplace.net/doc/simplace_modules/class_net.simplace.sim.components.experimental.amei.Vernalisation.html</Abstract>
+  </Description>
+  <Inputs>
+    <Input id="cTlow" description="Lower temperature threshold for vernalisation, days with lower mean air temperature are not fully considered as a vernalisation day" datatype="DOUBLE" min="-40.0" max="50.0" default="3.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/degree_Celsius" />
+    <Input id="cApplyVernalisation" description="Flag to activate vernalisation (True: crops requiring vernalisation for flower initialisation" datatype="BOOLEAN" default="true" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+    <Input id="iPhotoPeriodFactor" description="PhotoPeriodFactor" datatype="DOUBLE" min="0.0" max="1.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+    <Input id="iTSumBaseShoot" description="Daily effective temperature after shooting - if given" datatype="DOUBLE" min="0.0" max="10000.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/degree_Celsius" />
+    <Input id="cVernalDaysMax" description="Crop specific maximum number of days required for vernalisation" datatype="INT" min="0" max="400" default="70" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+    <Input id="cTlowCritical" description="Lower critical temperature threshold for vernalisation, days with lower mean air temperature don't contribute at all for vernalisation day" datatype="DOUBLE" min="-40.0" max="50.0" default="-4.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/degree_Celsius" />
+    <Input id="cThigh" description="Upper temperature threshold for vernalisation; days with higher mean air temperature are not fully considered as a vernalisation day " datatype="DOUBLE" min="-40.0" max="50.0" default="10.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/degree_Celsius" />
+    <Input id="iDoSow" description="true if sowing day" datatype="BOOLEAN" default="false" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+    <Input id="iDevStage" description="Development stage of the crop (1.0=anthesis, 2.0=physiological maturity)" datatype="DOUBLE" min="0.0" max="3.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+    <Input id="iTSumBaseAnt" description="Daily effective temperature before anthesis" datatype="DOUBLE" min="0.0" max="10000.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/degree_Celsius" />
+    <Input id="cVernalDaysMin" description="Crop specific minimum number of days required for vernalisation" datatype="INT" min="0" max="100" default="10" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+    <Input id="iDAVTMP" description="Daily mean air temperature" datatype="DOUBLE" min="0.0" max="50.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/degree_Celsius" />
+    <Input id="cThighCritical" description="Upper temperature threshold for vernalisation; days with higher mean air temperature don't contribute at all for vernalisation day " datatype="DOUBLE" min="-40.0" max="50.0" default="17.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/degree_Celsius" />
+    <Input id="iDevStageBaseShoot" description="Development stage for base shoot" datatype="DOUBLE" min="0.0" max="10000.0" default="0.5" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+    <Input id="iTSumBaseMat" description="Daily effective temperature after anthesis" datatype="DOUBLE" min="0.0" max="10000.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/degree_Celsius" />
+  </Inputs>
+  <Outputs>
+    <Output id="VernalisationFactor" description="daily vernalisation factor" datatype="DOUBLE" min="0.0" max="1.0" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+    <Output id="RTSUM" description="Daily effective temperature used to calculate the temperature sum and development stage at a given day" datatype="DOUBLE" min="0.0" max="50.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/degree_Celsius" />
+    <Output id="DayLength" description="Day Length in minutes" datatype="INT" min="0" max="1441" default="0" unit="http://www.wurvoc.org/vocabularies/om-1.8/minute-time" />
+    <Output id="sVernalDays" description="actual Vernal Days" datatype="DOUBLE" min="0.0" max="400.0" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+  </Outputs>
+  <Algorithm language="java" platform="simplace">boolean applyVernalisation = cApplyVernalisation.getValue();
+    if (applyVernalisation &amp;&amp; (cVernalDaysMax.getValue() &lt;= cVernalDaysMin.getValue() || cTlowCritical.getValue() &gt;= cTlow.getValue() || cTlow.getValue() &gt;= cThigh.getValue() || cThigh.getValue() &gt;= cThighCritical.getValue())) {
+        applyVernalisation = false;
+    }
+    if (iDoSow.getValue())
+        reset();
+    final double devstageAnthesis = 1d;
+    if (applyVernalisation &amp;&amp; sVernalDays.getValue() &lt; cVernalDaysMax.getValue()) {
+        if (iDAVTMP.getValue() &gt;= cThigh.getValue()) {
+            sVernalDays.setValue(sVernalDays.getValue() + max(0, 1 - ((iDAVTMP.getValue() - cThigh.getValue()) / (cThighCritical.getValue() - cThigh.getValue()))), this);
+        } else if (iDAVTMP.getValue() &lt;= cTlow.getValue()) {
+            sVernalDays.setValue(sVernalDays.getValue() + max(0, 1 - ((cTlow.getValue() - iDAVTMP.getValue()) / (cTlow.getValue() - cTlowCritical.getValue()))), this);
+        } else {
+            sVernalDays.setValue(sVernalDays.getValue() + 1, this);
+        }
+        if (sVernalDays.getValue() &lt; cVernalDaysMin.getValue()) {
+            VernalisationFactor.setValue(0d, this);
+        } else {
+            VernalisationFactor.setValue(max(0., min(1., (sVernalDays.getValue() - cVernalDaysMin.getValue()) / (cVernalDaysMax.getValue() - cVernalDaysMin.getValue()))), this);
+        }
+    } else {
+        VernalisationFactor.setValue(1d, this);
+    }
+    double rtsum;
+    if (iTSumBaseShoot.getValue() != null &amp;&amp; iDevStage.getValue() &lt; devstageAnthesis &amp;&amp; iDevStage.getValue() &gt; iDevStageBaseShoot.getValue()) {
+        rtsum = iTSumBaseShoot.getValue() * min(iPhotoPeriodFactor.getValue(), VernalisationFactor.getValue());
+    } else if (iDevStage.getValue() &lt; devstageAnthesis) {
+        rtsum = iTSumBaseAnt.getValue() * min(iPhotoPeriodFactor.getValue(), VernalisationFactor.getValue());
+    } else {
+        rtsum = iTSumBaseMat.getValue() * min(iPhotoPeriodFactor.getValue(), VernalisationFactor.getValue());
+    }
+    RTSUM.setValue(rtsum, this);</Algorithm>
+</Model>
