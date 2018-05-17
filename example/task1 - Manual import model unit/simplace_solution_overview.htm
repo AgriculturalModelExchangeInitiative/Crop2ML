@@ -1,0 +1,181 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet" type="text/css" href="http://simplace.net/doc/meta/css/style.css"><script src="http://simplace.net/doc/meta/js/sorttable.js"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: { inlineMath: [['$','$'],['\\(','\\)']] },
+TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+<script type="text/javascript"
+src="http://www.simplace.net/doc/MathJax/MathJax.js?config=default"></script>
+</head>
+<body><h2>INDEX</h2><ul><li><a href="#description">Description </a></li><li><a href="#constants">Constants </a></li><li><a href="#resources">Resources </a></li><li><a href="#model">Model Components </a></li><li><a href="#outputs">Outputs</a></li></ul><table style="text-align: left; width: 100%;" border="0">
+<tr>
+<td style="vertical-align: top;">
+<table style="text-align: left; width: 100%;" border="0"
+cellpadding="0" cellspacing="0">
+<tr>
+<td style="vertical-align: top;">
+<h2>SIMPLACE Model Solution<h2>
+<h1>E:\svn_trunk\simplace_modules\test\solution\lintul\AMEILintulPotentialGrowthTest.sol.xml</h1>
+</td>
+<td style="vertical-align: top; text-align: right;"> </td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<h2><a name="description">Description</a></h2>
+WIKI_START
+=== Purpose ===
+
+=== References ===
+
+=== Data ===
+
+=== Remarks ===
+
+=== Usage ===
+
+WIKI_END
+<br>
+<h3>Author: XXX_XXX</h3>
+<h2><a name="constants">Constant Values</a></h2>
+<table class="sortable" style="text-align: left; width: 100%;" >
+<thead><tr><th>Content Type</th><th>Name</th><th>Description</th><th>Data Type</th><th>Unit</th><th>Min Value</th><th>Max Value</th><th>Default Value</th></tr></thead><tbody>      <tr class="var"><td>var</td><td>vCLIMATEZONE</td><td>-</td><td>CHAR</td><td>-</td><td>-</td><td>-</td><td>00002</td></tr>
+      <tr class="var"><td>var</td><td>vBaseTempAfterAnt</td><td>-</td><td>DOUBLE</td><td>-</td><td>-</td><td>-</td><td>3.0</td></tr>
+      <tr class="var"><td>var</td><td>vTempSlopeAboveLimit</td><td>-</td><td>DOUBLE</td><td>-</td><td>-</td><td>-</td><td>7.0</td></tr>
+      <tr class="var"><td>var</td><td>vBaseTempBeforeAnt</td><td>-</td><td>DOUBLE</td><td>-</td><td>-</td><td>-</td><td>3.0</td></tr>
+      <tr class="var"><td>var</td><td>enddate</td><td>-</td><td>DATE</td><td>-</td><td>-</td><td>-</td><td>2004-12-31T00:00</td></tr>
+      <tr class="var"><td>var</td><td>vCropName</td><td>-</td><td>CHAR</td><td>-</td><td>-</td><td>-</td><td>winter wheat</td></tr>
+      <tr class="var"><td>var</td><td>vTempLimit</td><td>-</td><td>DOUBLE</td><td>-</td><td>-</td><td>-</td><td>35.0</td></tr>
+      <tr class="var"><td>var</td><td>vAverageGroundTemperature</td><td>-</td><td>DOUBLE</td><td>-</td><td>-</td><td>-</td><td>10.5</td></tr>
+      <tr class="var"><td>var</td><td>vSoiltype</td><td>-</td><td>CHAR</td><td>-</td><td>-</td><td>-</td><td>sandy loam</td></tr>
+      <tr class="var"><td>var</td><td>vBaseLUE</td><td>-</td><td>DOUBLE</td><td>-</td><td>-</td><td>-</td><td>3.0</td></tr>
+      <tr class="var"><td>var</td><td>startdate</td><td>-</td><td>DATE</td><td>-</td><td>-</td><td>-</td><td>1991-01-01T00:00</td></tr>
+</tbody>
+</table>
+<h2><a name="resources">Implemented Resources</a></h2>
+<h3>weather</h3><br>
+Class: net.simplace.sim.io.resources.adapter.CSVResourceAdapter<br>
+Interface: weatherfile<br>
+Frequence: DAILY<br>
+</td>
+<td>
+	<table class="sortable" style="text-align: left; width: 100%;" border="1" cellpadding="1" cellspacing="1">
+<thead><tr><th>Content Type</th><th>Name</th><th>Description</th><th>Data Type</th><th>Unit</th><th>Min Value</th><th>Max Value</th><th>Default Value</th></tr></thead>
+<tbody>
+      <tr class="res"><td>res</td><td>weather.KeyValue</td><td>-</td><td>CHAR</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+      <tr class="res"><td>res</td><td>weather.PolygonCode</td><td>-</td><td>CHAR</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+      <tr class="res"><td>res</td><td>weather.CURRENTDATE</td><td>-</td><td>DATE</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+      <tr class="res"><td>res</td><td>weather.Rain</td><td>-</td><td>DOUBLE</td><td>mm</td><td>-</td><td>-</td><td>-</td></tr>
+      <tr class="res"><td>res</td><td>weather.AirTemperatureMax</td><td>-</td><td>DOUBLE</td><td>°C</td><td>-</td><td>-</td><td>-</td></tr>
+      <tr class="res"><td>res</td><td>weather.AirTemperatureMin</td><td>-</td><td>DOUBLE</td><td>°C</td><td>-</td><td>-</td><td>-</td></tr>
+      <tr class="res"><td>res</td><td>weather.GlobalSolarRadiation</td><td>-</td><td>DOUBLE</td><td>MJ*m**-2</td><td>-</td><td>-</td><td>-</td></tr>
+      <tr class="res"><td>res</td><td>weather.WindSpeed</td><td>-</td><td>DOUBLE</td><td>m*s**-1</td><td>-</td><td>-</td><td>-</td></tr>
+      <tr class="res"><td>res</td><td>weather.ReferenceEvapotranspiration</td><td>-</td><td>DOUBLE</td><td>mm</td><td>-</td><td>-</td><td>-</td></tr>
+</tbody>
+</table>
+<h3>phenology</h3><br>
+Class: net.simplace.sim.io.resources.adapter.CSVResourceAdapter<br>
+Interface: phenologyfile<br>
+Frequence: COMPLEX<br>
+</td>
+<td>
+	<table class="sortable" style="text-align: left; width: 100%;" border="1" cellpadding="1" cellspacing="1">
+<thead><tr><th>Content Type</th><th>Name</th><th>Description</th><th>Data Type</th><th>Unit</th><th>Min Value</th><th>Max Value</th><th>Default Value</th></tr></thead>
+<tbody>
+      <tr class="res"><td>res</td><td>phenology.number</td><td>-</td><td>INT</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+      <tr class="res"><td>res</td><td>phenology.crop</td><td>-</td><td>CHAR</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+      <tr class="res"><td>res</td><td>phenology.year</td><td>-</td><td>INT</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+      <tr class="res"><td>res</td><td>phenology.sowingdoy</td><td>-</td><td>INT</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+      <tr class="res"><td>res</td><td>phenology.emergencedoy</td><td>-</td><td>INT</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+      <tr class="res"><td>res</td><td>phenology.maturitydoy</td><td>-</td><td>INT</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+      <tr class="res"><td>res</td><td>phenology.yield</td><td>-</td><td>DOUBLE</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+      <tr class="res"><td>res</td><td>phenology.reldem</td><td>-</td><td>INT</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+</tbody>
+</table>
+<h3>referencedata</h3><br>
+Class: net.simplace.sim.io.resources.adapter.CSVResourceAdapter<br>
+Interface: compare<br>
+Frequence: DAILY<br>
+</td>
+<td>
+	<table class="sortable" style="text-align: left; width: 100%;" border="1" cellpadding="1" cellspacing="1">
+<thead><tr><th>Content Type</th><th>Name</th><th>Description</th><th>Data Type</th><th>Unit</th><th>Min Value</th><th>Max Value</th><th>Default Value</th></tr></thead>
+<tbody>
+      <tr class="res"><td>res</td><td>referencedata.CURRENTDATE</td><td>-</td><td>DATE</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+      <tr class="res"><td>res</td><td>referencedata.yield</td><td>-</td><td>DOUBLE</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+</tbody>
+</table>
+<h3>crop</h3><br>
+Class: net.simplace.sim.io.resources.adapter.XMLResourceAdapter<br>
+Interface: cropdata<br>
+Frequence: COMPLEX<br>
+</td>
+<td>
+	<table class="sortable" style="text-align: left; width: 100%;" border="1" cellpadding="1" cellspacing="1">
+<thead><tr><th>Content Type</th><th>Name</th><th>Description</th><th>Data Type</th><th>Unit</th><th>Min Value</th><th>Max Value</th><th>Default Value</th></tr></thead>
+<tbody>
+      <tr class="res"><td>res</td><td>crop.CROPNAME</td><td>-</td><td>CHAR</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+      <tr class="res"><td>res</td><td>crop.AirTemperatureSumAnthesis</td><td>-</td><td>DOUBLE</td><td>K</td><td>-</td><td>-</td><td>-</td></tr>
+      <tr class="res"><td>res</td><td>crop.AirTemperatureSumMilkripeness</td><td>-</td><td>DOUBLE</td><td>K</td><td>-</td><td>-</td><td>-</td></tr>
+      <tr class="res"><td>res</td><td>crop.AirTemperatureSumMaturity</td><td>-</td><td>DOUBLE</td><td>K</td><td>-</td><td>-</td><td>-</td></tr>
+      <tr class="res"><td>res</td><td>crop.RelativeDayOfEmergence</td><td>-</td><td>INT</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+      <tr class="res"><td>res</td><td>crop.DroughtTolerance</td><td>-</td><td>DOUBLE</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+      <tr class="res"><td>res</td><td>crop.BaseTempBeforeAnt</td><td>-</td><td>DOUBLE</td><td>°C</td><td>-</td><td>-</td><td>-</td></tr>
+      <tr class="res"><td>res</td><td>crop.BaseTempAfterAnt</td><td>-</td><td>DOUBLE</td><td>°C</td><td>-</td><td>-</td><td>-</td></tr>
+      <tr class="res"><td>res</td><td>crop.LUE</td><td>-</td><td>DOUBLE</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+      <tr class="res"><td>res</td><td>crop.SLA</td><td>-</td><td>DOUBLE</td><td>m**2 m**-2</td><td>-</td><td>-</td><td>-</td></tr>
+      <tr class="res"><td>res</td><td>crop.RGRL</td><td>-</td><td>DOUBLE</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+      <tr class="res"><td>res</td><td>crop.LaiNStressReduction</td><td>-</td><td>DOUBLE</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+      <tr class="res"><td>res</td><td>crop.LueNStressReduction</td><td>-</td><td>DOUBLE</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+      <tr class="res"><td>res</td><td>crop.SlaNStressReduction</td><td>-</td><td>DOUBLE</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+      <tr class="res"><td>res</td><td>crop.PartitioningNStressReduction</td><td>-</td><td>DOUBLE</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+      <tr class="res"><td>res</td><td>crop.LaiCritical</td><td>-</td><td>DOUBLE</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+      <tr class="res"><td>res</td><td>crop.TRANCO</td><td>-</td><td>DOUBLE</td><td>mm</td><td>-</td><td>-</td><td>-</td></tr>
+      <tr class="res"><td>res</td><td>crop.RDRSHM</td><td>-</td><td>DOUBLE</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+      <tr class="res"><td>res</td><td>crop.RDRL</td><td>-</td><td>DOUBLE</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+      <tr class="res"><td>res</td><td>crop.RDRNS</td><td>-</td><td>DOUBLE</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+      <tr class="res"><td>res</td><td>crop.K</td><td>-</td><td>DOUBLE</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+      <tr class="res"><td>res</td><td>crop.VernalDaysMax</td><td>-</td><td>INT</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+      <tr class="res"><td>res</td><td>crop.VernalisationTLow</td><td>-</td><td>DOUBLE</td><td>°C</td><td>-</td><td>-</td><td>-</td></tr>
+      <tr class="res"><td>res</td><td>crop.VernalisationTHigh</td><td>-</td><td>DOUBLE</td><td>°C</td><td>-</td><td>-</td><td>-</td></tr>
+      <tr class="res"><td>res</td><td>crop.Latitude</td><td>-</td><td>DOUBLE</td><td>°</td><td>-</td><td>-</td><td>-</td></tr>
+      <tr class="res"><td>res</td><td>crop.RDRLeavesTableMeanTemperature</td><td>Daily mean temperature for relative death rate of leaves</td><td>DOUBLEARRAY</td><td><a href="http://www.wurvoc.org/vocabularies/om-1.8/degree_Celsius">°C</a></td><td>-</td><td>-</td><td>-</td></tr>
+      <tr class="res"><td>res</td><td>crop.RDRLeavesTableRelativeRate</td><td>Relative death rate of leaves as a function of daily mean temperature</td><td>DOUBLEARRAY</td><td><a href="http://www.wurvoc.org/vocabularies/om-1.8/reciprocal_day">d-1</a></td><td>-</td><td>-</td><td>-</td></tr>
+      <tr class="res"><td>res</td><td>crop.RootsPartitioningTableDVS</td><td>DVS for fraction of total dry matter to roots</td><td>DOUBLEARRAY</td><td><a href="http://www.wurvoc.org/vocabularies/om-1.8/one">1</a></td><td>-</td><td>-</td><td>-</td></tr>
+      <tr class="res"><td>res</td><td>crop.RootsPartitioningTableFraction</td><td>Fraction of total dry matter to roots as function of DVS</td><td>DOUBLEARRAY</td><td><a href="http://www.wurvoc.org/vocabularies/om-1.8/one">1</a></td><td>-</td><td>-</td><td>-</td></tr>
+      <tr class="res"><td>res</td><td>crop.LeavesPartitioningTableDVS</td><td>DVS for fraction of total dry matter to leaves</td><td>DOUBLEARRAY</td><td><a href="http://www.wurvoc.org/vocabularies/om-1.8/one">1</a></td><td>-</td><td>-</td><td>-</td></tr>
+      <tr class="res"><td>res</td><td>crop.LeavesPartitioningTableFraction</td><td>Fraction of total dry matter to leaves as function of DVS</td><td>DOUBLEARRAY</td><td><a href="http://www.wurvoc.org/vocabularies/om-1.8/one">1</a></td><td>-</td><td>-</td><td>-</td></tr>
+      <tr class="res"><td>res</td><td>crop.StemsPartitioningTableDVS</td><td>DVS for fraction of total dry matter to stems</td><td>DOUBLEARRAY</td><td><a href="http://www.wurvoc.org/vocabularies/om-1.8/one">1</a></td><td>-</td><td>-</td><td>-</td></tr>
+      <tr class="res"><td>res</td><td>crop.StemsPartitioningTableFraction</td><td>Fraction of total dry matter to stems as function of DVS</td><td>DOUBLEARRAY</td><td><a href="http://www.wurvoc.org/vocabularies/om-1.8/one">1</a></td><td>-</td><td>-</td><td>-</td></tr>
+      <tr class="res"><td>res</td><td>crop.StorageOrgansPartitioningTableDVS</td><td>DVS for fraction of total dry matter to storage organs</td><td>DOUBLEARRAY</td><td><a href="http://www.wurvoc.org/vocabularies/om-1.8/one">1</a></td><td>-</td><td>-</td><td>-</td></tr>
+      <tr class="res"><td>res</td><td>crop.StorageOrgansPartitioningTableFraction</td><td>Fraction of total dry matter to storage organs as function of DVS</td><td>DOUBLEARRAY</td><td><a href="http://www.wurvoc.org/vocabularies/om-1.8/one">1</a></td><td>-</td><td>-</td><td>-</td></tr>
+</tbody>
+</table>
+<h3>weather_transform</h3><br>
+Class: net.simplace.sim.transformers.DefaultSQLStatementTransformer<br>
+Resource:null<br>
+Frequence: DAILY<br>
+</td>
+<td>
+	<table class="sortable" style="text-align: left; width: 100%;" border="1" cellpadding="1" cellspacing="1">
+<thead><tr><th>Content Type</th><th>Name</th><th>Description</th><th>Data Type</th><th>Unit</th><th>Min Value</th><th>Max Value</th><th>Default Value</th></tr></thead>
+<tbody>
+      <tr class="res"><td>res</td><td>weather_transform.CURRENTDATE</td><td>-</td><td>DATE</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+      <tr class="res"><td>res</td><td>weather_transform.AirTemperatureMean</td><td>-</td><td>DOUBLE</td><td>°C</td><td>-</td><td>-</td><td>-</td></tr>
+      <tr class="res"><td>res</td><td>weather_transform.EffectiveTempRateBeforeAnt</td><td>-</td><td>DOUBLE</td><td>K</td><td>-</td><td>-</td><td>-</td></tr>
+      <tr class="res"><td>res</td><td>weather_transform.EffectiveTempRateAfterAnt</td><td>-</td><td>DOUBLE</td><td>K</td><td>-</td><td>-</td><td>-</td></tr>
+</tbody>
+</table>
+    <h2><a name="model">Simulation Components</a></h2>
+    <table class="sortable" style="text-align: left; width: 100%;">
+<thead><tr><th>Name</th><th>Class (Documentationlink)</th><th>Order Number</th><th>Content Type</th><th>Variable Count</th></tr></thead>
+<tbody>
+      <tr><td>DefaultManagement</td><td><a href="http://www.simplace.net/doc/simplace_core/class_net.simplace.sim.components.DefaultManagement.html">net.simplace.sim.components.DefaultManagement</a><br/></td><td>100</td><td>mgm</td><td>0</td></tr>
+      <tr><td>PotentialGrowth</td><td><a href="http://www.simplace.net/doc/simplace_modules/class_net.simplace.sim.components.experimental.amei.PotentialGrowth.html">net.simplace.sim.components.experimental.amei.PotentialGrowth</a><br/></td><td>101</td><td>sim</td><td>336</td></tr>
+</tbody></table>
+<h2><a name="outputs">Implemented Outputs</a></h2>
