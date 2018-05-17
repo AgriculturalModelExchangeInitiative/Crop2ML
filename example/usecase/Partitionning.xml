@@ -34,7 +34,7 @@
       <Output name="FractionRoot" description="Fraction part going to Root compartment" datatype="DOUBLE" min="0.0" max="1.0"  unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
     </Outputs>
     <Algorithm language="java" platform="SIMPLACE"><![CDATA[
-   """ 
+
     double FRTWET = FSTFunctions.AFGEN(cRootsPartitioningTableDVS, cRootsPartitioningTableFraction, DevStage.getValue());
     if (TRANRF.getValue() &lt; NitrogenNutritionIndex.getValue()) {
         double FRTMOD = max(1.0, 1.0 / (TRANRF.getValue() + 0.5));
@@ -51,7 +51,36 @@
         FractionStems.setValue(FSTFunctions.AFGEN(cStemsPartitioningTableDVS, cStemsPartitioningTableFraction, DevStage.getValue()) + FLVT - FractionLeaves.getValue(), this);
         FractionStorageOrgans.setValue(FSTFunctions.AFGEN(cStorageOrgansPartitioningTableDVS, cStorageOrgansPartitioningTableFraction, DevStage.getValue()), this);
     }
+
+     ]]>
+    </Algorithm>
+    <Algorithm language="python_ext" platform="OpenAlea"><![CDATA[
+    FractionStems=0
+    FractionStorageOrgans=0
+    FractionLeaves=0
+    FractionRoot=0
+    
     """
+       double FRTWET = FSTFunctions.AFGEN(cRootsPartitioningTableDVS, cRootsPartitioningTableFraction, DevStage.getValue());
+    if (TRANRF.getValue() &lt; NitrogenNutritionIndex.getValue()) {
+        double FRTMOD = max(1.0, 1.0 / (TRANRF.getValue() + 0.5));
+        FractionRoot.setValue(FRTWET * FRTMOD, this);
+        double FSHMOD = (1.0 - FractionRoot.getValue()) / (1.0 - FractionRoot.getValue() / FRTMOD);
+        FractionLeaves.setValue(FSTFunctions.AFGEN(cLeavesPartitioningTableDVS, cLeavesPartitioningTableFraction, DevStage.getValue()) * FSHMOD, this);
+        FractionStems.setValue(FSTFunctions.AFGEN(cStemsPartitioningTableDVS, cStemsPartitioningTableFraction, DevStage.getValue()) * FSHMOD, this);
+        FractionStorageOrgans.setValue(FSTFunctions.AFGEN(cStorageOrgansPartitioningTableDVS, cStorageOrgansPartitioningTableFraction, DevStage.getValue()) * FSHMOD, this);
+    } else {
+        double FLVMOD = exp(-PartitionNStressReduction.getValue() * (1 - NitrogenNutritionIndex.getValue()));
+        FractionRoot.setValue(FRTWET, this);
+        double FLVT = FSTFunctions.AFGEN(cLeavesPartitioningTableDVS, cLeavesPartitioningTableFraction, DevStage.getValue());
+        FractionLeaves.setValue(FLVT * FLVMOD, this);
+        FractionStems.setValue(FSTFunctions.AFGEN(cStemsPartitioningTableDVS, cStemsPartitioningTableFraction, DevStage.getValue()) + FLVT - FractionLeaves.getValue(), this);
+        FractionStorageOrgans.setValue(FSTFunctions.AFGEN(cStorageOrgansPartitioningTableDVS, cStorageOrgansPartitioningTableFraction, DevStage.getValue()), this);
+    }
+    
+    """
+    
+    
      ]]>
     </Algorithm>
  </ModelUnit>

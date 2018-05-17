@@ -42,7 +42,7 @@
       <Output name="IsAnthesis" description="true at the anthesis date" datatype="BOOLEAN" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
     </Outputs>
     <Algorithm language="java" platform="SIMPLACE" ><![CDATA[
-    """
+
     LocalDateTime tCurrentDate = (LocalDateTime) getVariable(FWSimVarMap.CURRENT_DATE).getValue();
     Integer tCurrentDOY = (Integer) getVariable(FWSimVarMap.CURRENT_DOY).getValue();
     IsSowing.setValue(false, this);
@@ -100,8 +100,99 @@
         }
     }
     IsPhenologyEvent.setValue(IsSowing.getValue() || IsEmergence.getValue() || IsAnthesis.getValue() || IsMilkripeness.getValue() || IsMaturity.getValue(), this);
-    """
+
     ]]>
+    
+    </Algorithm>
+    
+    <Algorithm language="python_ext" platform="OpenAlea" ><![CDATA[
+    
+	MilkripenessDate=1
+      EmergenceDOY=1
+     SowingDOY=1
+     EmergenceDate=1
+     rDevStageRate=1
+     IsEmergence=False
+     SowingDate =1
+     MaturityDate=1
+     sTSUM =1
+     IsMilkripeness=False
+      RTEFF=1
+      MaturityDOY=1
+      IsMaturity=False
+      MilkripenessDOY=1
+      IsSowing=False
+      IsPhenologyEvent=False
+      AnthesisDate=1
+      sDevStage=1
+      CropCycleCount=1
+      AnthesisDO=1
+      IsAnthesis=False
+    
+    """
+    
+    LocalDateTime tCurrentDate = (LocalDateTime) getVariable(FWSimVarMap.CURRENT_DATE).getValue();
+    Integer tCurrentDOY = (Integer) getVariable(FWSimVarMap.CURRENT_DOY).getValue();
+    IsSowing.setValue(false, this);
+    IsEmergence.setValue(false, this);
+    IsAnthesis.setValue(false, this);
+    IsMilkripeness.setValue(false, this);
+    IsMaturity.setValue(false, this);
+    if (sDevStage.getValue() &gt; 0 &amp;&amp; iDoHarvest.getValue()) {
+        resetStates();
+        CropCycleCount.setValue((Integer) CropCycleCount.getValue() + 1, this);
+    } else if (iDoSow.getValue()) {
+        resetStates();
+        EmergenceDOY.setDefaultValue();
+        AnthesisDOY.setDefaultValue();
+        MilkripenessDOY.setDefaultValue();
+        MaturityDOY.setDefaultValue();
+        SowingDate.setValue(tCurrentDate, this);
+        SowingDOY.setValue(tCurrentDOY, this);
+        IsSowing.setValue(true, this);
+    } else if (SowingDate.getValue() != null) {
+        if (EmergenceDate.getValue() == null &amp;&amp; (SowingDate.getValue().isBefore(tCurrentDate) || SowingDate.getValue().isEqual(tCurrentDate))) {
+            sDevStage.setValue(0.0001, this);
+        }
+        if (AnthesisDate.getValue() == null) {
+            sTSUM.setValue(sTSUM.getValue() + iRTEFFAnt.getValue(), this);
+            RTEFF.setValue(iRTEFFAnt.getValue(), this);
+            double devstagebefore = sDevStage.getValue();
+            sDevStage.setValue(max(sTSUM.getValue() / cAirTemperatureSumAnthesis.getValue(), sDevStage.getValue()), this);
+            rDevStageRate.setValue(sDevStage.getValue() - devstagebefore, this);
+        } else {
+            sTSUM.setValue(sTSUM.getValue() + iRTEFFMat.getValue(), this);
+            RTEFF.setValue(iRTEFFMat.getValue(), this);
+            sDevStage.setValue(1 + (sTSUM.getValue() - cAirTemperatureSumAnthesis.getValue()) / (cAirTemperatureSumMaturity.getValue() - cAirTemperatureSumAnthesis.getValue()), this);
+            rDevStageRate.setValue(RTEFF.getValue() / (cAirTemperatureSumMaturity.getValue() - cAirTemperatureSumAnthesis.getValue()), this);
+        }
+        if (EmergenceDate.getValue() == null &amp;&amp; (SowingDate.getValue().plusDays(cRelativeDayOfEmergence.getValue()).isBefore(tCurrentDate) || SowingDate.getValue().plusDays(cRelativeDayOfEmergence.getValue()).isEqual(tCurrentDate))) {
+            EmergenceDate.setValue(tCurrentDate, this);
+            EmergenceDOY.setValue(tCurrentDOY, this);
+            IsEmergence.setValue(true, this);
+        }
+        if (AnthesisDate.getValue() == null &amp;&amp; sTSUM.getValue() &gt;= cAirTemperatureSumAnthesis.getValue()) {
+            AnthesisDate.setValue(tCurrentDate, this);
+            AnthesisDOY.setValue(tCurrentDOY, this);
+            IsAnthesis.setValue(true, this);
+        }
+        if (MilkripenessDate.getValue() == null &amp;&amp; cAirTemperatureSumMilkripeness.getValue() != null &amp;&amp; sTSUM.getValue() &gt;= cAirTemperatureSumMilkripeness.getValue()) {
+            MilkripenessDate.setValue(tCurrentDate, this);
+            MilkripenessDOY.setValue(tCurrentDOY, this);
+            IsMilkripeness.setValue(true, this);
+        }
+        if (MaturityDate.getValue() == null &amp;&amp; sTSUM.getValue() &gt;= cAirTemperatureSumMaturity.getValue()) {
+            MaturityDate.setValue(tCurrentDate, this);
+            MaturityDOY.setValue(tCurrentDOY, this);
+            IsMaturity.setValue(true, this);
+        }
+    }
+    IsPhenologyEvent.setValue(IsSowing.getValue() || IsEmergence.getValue() || IsAnthesis.getValue() || IsMilkripeness.getValue() || IsMaturity.getValue(), this);
+    
+    
+    """
+    
+        ]]>
     
     </Algorithm>
 

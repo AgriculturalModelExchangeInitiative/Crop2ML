@@ -65,145 +65,194 @@
     </Outputs>
     
     <Algorithm language="java" platform="SIMPLACE" ><![CDATA[
-    """
-    if (iDoHarvest):
-    	{
-    	sDaysSinceSowing = 0
-		sWLV = 0
-		sWLVG = 0
-		sWLVD = 0
-		sWST = 0
-		sWSO= 0
-		sWRT= 0
-		sLAI= 0
-
-		rRWLVG= 0
-		rRWRT= 0
-		rDLAI= 0
-
-		GTOTAL= 0
-		PARINT= 0
-		AGBM= 0
-
-		rDeadLeaves= 0
-		rDeadStems= 0
-    	}
-        
-    if (iDoSow):
-     {
-        sDaysSinceSowing= 0
-
-		sWLV= 0
-		sWLVG= 0
-		sWLVD= 0
-		sWST= 0
-		sWSO= 0
-		sWRT= 0
-		sLAI= 0
-		rRWRT= 0
-
-		rRWLVG= 0
-		rRWRT= 0
-		rDLAI= 0
-
-		rDeadLeaves= 0
-		rDeadStems= 0
-
-		PARINT= 0
-		AGBM= 0
-    } 
-    elif (RDRT_interpol.getXValues() == null)
-    {
-     return;
-    }
-        
-   	tRLAI = 0.0
-    tRWLVG = 0.0
-     RWST = 0.0
-    RWSO = 0.0
-    tRWRT = 0.0
-     DTR = float(RDD)
-    PARINT_Neu = float(0.5 * DTR * (1.0 - exp(-cK * sLAI)))
-    
-    LueReductionToNStress = double(FSTFunctions.LIMIT(0, 1, 1 - cLueNStressReduction * pow(1.000 - iNitrogenNutritionIndex, 2)))
-    
-    if (iTRANRF &lt; LueReductionToNStress) {
-        GTOTAL=iLUE* PARINT* iTRANRF;
-        
+	if (iDoHarvest.getValue())
+        resetOnHarvest();
+    if (iDoSow.getValue()) {
+        resetOnSowing();
+    } else if (RDRT_interpol.getXValues() == null)
+        return;
+    double tRLAI = 0;
+    double tRWLVG = 0;
+    double RWST = 0;
+    double RWSO = 0;
+    double tRWRT = 0;
+    double DTR = RDD.getValue();
+    double PARINT_Neu = 0.5 * DTR * (1.0 - exp(-cK.getValue() * sLAI.getValue()));
+    double LueReductionToNStress = FSTFunctions.LIMIT(0, 1, 1 - cLueNStressReduction.getValue() * pow(1.000 - iNitrogenNutritionIndex.getValue(), 2));
+    if (iTRANRF.getValue() &lt; LueReductionToNStress) {
+        GTOTAL.setValue(iLUE.getValue() * PARINT.getValue() * iTRANRF.getValue(), this);
     } else {
-        GTOTAL=LUE * PARINT * LueReductionToNStress
+        GTOTAL.setValue(iLUE.getValue() * PARINT.getValue() * LueReductionToNStress, this);
     }
-    GTOTAL=GTOTAL + iUnusedRootBiomass
+    GTOTAL.setValue(GTOTAL.getValue() + iUnusedRootBiomass.getValue(), this);
     double DLV;
     double DLAI;
-    if (iDevStage &gt; 0 &amp;&amp; sDaysSinceSowing &gt;= cRelativeDayOfEmergence) {
-        double tSLA = cSLA * exp(-cSlaNStressReduction* (1 - iNitrogenNutritionIndex));
+    if (iDevStage.getValue() &gt; 0 &amp;&amp; sDaysSinceSowing.getValue() &gt;= cRelativeDayOfEmergence.getValue()) {
+        double tSLA = cSLA.getValue() * exp(-cSlaNStressReduction.getValue() * (1 - iNitrogenNutritionIndex.getValue()));
         double RDRDV = 0;
-        if (iDevStage &gt; 1) {
-            RDRDV = FSTFunctions.INSW(iDevStage - 1, 0, RDRT_interpol.getValueAt(DAVTMP.getValue()));
+        if (iDevStage.getValue() &gt; 1) {
+            RDRDV = FSTFunctions.INSW(iDevStage.getValue() - 1, 0, RDRT_interpol.getValueAt(DAVTMP.getValue()));
         }
-        RDRSH = max(0, cRDRSHM * (sLAI - cLaiCritical) / cLaiCritical);
-         RDRDRY = (1 - iTRANRF) * cRDRL
-        RDR = max(max(RDRDV, RDRSH), RDRDRY) * iLeaveSenescenceHeatStressFactor
-        DLVNS = 0;
-        DLAINS = 0;
-        if (iNitrogenNutritionIndex &lt; 1) {
-            DLVNS = sWLVG * cRDRNS * (1 - iNitrogenNutritionIndex);
+        double RDRSH = max(0, cRDRSHM.getValue() * (sLAI.getValue() - cLaiCritical.getValue()) / cLaiCritical.getValue());
+        double RDRDRY = (1 - iTRANRF.getValue()) * cRDRL.getValue();
+        double RDR = max(max(RDRDV, RDRSH), RDRDRY) * iLeaveSenescenceHeatStressFactor.getValue();
+        double DLVNS = 0;
+        double DLAINS = 0;
+        if (iNitrogenNutritionIndex.getValue() &lt; 1) {
+            DLVNS = sWLVG.getValue() * cRDRNS.getValue() * (1 - iNitrogenNutritionIndex.getValue());
             DLAINS = DLVNS * tSLA;
         }
-         DLVS = sWLVG * RDR;
-         DLAIS = sLAI * RDR;
+        double DLVS = sWLVG.getValue() * RDR;
+        double DLAIS = sLAI.getValue() * RDR;
         DLV = DLVS + DLVNS;
         DLAI = DLAIS + DLAINS;
     } else {
         DLAI = 0d;
         DLV = 0d;
     }
-    if (0 &lt; iDevStage &amp;&amp; iDevStage &lt; cGrainToRootsDevStage) {
-        tRWRT = cGrainToRootsDailyBiomass + GTOTAL * FRT;
-        RWST = GTOTAL * FST;
-        RWSO = GTOTAL * FSO;
-        tRWLVG = GTOTAL * FLV - DLV;
+    if (0 &lt; iDevStage.getValue() &amp;&amp; iDevStage.getValue() &lt; cGrainToRootsDevStage.getValue()) {
+        tRWRT = cGrainToRootsDailyBiomass.getValue() + GTOTAL.getValue() * FRT.getValue();
+        RWST = GTOTAL.getValue() * FST.getValue();
+        RWSO = GTOTAL.getValue() * FSO.getValue();
+        tRWLVG = GTOTAL.getValue() * FLV.getValue() - DLV;
     } else {
-        tRWRT = GTOTAL * FRT;
-        RWST = GTOTAL * FST;
-        RWSO = GTOTAL * FSO;
-        tRWLVG = GTOTAL * FLV - DLV;
+        tRWRT = GTOTAL.getValue() * FRT.getValue();
+        RWST = GTOTAL.getValue() * FST.getValue();
+        RWSO = GTOTAL.getValue() * FSO.getValue();
+        tRWLVG = GTOTAL.getValue() * FLV.getValue() - DLV;
     }
-    double GLV = FLV * GTOTAL;
-    double tSLA = cSLA * exp(-cSlaNStressReduction * (1 - iNitrogenNutritionIndex))
+    double GLV = FLV.getValue() * GTOTAL.getValue();
+    double tSLA = cSLA.getValue() * exp(-cSlaNStressReduction.getValue() * (1 - iNitrogenNutritionIndex.getValue()));
     double GLAI = tSLA * GLV;
-    if (iDevStage &lt; cDevStageRGRL &amp;&amp; sLAI &lt; 0.1875 * cLaiCritical) {
-        GLAI = sLAI * (exp(cRGRL * DTEFF) - 1.0) * iTRANRF * exp(-cLaiNStressReduction * (1 - iNitrogenNutritionIndex))
+    if (iDevStage.getValue() &lt; cDevStageRGRL.getValue() &amp;&amp; sLAI.getValue() &lt; 0.1875 * cLaiCritical.getValue()) {
+        GLAI = sLAI.getValue() * (exp(cRGRL.getValue() * DTEFF.getValue()) - 1.0) * iTRANRF.getValue() * exp(-cLaiNStressReduction.getValue() * (1 - iNitrogenNutritionIndex.getValue()));
     }
-    if (iDevStage == 0) {
+    if (iDevStage.getValue() == 0) {
         GLAI = 0;
-    } else if (sLAI == 0.0 &amp;&amp; WCA &gt; 0 &amp;&amp; sDaysSinceSowing &gt;= cRelativeDayOfEmergence) {
-        GLAI = cLAII
+    } else if (sLAI.getValue() == 0.0 &amp;&amp; WCA.getValue() &gt; 0 &amp;&amp; sDaysSinceSowing.getValue() &gt;= cRelativeDayOfEmergence.getValue()) {
+        GLAI = cLAII.getValue();
     }
-    tRLAI = GLAI - DLAI
-    sDaysSinceSowing=sDaysSinceSowing + 1
-    sLAI=sLAI + tRLAI
-    sWLVG=sWLVG + tRWLVG
-    sWLVD=sWLVD + DLV
-    sWST=sWST + RWST
-    sWSO=sWSO + RWSO
-    sWRT=sWRT + tRWRT - iUnusedRootBiomass
-    sWLV=sWLVG + sWLVD
-    rRWLVG=tRWLVG
-    rRWRT=tRWRT
-    if (iDoSow &amp;&amp; rRWRT == 0.0)
-        rRWRT=0.0001
-    rDLAI=tRLAI
-    rDeadLeaves=DLV
-    if (iDevStage &gt; 1.5)
-        rDeadStems=0.02 * sWST
+    tRLAI = GLAI - DLAI;
+    sDaysSinceSowing.setValue(sDaysSinceSowing.getValue() + 1, this);
+    sLAI.setValue(sLAI.getValue() + tRLAI, this);
+    sWLVG.setValue(sWLVG.getValue() + tRWLVG, this);
+    sWLVD.setValue(sWLVD.getValue() + DLV, this);
+    sWST.setValue(sWST.getValue() + RWST, this);
+    sWSO.setValue(sWSO.getValue() + RWSO, this);
+    sWRT.setValue(sWRT.getValue() + tRWRT - iUnusedRootBiomass.getValue(), this);
+    sWLV.setValue(sWLVG.getValue() + sWLVD.getValue(), this);
+    rRWLVG.setValue(tRWLVG, this);
+    rRWRT.setValue(tRWRT, this);
+    if (iDoSow.getValue() &amp;&amp; rRWRT.getValue() == 0.0)
+        rRWRT.setValue(0.0001, this);
+    rDLAI.setValue(tRLAI, this);
+    rDeadLeaves.setValue(DLV, this);
+    if (iDevStage.getValue() &gt; 1.5)
+        rDeadStems.setValue(0.02 * sWST.getValue(), this);
     else
-       rDeadStems=0.0
-    AGBM=sWLV + sWST + sWSO
-    PARINT=PARINT_Neu
-    """
+        rDeadStems.setValue(0d, this);
+    AGBM.setValue(sWLV.getValue() + sWST.getValue() + sWSO.getValue(), this);
+	PARINT.setValue(PARINT_Neu, this);</Algorithm>
     ]]>
+    </Algorithm>
+    <Algorithm language="python_ext" platform="OpenAlea" ><![CDATA[
+    rDLAI=0; rRWRT=0; rDeadStems=0; sWLV=0; sWLVG =0; rRWLVG=0
+    sWLVD=0; PARINT=0; sWRT=0; sDaysSinceSowing=0
+    sLAI=0; GTOTAL=0; sWSO=0; rDeadLeaves=0; sWST=0; AboveGroundBiomass=0
+    
+    """
+    if (iDoHarvest.getValue())
+        resetOnHarvest();
+    if (iDoSow.getValue()) {
+        resetOnSowing();
+    } else if (RDRT_interpol.getXValues() == null)
+        return;
+    double tRLAI = 0;
+    double tRWLVG = 0;
+    double RWST = 0;
+    double RWSO = 0;
+    double tRWRT = 0;
+    double DTR = RDD.getValue();
+    double PARINT_Neu = 0.5 * DTR * (1.0 - exp(-cK.getValue() * sLAI.getValue()));
+    double LueReductionToNStress = FSTFunctions.LIMIT(0, 1, 1 - cLueNStressReduction.getValue() * pow(1.000 - iNitrogenNutritionIndex.getValue(), 2));
+    if (iTRANRF.getValue() &lt; LueReductionToNStress) {
+        GTOTAL.setValue(iLUE.getValue() * PARINT.getValue() * iTRANRF.getValue(), this);
+    } else {
+        GTOTAL.setValue(iLUE.getValue() * PARINT.getValue() * LueReductionToNStress, this);
+    }
+    GTOTAL.setValue(GTOTAL.getValue() + iUnusedRootBiomass.getValue(), this);
+    double DLV;
+    double DLAI;
+    if (iDevStage.getValue() &gt; 0 &amp;&amp; sDaysSinceSowing.getValue() &gt;= cRelativeDayOfEmergence.getValue()) {
+        double tSLA = cSLA.getValue() * exp(-cSlaNStressReduction.getValue() * (1 - iNitrogenNutritionIndex.getValue()));
+        double RDRDV = 0;
+        if (iDevStage.getValue() &gt; 1) {
+            RDRDV = FSTFunctions.INSW(iDevStage.getValue() - 1, 0, RDRT_interpol.getValueAt(DAVTMP.getValue()));
+        }
+        double RDRSH = max(0, cRDRSHM.getValue() * (sLAI.getValue() - cLaiCritical.getValue()) / cLaiCritical.getValue());
+        double RDRDRY = (1 - iTRANRF.getValue()) * cRDRL.getValue();
+        double RDR = max(max(RDRDV, RDRSH), RDRDRY) * iLeaveSenescenceHeatStressFactor.getValue();
+        double DLVNS = 0;
+        double DLAINS = 0;
+        if (iNitrogenNutritionIndex.getValue() &lt; 1) {
+            DLVNS = sWLVG.getValue() * cRDRNS.getValue() * (1 - iNitrogenNutritionIndex.getValue());
+            DLAINS = DLVNS * tSLA;
+        }
+        double DLVS = sWLVG.getValue() * RDR;
+        double DLAIS = sLAI.getValue() * RDR;
+        DLV = DLVS + DLVNS;
+        DLAI = DLAIS + DLAINS;
+    } else {
+        DLAI = 0d;
+        DLV = 0d;
+    }
+    if (0 &lt; iDevStage.getValue() &amp;&amp; iDevStage.getValue() &lt; cGrainToRootsDevStage.getValue()) {
+        tRWRT = cGrainToRootsDailyBiomass.getValue() + GTOTAL.getValue() * FRT.getValue();
+        RWST = GTOTAL.getValue() * FST.getValue();
+        RWSO = GTOTAL.getValue() * FSO.getValue();
+        tRWLVG = GTOTAL.getValue() * FLV.getValue() - DLV;
+    } else {
+        tRWRT = GTOTAL.getValue() * FRT.getValue();
+        RWST = GTOTAL.getValue() * FST.getValue();
+        RWSO = GTOTAL.getValue() * FSO.getValue();
+        tRWLVG = GTOTAL.getValue() * FLV.getValue() - DLV;
+    }
+    double GLV = FLV.getValue() * GTOTAL.getValue();
+    double tSLA = cSLA.getValue() * exp(-cSlaNStressReduction.getValue() * (1 - iNitrogenNutritionIndex.getValue()));
+    double GLAI = tSLA * GLV;
+    if (iDevStage.getValue() &lt; cDevStageRGRL.getValue() &amp;&amp; sLAI.getValue() &lt; 0.1875 * cLaiCritical.getValue()) {
+        GLAI = sLAI.getValue() * (exp(cRGRL.getValue() * DTEFF.getValue()) - 1.0) * iTRANRF.getValue() * exp(-cLaiNStressReduction.getValue() * (1 - iNitrogenNutritionIndex.getValue()));
+    }
+    if (iDevStage.getValue() == 0) {
+        GLAI = 0;
+    } else if (sLAI.getValue() == 0.0 &amp;&amp; WCA.getValue() &gt; 0 &amp;&amp; sDaysSinceSowing.getValue() &gt;= cRelativeDayOfEmergence.getValue()) {
+        GLAI = cLAII.getValue();
+    }
+    tRLAI = GLAI - DLAI;
+    sDaysSinceSowing.setValue(sDaysSinceSowing.getValue() + 1, this);
+    sLAI.setValue(sLAI.getValue() + tRLAI, this);
+    sWLVG.setValue(sWLVG.getValue() + tRWLVG, this);
+    sWLVD.setValue(sWLVD.getValue() + DLV, this);
+    sWST.setValue(sWST.getValue() + RWST, this);
+    sWSO.setValue(sWSO.getValue() + RWSO, this);
+    sWRT.setValue(sWRT.getValue() + tRWRT - iUnusedRootBiomass.getValue(), this);
+    sWLV.setValue(sWLVG.getValue() + sWLVD.getValue(), this);
+    rRWLVG.setValue(tRWLVG, this);
+    rRWRT.setValue(tRWRT, this);
+    if (iDoSow.getValue() &amp;&amp; rRWRT.getValue() == 0.0)
+        rRWRT.setValue(0.0001, this);
+    rDLAI.setValue(tRLAI, this);
+    rDeadLeaves.setValue(DLV, this);
+    if (iDevStage.getValue() &gt; 1.5)
+        rDeadStems.setValue(0.02 * sWST.getValue(), this);
+    else
+        rDeadStems.setValue(0d, this);
+    AGBM.setValue(sWLV.getValue() + sWST.getValue() + sWSO.getValue(), this);
+	PARINT.setValue(PARINT_Neu, this);</Algorithm>
+    
+    """
+      ]]>
+      
     </Algorithm>
 	<Parametersets>
 	</Parametersets>

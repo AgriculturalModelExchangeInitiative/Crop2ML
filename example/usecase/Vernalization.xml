@@ -32,7 +32,7 @@
       <Output name="sVernalDays" description="actual Vernal Days" datatype="DOUBLE" min="0.0" max="400.0"  unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
     </Outputs>
     <Algorithm language="java" platform="SIMPLACE"><![CDATA[
-    """
+   
     boolean applyVernalisation = cApplyVernalisation.getValue();
     if (applyVernalisation &amp;&amp; (cVernalDaysMax.getValue() &lt;= cVernalDaysMin.getValue() || cTlowCritical.getValue() &gt;= cTlow.getValue() || cTlow.getValue() &gt;= cThigh.getValue() || cThigh.getValue() &gt;= cThighCritical.getValue())) {
         applyVernalisation = false;
@@ -65,7 +65,55 @@
         rtsum = iTSumBaseMat.getValue() * min(iPhotoPeriodFactor.getValue(), VernalisationFactor.getValue());
     }
     RTSUM.setValue(rtsum, this);
-    """
+   
    ]]>
+  </Algorithm>
+  <Algorithm language="python_ext" platform="OpenAlea"><![CDATA[
+      
+    VernalisationFactor=0
+    RTSUM=0
+    DayLength=0
+    sVernalDays=0
+  
+  """
+      
+    boolean applyVernalisation = cApplyVernalisation.getValue();
+    if (applyVernalisation &amp;&amp; (cVernalDaysMax.getValue() &lt;= cVernalDaysMin.getValue() || cTlowCritical.getValue() &gt;= cTlow.getValue() || cTlow.getValue() &gt;= cThigh.getValue() || cThigh.getValue() &gt;= cThighCritical.getValue())) {
+        applyVernalisation = false;
+    }
+    if (iDoSow.getValue())
+        reset();
+    final double devstageAnthesis = 1d;
+    if (applyVernalisation &amp;&amp; sVernalDays.getValue() &lt; cVernalDaysMax.getValue()) {
+        if (iDAVTMP.getValue() &gt;= cThigh.getValue()) {
+            sVernalDays.setValue(sVernalDays.getValue() + max(0, 1 - ((iDAVTMP.getValue() - cThigh.getValue()) / (cThighCritical.getValue() - cThigh.getValue()))), this);
+        } else if (iDAVTMP.getValue() &lt;= cTlow.getValue()) {
+            sVernalDays.setValue(sVernalDays.getValue() + max(0, 1 - ((cTlow.getValue() - iDAVTMP.getValue()) / (cTlow.getValue() - cTlowCritical.getValue()))), this);
+        } else {
+            sVernalDays.setValue(sVernalDays.getValue() + 1, this);
+        }
+        if (sVernalDays.getValue() &lt; cVernalDaysMin.getValue()) {
+            VernalisationFactor.setValue(0d, this);
+        } else {
+            VernalisationFactor.setValue(max(0., min(1., (sVernalDays.getValue() - cVernalDaysMin.getValue()) / (cVernalDaysMax.getValue() - cVernalDaysMin.getValue()))), this);
+        }
+    } else {
+        VernalisationFactor.setValue(1d, this);
+    }
+    double rtsum;
+    if (iTSumBaseShoot.getValue() != null &amp;&amp; iDevStage.getValue() &lt; devstageAnthesis &amp;&amp; iDevStage.getValue() &gt; iDevStageBaseShoot.getValue()) {
+        rtsum = iTSumBaseShoot.getValue() * min(iPhotoPeriodFactor.getValue(), VernalisationFactor.getValue());
+    } else if (iDevStage.getValue() &lt; devstageAnthesis) {
+        rtsum = iTSumBaseAnt.getValue() * min(iPhotoPeriodFactor.getValue(), VernalisationFactor.getValue());
+    } else {
+        rtsum = iTSumBaseMat.getValue() * min(iPhotoPeriodFactor.getValue(), VernalisationFactor.getValue());
+    }
+    RTSUM.setValue(rtsum, this);
+ 
+  
+  """
+  
+  
+     ]]>
   </Algorithm>
   </ModelUnit>
