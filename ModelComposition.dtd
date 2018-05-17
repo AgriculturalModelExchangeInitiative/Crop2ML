@@ -1,10 +1,9 @@
-<!ELEMENT ModelComposition (Description,Inputs?,Outputs?,Composition,Algorithm,Parametersets,
-                     Testsets)>
+<!ELEMENT ModelComposition (Description,Inputs?,Outputs?,Composition,Algorithm,Parametersets,Testsets)>
 <!ATTLIST ModelComposition
   name CDATA #REQUIRED
   id CDATA #REQUIRED
   timestep CDATA #IMPLIED
-  version CDATA #IMPLIED
+  version CDATA #IMPLIED>
 
 
 <!ELEMENT Description (Title,Authors,Institution,URI?,Reference?,Abstract)>
