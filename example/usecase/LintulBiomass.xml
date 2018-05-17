@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ModelUnit PUBLIC "-//SIMPLACE/DTD SOL 1.0//EN" "https://raw.githubusercontent.com/AgriculturalModelExchangeInitiative/xml_representation/master/ModelUnit.dtd">
+<ModelUnit modelid="1" timestep="1" name ="LintulBiomass" version="1.0">
+	 <Description>
+      <Title>LintulBiomass</Title>
+      <Authors>Gunther Krauss, gk@uni-bonn.de</Authors>
+      <Institution>INRES Pflanzenbau, Uni Bonn</Institution>
+      <Reference>as given in the documentation</Reference>
+      <Abstract>see documentation at http://www.simplace.net/doc/simplace_modules/class_net.simplace.sim.components.models.lintul.LintulBiomass.html</Abstract>
+    </Description>
+    <Inputs>
+      <Input name="cRDRNS" description="max. relative death rate of leaves due to N stress" datatype="DOUBLE" min="0.0" max="1.0" default="0.05" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Input name="cK" description="Extinction coefficient for photosynthetically active radiation" datatype="DOUBLE" min="0.0" max="1.0" default="0.6" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Input name="iPartLeavesFactor" description="Proportion of daily total biomass increase partitioned to the leaves (input from LintulPartitioning.java)" datatype="DOUBLE" min="0.0" max="1.0" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Input name="cLaiCritical" description="Critical LAI beyond which leaves die due to self-shading" datatype="DOUBLE" min="0.0" max="6.0" default="4.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/square_metre_per_square_metre" />
+      <Input name="cSLA" description="Specific Leaf Area" datatype="DOUBLE" min="0.0" max="20.0" default="0.2" unit="http://www.wurvoc.org/vocabularies/om-1.8/square_metre_per_gram" />
+      <Input name="cRDRLeavesTableMeanTemperature" description="Daily mean temperature for relative death rate of leaves (c.f. RDRT)" datatype="DOUBLEARRAY" min="0" max="0" default="([10,12,6,3])" unit="http://www.wurvoc.org/vocabularies/om-1.8/degree_Celsius" />
+      <Input name="cLaiNStressReduction" description="N Stress effect on LAI growth rate" datatype="DOUBLE" min="0.0" max="1.0" default="1.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Input name="cLAII" description="Initial LAI" datatype="DOUBLE" min="0.0" max="0.1" default="0.012" unit="http://www.wurvoc.org/vocabularies/om-1.8/square_metre_per_square_metre" />
+      <Input name="nameoSow" description="Flag to specify the day of sowingt" datatype="BOOLEAN" default="False" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Input name="cLueNStressReduction" description="N Stress effect on LUE" datatype="DOUBLE" min="0.0" max="1.0" default="1.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Input name="cRDRT" description="Table of development specific leaves death rates" datatype="DOUBLEARRAY" min="0" max="0" default="([10,12,6,3])" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Input name="iTRANRF" description="Transpiration reduction factor (TRANRF) as ratio between actual and potential crop transpiration" datatype="DOUBLE" min="0.0" max="1.0" default="1.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Input name="iUnusedRootBiomass" description="Root Biomass which was not used by roots due to root growth limitations (is returned to biomass growth rate of the next day)" datatype="DOUBLE" min="0.0" max="20000.0" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/gram_per_square_metre_day" />
+      <Input name="cGrainToRootsDevStage" description="DevStage after emergence up to which root biomass is supplied by the seed" datatype="DOUBLE" min="0" max="2.0" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Input name="iRadiation" description="Daily global radiation (input from weather file)" datatype="DOUBLE" min="0.0" max="30.0" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/megajoule_per_square_metre" />
+      <Input name="cSlaNStressReduction" description="N Stress effect on Specific Leaf Area" datatype="DOUBLE" min="0.0" max="1.0" default="1.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Input name="iAirTemperatureMean" description="Measured daily average air temperature (input calculated from weather file)" datatype="DOUBLE" min="-50.0" max="60.0" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/degree_Celsius" />
+      <Input name="iEffectiveTempRateAfterAnt" description="Daily effective temperature after anthesis" datatype="DOUBLE" min="0.0" max="40.0" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/degree_Celsius" />
+      <Input name="cRDRL" description="max. rel. death rate of leaves due to water stress" datatype="DOUBLE" min="0.0" max="1.0" default="0.05" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Input name="cDevStageRGRL" description="Development stage of the crop up to which the growth rate of LAI is calculated based on the constant, user defined rate RGRL" datatype="DOUBLE" min="0" max="2.0" default="0.3" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Input name="iNitrogenNutritionIndex" description="Nitrogen Nutrition Index is the ratio between actual crop N concentration and critical N concentration (half of optimum N concentration which depends on crop and development stage)" datatype="DOUBLE" min="0.0" max="1.0" default="1.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Input name="cRDRLeavesTableRelativeRate" description="Relative death rate of leaves as a function of daily mean temperature (c.f. RDRT)" datatype="DOUBLEARRAY" min="0" max="0" default="([10,12,6,3])" unit="http://www.wurvoc.org/vocabularies/om-1.8/reciprocal_day" />
+      <Input name="iPartStemsFactor" description="Proportion of daily total biomass increase partitioned to the stem (input from LintulPartitioning.java)" datatype="DOUBLE" min="0.0" max="1.0" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Input name="idevStage" description="Development stage of the plant (1.0=anthesis, 2.0=physiological maturity" datatype="DOUBLE" min="0.0" max="3.0" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Input name="iCropAvailWaterContent" description="Crop available water content in the soil" datatype="DOUBLE" min="0.0" max="20.0" default="1.0E-4" unit="http://www.wurvoc.org/vocabularies/om-1.8/millimetre" />
+      <Input name="cRDRSHM" description="Maximum relative death rate of leaves due to shading" datatype="DOUBLE" min="0.0" max="1.0" default="0.05" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Input name="iPartStorageOrgansFactor" description="Proportion of daily total biomass increase partitioned to the storage organs (input from LintulPartitioning.java)" datatype="DOUBLE" min="0.0" max="1.0" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Input name="cGrainToRootsDailyBiomass" description="Daily biomass, that is supplied from the seeds to the roots after emergency" datatype="DOUBLE" min="0" max="10.0" default="0.2" unit="http://www.wurvoc.org/vocabularies/om-1.8/gram_per_square_metre" />
+      <Input name="iPartRootFactor" description="Proportion of daily total biomass increase partitioned to the roots (input from LintulPartitioning.java)" datatype="DOUBLE" min="0.0" max="1.0" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Input name="idoHarvest" description="Flag to specify the day of harvest" datatype="BOOLEAN" default="False" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Input name="cRelativeDayOfEmergence" description="Days between sowing and start of LAI development/plant growth" datatype="INT" min="0" max="366" default="12" unit="http://www.wurvoc.org/vocabularies/om-1.8/day" />
+      <Input name="iLeaveSenescenceHeatStressFactor" description="Factor that increases leaf senescence due to heat stress" datatype="DOUBLE" min="0.0" default="1.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+      <Input name="iLUE" description="Light Use Efficiency" datatype="DOUBLE" min="0.0" max="10.0" default="3.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/gram_per_megajoule" />
+      <Input name="iEffectiveTempRateBeforeAnt" description="Daily effective temperature before anthesis" datatype="DOUBLE" min="0.0" max="40.0" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/degree_Celsius" />
+      <Input name="cRGRL" description="Relative growth rate of LAI during exponential growth" datatype="DOUBLE" min="0.0" max="1.0" default="0.05" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+    </Inputs>
+    <Outputs>
+      <Output name="rDLAI" description="Rate of change of Leaf area index" datatype="DOUBLE" min="-10.0" max="10.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/square_metre_per_square_metre" />
+      <Output name="PARINT" description="Intercepted photosynthetically active radiation" datatype="DOUBLE" min="0.0" max="30.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/megajoule_per_square_metre_day" />
+      <Output name="sWRT" description="Biomass of Roots" datatype="DOUBLE" min="0.0" max="2000.0"  unit="http://www.wurvoc.org/vocabularies/om-1.8/gram_per_square_metre" />
+      <Output name="AboveGroundBiomass" description="Sum of Biomass fractions above ground" datatype="DOUBLE" min="0.0" max="10000.0"  unit="http://www.wurvoc.org/vocabularies/om-1.8/gram_per_square_metre" />
+      <Output name="sDaysSinceSowing" description="Days since Sowing" datatype="INT" min="0" max="1000"  unit="http://www.wurvoc.org/vocabularies/om-1.8/day" />
+      <Output name="sLAI" description="Leaf area index" datatype="DOUBLE" min="0.0" max="20.0"  unit="http://www.wurvoc.org/vocabularies/om-1.8/square_metre_per_square_metre" />
+      <Output name="GTOTAL" description="Growth rate of total crop dry matter" datatype="DOUBLE"  unit="http://www.wurvoc.org/vocabularies/om-1.8/gram_per_square_metre_day" />
+      <Output name="sWSO" description="Biomass of Storage Organs" datatype="DOUBLE" min="0.0" max="2000.0"  unit="http://www.wurvoc.org/vocabularies/om-1.8/gram_per_square_metre" />
+      <Output name="rDeadLeaves" description="Rate of dead leaves" datatype="DOUBLE" min="-200.0" max="200.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/gram_per_square_metre_day" />
+      <Output name="sWST" description="Biomass of stems" datatype="DOUBLE" min="0.0" max="2000.0"  unit="http://www.wurvoc.org/vocabularies/om-1.8/gram_per_square_metre" />
+      <Output name="sWLVD" description="Biomass of dead leaves" datatype="DOUBLE" min="0.0" max="2000.0"  unit="http://www.wurvoc.org/vocabularies/om-1.8/gram_per_square_metre" />
+      <Output name="rRWLVG" description="Rate of change in weight of green leaves" datatype="DOUBLE" min="-200.0" max="200.0"  unit="http://www.wurvoc.org/vocabularies/om-1.8/gram_per_square_metre_day" />
+      <Output name="sWLVG" description="Biomass of green leaves" datatype="DOUBLE" min="0.0" max="2000.0"  unit="http://www.wurvoc.org/vocabularies/om-1.8/gram_per_square_metre" />
+      <Output name="sWLV" description="Biomass of leaves" datatype="DOUBLE" min="0.0" max="2000.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/gram_per_square_metre" />
+      <Output name="rDeadStems" description="Rate of dead stems" datatype="DOUBLE" min="-200.0" max="200.0"  unit="http://www.wurvoc.org/vocabularies/om-1.8/gram_per_square_metre_day" />
+      <Output name="rRWRT" description="Rate of change in weight of roots" datatype="DOUBLE" min="-200.0" max="200.0"  unit="http://www.wurvoc.org/vocabularies/om-1.8/gram_per_square_metre_day" />
+    </Outputs>
+    
+    <Algorithm language="java" platform="SIMPLACE" ><![CDATA[
+    """
+    if (iDoHarvest):
+    	{
+    	sDaysSinceSowing = 0
+		sWLV = 0
+		sWLVG = 0
+		sWLVD = 0
+		sWST = 0
+		sWSO= 0
+		sWRT= 0
+		sLAI= 0
+
+		rRWLVG= 0
+		rRWRT= 0
+		rDLAI= 0
+
+		GTOTAL= 0
+		PARINT= 0
+		AGBM= 0
+
+		rDeadLeaves= 0
+		rDeadStems= 0
+    	}
+        
+    if (iDoSow):
+     {
+        sDaysSinceSowing= 0
+
+		sWLV= 0
+		sWLVG= 0
+		sWLVD= 0
+		sWST= 0
+		sWSO= 0
+		sWRT= 0
+		sLAI= 0
+		rRWRT= 0
+
+		rRWLVG= 0
+		rRWRT= 0
+		rDLAI= 0
+
+		rDeadLeaves= 0
+		rDeadStems= 0
+
+		PARINT= 0
+		AGBM= 0
+    } 
+    elif (RDRT_interpol.getXValues() == null)
+    {
+     return;
+    }
+        
+   	tRLAI = 0.0
+    tRWLVG = 0.0
+     RWST = 0.0
+    RWSO = 0.0
+    tRWRT = 0.0
+     DTR = float(RDD)
+    PARINT_Neu = float(0.5 * DTR * (1.0 - exp(-cK * sLAI)))
+    
+    LueReductionToNStress = double(FSTFunctions.LIMIT(0, 1, 1 - cLueNStressReduction * pow(1.000 - iNitrogenNutritionIndex, 2)))
+    
+    if (iTRANRF &lt; LueReductionToNStress) {
+        GTOTAL=iLUE* PARINT* iTRANRF;
+        
+    } else {
+        GTOTAL=LUE * PARINT * LueReductionToNStress
+    }
+    GTOTAL=GTOTAL + iUnusedRootBiomass
+    double DLV;
+    double DLAI;
+    if (iDevStage &gt; 0 &amp;&amp; sDaysSinceSowing &gt;= cRelativeDayOfEmergence) {
+        double tSLA = cSLA * exp(-cSlaNStressReduction* (1 - iNitrogenNutritionIndex));
+        double RDRDV = 0;
+        if (iDevStage &gt; 1) {
+            RDRDV = FSTFunctions.INSW(iDevStage - 1, 0, RDRT_interpol.getValueAt(DAVTMP.getValue()));
+        }
+        RDRSH = max(0, cRDRSHM * (sLAI - cLaiCritical) / cLaiCritical);
+         RDRDRY = (1 - iTRANRF) * cRDRL
+        RDR = max(max(RDRDV, RDRSH), RDRDRY) * iLeaveSenescenceHeatStressFactor
+        DLVNS = 0;
+        DLAINS = 0;
+        if (iNitrogenNutritionIndex &lt; 1) {
+            DLVNS = sWLVG * cRDRNS * (1 - iNitrogenNutritionIndex);
+            DLAINS = DLVNS * tSLA;
+        }
+         DLVS = sWLVG * RDR;
+         DLAIS = sLAI * RDR;
+        DLV = DLVS + DLVNS;
+        DLAI = DLAIS + DLAINS;
+    } else {
+        DLAI = 0d;
+        DLV = 0d;
+    }
+    if (0 &lt; iDevStage &amp;&amp; iDevStage &lt; cGrainToRootsDevStage) {
+        tRWRT = cGrainToRootsDailyBiomass + GTOTAL * FRT;
+        RWST = GTOTAL * FST;
+        RWSO = GTOTAL * FSO;
+        tRWLVG = GTOTAL * FLV - DLV;
+    } else {
+        tRWRT = GTOTAL * FRT;
+        RWST = GTOTAL * FST;
+        RWSO = GTOTAL * FSO;
+        tRWLVG = GTOTAL * FLV - DLV;
+    }
+    double GLV = FLV * GTOTAL;
+    double tSLA = cSLA * exp(-cSlaNStressReduction * (1 - iNitrogenNutritionIndex))
+    double GLAI = tSLA * GLV;
+    if (iDevStage &lt; cDevStageRGRL &amp;&amp; sLAI &lt; 0.1875 * cLaiCritical) {
+        GLAI = sLAI * (exp(cRGRL * DTEFF) - 1.0) * iTRANRF * exp(-cLaiNStressReduction * (1 - iNitrogenNutritionIndex))
+    }
+    if (iDevStage == 0) {
+        GLAI = 0;
+    } else if (sLAI == 0.0 &amp;&amp; WCA &gt; 0 &amp;&amp; sDaysSinceSowing &gt;= cRelativeDayOfEmergence) {
+        GLAI = cLAII
+    }
+    tRLAI = GLAI - DLAI
+    sDaysSinceSowing=sDaysSinceSowing + 1
+    sLAI=sLAI + tRLAI
+    sWLVG=sWLVG + tRWLVG
+    sWLVD=sWLVD + DLV
+    sWST=sWST + RWST
+    sWSO=sWSO + RWSO
+    sWRT=sWRT + tRWRT - iUnusedRootBiomass
+    sWLV=sWLVG + sWLVD
+    rRWLVG=tRWLVG
+    rRWRT=tRWRT
+    if (iDoSow &amp;&amp; rRWRT == 0.0)
+        rRWRT=0.0001
+    rDLAI=tRLAI
+    rDeadLeaves=DLV
+    if (iDevStage &gt; 1.5)
+        rDeadStems=0.02 * sWST
+    else
+       rDeadStems=0.0
+    AGBM=sWLV + sWST + sWSO
+    PARINT=PARINT_Neu
+    """
+    ]]>
+    </Algorithm>
+	<Parametersets>
+	</Parametersets>
+	<Testsets>
+	</Testsets>
+</ModelUnit>
