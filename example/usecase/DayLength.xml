@@ -17,7 +17,7 @@
 	<Outputs>
 		<Output name="DayLength" datatype="INT"   min="0" max="1441"  unit="" description="Day Length in minutes"/>
 	</Outputs>
-	<Algorithm language="Java" platform="SIMPLACE"><![CDATA[
+	<Algorithm language="java" platform="SIMPLACE"><![CDATA[
 	
 	if (pDaylength.getValue() == null) {
         Integer[] dayLengthArray = new Integer[370];
@@ -46,7 +46,7 @@
 	]]>
 	</Algorithm>
 	
-	<Algorithm language="Pyhton_ext" platform="OpenAlea"><![CDATA[
+	<Algorithm language="python_ext" platform="OpenAlea"><![CDATA[
 	
 		dayLengthArray = np.arange(370)
 		
