@@ -32,10 +32,10 @@
     
      <Algorithm language="python_ext" platform="OpenAlea" ><![CDATA[
 
-                PhotoPeriodFactor = ((PhotoInhibition - DayLenght) /60)/ (PhotoInhibition - PhotoInsensitivity)
-                if (PhotoInsensitivity > PhotoInhibition):
+                PhotoPeriodFactor = ((iPhotoInhibition - iDayLength) /60)/ (iPhotoInhibition - iPhotoInsensitivity)
+                if (iPhotoInsensitivity > iPhotoInhibition):
                 {
-                    PhotoPeriodFactor = (DayLenght - PhotoInhibition) / (PhotoInsensitivity - PhotoInhibition)
+                    PhotoPeriodFactor = (iDayLength - iPhotoInhibition) / (iPhotoInsensitivity - iPhotoInhibition)
                 }
                 if (PhotoPeriodFactor < 0):
                 {
