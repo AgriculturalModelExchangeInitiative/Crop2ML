@@ -1,4 +1,4 @@
-<Model id="net.simplace.sim.components.experimental.amei.DayLength" name="DayLength">
+<Model name="DayLength" id="net.simplace.sim.components.experimental.amei.DayLength">
   <Description>
     <Title>DayLength</Title>
     <Authors>Gunther Krauss, gk@uni-bonn.de</Authors>
@@ -7,12 +7,12 @@
     <Abstract>see documentation at http://www.simplace.net/doc/simplace_modules/class_net.simplace.sim.components.experimental.amei.DayLength.html</Abstract>
   </Description>
   <Inputs>
-    <Input id="iDayOfYear" description="Day Of Year" datatype="INT" min="1" max="366" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
-    <Input id="cLatitude" description="Latitude of the simulated location" datatype="DOUBLE" min="0.0" max="90.0" default="60.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/degree" />
+    <Input name="pDaylength" description="Latitude of the simulated location" datatype="INTARRAY" min="0" max="1441" unit="http://www.wurvoc.org/vocabularies/om-1.8/minute-time" inputtype="parameter" parametercategory="private" />
+    <Input name="iDayOfYear" description="Day Of Year" datatype="INT" min="1" max="366" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" inputtype="variable" variablecategory="auxiliary" />
+    <Input name="cLatitude" description="Latitude of the simulated location" datatype="DOUBLE" min="0.0" max="90.0" default="60.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/degree" inputtype="parameter" parametercategory="constant" />
   </Inputs>
   <Outputs>
-    <Output id="DayLength" description="Day Length in minutes" datatype="INT" min="0" max="1441" default="0" unit="http://www.wurvoc.org/vocabularies/om-1.8/minute-time" />
-    <Output id="pDaylength" description="Latitude of the simulated location" datatype="INTARRAY" min="0" max="1441" unit="http://www.wurvoc.org/vocabularies/om-1.8/minute-time" />
+    <Output name="DayLength" description="Day Length in minutes" datatype="INT" min="0" max="1441" default="0" unit="http://www.wurvoc.org/vocabularies/om-1.8/minute-time" variablecategory="auxiliary" />
   </Outputs>
   <Algorithm language="java" platform="simplace">if (pDaylength.getValue() == null) {
         Integer[] dayLengthArray = new Integer[370];

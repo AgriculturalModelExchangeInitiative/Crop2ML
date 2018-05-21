@@ -1,4 +1,4 @@
-<Model id="net.simplace.sim.components.experimental.amei.Photoperiod" name="Photoperiod">
+<Model name="Photoperiod" id="net.simplace.sim.components.experimental.amei.Photoperiod">
   <Description>
     <Title>Photoperiod</Title>
     <Authors>Gunther Krauss, gk@uni-bonn.de</Authors>
@@ -7,12 +7,12 @@
     <Abstract>see documentation at http://www.simplace.net/doc/simplace_modules/class_net.simplace.sim.components.experimental.amei.Photoperiod.html</Abstract>
   </Description>
   <Inputs>
-    <Input id="iDayLength" description="Day length in minutes" datatype="INT" min="0" max="1440" unit="http://www.wurvoc.org/vocabularies/om-1.8/minute" />
-    <Input id="iPhotoInsensitivity" description="Daily effective temperature before anthesis" datatype="DOUBLE" min="0.0" max="24.0" default="6.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/hour" />
-    <Input id="iPhotoInhibition" description="Daily mean air temperature" datatype="DOUBLE" min="0.0" max="24.0" default="14.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/hour" />
+    <Input name="iDayLength" description="Day length in minutes" datatype="INT" min="0" max="1440" unit="http://www.wurvoc.org/vocabularies/om-1.8/minute" inputtype="variable" variablecategory="auxiliary" />
+    <Input name="iPhotoInsensitivity" description="Daily effective temperature before anthesis" datatype="DOUBLE" min="0.0" max="24.0" default="6.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/hour" inputtype="parameter" parametercategory="constant" />
+    <Input name="iPhotoInhibition" description="Daily mean air temperature" datatype="DOUBLE" min="0.0" max="24.0" default="14.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/hour" inputtype="parameter" parametercategory="constant" />
   </Inputs>
   <Outputs>
-    <Output id="PhotoPeriodFactor" description="daily photoperiod factor" datatype="DOUBLE" min="0.0" max="1.0" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+    <Output name="PhotoPeriodFactor" description="daily photoperiod factor" datatype="DOUBLE" min="0.0" max="1.0" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" variablecategory="auxiliary" />
   </Outputs>
   <Algorithm language="java" platform="simplace">PhotoPeriodFactor.setValue((iPhotoInhibition.getValue() - iDayLength.getValue() / 60) / (iPhotoInhibition.getValue() - iPhotoInsensitivity.getValue()), this);
     if (iPhotoInsensitivity.getValue() &gt; iPhotoInhibition.getValue()) {
