@@ -1,0 +1,33 @@
+<ModelComposition name="TT_AGB" id="2CV_RECORD">
+  <Description>
+    <Title>Calculate Biomass</Title>
+    <Authors>RECORD TEAM</Authors>
+    <Institution>INRA</Institution>
+    <Reference>as given in the documentation</Reference>
+    <Abstract> </Abstract>
+  </Description>
+  <Composition>
+    <Links>
+      <InputLink target="TT.Harvesting" source="Harvesting" />
+      <InputLink target="TT.Sowing" source="Sowing" />
+      <InputLink target="TT.Tmax" source="Tmax" />
+      <InputLink target="TT.Tmin" source="Tmin" />
+      <InputLink target="CropAGB.Rad" source="Rad" />
+      <InputLink target="CropAGB.ATPT" source="ATPT" />
+      <InputLink target="CropAGB.ALAI" source="ALAI" />
+    
+      <InternalLink target="CropAGB.DvtStage" source="TT.DvtStage" />
+      
+      <OutputLink source="CropAGB.AGBiomass" target="AGBiomass" />
+      <OutputLink source="CropAGB.HI" target="HI" />
+      <OutputLink source="CropAGB.HIpot" target="HIpot" />
+      <OutputLink source="CropAGB.Yield" target="Yield" />
+      <OutputLink source="CropAGB.dayCount" target="dayCount" />
+      <OutputLink source="TT.tt_em_mat" target="tt_em_mat" />
+      <OutputLink source="TT.TT" target="TT" />
+      
+    </Links>
+    <Model name="TT" id="TT.2CV.Record" filename="TT_2CV.xml" />
+    <Model name="CropAGB" id="AGB.2CV.Record" filename="AGB_2CVxml" />
+    </Composition>
+</ModelComposition>

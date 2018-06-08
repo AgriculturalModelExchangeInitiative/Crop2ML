@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE ModelUnit PUBLIC "-//SIMPLACE/DTD SOL 1.0//EN" "ModelUnit.dtd">
+<Model id="ThermalTime.2CV.Record" timestep="1" name="ThermalTime" version="001">
+	<Description>
+		<Title>ThermalTime</Title>
+		<Authors>RecordTeam</Authors>
+		<Institution>INRA</Institution>
+		<URI></URI>
+		<Abstract>Compute the evolution of thermal time and phenological states of plante,
+			
+		</Abstract>
+		<Reference> Daniel Wallach et al., Parameter estimation for crop models: A new approach and application to a Corn model, 2001, Agronomy Journal, Vol. 93, n°4
+		</Reference>
+	</Description>
+	<Inputs>
+		<Input name="Harvesting" datatype="DOUBLE" inputtype="variable"  min="" max="" default="" unit="_unitless"/>
+		<Input name="Sowing" datatype="DOUBLE" inputtype="variable" min="" max="" default="" unit="unitless" description="day of sowing indicator" />
+		<Input name="Tmin" datatype="DOUBLE" inputtype="variable" min="" max="" default="" unit="°C" description="minimum air temperature at 2 meters" />
+		<Input name="Tmax" datatype="DOUBLE" inputtype="variable"  min="" max="" default="" unit="°C" description="maximum air temperature at 2 meters" />
+		<Input name="tt_Emergence_MaxLAI" datatype="DOUBLE" inputtype="parameter"  min="" max="" default="820" unit="°C-day" description="Thermal time between emergence and maximum LAI"/>		
+		<Input name="tt_LeafSen_Maturity" datatype="DOUBLE" inputtype="parameter" min="" max="" default="355" unit="°C-day" description="Thermal time between first leaf senescence and maturity"/>
+		<Input name="tt_Sowing_Emergence" datatype="DOUBLE" inputtype="parameter" min="" max="" default="80" unit="°C-day" description="Thermal time between sowing and emergence"/>
+		<Input name="tt_MaxLAI_Flowering" datatype="DOUBLE" inputtype="parameter" min="" max="" default="90" unit="°C-day" description="Thermal time between MAx LAI and flowering"/>
+		<Input name="tt_Flowering_GrainAbort" datatype="DOUBLE" inputtype="parameter" min="" max="" default="250" unit="°C-day" description="Thermal time between flowering and grain abort"/>
+		<Input name="tt_GrainAbort_LeafSen" datatype="DOUBLE" inputtype="parameter" min="" max="" default="245" unit="°C-day" description="Thermal time between GrainAbort and leaf senescence"/>
+		<Input name="DvtStage" datatype="DOUBLE"  min="" max=""  unit="unitless" description="phenological stage"/>		
+		<Input name="TT" datatype="DOUBLE" min="" max=""  unit="°C-day" description="Thermal Time"/>
+		
+	</Inputs>
+	<Outputs>
+		<Output name="DvtStage" datatype="DOUBLE"  min="" max=""  unit="unitless" description="phenological stage"/>		
+		<Output name="TT" datatype="DOUBLE" min="" max=""  unit="°C-day" description="Thermal Time"/>
+		<Output name="tt_em_mat" datatype="DOUBLE" min="" max=""  unit="°C-day" description="Thermal Time between emergence and maturity"/>
+		<!-- check the interest of tt_em_mat as output-->
+		
+	</Outputs>
+	<Algorithm language="C++" platform="Record">
+		<![CDATA[ 
+	enum State {
+    SOWING, /* 0. */
+    EMERGENCE, /* 1. */
+    MAX_LAI, /* 2. */
+    FLOWERING, /* 3. */
+    CRITICAL_GRAIN_ABORTION, /* 4. */
+    LEAF_SENESCENCE, /* 5. */
+    MATURITY, /* 6. */
+    BARE_SOIL /* 7. */
+	};
+
+	// init
+ 	DvtStage.init_value((double) BARE_SOIL);
+        tt_em_mat.init_value(tt_Emergence_MaxLAI + tt_MaxLAI_Flowering
+                        + tt_Flowering_GrainAbort + tt_GrainAbort_LeafSen
+                        + tt_LeafSen_Maturity);
+	// Compute function
+
+	        Sowing = 0;
+        	Harvesting = 0;
+
+        //variable locale temporaire pour le calcul de TT
+        double TTtemp = TT(-1) + std::max(0., (Tmin() + std::min(30., Tmax() )) / 2 - 6);
+        switch ((State) DvtStage(-1)) {
+        case BARE_SOIL: {
+            if (Sowing() == 1.0) {
+                DvtStage = SOWING;
+                TT = TTtemp;
+            } else {
+                TT = 0;
+            }
+
+            break;
+        } case SOWING : {
+            if (TTtemp >= tt_Sowing_Emergence) {
+                TT = TTtemp - tt_Sowing_Emergence;//reinitialisation de TT à l'emergence
+                DvtStage = EMERGENCE;
+            } else {
+                TT = TTtemp;
+            }
+            break;
+        } case EMERGENCE : {
+            TT = TTtemp;
+            if (TT() >= tt_Emergence_MaxLAI) {
+                DvtStage = MAX_LAI;
+            }
+            break;
+        } case MAX_LAI: {
+            TT = TTtemp;
+            if (TT() >= tt_Emergence_MaxLAI + tt_MaxLAI_Flowering) {
+                DvtStage = FLOWERING;
+            }
+            break;
+        } case FLOWERING: {
+            TT = TTtemp;
+            if (TT() >= tt_Emergence_MaxLAI+tt_MaxLAI_Flowering+tt_Flowering_GrainAbort){
+                DvtStage = CRITICAL_GRAIN_ABORTION;
+            }
+            break;
+        } case CRITICAL_GRAIN_ABORTION: {
+            TT = TTtemp;
+            if ((TT() >= tt_Emergence_MaxLAI + tt_MaxLAI_Flowering +
+                    tt_Flowering_GrainAbort + tt_GrainAbort_LeafSen)) {
+                DvtStage = LEAF_SENESCENCE;
+            }
+            break;
+        } case LEAF_SENESCENCE: {
+            TT = TTtemp;
+            if (TT() >= tt_Emergence_MaxLAI + tt_MaxLAI_Flowering +
+                    tt_Flowering_GrainAbort + tt_GrainAbort_LeafSen +
+                    tt_LeafSen_Maturity) {
+                DvtStage = MATURITY;
+            }
+            break;
+        } case MATURITY: {
+            if (Harvesting() == 1.0) {
+                DvtStage = BARE_SOIL;
+                TT = 0;
+            }
+            break;
+        }}
+    }
+
+
+				
+		]]>
+	</Algorithm>
+
+	<Algorithm language="python_ext" platform=" ">
+		<![CDATA[ 
+	
+enum State {
+    SOWING, /* 0. */
+    EMERGENCE, /* 1. */
+    MAX_LAI, /* 2. */
+    FLOWERING, /* 3. */
+    CRITICAL_GRAIN_ABORTION, /* 4. */
+    LEAF_SENESCENCE, /* 5. */
+    MATURITY, /* 6. */
+    BARE_SOIL /* 7. */
+	};
+
+	// init
+ 
+        tt_em_mat.init_value(tt_Emergence_MaxLAI + tt_MaxLAI_Flowering
+                        + tt_Flowering_GrainAbort + tt_GrainAbort_LeafSen
+                        + tt_LeafSen_Maturity);
+	// Compute function
+
+	        Sowing = 0;
+        	Harvesting = 0;
+
+        //variable locale temporaire pour le calcul de TT
+        double TTtemp = TT(-1) + std::max(0., (Tmin() + std::min(30., Tmax() )) / 2 - 6);
+        switch ((State) DvtStage(-1)) {
+        case BARE_SOIL: {
+            if (Sowing() == 1.0) {
+                DvtStage = SOWING;
+                TT = TTtemp;
+            } else {
+                TT = 0;
+            }
+
+            break;
+        } case SOWING : {
+            if (TTtemp >= tt_Sowing_Emergence) {
+                TT = TTtemp - tt_Sowing_Emergence;//reinitialisation de TT à l'emergence
+                DvtStage = EMERGENCE;
+            } else {
+                TT = TTtemp;
+            }
+            break;
+        } case EMERGENCE : {
+            TT = TTtemp;
+            if (TT() >= tt_Emergence_MaxLAI) {
+                DvtStage = MAX_LAI;
+            }
+            break;
+        } case MAX_LAI: {
+            TT = TTtemp;
+            if (TT() >= tt_Emergence_MaxLAI + tt_MaxLAI_Flowering) {
+                DvtStage = FLOWERING;
+            }
+            break;
+        } case FLOWERING: {
+            TT = TTtemp;
+            if (TT() >= tt_Emergence_MaxLAI+tt_MaxLAI_Flowering+tt_Flowering_GrainAbort){
+                DvtStage = CRITICAL_GRAIN_ABORTION;
+            }
+            break;
+        } case CRITICAL_GRAIN_ABORTION: {
+            TT = TTtemp;
+            if ((TT() >= tt_Emergence_MaxLAI + tt_MaxLAI_Flowering +
+                    tt_Flowering_GrainAbort + tt_GrainAbort_LeafSen)) {
+                DvtStage = LEAF_SENESCENCE;
+            }
+            break;
+        } case LEAF_SENESCENCE: {
+            TT = TTtemp;
+            if (TT() >= tt_Emergence_MaxLAI + tt_MaxLAI_Flowering +
+                    tt_Flowering_GrainAbort + tt_GrainAbort_LeafSen +
+                    tt_LeafSen_Maturity) {
+                DvtStage = MATURITY;
+            }
+            break;
+        } case MATURITY: {
+            if (Harvesting() == 1.0) {
+                DvtStage = BARE_SOIL;
+                TT = 0;
+            }
+            break;
+        }}
+    }
+				
+		]]>
+	</Algorithm>
+
+
+	<Parametersets>
+		<Parameterset name="default" description="default values">
+			<Param name="tt_Emergence_MaxLAI">820</Param>
+			<Param name="tt_LeafSen_Maturity">355</Param>	
+						
+		</Parameterset>		
+	</Parametersets>
+	<Testsets>
+		<Testset name="check 1" parameterset="default" description="some test values">
+			<Test name="check 1 1">
+				<InputValue name="Harvesting">0</InputValue>
+				<InputValue name="DvtStage">7</InputValue>
+				<InputValue name="TT">0</OutputValue>				
+				<InputValue name="Sowing">1</InputValue>
+				<InputValue name="Tmin">5</InputValue>
+				<InputValue name="Tmax">10</InputValue>				
+				<OutputValue name="DvtStage">0</OutputValue>				
+				<OutputValue name="TT">1.5</OutputValue>
+				<OutputValue name="tt_em_mat">1840</OutputValue>				
+			</Test>
+			<Test name="check 1 2">
+				<InputValue name="Harvesting">0</InputValue>				
+				<InputValue name="Sowing">0</InputValue>
+				<InputValue name="DvtStage">5</InputValue>
+				<InputValue name="TT">1405</OutputValue>
+				<InputValue name="Tmin">5</InputValue>
+				<InputValue name="Tmax">10</InputValue>				
+				<OutputValue name="DvtStage">5</OutputValue>				
+				<OutputValue name="TT">1406.5</OutputValue>
+				<OutputValue name="tt_em_mat">1840</OutputValue>					
+			</Test>			
+					
+		</Testset>		
+	</Testsets>
+</ModelUnit>
