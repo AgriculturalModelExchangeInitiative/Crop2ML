@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE ModelUnit PUBLIC "-//SIMPLACE/DTD SOL 1.0//EN" "ModelUnit.dtd">
+<Model id="Biomass.2CV.Record" timestep="1" name="Biomass" version="001">
+	<Description>
+		<Title>the total aerial biomass of the plant</Title>
+		<Authors>RecordTeam</Authors>
+		<Institution>INRA</Institution>
+		<URI></URI>
+		<Abstract>Growth of total aerial biomass and plant kernel
+			by converting the light intercepted by the leaves and using a crop index
+			
+		</Abstract>
+		<Reference> Daniel Wallach et al., Parameter estimation for crop models: A new approach and application 		to a 	Corn model, 2001, Agronomy Journal, Vol. 93, n°4
+		</Reference>
+	</Description>
+	<Inputs>
+		<Input name="ALAI" datatype="DOUBLE" inputtype="variable" variablecategory="state"  min="" max="" default="" unit="m2/m2" description = "actif LAI">
+		<Input name="ATPT" datatype="DOUBLE" inputtype="variable" variablecategory="state"  min="" max="" default="" unit="unitless" description="the actual / potential transpiration ratio used as a stress index" />
+		<Input name="DvtStage" datatype="DOUBLE" inputtype="variable" variablecategory="state" min="" max="" default="" unit="unitless" description="development stage" />
+		<Input name="Rad" datatype="DOUBLE" inputtype="variable" variablecategory="state" min="" max="" default="" unit="MJ/m2" description="the total daily solar radiation" />
+		<Input name="xtinc" datatype="DOUBLE" inputtype="parameter" min="" max="" default="0.7" unit="unitless" description="the extinction coefficient of light through the leaves"/>
+		<Input name="Rue1" datatype="DOUBLE" inputtype="parameter" min="" max="" default="2.8" unit="g/MJ" description="RUE before early leafy senescence"/>
+		<Input name="Rue2" datatype="DOUBLE" inputtype="parameter" min="" max="" default="1.5" unit="g/MJ" description="RUE after early leafy senescence"/>
+		<Input name="hiMax" datatype="DOUBLE" inputtype="parameter" min="" max="" default="0.55" unit="unitless" description="maximal harvest index"/>		
+		<Input name="r1Rue" datatype="DOUBLE" inputtype="parameter" min="" max="" default="1.0" unit="unitless" description="effect of the ATPT quotien on biomass growth"/>
+		<Input name="r1hi" datatype="DOUBLE" inputtype="parameter" min="" max="" default="0.6" unit="°unitless" description="effect of the ATPT ratio on the harvest index"/>
+		<Input name="r2Rue" datatype="DOUBLE" inputtype="parameter" min="" max="" default="1.0" unit="°unitless" description="effect of the ATPT quotien on biomass growth"/>
+		<Input name="r2hi" datatype="DOUBLE" inputtype="parameter" min="" max="" default="0.8" unit="°unitless" description="effect of the ATPT ratio on the harvest index"/>
+		<Input name="rateHI" datatype="DOUBLE" inputtype="parameter" min="" max="" default="0.015" unit="°day-1" description="maximal daily growth of HI "/>
+		<Input name="AGBiomass" datatype="DOUBLE"  min="" max="" default="" unit="g/m2" description="the total aerial biomass of the plant"/>	
+				
+	</Inputs>
+	<Outputs>
+		<Output name="AGBiomass" datatype="DOUBLE"  min="" max=""  unit="g/m2" description="the total aerial biomass of the plant"/>		
+		<Output name="HI" datatype="DOUBLE" min="" max=""  unit="unitless" description="actual harvest index"/>
+		<Output name="HIpot" datatype="DOUBLE" min="" max=""  unit="unitless" description="potential harvest index"/>
+		<Output name="Yield" datatype="DOUBLE" min="" max=""  unit="g/m2" description="the grain biomass of the plant"/>
+		<Output name="dayCount" datatype="DOUBLE" min="" max=""  unit="°day" description="number of days since emergence"/>
+				
+	</Outputs>
+	<Algorithm language="C++" platform="Record">
+		<![CDATA[ 
+	enum State {
+    SOWING, /* 0. */
+    EMERGENCE, /* 1. */
+    MAX_LAI, /* 2. */
+    FLOWERING, /* 3. */
+    CRITICAL_GRAIN_ABORTION, /* 4. */
+    LEAF_SENESCENCE, /* 5. */
+    MATURITY, /* 6. */
+    BARE_SOIL /* 7. */
+	};
+	      if (DvtStage() == BARE_SOIL) {
+            AGBiomass = 0;
+            Yield = 0.0;
+            HI = 0;
+            HIpot = 0;
+            dayCount = 0;
+        } else {
+            double Rue = 0;
+            switch ((int) DvtStage()) {
+                case EMERGENCE:
+                case MAX_LAI:
+                case FLOWERING:
+                case CRITICAL_GRAIN_ABORTION:
+                    Rue = Rue1;
+                    break;
+                case LEAF_SENESCENCE:
+                case MATURITY:
+                case SOWING:
+                    Rue = Rue2;
+                    break;
+            }
+            double dAGB = 0.48 * Rad() * Rue * (1 - exp(-xtinc * ALAI()))
+                    * reduc(ATPT(-1), r1Rue, r2Rue);
+            AGBiomass = AGBiomass(-1) + dAGB;
+            switch ((int) DvtStage()) {
+                case SOWING:
+                case EMERGENCE:
+                    HIpot = 0;
+                    dayCount = 0;
+                    break;
+                case MAX_LAI:
+                case FLOWERING:
+                    dayCount = dayCount(-1) + 1;
+                    HIpot = (HIpot(-1) * dayCount(-1) + hiMax * reduc(ATPT(-1),
+                            r1hi, r2hi)) / dayCount();
+                    break;
+                case CRITICAL_GRAIN_ABORTION:
+                case LEAF_SENESCENCE:
+                case MATURITY:
+                    HIpot = HIpot(-1);
+                    dayCount = dayCount(-1);
+                    break;
+            }
+            double dHI = 0;
+            double buff = HIpot() - HI(-1);
+            switch ((int) DvtStage()) {
+                case SOWING:
+                case EMERGENCE:
+                case MAX_LAI:
+                case FLOWERING:
+                    dHI = 0;
+                    break;
+                case CRITICAL_GRAIN_ABORTION:
+                case LEAF_SENESCENCE:
+                case MATURITY:
+                    dHI = std::min(rateHI, buff);
+                    break;
+            }
+            HI = HI(-1) + dHI;
+            switch ((int) DvtStage()) {
+                case SOWING:
+                case EMERGENCE:
+                case MAX_LAI:
+                case FLOWERING:
+                case CRITICAL_GRAIN_ABORTION:
+                case LEAF_SENESCENCE:
+                    Yield = Yield(-1);
+                    break;
+                case MATURITY:
+                    Yield = HI() * AGBiomass();
+                    break;
+            }
+        }
+    }
+    double reduc(double x, double p1, double p2)
+    {
+        if (x < p2 - p1) {
+            return 0;
+        } else {
+            if (x > p2) {
+                return 1;
+            } else {
+                return (p1 - p2 + x) / p1;
+              }
+        }
+    }
+				
+		]]>
+	</Algorithm>
+
+	<Algorithm language="python_ext" platform=" ">
+		<![CDATA[
+
+    reduc=function(double x, double p1, double p2):
+    {
+        if (x < p2 - p1) {
+            return 0;
+        } else {
+            if (x > p2) {
+                return 1;
+            } else {
+                return (p1 - p2 + x) / p1;
+              }
+        }
+    } 
+	enum State {
+    SOWING, /* 0. */
+    EMERGENCE, /* 1. */
+    MAX_LAI, /* 2. */
+    FLOWERING, /* 3. */
+    CRITICAL_GRAIN_ABORTION, /* 4. */
+    LEAF_SENESCENCE, /* 5. */
+    MATURITY, /* 6. */
+    BARE_SOIL /* 7. */
+	};
+
+Yield1=Yield
+AGBiomass1 = AGBiomass
+dayCount1 = dayCount
+DvtStage1 = DvtStage
+
+      if (DvtStage == BARE_SOIL) {
+            AGBiomass = 0;
+            Yield = 0.0;
+            HI = 0;
+            HIpot = 0;
+            dayCount = 0;
+        } else {
+            double Rue = 0;
+            switch ((int) DvtStage) {
+                case EMERGENCE:
+                case MAX_LAI:
+                case FLOWERING:
+                case CRITICAL_GRAIN_ABORTION:
+                    Rue = Rue1;
+                    break;
+                case LEAF_SENESCENCE:
+                case MATURITY:
+                case SOWING:
+                    Rue = Rue2;
+                    break;
+            }
+            double dAGB = 0.48 * Rad() * Rue * (1 - exp(-xtinc * ALAI()))
+                    * reduc(ATPT(-1), r1Rue, r2Rue);
+            AGBiomass = AGBiomass(-1) + dAGB;
+            switch ((int) DvtStage()) {
+                case SOWING:
+                case EMERGENCE:
+                    HIpot = 0;
+                    dayCount = 0;
+                    break;
+                case MAX_LAI:
+                case FLOWERING:
+                    dayCount = dayCount(-1) + 1;
+                    HIpot = (HIpot(-1) * dayCount(-1) + hiMax * reduc(ATPT(-1),
+                            r1hi, r2hi)) / dayCount();
+                    break;
+                case CRITICAL_GRAIN_ABORTION:
+                case LEAF_SENESCENCE:
+                case MATURITY:
+                    HIpot = HIpot(-1);
+                    dayCount = dayCount(-1);
+                    break;
+            }
+            double dHI = 0;
+            double buff = HIpot() - HI(-1);
+            switch ((int) DvtStage()) {
+                case SOWING:
+                case EMERGENCE:
+                case MAX_LAI:
+                case FLOWERING:
+                    dHI = 0;
+                    break;
+                case CRITICAL_GRAIN_ABORTION:
+                case LEAF_SENESCENCE:
+                case MATURITY:
+                    dHI = std::min(rateHI, buff);
+                    break;
+            }
+            HI = HI(-1) + dHI;
+            switch ((int) DvtStage()) {
+                case SOWING:
+                case EMERGENCE:
+                case MAX_LAI:
+                case FLOWERING:
+                case CRITICAL_GRAIN_ABORTION:
+                case LEAF_SENESCENCE:
+                    Yield = Yield(-1);
+                    break;
+                case MATURITY:
+                    Yield = HI() * AGBiomass();
+                    break;
+            }
+        }
+    }
+	]]>
+	</Algorithm>
+
+
+	<Parametersets>
+		<Parameterset name="default" description="default values">
+			<Param name="hiMax">0.506</Param>
+			<Param name="r1Rue">1</Param>
+			<Param name="r1hi">19.42</Param>
+			<Param name="r2Rue">1</Param>
+			<Param name="r2hi">0.8</Param>
+			<Param name="rateHI">0.015</Param>	
+						
+		</Parameterset>		
+	</Parametersets>
+	<Testsets>
+		<Testset name="check 1" parameterset="default" description="some test values">
+			<Test name="check 1 1">
+				<InputValue name="Rad">6.9</InputValue>
+				<InputValue name="ALAI">0.8</InputValue>
+				<InputValue name="ATPT">1</OutputValue>	
+				<InputValue name="AGBiomass">0</InputValue>			
+				<InputValue name="DvtStage">7</InputValue>
+				<OutputValue name="AGBiomass">0</OutputValue>				
+				<OutputValue name="Yield">0</OutputValue>
+				<OutputValue name="HI">0</OutputValue>
+				<OutputValue name="HIpot">0</OutputValue>
+				<OutputValue name="dayCount">0</OutputValue>
+								
+			</Test>
+			<Test name="check 1 2">
+				<InputValue name="Rad">6.9</InputValue>
+				<InputValue name="ALAI">0.8</InputValue>
+				<InputValue name="ATPT">1</OutputValue>	
+				<InputValue name="AGBiomass">1000</InputValue>			
+				<InputValue name="DvtStage">5</InputValue>
+				<OutputValue name="AGBiomass">1000</OutputValue>				
+				<OutputValue name="Yield">1.5</OutputValue>
+				<OutputValue name="HI">1840</OutputValue>
+				<OutputValue name="HIpot">1840</OutputValue>
+				<OutputValue name="dayCount">1840</OutputValue>
+			</Test>			
+					
+		</Testset>		
+	</Testsets>
+</ModelUnit>

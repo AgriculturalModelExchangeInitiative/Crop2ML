@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE vle_project PUBLIC '-//VLE TEAM//DTD Strict//EN' 'http://www.vle-project.org/vle-1.1.0.dtd'>
+<vle_project date="2012-Oct-03 13:01:13" author="Eric Casellas" version="1.1.x">
+<structures>
+<model type="coupled" name="2CV_parcelle" width="2184" height="1280">
+   <submodels>
+    <model type="atomic" x="667" y="294" observables="vueAGB_1" name="CropAGB" dynamics="dynCropAGB_1" conditions="cond_z_CropAGB_1,condAGB_1" width="100" height="105">
+     <in>
+      <port name="ALAI"/>
+      <port name="ATPT"/>
+      <port name="DvtStage"/>
+      <port name="Rad"/>
+     </in>
+     <out>
+      <port name="AGBiomass"/>
+      <port name="HI"/>
+      <port name="HIpot"/>
+      <port name="Yield"/>
+      <port name="dayCount"/>
+     </out>
+    </model>
+   </submodels>
+  </model>
+</structures>
+<dynamics>
+<dynamic library="CropAGB" name="dynCropAGB" package="2CV"/>
+</dynamics>
+<experiment name="2CV_parcelle">
+<conditions>
+<condition name="condAGB">
+ <port name="hiMax">
+<double>0.506732000000000</double>
+</port>
+ <port name="r1Rue">
+<double>1.000000000000000</double>
+</port>
+ <port name="r1hi">
+<double>19.424379999999999</double>
+</port>
+ <port name="r2Rue">
+<double>1.000000000000000</double>
+</port>
+ <port name="r2hi">
+<double>0.800000000000000</double>
+</port>
+ <port name="rateHI">
+<double>0.015000000000000</double>
+</port>
+</condition>
+</experiment>
+</vle_project>
