@@ -16,11 +16,13 @@
 <Outputs>
 <Output name="EO" description="Potential evapotranspiration rate (mm/d)" datatype="DOUBLE" min="0.0" max="1.0" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" variablecategory="auxiliary" />
 </Outputs>
-<Algorithm language="Java" platform="DSSAT" filename="PETPT.java" function="PETPT">
+<Algorithm language="Java" platform="" filename="PETPT.java" function="PETPT">
 </Algorithm>
-<Algorithm language="Fortran" platform="DSSAT" filename="PETPT.f" function="PETPT">
+<Algorithm language="Fortran" platform="" filename="PETPT.f" function="PETPT">
 </Algorithm>
-<Algorithm language="Cython" platform="DSSAT" filename="PETPT.pyx" function="PETPT">
+<Algorithm language="Cython" platform="" filename="PETPT.pyx" function="PETPT">
+</Algorithm>
+<Algorithm language="C#" platform="" filename="PETPT.cs" function="PETPT">
 </Algorithm>
 
 
