@@ -80,7 +80,7 @@ else:
     eo =  EEQ*0.01*math.exp(0.18*(TMAX+20.0);
 
 #EO = MAX(EO,0.0)   !gives error in DECRAT_C
-EO = math.max(eo, 0.0001d)
+EO = math.max(eo, 0.0001)
 ]]>
 </Algorithm>
 
