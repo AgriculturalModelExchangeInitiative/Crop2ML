@@ -1,0 +1,28 @@
+<Model name="PETPT" id="DSSAT.PETPT">
+<Description>
+<Title> PETPT, Subroutine, J.T. Ritchie,  Calculates Priestly-Taylor potential evapotranspiration </Title>
+<Authors>Kwang Soo Kim, luxkwang@snu.ac.kr </Authors>
+<Institution>Seoul National University, Seoul, Korea</Institution>
+<Reference>DSSAT 4.7; original fortran code was written by J.T. Ritchie </Reference>
+<Abstract> See Document at DSSAT 4.7 source code in PETPT.for </Abstract>
+</Description>
+<Inputs>
+<Input name="MSALB" description="Soil albedo with mulch and soil water effects (fraction)" datatype="DOUBLE" min="0" max="1" default="0.3" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" inputtype="variable" variablecategory="auxiliary" />
+<Input name="SRAD" description="Solar radiation (MJ/m2-d)" datatype="DOUBLE" min="0" max="100" default="100" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" inputtype="variable" variablecategory="auxiliary" />
+<Input name="TMAX" description="Maximum daily temperature (°C)" datatype="DOUBLE" min="-50" max="60" default="20" unit="http://www.wurvoc.org/vocabularies/om-1.8/degree_Celsius" inputtype="variable" variablecategory="auxiliary" />
+<Input name="TMIN" description="Minimum daily temperature (°C)" datatype="DOUBLE" min="-50" max="60" default="10" unit="http://www.wurvoc.org/vocabularies/om-1.8/degree_Celsius" inputtype="variable" variablecategory="auxiliary" />
+<Input name="XHLAI" description="Leaf area index (m2[leaf] / m2[ground])" datatype="DOUBLE" min="0" max="10" default="3" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" inputtype="variable" variablecategory="auxiliary" />
+</Inputs>
+<Outputs>
+<Output name="EO" description="Potential evapotranspiration rate (mm/d)" datatype="DOUBLE" min="0.0" max="1.0" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" variablecategory="auxiliary" />
+</Outputs>
+<Algorithm language="Java" platform="DSSAT" filename="PETPT.java" function="PETPT">
+</Algorithm>
+<Algorithm language="Fortran" platform="DSSAT" filename="PETPT.f" function="PETPT">
+</Algorithm>
+<Algorithm language="Cython" platform="DSSAT" filename="PETPT.pyx" function="PETPT">
+</Algorithm>
+
+
+</Model>
+

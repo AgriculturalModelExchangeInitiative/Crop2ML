@@ -1,0 +1,89 @@
+<Model name="PETPT" id="DSSAT.PETPT">
+<Description>
+<Title> PETPT, Subroutine, J.T. Ritchie,  Calculates Priestly-Taylor potential evapotranspiration </Title>
+<Authors>Kwang Soo Kim, luxkwang@snu.ac.kr </Authors>
+<Institution>Seoul National University, Seoul, Korea</Institution>
+<Reference>DSSAT 4.7; original fortran code was written by J.T. Ritchie </Reference>
+<Abstract> See Document at DSSAT 4.7 source code in PETPT.for </Abstract>
+</Description>
+<Inputs>
+<Input name="MSALB" description="Soil albedo with mulch and soil water effects (fraction)" datatype="DOUBLE" min="0" max="1" default="0.3" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" inputtype="variable" variablecategory="auxiliary" />
+<Input name="SRAD" description="Solar radiation (MJ/m2-d)" datatype="DOUBLE" min="0" max="100" default="100" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" inputtype="variable" variablecategory="auxiliary" />
+<Input name="TMAX" description="Maximum daily temperature (°C)" datatype="DOUBLE" min="-50" max="60" default="20" unit="http://www.wurvoc.org/vocabularies/om-1.8/degree_Celsius" inputtype="variable" variablecategory="auxiliary" />
+<Input name="TMIN" description="Minimum daily temperature (°C)" datatype="DOUBLE" min="-50" max="60" default="10" unit="http://www.wurvoc.org/vocabularies/om-1.8/degree_Celsius" inputtype="variable" variablecategory="auxiliary" />
+<Input name="XHLAI" description="Leaf area index (m2[leaf] / m2[ground])" datatype="DOUBLE" min="0" max="10" default="3" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" inputtype="variable" variablecategory="auxiliary" />
+</Inputs>
+<Outputs>
+<Output name="EO" description="Potential evapotranspiration rate (mm/d)" datatype="DOUBLE" min="0.0" max="1.0" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" variablecategory="auxiliary" />
+</Outputs>
+<Algorithm language="Java" platform="DSSAT" filename="PETPT.java" function="PETPT">
+<![CDATA[
+double ALBEDO;
+double SLANG;
+double EEQ;
+double eo;
+double TD = 0.60*TMAX + 0.40*TMIN;
+if (XHLAI <= 0.0) {
+    ALBEDO = MSALB;
+} else {
+    ALBEDO = 0.23 - (0.23-MSALB)*Math.exp(-0.75*XHLAI);
+}
+SLANG = SRAD * 23.923;
+EEQ = SLANG * (2.04E-4 - 1.83E-4 * ALBEDO)*(TD+29.0);
+eo = EEQ*1.1;
+if (TMAX < 35.0) {
+    eo = EEQ*((TMAX-35.0)*0.05+1.1;
+} else {
+    eo =  EEQ*0.01*Math.exp(0.18*(TMAX+20.0);
+}
+
+/* EO = MAX(EO,0.0)   !gives error in DECRAT_C */
+EO = Math.max(eo, 0.0001d);
+]]>
+</Algorithm>
+<Algorithm language="Fortran" platform="DSSAT" filename="PETPT.f" function="PETPT">
+<![CDATA[
+
+REAL ALBEDO, EEQ, SLANG, TD
+TD = 0.60*TMAX+0.40*TMIN
+IF (XHLAI .LE. 0.0) THEN
+    ALBEDO = MSALB
+ELSE
+    ALBEDO = 0.23-(0.23-MSALB)*EXP(-0.75*XHLAI)
+ENDIF
+SLANG = SRAD*23.923
+EEQ = SLANG*(2.04E-4-1.83E-4*ALBEDO)*(TD+29.0)
+EO = EEQ*1.1
+IF (TMAX .GT. 35.0) THEN
+	EO = EEQ*((TMAX-35.0)*0.05+1.1)
+ELSE IF (TMAX .LT. 5.0) THEN
+	EO = EEQ*0.01*EXP(0.18*(TMAX+20.0))
+ENDIF
+!###  EO = MAX(EO,0.0)   !gives error in DECRAT_C
+EO = MAX(EO,0.0001)
+]]>
+</Algorithm>
+<Algorithm language=Cython" platform="DSSAT" filename="PETPT.pyx" function="PETPT">
+<![CDATA[
+cdef double ALBEDO, EEQ, SLANG, TD
+TD = 0.60*TMAX + 0.40*TMIN
+if (XHLAI <= 0.0):
+    ALBEDO = MSALB
+else:
+    ALBEDO = 0.23 - (0.23-MSALB)*math.exp(-0.75*XHLAI)
+SLANG = SRAD * 23.923
+EEQ = SLANG * (2.04E-4 - 1.83E-4 * ALBEDO)*(TD+29.0);
+eo = EEQ*1.1
+if (TMAX < 35.0):
+    eo = EEQ*((TMAX-35.0)*0.05+1.1
+else:
+    eo =  EEQ*0.01*math.exp(0.18*(TMAX+20.0);
+
+#EO = MAX(EO,0.0)   !gives error in DECRAT_C
+EO = math.max(eo, 0.0001d)
+]]>
+</Algorithm>
+
+
+</Model>
+
