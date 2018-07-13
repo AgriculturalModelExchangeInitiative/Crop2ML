@@ -1,4 +1,4 @@
-<ModelComposition id="net.simplace.sim.components.experimental.amei.PotentialGrowth" name="net.simplace.sim.components.experimental.amei.PotentialGrowth">
+<ModelComposition name="net.simplace.sim.components.experimental.amei.PotentialGrowth" id="net.simplace.sim.components.experimental.amei.PotentialGrowth">
   <Description>
     <Title>PotentialGrowth</Title>
     <Authors>Gunther Krauss, gk@uni-bonn.de</Authors>
@@ -108,11 +108,11 @@
       <OutputLink source="Photoperiod.PhotoPeriodFactor" target="PhotoPeriodFactor" />
       <OutputLink source="Vernalisation.RTSUM" target="RTSUM" />
     </Links>
-    <Model id="net.simplace.sim.components.models.lintul.LintulPhenology" name="LintulPhenology" filename="net.simplace.sim.components.models.lintul.LintulPhenology.unit.xml" />
-    <Model id="net.simplace.sim.components.experimental.amei.DayLength" name="DayLength" filename="net.simplace.sim.components.experimental.amei.DayLength.unit.xml" />
-    <Model id="net.simplace.sim.components.experimental.amei.Photoperiod" name="Photoperiod" filename="net.simplace.sim.components.experimental.amei.Photoperiod.unit.xml" />
-    <Model id="net.simplace.sim.components.experimental.amei.Vernalisation" name="Vernalisation" filename="net.simplace.sim.components.experimental.amei.Vernalisation.unit.xml" />
-    <Model id="net.simplace.sim.components.experimental.amei.Partitioning" name="Partitioning" filename="net.simplace.sim.components.experimental.amei.Partitioning.unit.xml" />
-    <Model id="net.simplace.sim.components.models.lintul.LintulBiomass" name="LintulBiomass" filename="net.simplace.sim.components.models.lintul.LintulBiomass.unit.xml" />
+    <Model name="LintulPhenology" id="net.simplace.sim.components.models.lintul.LintulPhenology" filename="net.simplace.sim.components.models.lintul.LintulPhenology.unit.xml" />
+    <Model name="DayLength" id="net.simplace.sim.components.experimental.amei.DayLength" filename="net.simplace.sim.components.experimental.amei.DayLength.unit.xml" />
+    <Model name="Photoperiod" id="net.simplace.sim.components.experimental.amei.Photoperiod" filename="net.simplace.sim.components.experimental.amei.Photoperiod.unit.xml" />
+    <Model name="Vernalisation" id="net.simplace.sim.components.experimental.amei.Vernalisation" filename="net.simplace.sim.components.experimental.amei.Vernalisation.unit.xml" />
+    <Model name="Partitioning" id="net.simplace.sim.components.experimental.amei.Partitioning" filename="net.simplace.sim.components.experimental.amei.Partitioning.unit.xml" />
+    <Model name="LintulBiomass" id="net.simplace.sim.components.models.lintul.LintulBiomass" filename="net.simplace.sim.components.models.lintul.LintulBiomass.unit.xml" />
   </Composition>
 </ModelComposition>

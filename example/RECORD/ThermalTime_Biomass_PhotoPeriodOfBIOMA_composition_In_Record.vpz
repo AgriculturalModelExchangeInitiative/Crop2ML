@@ -1,0 +1,176 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE vle_project PUBLIC '-//VLE TEAM//DTD Strict//EN' 'http://www.vle-project.org/vle-1.1.0.dtd'>
+<vle_project date="2012-Oct-03 13:01:13" author="Eric Casellas" version="1.1.x">
+<structures>
+<model type="coupled" name="2CV_parcelle" width="2184" height="1280">
+   <out>
+    <port name="AGBiomass"/>
+    <port name="HI"/>
+    <port name="HIpot"/>
+    <port name="Yield"/>
+    <port name="dayCount"/>
+    <port name="TT"/>
+    <port name="tt_em_mat"/>
+   </out>
+   <in>
+    <port name="Harvesting"/>
+    <port name="Sowing"/>
+    <port name="Tmax"/>
+    <port name="Tmin"/>
+    <port name="Rad"/>
+    <port name="ATPT"/>
+    <port name="ALAI"/>
+   </in>
+   <submodels>
+    <model type="atomic" x="528" y="178" observables="vueAGB_1" name="CropAGB" dynamics="" conditions="cond_z_CropAGB,condAGB" width="100" height="105">
+     <in>
+      <port name="ALAI"/>
+      <port name="ATPT"/>
+      <port name="DvtStage"/>
+      <port name="Rad"/>
+     </in>
+     <out>
+      <port name="AGBiomass"/>
+      <port name="HI"/>
+      <port name="HIpot"/>
+      <port name="Yield"/>
+      <port name="dayCount"/>
+     </out>
+    </model>
+    <model type="atomic" x="214" y="271" observables="vueTT_1" name="TT" dynamics="dynCropTT" conditions="cond_z_TT_1,condTT" width="100" height="90">
+     <in>
+      <port name="Harvesting"/>
+      <port name="Sowing"/>
+      <port name="Tmax"/>
+      <port name="Tmin"/>
+     </in>
+     <out>
+      <port name="DvtStage"/>
+      <port name="TT"/>
+      <port name="tt_em_mat"/>
+     </out>
+    </model>
+    <model type="atomic" x="260" y="25" observables="" name="Photoperiod" dynamics="dynPhotoperiod" conditions="" width="50" height="50">
+     <in>
+      <port name="DayLength"/>
+     </in>
+     <out>
+      <port name="PhotoperiodFactor"/>
+     </out>
+    </model>
+   </submodels>
+   <connections>
+    <connection type="internal">
+     <origin model="TT" port="DvtStage"/>
+     <destination model="CropAGB" port="DvtStage"/>
+    </connection>
+    <connection type="input">
+     <origin model="2CV_parcelle" port="Harvesting"/>
+     <destination model="TT" port="Harvesting"/>
+    </connection>
+    <connection type="input">
+     <origin model="2CV_parcelle" port="Sowing"/>
+     <destination model="TT" port="Sowing"/>
+    </connection>
+    <connection type="input">
+     <origin model="2CV_parcelle" port="Tmax"/>
+     <destination model="TT" port="Tmax"/>
+    </connection>
+    <connection type="input">
+     <origin model="2CV_parcelle" port="Tmin"/>
+     <destination model="TT" port="Tmin"/>
+    </connection>
+    <connection type="input">
+     <origin model="2CV_parcelle" port="Rad"/>
+     <destination model="CropAGB" port="Rad"/>
+    </connection>
+    <connection type="input">
+     <origin model="2CV_parcelle" port="ATPT"/>
+     <destination model="CropAGB" port="ATPT"/>
+    </connection>
+    <connection type="input">
+     <origin model="2CV_parcelle" port="ALAI"/>
+     <destination model="CropAGB" port="ALAI"/>
+    </connection>
+    <connection type="output">
+     <origin model="CropAGB" port="AGBiomass"/>
+     <destination model="2CV_parcelle" port="AGBiomass"/>
+    </connection>
+    <connection type="output">
+     <origin model="CropAGB" port="HI"/>
+     <destination model="2CV_parcelle" port="HI"/>
+    </connection>
+    <connection type="output">
+     <origin model="CropAGB" port="HIpot"/>
+     <destination model="2CV_parcelle" port="HIpot"/>
+    </connection>
+    <connection type="output">
+     <origin model="CropAGB" port="Yield"/>
+     <destination model="2CV_parcelle" port="Yield"/>
+    </connection>
+    <connection type="output">
+     <origin model="CropAGB" port="dayCount"/>
+     <destination model="2CV_parcelle" port="dayCount"/>
+    </connection>
+    <connection type="output">
+     <origin model="TT" port="TT"/>
+     <destination model="2CV_parcelle" port="TT"/>
+    </connection>
+    <connection type="output">
+     <origin model="TT" port="tt_em_mat"/>
+     <destination model="2CV_parcelle" port="tt_em_mat"/>
+    </connection>
+   </connections>
+  </model>
+</structures>
+<dynamics>
+<dynamic library="CropAGB" name="dynCropAGB" package="2CV"/>
+
+
+<dynamic library="CropTT" name="dynCropTT" package="2CV"/>
+
+<dynamic library="Photoperiod" name="dynPhotoperiod" package="2CV"/>
+
+</dynamics>
+<experiment name="2CV_parcelle">
+<conditions>
+<condition name="condAGB">
+ <port name="hiMax">
+<double>0.506732000000000</double>
+</port>
+ <port name="r1Rue">
+<double>1.000000000000000</double>
+</port>
+ <port name="r1hi">
+<double>19.424379999999999</double>
+</port>
+ <port name="r2Rue">
+<double>1.000000000000000</double>
+</port>
+ <port name="r2hi">
+<double>0.800000000000000</double>
+</port>
+ <port name="rateHI">
+<double>0.015000000000000</double>
+</port>
+</condition>
+
+<condition name="condTT">
+ <port name="tt_Emergence_MaxLAI">
+<double>820.000000000000000</double>
+</port>
+ <port name="tt_LeafSen_Maturity">
+<double>355.000000000000000</double>
+</port>
+</condition>
+
+<condition name="cond_z_CropAGB">
+<port name="syncs">
+     <set>
+      <string>DvtStage</string>
+     </set>
+</port>
+</condition>
+
+</experiment>
+</vle_project>

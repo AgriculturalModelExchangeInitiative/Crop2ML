@@ -1,4 +1,4 @@
-<Model id="net.simplace.sim.components.models.lintul.LintulPhenology" name="LintulPhenology">
+<Model name="LintulPhenology" id="net.simplace.sim.components.models.lintul.LintulPhenology">
   <Description>
     <Title>LintulPhenology</Title>
     <Authors>Gunther Krauss, gk@uni-bonn.de</Authors>
@@ -7,37 +7,37 @@
     <Abstract>see documentation at http://www.simplace.net/doc/simplace_modules/class_net.simplace.sim.components.models.lintul.LintulPhenology.html</Abstract>
   </Description>
   <Inputs>
-    <Input id="iDoSow" description="true at the day of sowing" datatype="BOOLEAN" default="false" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
-    <Input id="cAirTemperatureSumMilkripeness" description="Temperature sum when milk ripeness of plant is reached" datatype="DOUBLE" min="0.0" max="7000.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/degree_Celsius_day" />
-    <Input id="cAirTemperatureSumAnthesis" description="Temperature sum after energence when anthesis of plant is reached" datatype="DOUBLE" min="0.0" max="5000.0" default="650.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/degree_Celsius_day" />
-    <Input id="iDoHarvest" description="true at the day of harvest" datatype="BOOLEAN" default="false" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
-    <Input id="cAirTemperatureSumMaturity" description="Temperature sum after emergency when maturity of plant is reached" datatype="DOUBLE" min="0.0" max="10000.0" default="1350.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/degree_Celsius_day" />
-    <Input id="cRelativeDayOfEmergence" description="Days between sowing and emergence" datatype="INT" min="0" max="366" default="11" unit="http://www.wurvoc.org/vocabularies/om-1.8/day" />
-    <Input id="iRTEFFAnt" description="Daily effective temperature before anthesis" datatype="DOUBLE" min="0.0" max="40.0" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/degree_Celsius" />
-    <Input id="iRTEFFMat" description="Daily effective temperature after anthesis" datatype="DOUBLE" min="0.0" max="40.0" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/degree_Celsius" />
+    <Input name="iDoSow" description="true at the day of sowing" datatype="BOOLEAN" default="false" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" inputtype="variable" variablecategory="auxiliary" />
+    <Input name="cAirTemperatureSumMilkripeness" description="Temperature sum when milk ripeness of plant is reached" datatype="DOUBLE" min="0.0" max="7000.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/degree_Celsius_day" inputtype="parameter" parametercategory="constant" />
+    <Input name="cAirTemperatureSumAnthesis" description="Temperature sum after energence when anthesis of plant is reached" datatype="DOUBLE" min="0.0" max="5000.0" default="650.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/degree_Celsius_day" inputtype="parameter" parametercategory="constant" />
+    <Input name="iDoHarvest" description="true at the day of harvest" datatype="BOOLEAN" default="false" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" inputtype="variable" variablecategory="auxiliary" />
+    <Input name="cAirTemperatureSumMaturity" description="Temperature sum after emergency when maturity of plant is reached" datatype="DOUBLE" min="0.0" max="10000.0" default="1350.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/degree_Celsius_day" inputtype="parameter" parametercategory="constant" />
+    <Input name="cRelativeDayOfEmergence" description="Days between sowing and emergence" datatype="INT" min="0" max="366" default="11" unit="http://www.wurvoc.org/vocabularies/om-1.8/day" inputtype="variable" variablecategory="auxiliary" />
+    <Input name="iRTEFFAnt" description="Daily effective temperature before anthesis" datatype="DOUBLE" min="0.0" max="40.0" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/degree_Celsius" inputtype="variable" variablecategory="auxiliary" />
+    <Input name="iRTEFFMat" description="Daily effective temperature after anthesis" datatype="DOUBLE" min="0.0" max="40.0" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/degree_Celsius" inputtype="variable" variablecategory="auxiliary" />
   </Inputs>
   <Outputs>
-    <Output id="MilkripenessDate" description="Date of Milkripeness" datatype="DATE" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
-    <Output id="EmergenceDOY" description="DOY of Emergence" datatype="INT" default="0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
-    <Output id="SowingDOY" description="DOY of Sowing" datatype="INT" default="0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
-    <Output id="EmergenceDate" description="Date of Emergence" datatype="DATE" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
-    <Output id="rDevStageRate" description="increment of the dev stage" datatype="DOUBLE" min="0.0" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/reciprocal_day" />
-    <Output id="IsEmergence" description="true at the emergence date" datatype="BOOLEAN" default="false" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
-    <Output id="SowingDate" description="Date of Sowing" datatype="DATE" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
-    <Output id="MaturityDate" description="Date of Maturity" datatype="DATE" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
-    <Output id="sTSUM" description="Temperature sum as accumulated effective temperature after emergence" datatype="DOUBLE" min="0.0" max="10000.0" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/degree_Celsius_day" />
-    <Output id="IsMilkripeness" description="true at the milkripeness date" datatype="BOOLEAN" default="false" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
-    <Output id="RTEFF" description="Daily effective temperature used to calculate the temperature sum and development stage at a given day" datatype="DOUBLE" min="0.0" max="40.0" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/degree_Celsius" />
-    <Output id="MaturityDOY" description="DOY of Maturity" datatype="INT" default="0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
-    <Output id="IsMaturity" description="true at the maturity date" datatype="BOOLEAN" default="false" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
-    <Output id="MilkripenessDOY" description="DOY of Milkripeness" datatype="INT" default="0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
-    <Output id="IsSowing" description="true at the sowing date" datatype="BOOLEAN" default="false" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
-    <Output id="IsPhenologyEvent" description="true if either sowing/emergence/anthesis/maturity date occured" datatype="BOOLEAN" default="false" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
-    <Output id="AnthesisDate" description="Date of Anthesis" datatype="DATE" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
-    <Output id="sDevStage" description="Development stage of the crop (1.0=anthesis, 2.0=physiological maturity" datatype="DOUBLE" min="0.0" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
-    <Output id="CropCycleCount" description="Number of growth periods, starting with 0 and incremented on harvest. Used for crop rotation." datatype="INT" min="0" max="100" default="0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
-    <Output id="AnthesisDOY" description="DOY of Anthesis" datatype="INT" default="0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
-    <Output id="IsAnthesis" description="true at the anthesis date" datatype="BOOLEAN" default="false" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+    <Output name="MilkripenessDate" description="Date of Milkripeness" datatype="DATE" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" variablecategory="auxiliary" />
+    <Output name="EmergenceDOY" description="DOY of Emergence" datatype="INT" default="0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" variablecategory="auxiliary" />
+    <Output name="SowingDOY" description="DOY of Sowing" datatype="INT" default="0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" variablecategory="auxiliary" />
+    <Output name="EmergenceDate" description="Date of Emergence" datatype="DATE" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" variablecategory="auxiliary" />
+    <Output name="rDevStageRate" description="increment of the dev stage" datatype="DOUBLE" min="0.0" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/reciprocal_day" variablecategory="rate" />
+    <Output name="IsEmergence" description="true at the emergence date" datatype="BOOLEAN" default="false" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" variablecategory="auxiliary" />
+    <Output name="SowingDate" description="Date of Sowing" datatype="DATE" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" variablecategory="auxiliary" />
+    <Output name="MaturityDate" description="Date of Maturity" datatype="DATE" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" variablecategory="auxiliary" />
+    <Output name="sTSUM" description="Temperature sum as accumulated effective temperature after emergence" datatype="DOUBLE" min="0.0" max="10000.0" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/degree_Celsius_day" variablecategory="state" />
+    <Output name="IsMilkripeness" description="true at the milkripeness date" datatype="BOOLEAN" default="false" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" variablecategory="auxiliary" />
+    <Output name="RTEFF" description="Daily effective temperature used to calculate the temperature sum and development stage at a given day" datatype="DOUBLE" min="0.0" max="40.0" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/degree_Celsius" variablecategory="auxiliary" />
+    <Output name="MaturityDOY" description="DOY of Maturity" datatype="INT" default="0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" variablecategory="auxiliary" />
+    <Output name="IsMaturity" description="true at the maturity date" datatype="BOOLEAN" default="false" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" variablecategory="auxiliary" />
+    <Output name="MilkripenessDOY" description="DOY of Milkripeness" datatype="INT" default="0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" variablecategory="auxiliary" />
+    <Output name="IsSowing" description="true at the sowing date" datatype="BOOLEAN" default="false" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" variablecategory="auxiliary" />
+    <Output name="IsPhenologyEvent" description="true if either sowing/emergence/anthesis/maturity date occured" datatype="BOOLEAN" default="false" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" variablecategory="auxiliary" />
+    <Output name="AnthesisDate" description="Date of Anthesis" datatype="DATE" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" variablecategory="auxiliary" />
+    <Output name="sDevStage" description="Development stage of the crop (1.0=anthesis, 2.0=physiological maturity" datatype="DOUBLE" min="0.0" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" variablecategory="state" />
+    <Output name="CropCycleCount" description="Number of growth periods, starting with 0 and incremented on harvest. Used for crop rotation." datatype="INT" min="0" max="100" default="0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" variablecategory="auxiliary" />
+    <Output name="AnthesisDOY" description="DOY of Anthesis" datatype="INT" default="0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" variablecategory="auxiliary" />
+    <Output name="IsAnthesis" description="true at the anthesis date" datatype="BOOLEAN" default="false" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" variablecategory="auxiliary" />
   </Outputs>
   <Algorithm language="java" platform="simplace">LocalDateTime tCurrentDate = (LocalDateTime) getVariable(FWSimVarMap.CURRENT_DATE).getValue();
     Integer tCurrentDOY = (Integer) getVariable(FWSimVarMap.CURRENT_DOY).getValue();

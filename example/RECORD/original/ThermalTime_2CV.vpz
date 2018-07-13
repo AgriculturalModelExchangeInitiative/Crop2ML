@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE vle_project PUBLIC '-//VLE TEAM//DTD Strict//EN' 'http://www.vle-project.org/vle-1.1.0.dtd'>
+<vle_project date="2012-Oct-03 13:01:13" author="Eric Casellas" version="1.1.x">
+<structures>
+<model type="coupled" name="TT_2CV" width="2184" height="1280">
+   <submodels>
+    <model type="atomic" x="154" y="34" observables="vueTT_1" name="TT" dynamics="dynCropTT_1" conditions="cond_z_TT_1,condTT_1" width="100" height="90">
+     <in>
+      <port name="Harvesting"/>
+      <port name="Sowing"/>
+      <port name="Tmax"/>
+      <port name="Tmin"/>
+     </in>
+     <out>
+      <port name="DvtStage"/>
+      <port name="TT"/>
+      <port name="tt_em_mat"/>
+     </out>
+    </model>
+   </submodels>
+   <connections/>
+  </model>
+</structures>
+<dynamics>
+<dynamic library="CropTT" name="dynCropTT_1" package="2CV"/>
+ </dynamics>
+<experiment name="2CV_parcelle">
+<conditions>
+
+<condition name="condTT">
+ <port name="tt_Emergence_MaxLAI">
+<double>820.000000000000000</double>
+</port>
+ <port name="tt_LeafSen_Maturity">
+<double>355.000000000000000</double>
+</port>
+
+<!--paramètres cachés par défaut à l'utilisateur-->
+ <port name="tt_Sowing_Emergence">
+<double>80.000000000000000</double>
+</port>
+ <port name="tt_MaxLAI_Flowering">
+<double>90.000000000000000</double>
+</port>
+ <port name="tt_Flowering_GrainAbort">
+<double>250.000000000000000</double>
+</port>
+ <port name="tt_GrainAbort_LeafSen">
+<double>245.000000000000000</double>
+</port>
+</condition>
+
+ </conditions>
+<!--paramètres cachés par défaut à l'utilisateur-->
+
+</experiment>
+</vle_project>

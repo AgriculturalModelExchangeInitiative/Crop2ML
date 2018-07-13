@@ -1,4 +1,4 @@
-<Model id="net.simplace.sim.components.experimental.amei.Partitioning" name="Partitioning">
+<Model name="Partitioning" id="net.simplace.sim.components.experimental.amei.Partitioning">
   <Description>
     <Title>Partitioning</Title>
     <Authors>Gunther Krauss, gk@uni-bonn.de</Authors>
@@ -7,29 +7,29 @@
     <Abstract>see documentation at http://www.simplace.net/doc/simplace_modules/class_net.simplace.sim.components.experimental.amei.Partitioning.html</Abstract>
   </Description>
   <Inputs>
-    <Input id="cPartitionNStressReduction" description="N Stress on Partitioning" datatype="DOUBLE" min="0.0" max="1.0" default="1.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
-    <Input id="cLeavesPartitioningTableDVS" description="DVS for fraction of total dry matter to leaves (c.f. FLVTB)" datatype="DOUBLEARRAY" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
-    <Input id="iTRANRF" description="Transpiration reduction factor" datatype="DOUBLE" min="0.0" max="1.0" default="1.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
-    <Input id="cStemsPartitioningTableFraction" description="Fraction of total dry matter to stems as function of DVS (c.f. FSTTB)" datatype="DOUBLEARRAY" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
-    <Input id="cLeavesPartitioningTableFraction" description="Fraction of total dry matter to leaves as function of DVS (c.f. FLVTB)" datatype="DOUBLEARRAY" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
-    <Input id="cFSOTB" description="Fractions Table Storage Organs" datatype="DOUBLEARRAY" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
-    <Input id="cStemsPartitioningTableDVS" description="DVS for fraction of total dry matter to stems (c.f. FSTTB)" datatype="DOUBLEARRAY" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
-    <Input id="cFRTTB" description="Fractions Table Root" datatype="DOUBLEARRAY" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
-    <Input id="cFSTTB" description="Fractions Table Stems" datatype="DOUBLEARRAY" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
-    <Input id="cStorageOrgansPartitioningTableDVS" description="DVS for fraction of total dry matter to storage organs (c.f. FSOTB)" datatype="DOUBLEARRAY" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
-    <Input id="iNitrogenNutritionIndex" description="Nitrogen Nutrition Index" datatype="DOUBLE" min="0.0" max="1.0" default="1.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
-    <Input id="cRootsPartitioningTableDVS" description="DVS for fraction of total dry matter to roots (c.f. FRTTB)" datatype="DOUBLEARRAY" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
-    <Input id="iDoSow" description="if Sowingdate reached fraction tables are initialized" datatype="BOOLEAN" default="false" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
-    <Input id="cFLVTB" description="Fractions Table Leaves" datatype="DOUBLEARRAY" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
-    <Input id="cRootsPartitioningTableFraction" description="Fraction of total dry matter to roots as function of DVS (c.f. FRTTB)" datatype="DOUBLEARRAY" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
-    <Input id="iDevStage" description="Development stage of the plant" datatype="DOUBLE" min="0.0" max="3.0" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
-    <Input id="cStorageOrgansPartitioningTableFraction" description="Fraction of total dry matter to storage organs as function of DVS (c.f. FSOTB)" datatype="DOUBLEARRAY" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+    <Input name="cPartitionNStressReduction" description="N Stress on Partitioning" datatype="DOUBLE" min="0.0" max="1.0" default="1.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" inputtype="parameter" parametercategory="constant" />
+    <Input name="cLeavesPartitioningTableDVS" description="DVS for fraction of total dry matter to leaves (c.f. FLVTB)" datatype="DOUBLEARRAY" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" inputtype="parameter" parametercategory="constant" />
+    <Input name="iTRANRF" description="Transpiration reduction factor" datatype="DOUBLE" min="0.0" max="1.0" default="1.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" inputtype="variable" variablecategory="auxiliary" />
+    <Input name="cStemsPartitioningTableFraction" description="Fraction of total dry matter to stems as function of DVS (c.f. FSTTB)" datatype="DOUBLEARRAY" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" inputtype="parameter" parametercategory="constant" />
+    <Input name="cLeavesPartitioningTableFraction" description="Fraction of total dry matter to leaves as function of DVS (c.f. FLVTB)" datatype="DOUBLEARRAY" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" inputtype="parameter" parametercategory="constant" />
+    <Input name="cFSOTB" description="Fractions Table Storage Organs" datatype="DOUBLEARRAY" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" inputtype="parameter" parametercategory="constant" />
+    <Input name="cStemsPartitioningTableDVS" description="DVS for fraction of total dry matter to stems (c.f. FSTTB)" datatype="DOUBLEARRAY" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" inputtype="parameter" parametercategory="constant" />
+    <Input name="cFRTTB" description="Fractions Table Root" datatype="DOUBLEARRAY" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" inputtype="parameter" parametercategory="constant" />
+    <Input name="cFSTTB" description="Fractions Table Stems" datatype="DOUBLEARRAY" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" inputtype="parameter" parametercategory="constant" />
+    <Input name="cStorageOrgansPartitioningTableDVS" description="DVS for fraction of total dry matter to storage organs (c.f. FSOTB)" datatype="DOUBLEARRAY" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" inputtype="parameter" parametercategory="constant" />
+    <Input name="iNitrogenNutritionIndex" description="Nitrogen Nutrition Index" datatype="DOUBLE" min="0.0" max="1.0" default="1.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" inputtype="variable" variablecategory="auxiliary" />
+    <Input name="cRootsPartitioningTableDVS" description="DVS for fraction of total dry matter to roots (c.f. FRTTB)" datatype="DOUBLEARRAY" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" inputtype="parameter" parametercategory="constant" />
+    <Input name="iDoSow" description="if Sowingdate reached fraction tables are initialized" datatype="BOOLEAN" default="false" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" inputtype="variable" variablecategory="auxiliary" />
+    <Input name="cFLVTB" description="Fractions Table Leaves" datatype="DOUBLEARRAY" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" inputtype="parameter" parametercategory="constant" />
+    <Input name="cRootsPartitioningTableFraction" description="Fraction of total dry matter to roots as function of DVS (c.f. FRTTB)" datatype="DOUBLEARRAY" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" inputtype="parameter" parametercategory="constant" />
+    <Input name="iDevStage" description="Development stage of the plant" datatype="DOUBLE" min="0.0" max="3.0" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" inputtype="variable" variablecategory="auxiliary" />
+    <Input name="cStorageOrgansPartitioningTableFraction" description="Fraction of total dry matter to storage organs as function of DVS (c.f. FSOTB)" datatype="DOUBLEARRAY" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" inputtype="parameter" parametercategory="constant" />
   </Inputs>
   <Outputs>
-    <Output id="FractionStems" description="Fraction part going to Stems compartment" datatype="DOUBLE" min="0.0" max="1.0" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
-    <Output id="FractionStorageOrgans" description="Fraction part going to Storage Organs compartment" datatype="DOUBLE" min="0.0" max="1.0" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
-    <Output id="FractionLeaves" description="Fraction part going to Leaves compartment" datatype="DOUBLE" min="0.0" max="1.0" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
-    <Output id="FractionRoot" description="Fraction part going to Root compartment" datatype="DOUBLE" min="0.0" max="1.0" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" />
+    <Output name="FractionStems" description="Fraction part going to Stems compartment" datatype="DOUBLE" min="0.0" max="1.0" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" variablecategory="auxiliary" />
+    <Output name="FractionStorageOrgans" description="Fraction part going to Storage Organs compartment" datatype="DOUBLE" min="0.0" max="1.0" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" variablecategory="auxiliary" />
+    <Output name="FractionLeaves" description="Fraction part going to Leaves compartment" datatype="DOUBLE" min="0.0" max="1.0" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" variablecategory="auxiliary" />
+    <Output name="FractionRoot" description="Fraction part going to Root compartment" datatype="DOUBLE" min="0.0" max="1.0" default="0.0" unit="http://www.wurvoc.org/vocabularies/om-1.8/one" variablecategory="auxiliary" />
   </Outputs>
   <Algorithm language="java" platform="simplace">double FRTWET = FSTFunctions.AFGEN(cRootsPartitioningTableDVS, cRootsPartitioningTableFraction, DevStage.getValue());
     if (TRANRF.getValue() &lt; NitrogenNutritionIndex.getValue()) {
