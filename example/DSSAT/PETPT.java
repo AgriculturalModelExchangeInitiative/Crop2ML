@@ -8,7 +8,7 @@ public class PETPT {
 		double eo;
 		double TD = 0.60*TMAX + 0.40*TMIN;
 		if (XHLAI <= 0.0) {
-                    ALBEDO = MSALB;
+			ALBEDO = MSALB;
 		} else {
 			ALBEDO = 0.23 - (0.23-MSALB)*Math.exp(-0.75*XHLAI);
 		}
@@ -18,7 +18,7 @@ public class PETPT {
 		if (TMAX < 35.0) {
             eo = EEQ*((TMAX-35.0)*0.05+1.1);
 		} else {
-            eo =  EEQ*0.01*Math.exp(0.18*(TMAX+20.0));
+            eo = EEQ*0.01*Math.exp(0.18*(TMAX+20.0));
 		}
 
 		EO = Math.max(eo, 0.0001d);

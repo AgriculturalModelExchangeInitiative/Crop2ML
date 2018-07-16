@@ -13,7 +13,7 @@ def ETPT(double MSALB, double SRAD, double TMAX, double TMIN, double XHLAI):
 	if (TMAX < 35.0):
 		eo = EEQ*((TMAX-35.0)*0.05+1.1
 	else:
-		eo =  EEQ*0.01*exp(0.18*(TMAX+20.0)
+		eo = EEQ*0.01*exp(0.18*(TMAX+20.0)
 
 	EO = max(eo, 0.0001)
 

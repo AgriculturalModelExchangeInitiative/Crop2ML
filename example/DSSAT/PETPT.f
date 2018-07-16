@@ -17,7 +17,7 @@ IF (TMAX .GT. 35.0) THEN
 ELSE IF (TMAX .LT. 5.0) THEN
 	EO = EEQ*0.01*EXP(0.18*(TMAX+20.0))
 ENDIF
-!###  EO = MAX(EO,0.0)   !gives error in DECRAT_C
+
 EO = MAX(EO,0.0001)
 
 RETURN

@@ -18,7 +18,7 @@
 </Outputs>
 <Algorithm language="Java" platform="" filename="PETPT.java" function="PETPT">
 </Algorithm>
-<Algorithm language="Fortran" platform="" filename="PETPT.f" function="PETPT">
+<Algorithm language="Fortran" platform="DSSAT" filename="PETPT.f" function="PETPT">
 </Algorithm>
 <Algorithm language="Cython" platform="" filename="PETPT.pyx" function="PETPT">
 </Algorithm>

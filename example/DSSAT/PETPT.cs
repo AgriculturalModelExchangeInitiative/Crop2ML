@@ -7,8 +7,7 @@ public class ETP
 		double SLANG;
 		double EEQ;
 		double eo;
-        double EO;
-		double TD = 0.60*TMAX + 0.40*TMIN;
+     	double TD = 0.60*TMAX + 0.40*TMIN;
 		if (XHLAI <= 0.0) {
                     ALBEDO = MSALB;
 		} else {
@@ -20,7 +19,7 @@ public class ETP
 		if (TMAX < 35.0) {
             eo = EEQ*((TMAX-35.0)*0.05+1.1);
 		} else {
-            eo =  EEQ*0.01*Math.Exp(0.18*(TMAX+20.0));
+            eo = EEQ*0.01*Math.Exp(0.18*(TMAX+20.0));
 		}
 
 		EO = Math.Max(eo, 0.0001d);
