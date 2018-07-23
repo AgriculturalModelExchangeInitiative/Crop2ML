@@ -1,9 +1,9 @@
-<!ELEMENT Model (Description,Inputs?,Outputs?,Algorithm,Parametersets,Testsets)>
+<!ELEMENT Model (Description,Inputs?,Outputs?,Algorithm+,Parametersets,Testsets)>
 <!ATTLIST Model
   name CDATA #REQUIRED
   id CDATA #REQUIRED
   timestep CDATA #IMPLIED
-  version CDATA #REQUIRED
+  version CDATA #REQUIRED>
 
 <!ELEMENT Description (Title,Authors,Institution,URI?,Reference?,Abstract)>
 <!ATTLIST Description>
