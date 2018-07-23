@@ -1,5 +1,5 @@
 
-from Math import exp
+from math import exp
 def ETPT(double MSALB, double SRAD, double TMAX, double TMIN, double XHLAI):
 	cdef double ALBEDO, EEQ, SLANG, TD, eo, EO
 	TD = 0.60*TMAX + 0.40*TMIN
