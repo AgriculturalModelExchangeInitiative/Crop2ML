@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Model SYSTEM "ModelUnit.dtd">
+<Model id="1" name="CalculateVernalizationProgress" timestep="1" version="1.0">
+    <Description>
+        <Title>VernalizationProgress Model</Title>
+        <Authors>Pierre MARTRE</Authors>
+        <Institution>INRA Montpellier</Institution>
+        <Reference>absolutely non</Reference>
+        <Abstract><![CDATA[Calculate progress (VernaProg) towards vernalization, but there 
+        			is no vernalization below minTvern (default = 0°C) 
+        			and above maxTvern (default = 17°C). The maximum value of VernaProg is 1.
+        			Progress towards full vernalization is a linear function of shoot 
+        			temperature (soil temperature until leaf # reach MaxLeafSoil and then
+        			 canopy temperature)]]>
+    	</Abstract>
+    </Description>
+    <Inputs>
+        <Input name="DayLength" description="" parametercategory="species" datatype="DOUBLE" min="0" max="10000" default="12.3037621834005" unit="m²/m²" uri="some url" inputtype="variable"/>
+        <Input name="DeltaTT" description=" " parametercategory="species" inputtype ="variable" datatype="DOUBLE" min="0" max="10000" default="20.3429985011972" unit="MJ/(°C.d.m²)²" uri="some url"/>
+        <Input name="cumulTT" description="cumul thermal times at currentdate"  datatype="DOUBLE" min="-200" max="500" default="112.330110409888" unit="plant/m²" uri="some url" inputtype = "variable"/>
+        <Input name="LeafNumber" description="Actual number of phytomers" parametercategory="species" datatype="DOUBLE" min="280" max="1000" default="0" unit="leaf" uri="some url" inputtype = "variable"/>
+        <Input name="calendar" description="The dictionary registers the date when the crop phase change, the growthstage and the cumulTT at the growthstage" parametercategory="species" datatype="DICTIONARY" min="" max="" default="{'ZC_00_Sowing': {'2007-3-21': 0.0}}" unit="unitless" uri="some url" inputtype = "variable"/>
+         <Input name="MinTvern" description="Minimum temperature for vernalization to occur" parametercategory="species" datatype="DOUBLE" min="-20" max="60" default="0.0" unit="°C" uri="some url" inputtype = "parameter"/>
+        <Input name="IntTvern" description="Intermediate temperature for vernalization to occur" parametercategory="species" datatype="DOUBLE" min="-20" max="60" default=" 11.0" unit="°C" uri="some url" inputtype = "parameter"/>
+        <Input name="VAI" description="Response of vernalization rate to temperature" parametercategory="species" datatype="DOUBLE" min="0" max="1" default=" 0.015" unit="1/(d.°C)" uri="some url" inputtype = "parameter"/>
+        <Input name="VBEE" description="Vernalization rate at 0°C" parametercategory="species" datatype="DOUBLE" min="0" max="1" default="0.01" unit="1/d" uri="some url" inputtype = "parameter"/>
+        <Input name="MinDL" description="Threshold daylength below which it does influence vernalization rate" parametercategory="species" datatype="INT" min="12" max="24" default="8.0" unit="h" uri="some url" inputtype = "parameter"/>
+        <Input name="MaxDL" description="Saturating photoperiod above which final leaf number is not influenced by daylength" parametercategory="species" datatype="INT" min="0" max="24" default="15.0" unit="h" uri="some url" inputtype = "parameter"/>
+        <Input name="MaxTvern" description="Maximum temperature for vernalization to occur" parametercategory="species" datatype="DOUBLE" min="-20" max="60" default=" 23.0" unit="°C" uri="some url" inputtype = "parameter"/>
+        <Input name="PNini" description="Number of primorida in the apex at emergence" parametercategory="species" datatype="INT" min="0" max="24" default="4.0" unit="primordia" uri="some url" inputtype = "parameter"/>
+        <Input name="AMXLFNO" description="Absolute maximum leaf number" parametercategory="species" datatype="DOUBLE" min="0" max="25" default="24.0" unit="leaf" uri="some url" inputtype = "parameter"/>
+        <Input name="Vernaprog" description="progression on a 0  to 1 scale of the vernalization" parametercategory="species" datatype="DOUBLE" min="0" max="1" default=" 0.5517254187376879" unit="unitless" uri="some url" inputtype = "parameter"/>
+        <Input name="currentdate" description=""  datatype="DOUBLE" min="" max="" default="3/27/2007" unit="day" uri="some url" inputtype = "variable"/>
+        <Input name="IsVernalizable" description="true if the plant is vernalizable"  datatype="INT" min="0" max="1" default="1" unit="unitless" uri="some url" inputtype = "parameter"/>
+        <Input name="MinFinalNumber" description="minimum final leaf number"  datatype="DOUBLE" min="0" max="1" default="5.5" unit="leaf" uri="some url" inputtype = "variable" variablecategory="state"/>
+     
+    </Inputs>
+    <Outputs>
+        <Output name="Vernaprog" description="progression on a 0  to 1 scale of the vernalization" datatype="DOUBLE" min="0" max="10000"  unit="unitless" uri="some url" />
+        <Output name="MinFinalNumber" description="minimum final leaf number" datatype="DOUBLE" min="0" max="10000" unit="leaf" uri="some url" />
+		<Output name="calendar" description="minimum final leaf number" datatype="DOUBLE" min="0" max="10000" unit="leaf" uri="some url" />
+        
+   	
+    </Outputs>
+    <Function name = "CalendarSet" type="external" language = "C#" filename ="Calendar.cs"  />     
+    <Function name ="CalendarSet" type= "external" language = "python" filename ="Calendar.py" />
+    
+    
+    
+    <Algorithm  language="C#" platform="" filename="VernalizationProgress.cs" function="CalculateVernalizationProgress"/>
+    <Algorithm  language="python" platform="" filename="VernalizationProgress.py" function="CalculateVernalizationProgress"/>
+
+    <Parametersets>
+        <Parameterset name="wheat" description="some values in there" >
+        	<Param name="IsVernalizable">5.0</Param>
+        </Parameterset>
+     </Parametersets>
+     <Testsets>
+        <Testset name="check wheat model1" parameterset = "wheat" description="some values in there" >
+        	<Test name ="test_wheat1">
+        		<InputValue name="cumulTT">4</InputValue>        		
+				<OutputValue name="Vernaprog" precision ="2">0.64</OutputValue>
+				<OutputValue name="MinFinalNumber" precision ="2">5.5</OutputValue>
+				<OutputValue name="calendar" precision ="2">{'ZC_00_Sowing': {'2007-3-21': 0.0}}</OutputValue>        	
+        	</Test>
+        </Testset>
+
+      </Testsets>
+ 	
+</Model>

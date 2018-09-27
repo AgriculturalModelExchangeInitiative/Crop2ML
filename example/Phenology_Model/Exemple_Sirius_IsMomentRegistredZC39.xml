@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Model SYSTEM "ModelUnit.dtd">
+<Model id="1" name="CumulTTFrom" timestep="1" version="1.0">
+    <Description>
+        <Title>IsMomentRegistredZC39 Model</Title>
+        <Authors>Pierre Martre</Authors>
+        <Institution>INRA Montpellier</Institution>
+        <Reference>absolutely non</Reference>
+        <Abstract>if ZC39 is already Registred </Abstract>
+    </Description>
+    <Inputs>
+        <Input name="calendar" description="calendar"  datatype="DICTIONARY" min="" max="" default="" unit="UNITLESS" uri="some url" inputtype = "variable"/>
+    </Inputs>
+    <Outputs>
+        <Output name="isMomentRegistredZC_39" description=" If ZC_39 is registred " datatype="DOUBLE" min="0" max="1"  unit="" uri="some url"/>
+
+    </Outputs>
+
+   	<Function name = "IsMomentRegistred" type="external" language = "C#" filename ="Calendar.cs"  />     
+    <Function name ="IsMomentRegistred" type= "external" language = "python" filename ="Calendar.py" />
+    
+    
+    <Algorithm  language="C#" platform="" filename="IsMomentRegistred.cs" function="IsMomentRegistredModule" />
+    <Algorithm  language="python" platform="" filename="IsMomentRegistred.py" function="IsMomentRegistredModule" />
+
+
+    <Parametersets>
+        <Parameterset name="wheat" description="some values in there" >
+        	<Param name="SwitchMaize">0</Param>
+        </Parameterset>
+     </Parametersets>
+     <Testsets>
+        <Testset name="check wheat model" parameterset = "wheat" description="some values in there" >
+        	<Test name ="test_wheat1">
+        		<InputValue name="calendar">{'FloralInitiation': {'4/9/2007': 354.582294511779}, 'ZC_21_MainShootPlus1Tiller': {'4/5/2007': 280.570678654207}, 'ZC_31_1stNodeDetectable': {'4/15/2007': 487.544313430698}, 'ZC_00_Sowing': {'3/21/2007': 0.0}, 'ZC_23_MainShootPlus3Tiller': {'4/14/2007': 467.23305195298}, 'ZC_39_FlagLeafLiguleJustVisible': {'4/29/2007': 741.510096671757}, 'ZC_32_2ndNodeDetectable': {'4/19/2007': 560.665248444002}, 'TerminalSpikelet': {'4/11/2007': 402.042720581446}, 'ZC_65_Anthesis': {'5/11/2007': 954.59002776961}, 'EndVernalisation': {'3/30/2007': 157.969706915664}, 'ZC_22_MainShootPlus2Tiller': {'4/10/2007': 378.453152853726}, 'ZC_10_Emergence': {'3/27/2007': 112.330110409888}, 'ZC_37_FlagLeafJustVisible': {'4/24/2007': 646.389617338974}, 'Heading': {'5/5/2007': 853.999637026622}, 'ZC_30_PseudoStemErection': {'4/12/2007': 424.98704708663}}</InputValue>
+				<OutputValue name="isMomentRegistredZC_91" precision ="2">1</OutputValue>
+        	</Test>
+        </Testset>
+      </Testsets>
+ 	
+</Model>
+
