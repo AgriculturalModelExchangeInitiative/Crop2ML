@@ -15,8 +15,8 @@
     	</Abstract>
     </Description>
     <Inputs>
-        <Input name="DayLength" description="" parametercategory="species" datatype="DOUBLE" min="0" max="10000" default="12.3037621834005" unit="m²/m²" uri="some url" inputtype="variable"/>
-        <Input name="DeltaTT" description=" " parametercategory="species" inputtype ="variable" datatype="DOUBLE" min="0" max="10000" default="20.3429985011972" unit="MJ/(°C.d.m²)²" uri="some url"/>
+        <Input name="DayLength" description="" datatype="DOUBLE" min="0" max="10000" default="12.3037621834005" unit="m²/m²" uri="some url" inputtype="variable"/>
+        <Input name="DeltaTT" description=" " inputtype ="variable" datatype="DOUBLE" min="0" max="10000" default="20.3429985011972" unit="MJ/(°C.d.m²)²" uri="some url"/>
         <Input name="cumulTT" description="cumul thermal times at currentdate"  datatype="DOUBLE" min="-200" max="500" default="112.330110409888" unit="plant/m²" uri="some url" inputtype = "variable"/>
         <Input name="LeafNumber" description="Actual number of phytomers" parametercategory="species" datatype="DOUBLE" min="280" max="1000" default="0" unit="leaf" uri="some url" inputtype = "variable"/>
         <Input name="calendar" description="The dictionary registers the date when the crop phase change, the growthstage and the cumulTT at the growthstage" parametercategory="species" datatype="DICTIONARY" min="" max="" default="{'ZC_00_Sowing': {'2007-3-21': 0.0}}" unit="unitless" uri="some url" inputtype = "variable"/>
