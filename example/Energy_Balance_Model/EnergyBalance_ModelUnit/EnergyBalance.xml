@@ -66,7 +66,9 @@
     <Algorithm language="C++" platform="" filename="EnergyBalance.cpp" function="EnergyBalance">
     </Algorithm>
     <Algorithm language="Fortran" platform="" filename="EnergyBalance.f" function="EnergyBalance">
-    </Algorithm>   
+    </Algorithm>
+    <Algorithm language="R" platform="" filename="EnergyBalance.r" function="EnergyBalance">
+    </Algorithm>    
     
 
     <Parametersets>

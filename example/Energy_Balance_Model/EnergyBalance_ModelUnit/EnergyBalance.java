@@ -1,4 +1,3 @@
-package sirius;
 public class EnergyBalance {
 
     static void EnergyBalance(double extraSolarRadiation, double VPDair, double maxTair, double minTair, double vaporPressure,
