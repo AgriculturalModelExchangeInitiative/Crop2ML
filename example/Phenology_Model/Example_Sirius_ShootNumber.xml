@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Model SYSTEM "ModelUnit.dtd">
+<Model id="1" name="CalculateShootNumber" timestep="1" version="1.0">
+    <Description>
+        <Title>CalculateShootNumber Model</Title>
+        <Authors>Pierre MARTRE</Authors>
+        <Institution>INRA Montpellier</Institution>
+        <Reference>absolutely non</Reference>
+        <Abstract>calculate the shoot number and update the related variables if needed</Abstract>
+    </Description>
+    <Inputs>
+        <Input name="CanopyShootNumber" description="shoot number for the whole canopy" parametercategory="species" datatype="DOUBLE" min="0" max="10000" default="0" unit="shoot/m²" uri="some url" inputtype="variable"/>
+        <Input name="LeafNumber" description=" " parametercategory="species" inputtype ="variable" datatype="INT" min="0" max="10000" default="0" unit="leaf" uri="some url"/>
+        <Input name="SowingDensity" description="number of plant /m²" parametercategory="constant" datatype="INT" min="0" max="500" default="280" unit="plant/m²" uri="some url" inputtype = "parameter"/>
+        <Input name="TargetFertileShoot" description="max value of shoot number for the canopy" parametercategory="species" datatype="DOUBLE" min="280" max="1000" default="600" unit="shoot" uri="some url" inputtype = "parameter"/>
+        <Input name="tilleringProfile" description=" store the amount of new tiller created at each time a new tiller appears" datatype="DOUBLELIST" min="0" max="10000" default="1" unit="unitless" uri="some url" inputtype="variable"/>
+		<Input name="leafTillerNumberArray" description="store the number of tiller for each leaf layer"  min="0" max="10000"  datatype="DOUBLELIST" unit="leaf" default ="1" uri="some url" inputtype="variable"/>
+		<Input name="TillerNumber" description=" store the amount of tiller created at each time a tiller appears" datatype="INT" min="0" max="10000"  unit="unitless" uri="some url" inputtype="variable"/>
+    </Inputs>
+    <Outputs>
+        <Output name="AverageShootNumberPerPlant" description="average shoot number per plant in the canopy"  datatype="DOUBLE" min="0" max="10000"  unit="shoot/m²" uri="some url"/>
+        <Output name="CanopyShootNumber" description="shoot number for the whole canopy"  datatype="DOUBLE" min="0" max="10000"  unit="m²/m²" uri="some url"/>
+		<Output name="leafTillerNumberArray" description="store the number of tiller for each leaf layer"  min="0" max="10000"  datatype="DOUBLELIST" unit="leaf" uri="some url"/>
+        <Output name="tilleringProfile" description=" store the amount of new tiller created at each time a new tiller appears" datatype="DOUBLELIST" min="0" max="10000"  unit="unitless" uri="some url"/>
+        <Output name="TillerNumber" description=" store the amount of new tiller created at each time a new tiller appears" datatype="INT" min="0" max="10000"  unit="unitless" uri="some url"/>
+   	
+    </Outputs>
+    
+    <Initialization name = "Init" language = "C#" filename ="ShootNumber.cs"/>
+    <Initialization name = "Init" language = "python" filename ="ShootNumber.py" />
+    
+    <Function name = "Fibonnaci" type="internal" language = "C#" filename ="ShootNumber.cs"  />     
+    <Function name ="CalcShootNumber" type= "internal" language = "C#" filename ="ShootNumber.cs" />
+
+    <Function name = "Fibonnaci" type="internal" language = "python" filename ="ShootNumber.py"  />     
+    <Function name ="CalcShootNumber" type= "internal" language = "python" filename ="ShootNumber.py" />	
+    
+    <Algorithm  language="C#" platform="" filename="ShootNumber.cs" function="CalculateShootNumber" />
+	<Algorithm  language="python" platform="" filename="ShootNumber.py" function="CalculateShootNumber" />
+	
+     
+    <Parametersets>
+        <Parameterset name="wheat" description="some values in there" >
+        	<Param name="TargetFertileShoot">600.0</Param>
+        	<Param name="SowingDensity">288.0</Param>
+        </Parameterset>
+     </Parametersets>
+     <Testsets>
+        <Testset name="check wheat model1" parameterset = "wheat" description="some values in there" >
+        	<Test name ="test_wheat1">
+        		<InputValue name="CanopyShootNumber">288.0</InputValue>
+				<InputValue name="LeafNumber">3.461708129569623</InputValue>				
+				<InputValue name="leafTillerNumberArray">[1, 1, 1]</InputValue>
+				<InputValue name="TilleringProfile">[288.0]</InputValue>
+				<OutputValue name="AverageShootNumberPerPlant" precision ="2">2.63</OutputValue>
+				<OutputValue name="leafTillerNumberArray" precision ="2">[1, 1, 1, 2]</OutputValue>
+				<OutputValue name="tilleringProfile" precision ="2">[288.0, 288.0]</OutputValue>
+				<OutputValue name="TillerNumber" precision ="2">2</OutputValue>
+				<OutputValue name="CanopyShootNumber" precision ="2">576</OutputValue>
+       	
+        	</Test>
+        </Testset>
+      </Testsets>
+ 	
+</Model>

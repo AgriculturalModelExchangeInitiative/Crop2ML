@@ -1,7 +1,7 @@
-<!ELEMENT ModelUnit (Description,Inputs?,Outputs?,Initialization?,Function*, Algorithm+,Parametersets,Testsets)>
-<!ATTLIST ModelUnit
+<!ELEMENT Model (Description,Inputs?,Outputs?,Initialization*,Function*, Algorithm+,Parametersets,Testsets)>
+<!ATTLIST Model
   name CDATA #REQUIRED
-  modelid CDATA #REQUIRED
+  id CDATA #REQUIRED
   timestep CDATA #IMPLIED
   version CDATA #REQUIRED>
 
@@ -17,9 +17,9 @@
 <!ELEMENT Algorithm (#PCDATA)>
 <!ATTLIST Algorithm
   language CDATA #REQUIRED
-  platform CDATA #IMPLIED
-  filename CDATA #IMPLIED
-  function CDATA #IMPLIED>
+  platform CDATA #REQUIRED
+  filename CDATA #REQUIRED
+  function CDATA #REQUIRED>
 
 <!ELEMENT Parametersets (Parameterset+)>
 <!ATTLIST Parametersets>
@@ -31,7 +31,7 @@
 <!ATTLIST Function
 	name CDATA #REQUIRED
 	language CDATA #REQUIRED
-	filename CDATA #IMPLIED
+	filename CDATA #REQUIRED
 	type (internal|external) #REQUIRED
 	description CDATA #IMPLIED>
 
@@ -39,7 +39,7 @@
 <!ATTLIST Initialization
 	name CDATA #REQUIRED
 	language CDATA #REQUIRED
-	filename CDATA #IMPLIED>	
+	filename CDATA #REQUIRED>	
 
 <!ELEMENT Title (#PCDATA)>
 <!ATTLIST Title>

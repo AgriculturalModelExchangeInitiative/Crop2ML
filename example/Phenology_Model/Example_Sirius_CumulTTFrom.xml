@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Model SYSTEM "ModelUnit.dtd">
+<Model id="1" name="CumulTTFrom" timestep="1" version="1.0">
+    <Description>
+        <Title>CumulTTFrom Model</Title>
+        <Authors>Pierre Martre</Authors>
+        <Institution>INRA Montpellier</Institution>
+        <Reference>absolutely non</Reference>
+        <Abstract>Calculate CumulTT </Abstract>
+    </Description>
+    <Inputs>
+        <Input name="calendar" description="calendar"  datatype="DICTIONARY" min="" max="" default="" unit="UNITLESS" uri="some url" inputtype = "variable"/>
+        <Input name="SwitchMaize" description="true if maize"  datatype="INT" min="0" max="1" default="0" unit="unitless" uri="some url" inputtype = "parameter"/>
+        <Input name="cumulTT" description="cumul TT to current date" datatype="DATE" min="" max="" default="8" unit="unitless" uri="some url" inputtype = "variable"/>
+      
+    </Inputs>
+    <Outputs>
+        <Output name="cumulTTFromZC_65" description=" cumul TT from ZC_65 to current date " datatype="DOUBLE" min="0" max="5000"  unit="" uri="some url"/>
+        <Output name="cumulTTFromZC_39" description=" cumul TT from ZC_39 to current date " datatype="DOUBLE" min="0" max="5000"  unit="" uri="some url"/>
+        <Output name="cumulTTFromZC_91" description=" cumul TT from ZC_91 to current date " datatype="DOUBLE" min="0" max="5000"  unit="" uri="some url"/>
+    	
+    </Outputs>
+    <Function name = "cumulTTFrom" type="external" language = "C#" filename ="Calendar.cs"  />     
+    <Function name ="cumulTTFrom" type= "external" language = "python" filename ="Calendar.py" />
+
+   	<Function name = "IsMomentRegistred" type="external" language = "C#" filename ="Calendar.cs"  />     
+    <Function name ="IsMomentRegistred" type= "external" language = "python" filename ="Calendar.py" />
+    
+    
+    <Algorithm  language="C#" platform="" filename="CumulFrom.cs" function="CalculateCumulFROM" />
+    <Algorithm  language="python" platform="" filename="CumulFrom.py" function="CalculateCumulFROM" />
+
+
+    <Parametersets>
+        <Parameterset name="wheat" description="some values in there" >
+        	<Param name="SwitchMaize">0</Param>
+        </Parameterset>
+     </Parametersets>
+     <Testsets>
+        <Testset name="check wheat model" parameterset = "wheat" description="some values in there" >
+        	<Test name ="test_wheat1">
+        		<InputValue name="calendar">{'FloralInitiation': {'4/9/2007': 354.582294511779}, 'ZC_21_MainShootPlus1Tiller': {'4/5/2007': 280.570678654207}, 'ZC_31_1stNodeDetectable': {'4/15/2007': 487.544313430698}, 'ZC_00_Sowing': {'3/21/2007': 0.0}, 'ZC_23_MainShootPlus3Tiller': {'4/14/2007': 467.23305195298}, 'ZC_39_FlagLeafLiguleJustVisible': {'4/29/2007': 741.510096671757}, 'ZC_32_2ndNodeDetectable': {'4/19/2007': 560.665248444002}, 'TerminalSpikelet': {'4/11/2007': 402.042720581446}, 'ZC_65_Anthesis': {'5/11/2007': 954.59002776961}, 'EndVernalisation': {'3/30/2007': 157.969706915664}, 'ZC_22_MainShootPlus2Tiller': {'4/10/2007': 378.453152853726}, 'ZC_10_Emergence': {'3/27/2007': 112.330110409888}, 'ZC_37_FlagLeafJustVisible': {'4/24/2007': 646.389617338974}, 'Heading': {'5/5/2007': 853.999637026622}, 'ZC_30_PseudoStemErection': {'4/12/2007': 424.98704708663}}</InputValue>
+				<InputValue name="cumulTT">972.970888983105</InputValue>
+				<OutputValue name="cumulTTFromZC_65" precision ="2">18.38</OutputValue>
+				<OutputValue name="cumulTTFromZC_39" precision ="2">231.46</OutputValue>
+				<OutputValue name="cumulTTFromZC_91" precision ="2">0</OutputValue>
+        	</Test>
+        </Testset>
+      </Testsets>
+ 	
+</Model>

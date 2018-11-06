@@ -25,8 +25,11 @@ public class PETPT {
         return EO;
 	}
     public static void main(String[] args) {
-        // TODO code application logic here
+		// TODO code application logic here
+		
         System.out.println("PETPT: " + (PETPT(2,2,2,1,0.5,0)));
-    }
+        
+	
+	}
     
 }
