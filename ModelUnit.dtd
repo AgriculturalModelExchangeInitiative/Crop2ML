@@ -69,7 +69,7 @@
   min CDATA #IMPLIED
   inputtype (variable|parameter) #REQUIRED
   parametercategory (constant|species|genotypic|soil|private) #IMPLIED
-  variablecategory (state|rate|auxillary) #IMPLIED
+  variablecategory (state|rate|auxiliary) #IMPLIED
   unit CDATA #IMPLIED
   uri CDATA #IMPLIED>
 
