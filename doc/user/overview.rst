@@ -1,8 +1,8 @@
-What is CropML ?
+What is Crop2ML ?
 ================
-| **CropML** is a XML-(JSON-)based language used to represent different biological processes involved
+| **Crop2ML** is a XML-(JSON-)based language used to represent different biological processes involved
 	in the crop models.
-| CropML project aims to provide common framework for defining and exchanging descriptions 
+| Crop2ML project aims to provide common framework for defining and exchanging descriptions 
 	of crop growth models between crop simulation frameworks. 
 
 Objectives
@@ -10,9 +10,9 @@ Objectives
 Our main objectives are:
 
 * define a **declarative language** to describe either an atomic model or a composition of models
-* add semantic dimension to CropML language by annotation of the models to allow the composition of components of different platforms by using the standards of the semantic web
-* develop a library to allow the transformation and the exchange of CropML model between different Crop modelling and simulation platform 
-* provide a **web repository** enabling registration, search and discovery of CropML Models
+* add semantic dimension to Crop2ML language by annotation of the models to allow the composition of components of different platforms by using the standards of the semantic web
+* develop a library to allow the transformation and the exchange of Crop2ML model between different Crop modelling and simulation platform 
+* provide a **web repository** enabling registration, search and discovery of Crop2ML Models
 * facilitate Agricultural Model Exchange Initiative
 
 

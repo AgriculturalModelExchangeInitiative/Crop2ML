@@ -13,8 +13,8 @@ The structure of your new project looks like this:
 
 Crop2ML XML files
 ^^^^^^^^^^^^^^^^^
-Crop2ML directory contains XML files (metadata and experiment) of atomic models and composite model.
-The name of atomic model must start by "unit_" ans the name of composite model by "composition_".
+Crop2ML directory contains model metadata and experiment files (XML files) of atomic models and composite model.
+The name of atomic model must start with "unit_" and the name of composite model by "composition_".
 
 Crop2ML algorithm
 ^^^^^^^^^^^^^^^^^
