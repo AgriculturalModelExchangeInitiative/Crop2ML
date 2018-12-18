@@ -350,7 +350,7 @@ Formal definition of a Composite Model in Crop2ML
 | It contains in addition to all Elements of a model unit a Composition Element for the composition of models.
 | This structure MAY be described by the below tree:
 
-.. image:: images/modelcomposition.png
+.. image:: images/modelcomposition.PNG
 
 | In the next, we define the major elements of a Crop2ML model unit.
 
@@ -384,6 +384,7 @@ The implementation differs from the platform:
 A format of Crop2ML model composite can be presented as this structure:
 
 .. code-block:: xml
+
    	<?xml version="1.0" encoding="UTF-8"?>
    	<!DOCTYPE ModelComposition PUBLIC " " "https://raw.githubusercontent.com/AgriculturalModelExchangeInitiative/Crop2ML/master/ModelComposition.dtd">
    	<ModelComposition name="" id="" version="" timestep = "">

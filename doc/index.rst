@@ -1,5 +1,5 @@
 =====================================
-**Welcome to CropML Documentation**
+**Welcome to Crop2ML Documentation**
 =====================================
 
 Contents:
