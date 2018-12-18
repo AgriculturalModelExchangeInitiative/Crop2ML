@@ -17,8 +17,9 @@ Contents:
    :maxdepth: 1
    :numbered:
       
-	What is CropML? <user/overview.rst>
-	CropML description <user/description.rst>
+	What is Crop2ML? <user/overview.rst>
+	Crop2ML description <user/description.rst>
+    Crop2ML package <user/package.rst>
 	Usecases <user/usecases.rst>
 	License <user/license.rst>
 	Publication <user/Publication.rst>
