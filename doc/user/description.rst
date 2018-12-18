@@ -382,41 +382,45 @@ The implementation differs from the platform:
 **Crop2ML format for model composite**
 
 .. code-block:: xml
-   <?xml version="1.0" encoding="UTF-8"?>
-   <!DOCTYPE ModelComposition PUBLIC " " "https://raw.githubusercontent.com/AgriculturalModelExchangeInitiative/Crop2ML/master/ModelComposition.dtd">
-   <ModelComposition name="" id="" version="" timestep = "">
+   	<?xml version="1.0" encoding="UTF-8"?>
+   	<!DOCTYPE ModelComposition PUBLIC " " "https://raw.githubusercontent.com/AgriculturalModelExchangeInitiative/Crop2ML/master/ModelComposition.dtd">
+   	<ModelComposition name="" id="" version="" timestep = "">
   
-   <Description>
-      <Title> </Title>
-      <Authors> </Authors>
-      <Institution> </Institution>
-      <Reference> </Reference>
-      <Abstract> </Abstract>
-   </Description>
-
-   <Input name=" " description=" " variablecategory=" " datatype=" " min=" " max=" " default=" " unit=" " uri="" inputtype="variable"/>
-   <Output name=" " description=" " variablecategory=" " datatype=" " min=" " max=" "  unit=" " uri=" "/>
-
-   <Composition>
-      <Model name=" " filename=" " />
-      <Model name=" " filename=" " />
-      ...
+   	<Description>
+      		<Title> </Title>
+     	 	<Authors> </Authors>
+      		<Institution> </Institution>
+      		<Reference> </Reference>
+      		<Abstract> </Abstract>
+   	</Description>
+	<Inputs>
+   		<Input name=" " description=" " variablecategory=" " datatype=" " min=" " max=" " default=" " unit=" " uri="" inputtype="variable"/>
+		...
+	</Inputs>
+	<Outputs>
+   		<Output name=" " description=" " variablecategory=" " datatype=" " min=" " max=" "  unit=" " uri=" "/>
+	</Outputs>
+	
+   	<Composition>
+      		<Model name=" " filename=" " />
+      		<Model name=" " filename=" " />
+      		...
     
-      <Links>
-         <InputLink target=" " source=" " />
-         <InputLink target=" " source=" " />
-         ...
+      		<Links>
+         		<InputLink target=" " source=" " />
+         		<InputLink target=" " source=" " />
+         		...
 
-         <InternalLink target=" " source=" " />
-         ...
+         		<InternalLink target=" " source=" " />
+         		...
    
-         <OutputLink source=" " target=" " />
-         <OutputLink source=" " target=" " />
-         ... 
+         		<OutputLink source=" " target=" " />
+         		<OutputLink source=" " target=" " />
+         		... 
 
-      </Links>
-   </Composition>
-   </ModelComposition>
+      		</Links>
+   	</Composition>
+   	</ModelComposition>
 
 Declaration of Inputs and Outputs are optional. Sources of input links are implicitly inputs variables
 and target of OutputLink are implicitly output variables.
