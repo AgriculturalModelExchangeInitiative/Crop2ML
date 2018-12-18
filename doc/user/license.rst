@@ -1,4 +1,4 @@
 ===========
 **Licence**
 ===========
-PyCropML is released under a MIT License.
+Crop2ML is released under a MIT License.
