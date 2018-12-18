@@ -381,6 +381,8 @@ The implementation differs from the platform:
 
 **Crop2ML format for model composite**
 
+A format of Crop2ML model composite can be presented as this structure:
+
 .. code-block:: xml
    	<?xml version="1.0" encoding="UTF-8"?>
    	<!DOCTYPE ModelComposition PUBLIC " " "https://raw.githubusercontent.com/AgriculturalModelExchangeInitiative/Crop2ML/master/ModelComposition.dtd">
