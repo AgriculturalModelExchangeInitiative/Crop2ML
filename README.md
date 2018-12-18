@@ -1,4 +1,4 @@
-# xml_representation
+# Crop Modelling Markup Language (Crop2ML)
 
 [![Documentation Status](https://readthedocs.org/projects/crop2ml/badge/?version=latest)](http://crop2ml.readthedocs.io/en/latest/?badge=latest)
 
