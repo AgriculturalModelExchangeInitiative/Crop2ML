@@ -54,7 +54,7 @@ Contents:
    :width: 10%
    :figclass: align-center
    
-.. figure:: images/record.jpg
+.. figure:: images/record.png
    :target: https://www6.inra.fr/record
    :width: 5%
    :figclass: align-right
