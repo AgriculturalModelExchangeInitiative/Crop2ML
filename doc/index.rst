@@ -19,7 +19,7 @@ Contents:
       
 	What is Crop2ML? <user/overview.rst>
 	Crop2ML description <user/description.rst>
-    Crop2ML package <user/package.rst>
+    	Crop2ML package <user/package.rst>
 	Usecases <user/usecases.rst>
 	License <user/license.rst>
 	Publication <user/Publication.rst>
@@ -41,17 +41,17 @@ Contents:
 
 .. figure:: images/openalea.png
    :target: http://openalea.gforge.inria.fr/dokuwiki/doku.php
-   :width: 15%
+   :width: 10%
    :figclass: align-center
    
 .. figure:: images/record.jpg
    :target: https://www6.inra.fr/record
-   :width: 15%
+   :width: 10%
    :figclass: align-right
    
 .. figure:: images/bioma.png
    :target: http://bioma.jrc.ec.europa.eu/components/componentstools/bioma/WebHelp/index.htm
-   :width: 15%
+   :width: 10%
    :figclass: align-left
    
 .. figure:: images/siriusquality.png
