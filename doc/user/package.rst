@@ -9,7 +9,34 @@ Crop2ML package hierarchy
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 The structure of your new project looks like this: 
 
-.. image:: images/package.png
+.. parsed-literal::
+
+    ├── LICENSE.txt        <- License file
+    ├── README.md          <- The top-level README for AMEI members using this project.
+    ├── data/              <- data used for model simulation
+    │
+    ├── doc/               <- Package documentation
+    │
+    ├── tests/             <- model tests for each language and platform
+    │
+    ├── crop2ml/          <- model units and composite in crop2ml format.
+    │      ├── xml files
+    │      ├── Algo/
+    |
+    │
+    ├── src/                <- Executable source in different language and platform
+    │   ├── cython
+    │   ├── java
+    │   ├── python
+        ├── R
+        ├── c++
+        ├── csharp
+        ├── fortran
+        ├── Bioma
+        ├── Simplace
+        ├── OpenAlea
+        ├── Record
+
 
 Crop2ML XML files
 ^^^^^^^^^^^^^^^^^
@@ -39,8 +66,8 @@ How to add a Crop2ML package?
 To add a crop2ML package, modeller should use Cookiecutter-Crop2ML.
 | Cookiecutter-Crop2ML is a standardized template used to generate Crop2ML project structure for sharing crop models components between crops modelling platform.
 
- Requirements to use the cookiecutter template:
---------------------------------------------------
+Requirements to use the cookiecutter template:
+----------------------------------------------
  - Python 2.7 or 3.5
  - [Cookiecutter Python package](http://cookiecutter.readthedocs.org/en/latest/installation.html) >= 1.4.0: This can be installed with pip by or conda depending on how you manage your Python packages:
 
@@ -56,8 +83,8 @@ or
     conda install cookiecutter
 
 
- To start a new project, run:
------------------------------
+To start a new project, run:
+----------------------------
 
 .. code-block:: bash
 
