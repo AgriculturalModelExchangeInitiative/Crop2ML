@@ -46,12 +46,12 @@ Contents:
    
 .. figure:: images/record.jpg
    :target: https://www6.inra.fr/record
-   :width: 10%
+   :width: 5%
    :figclass: align-right
    
 .. figure:: images/bioma.png
    :target: http://bioma.jrc.ec.europa.eu/components/componentstools/bioma/WebHelp/index.htm
-   :width: 10%
+   :width: 5%
    :figclass: align-left
    
 .. figure:: images/siriusquality.png
