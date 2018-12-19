@@ -50,14 +50,16 @@ $ pip install cookiecutter
 
 or
 
-``` bash
-$ conda config --add channels conda-forge
-$ conda install cookiecutter
-```
+.. code-block:: bash
+    
+    conda config --add channels conda-forge
+    conda install cookiecutter
+
+
  To start a new project, run:
 -----------------------------
 
-.. code-block:: xml
+.. code-block:: bash
 
     cookiecutter https://github.com/AgriculturalModelExchangeInitiative/cookiecutter-crop2ml
 
