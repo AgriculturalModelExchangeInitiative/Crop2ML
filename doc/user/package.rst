@@ -24,14 +24,14 @@ The structure of your new project looks like this:
     │      ├── Algo/
     |
     │
-    ├── src/                <- Executable source in different language and platform
-    │   ├── cython
-    │   ├── java
-    │   ├── python
-        ├── R
-        ├── c++
-        ├── csharp
-        ├── fortran
+    ├── src/                <- Executable code source in different language and platform
+    │   ├── pyx/
+    │   ├── java/
+    │   ├── py/
+        ├── R/
+        ├── cpp/
+        ├── cs/
+        ├── f90/
         ├── Bioma
         ├── Simplace
         ├── OpenAlea
