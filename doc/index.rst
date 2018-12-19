@@ -56,12 +56,12 @@ Contents:
    
 .. figure:: images/record.png
    :target: https://www6.inra.fr/record
-   :width: 5%
+   :width: 10%
    :figclass: align-right
    
 .. figure:: images/bioma.png
    :target: http://bioma.jrc.ec.europa.eu/components/componentstools/bioma/WebHelp/index.htm
-   :width: 5%
+   :width: 10%
    :figclass: align-left
    
 
