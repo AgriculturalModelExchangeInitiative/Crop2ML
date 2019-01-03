@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModelUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" modelid="EC.JRC.MARS.Crop.CropML.RUE.SaturationRUE" name="SaturationRUE" timestep="0" version="1.0.0.0">
+  <Description>
+    <Title>EC.JRC.MARS.Crop.CropML.RUE.SaturationRUE</Title>
+    <Authors>Creator:;    Date:;    Publisher:;    </Authors>
+    <Abstract>Saturation of the enzymatic chains effect on radiation use efficiency - Confalonieri, R., Gusberti, D., Acutis, M., 2006. Comparison of WOFOST, CropSyst and WARM for simulating rice growth (Japonica type – short cycle varieties). Italian Journal of Agrometeorology, 3, 7-16 - </Abstract>
+  </Description>
+  <Inputs>
+    <Input name="GlobalSolarRadiation" description="Global solar radiation" datatype="DOUBLE" variableCategory="" min="0" max="50" default="10" unit="MJ m-2" uri="http://" inputtype="variable" />
+    <Input name="RUESaturationEffect" description="Effect of saturation of the enzymatic chains on radiation use efficiency" datatype="DOUBLE" variableCategory="" min="0" max="300" default="50" unit="unitless" uri="http://" inputtype="variable" />
+    <Input name="ThresholdRadiationForSaturation" description="Threshold radiation for saturation" datatype="DOUBLE" min="15" max="35" default="25" unit="MJ m-2 day-1" uri="" inputtype="parameter" parametercategory="" />
+  </Inputs>
+  <Outputs>
+    <Output name="RUESaturationEffect" description="Effect of saturation of the enzymatic chains on radiation use efficiency" datatype="DOUBLE" min="0" max="300" unit="unitless" uri="http://" />
+    <Output name="RUESaturationEffectRate" description="Effect of saturation of the enzymatic chains on radiation use efficiency" datatype="DOUBLE" min="0" max="1" unit="unitless" uri="http://" />
+  </Outputs>
+  <Algorithm language="C#" platform="Bioma" filename="SaturationRUE.cs" />
+  <Parametersets>
+    <Parameterset name="Default" description="Paramters default value" />
+  </Parametersets>
+</ModelUnit>

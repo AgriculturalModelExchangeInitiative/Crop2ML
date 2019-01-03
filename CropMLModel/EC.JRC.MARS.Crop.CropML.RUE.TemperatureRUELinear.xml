@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModelUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" modelid="EC.JRC.MARS.Crop.CropML.RUE.TemperatureRUELinear" name="TemperatureRUELinear" timestep="0" version="1.0.0.0">
+  <Description>
+    <Title>EC.JRC.MARS.Crop.CropML.RUE.TemperatureRUELinear</Title>
+    <Authors>Creator:;    Date:;    Publisher:;    </Authors>
+    <Abstract>Linear temperature effect on radiation use efficiency - Stockle, C.O., Donatelli, M., Nelson, R., 2003. CropSyst, a cropping system simulation model. European Journal of Agronomy, 18, 289-307. - </Abstract>
+  </Description>
+  <Inputs>
+    <Input name="AirTemperatureMaximum" description="Daily air temperature maximum" datatype="DOUBLE" variableCategory="" min="-30" max="55" default="25" unit="°C" uri="http://" inputtype="variable" />
+    <Input name="AirTemperatureMinimum" description="Daily air temperature minimum" datatype="DOUBLE" variableCategory="" min="-25" max="45" default="15" unit="°C" uri="http://" inputtype="variable" />
+    <Input name="RUETemperatureEffect" description="Effect of temperature on radiation use efficiency" datatype="DOUBLE" variableCategory="" min="0" max="300" default="50" unit="unitless" uri="http://" inputtype="variable" />
+    <Input name="BaseTemperatureForGrowth" description="Base temperature for growth" datatype="DOUBLE" min="-10" max="20" default="12" unit="°C" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="OptimumTemperatureForGrowth" description="Optimum temperature for growth" datatype="DOUBLE" min="8" max="40" default="28" unit="°C" uri="" inputtype="parameter" parametercategory="" />
+  </Inputs>
+  <Outputs>
+    <Output name="RUETemperatureEffect" description="Effect of temperature on radiation use efficiency" datatype="DOUBLE" min="0" max="300" unit="unitless" uri="http://" />
+    <Output name="RUETemperatureEffectRate" description="Effect of temperature on radiation use efficiency" datatype="DOUBLE" min="0" max="1" unit="unitless" uri="http://" />
+  </Outputs>
+  <Algorithm language="C#" platform="Bioma" filename="TemperatureRUELinear.cs" />
+  <Parametersets>
+    <Parameterset name="Default" description="Paramters default value" />
+  </Parametersets>
+</ModelUnit>

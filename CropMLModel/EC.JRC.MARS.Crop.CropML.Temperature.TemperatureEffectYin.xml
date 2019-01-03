@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModelUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" modelid="EC.JRC.MARS.Crop.CropML.Temperature.TemperatureEffectYin" name="TemperatureEffectYin" timestep="0" version="1.0.0.0">
+  <Description>
+    <Title>EC.JRC.MARS.Crop.CropML.Temperature.TemperatureEffectYin</Title>
+    <Authors>Creator:;    Date:;    Publisher:;    </Authors>
+    <Abstract>Temperature effect - Yin model - Yin, X., Kropff, M.J., McLaren, G., Visperas, R.M., 1995. A nonlinear model for crop development as a function of temperature. Agricultural and Forest Meteorology, 77, 1-16 - </Abstract>
+  </Description>
+  <Inputs>
+    <Input name="AirTemperatureAverage" description="daily average of air temperature" datatype="DOUBLE" variableCategory="" min="-25" max="50" default="10" unit="°C" uri="http://" inputtype="variable" />
+    <Input name="BaseTemperature" description="Base temperature" datatype="DOUBLE" min="-10" max="20" default="12" unit="°C" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="OptimumTemperature" description="Optimum temperature" datatype="DOUBLE" min="8" max="40" default="28" unit="°C" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="MaximumTemperature" description="Maximum temperature" datatype="DOUBLE" min="15" max="50" default="35" unit="°C" uri="" inputtype="parameter" parametercategory="" />
+  </Inputs>
+  <Outputs>
+    <Output name="TemperatureEffectYin" description="Temperature effect - Yin model" datatype="DOUBLE" min="0" max="1" unit="unitless" uri="http://" />
+  </Outputs>
+  <Algorithm language="C#" platform="Bioma" filename="TemperatureEffectYin.cs" />
+  <Parametersets>
+    <Parameterset name="Default" description="Paramters default value" />
+  </Parametersets>
+</ModelUnit>

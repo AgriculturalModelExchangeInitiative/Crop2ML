@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModelUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" modelid="EC.JRC.MARS.Crop.CropML.WOFOST.OrgansGrowthC" name="OrgansGrowthC" timestep="0" version="1.0.0.0">
+  <Description>
+    <Title>EC.JRC.MARS.Crop.CropML.WOFOST.OrgansGrowthC</Title>
+    <Authors>Creator:;    Date:;    Publisher:;    </Authors>
+    <Abstract>Calculate organs growth and death - Composite strategy. See references of the associated strategies: RootsGrowth, StemsGrowth, StorageOrgansGrowth, LeavesGrowthC, RootDepthWOFOST. - </Abstract>
+  </Description>
+  <Inputs>
+    <Input name="AirTemperatureMaximum" description="Daily air temperature maximum" datatype="DOUBLE" variableCategory="" min="-30" max="55" default="25" unit="°C" uri="http://" inputtype="variable" />
+    <Input name="AirTemperatureMinimum" description="Daily air temperature minimum" datatype="DOUBLE" variableCategory="" min="-25" max="45" default="15" unit="°C" uri="http://" inputtype="variable" />
+    <Input name="DryWeightLivingLeaves_WLT" description="Dry weight of living leaves" datatype="DOUBLE" variableCategory="" min="0" max="10000" default="10" unit="kg ha-1 day-1" uri="http://" inputtype="variable" />
+    <Input name="PartitioningFactorToRootsRate_FR" description="Partitioning factor to roots rate" datatype="DOUBLE" variableCategory="" min="0" max="1" default="0.5" unit="unitless" uri="http://" inputtype="variable" />
+    <Input name="PartitioningFactorToLeavesRate_FL" description="Partitioning factor to leaves rate" datatype="DOUBLE" variableCategory="" min="0" max="1" default="0.5" unit="unitless" uri="http://" inputtype="variable" />
+    <Input name="PartitioningFactorToStemsRate_FS" description="Partitioning factor to stems rate" datatype="DOUBLE" variableCategory="" min="0" max="1" default="0.5" unit="unitless" uri="http://" inputtype="variable" />
+    <Input name="PartitioningFactorToStorageOrgansRate_FO" description="Partitioning factor to storage organs rate" datatype="DOUBLE" variableCategory="" min="0" max="1" default="0.5" unit="unitless" uri="http://" inputtype="variable" />
+    <Input name="TotalBiomassRate_DMI" description="Total biomass rate" datatype="DOUBLE" variableCategory="" min="0" max="10000" default="10" unit="kg ha-1 day-1" uri="http://" inputtype="variable" />
+    <Input name="DryWeightDeadRoots_DWRT" description="Dry weight of dead roots" datatype="DOUBLE" variableCategory="" min="0" max="10000" default="10" unit="kg ha-1 day-1" uri="http://" inputtype="variable" />
+    <Input name="DryWeightDeadStems_DWST" description="Dry weight of dead stems" datatype="DOUBLE" variableCategory="" min="0" max="10000" default="10" unit="kg ha-1 day-1" uri="http://" inputtype="variable" />
+    <Input name="DryWeightDeadStorageOrgans_DWSO" description="Dry weight of dead storage organs" datatype="DOUBLE" variableCategory="" min="0" max="10000" default="10" unit="kg ha-1 day-1" uri="http://" inputtype="variable" />
+    <Input name="DryWeightLivingRoots_WRT" description="Dry weight of living roots" datatype="DOUBLE" variableCategory="" min="0" max="10000" default="10" unit="kg ha-1 day-1" uri="http://" inputtype="variable" />
+    <Input name="DryWeightLivingLeaves_WLV" description="Dry weight of living leaves" datatype="DOUBLE" variableCategory="" min="0" max="100000" default="100" unit="kg ha-1" uri="http://" inputtype="variable" />
+    <Input name="DryWeightLivingStems_WST" description="Dry weight of living stems" datatype="DOUBLE" variableCategory="" min="0" max="10000" default="10" unit="kg ha-1 day-1" uri="http://" inputtype="variable" />
+    <Input name="DryWeightLivingStorageOrgans_WSO" description="Dry weight of living storage organs" datatype="DOUBLE" variableCategory="" min="0" max="10000" default="10" unit="kg ha-1 day-1" uri="http://" inputtype="variable" />
+    <Input name="LeavesDeadDueToSenescence" description="Leaves dead due to senescence" datatype="DOUBLE" variableCategory="" min="0" max="100000" default="100" unit="kg ha-1" uri="http://" inputtype="variable" />
+    <Input name="RootDepth" description="Root depth" datatype="DOUBLE" variableCategory="" min="0" max="500" default="3" unit="cm" uri="http://" inputtype="variable" />
+    <Input name="SUCROStypeDVS" description="SUCROS-type development stage code" datatype="DOUBLE" variableCategory="" min="0" max="2" default="0.5" unit="unitless" uri="http://" inputtype="variable" />
+    <Input name="TotalLeafAreaIndex" description="Potential total leaf area index" datatype="DOUBLE" variableCategory="" min="0" max="25" default="2" unit="m2 m-2" uri="http://" inputtype="variable" />
+    <Input name="ExtinctionCoefficientDiffusedLightFunctionOfDVS_KDIFTB" description="Extinction coefficient for diffuse visible light as function of DVS (KDIFTB)" datatype="DOUBLEARRAY" min="0" max="1" default="0.5" unit="[-; -]" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="LifeSpanOfLeavesGrowingAt35Celsius_SPAN" description="Life span of leaves growing at 35°C (SPAN)" datatype="DOUBLE" min="10" max="400" default="50" unit="unitless" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="LowerThresholdTemperatureForAgingOfLeaves_TBASE" description="Lower threshold temperature for aging of leaves (TBASE)" datatype="DOUBLE" min="18" max="-5" default="8" unit="°C" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="MaximumDailyIncreaseInRootingDepth_RRI" description="Maximum daily increase in rooting depth (RRI)" datatype="DOUBLE" min="0" max="10" default="1.2" unit="[cm day-1]" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="MaximumRootingDepth_RDM" description="Maximum rooting depth (RDM)" datatype="DOUBLE" min="0" max="1000" default="30" unit="[cm]" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="RelativeDeathRateOfRootsFunctionOfDVS_RDRRTB" description="Relative death rate of roots as a function of development stage (RDRRTB)" datatype="DOUBLEARRAY" min="0" max="3" default="0.1" unit="[-, unitless]" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="RelativeDeathRateOfStemsFunctionOfDVS_RDRSTB" description="Relative death rate of stems as a function of development stage (RDRSTB)" datatype="DOUBLEARRAY" min="0" max="3" default="0.1" unit="[-, unitless]" uri="" inputtype="parameter" parametercategory="" />
+  </Inputs>
+  <Outputs>
+    <Output name="DryWeightDeadRoots_DWRT" description="Dry weight of dead roots" datatype="DOUBLE" min="0" max="10000" unit="kg ha-1 day-1" uri="http://" />
+    <Output name="DryWeightDeadStems_DWST" description="Dry weight of dead stems" datatype="DOUBLE" min="0" max="10000" unit="kg ha-1 day-1" uri="http://" />
+    <Output name="DryWeightDeadStorageOrgans_DWSO" description="Dry weight of dead storage organs" datatype="DOUBLE" min="0" max="10000" unit="kg ha-1 day-1" uri="http://" />
+    <Output name="DryWeightLivingRoots_WRT" description="Dry weight of living roots" datatype="DOUBLE" min="0" max="10000" unit="kg ha-1 day-1" uri="http://" />
+    <Output name="DryWeightLivingLeaves_WLT" description="Dry weight of living leaves" datatype="DOUBLE" min="0" max="10000" unit="kg ha-1 day-1" uri="http://" />
+    <Output name="DryWeightLivingStems_WST" description="Dry weight of living stems" datatype="DOUBLE" min="0" max="10000" unit="kg ha-1 day-1" uri="http://" />
+    <Output name="DryWeightLivingStorageOrgans_WSO" description="Dry weight of living storage organs" datatype="DOUBLE" min="0" max="10000" unit="kg ha-1 day-1" uri="http://" />
+    <Output name="LeavesBiomassRate" description="Potential leaves biomass" datatype="DOUBLE" min="0" max="200" unit="kg ha-1 day-1" uri="http://" />
+    <Output name="LeavesDeadBiomassRate" description="Leaves death biomass rate" datatype="DOUBLE" min="0" max="100" unit="kg ha-1 day-1" uri="http://" />
+    <Output name="LeavesDeathDueToSelfShading_DSLV2" description="Leaves death due to self shading" datatype="DOUBLE" min="0" max="100" unit="kg ha-1 day-1" uri="http://" />
+    <Output name="LeavesDeathDueToSenescence" description="Leaves death due to senescence" datatype="DOUBLE" min="0" max="100" unit="kg ha-1 day-1" uri="http://" />
+    <Output name="RootDepthRate" description="Roots depth rate" datatype="DOUBLE" min="0" max="10" unit="cm day-1" uri="http://" />
+    <Output name="LeavesBiomass" description="Potential leaves biomass" datatype="DOUBLE" min="0" max="35000" unit="kg ha-1" uri="http://" />
+    <Output name="LeavesDeadBiomass" description="Leaves dead biomass" datatype="DOUBLE" min="0" max="100000" unit="kg ha-1" uri="http://" />
+    <Output name="LeavesDeadDueToSenescence" description="Leaves dead due to senescence" datatype="DOUBLE" min="0" max="100000" unit="kg ha-1" uri="http://" />
+    <Output name="RootBiomass" description="Root biomass (total)" datatype="DOUBLE" min="0" max="35000" unit="kg ha-1" uri="http://" />
+    <Output name="RootDepth" description="Root depth" datatype="DOUBLE" min="0" max="500" unit="cm" uri="http://" />
+    <Output name="StemsBiomass" description="Potential stems biomass" datatype="DOUBLE" min="0" max="35000" unit="kg ha-1" uri="http://" />
+    <Output name="StorageOrgansBiomass" description="Potential storage organs biomass" datatype="DOUBLE" min="0" max="35000" unit="kg ha-1" uri="http://" />
+    <Output name="AbovegroundBiomassRate" description="Potential aboveground biomass" datatype="DOUBLE" min="0" max="200" unit="kg ha-1 day-1" uri="http://" />
+    <Output name="TotalBiomassRate" description="Total biomass rate" datatype="DOUBLE" min="0" max="10000" unit="kg ha-1 day-1" uri="http://" />
+    <Output name="AbovegroundBiomass" description="Potential aboveground biomass" datatype="DOUBLE" min="0" max="50000" unit="kg ha-1" uri="http://" />
+    <Output name="TotalBiomass" description="Total biomass" datatype="DOUBLE" min="0" max="100000" unit="kg ha-1" uri="http://" />
+  </Outputs>
+  <Algorithm language="C#" platform="Bioma" filename="OrgansGrowthC.cs" />
+  <Parametersets>
+    <Parameterset name="Default" description="Paramters default value" />
+  </Parametersets>
+</ModelUnit>

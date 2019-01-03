@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModelUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" modelid="EC.JRC.MARS.Crop.CropML.Assimilation.InstantaneousAssimilation" name="InstantaneousAssimilation" timestep="0" version="1.0.0.0">
+  <Description>
+    <Title>EC.JRC.MARS.Crop.CropML.Assimilation.InstantaneousAssimilation</Title>
+    <Authors>Creator:;    Date:;    Publisher:;    </Authors>
+    <Abstract>Instantaneous CO2 assimilation rate - Van Keulen, H., Wolf, J., 1986. Modelling of agricultural production: weather soils and crops. Simulation Monographs. Pudoc, Wageningen, The Netherlands, pp. 479. - </Abstract>
+  </Description>
+  <Inputs>
+    <Input name="NumberOfCanopyLayers" description="Number of canopy layers" datatype="INT" variableCategory="" min="0" max="100" default="3" unit="unitless" uri="http://" inputtype="variable" />
+    <Input name="SineOfSolarElevation_SINB" description="Sine of solar elevation" datatype="DOUBLE" variableCategory="" min="0" max="1" default="0.5" unit="unitless" uri="http://" inputtype="variable" />
+    <Input name="AirTemperatureMaximum" description="Daily air temperature maximum" datatype="DOUBLE" variableCategory="" min="-30" max="55" default="25" unit="°C" uri="http://" inputtype="variable" />
+    <Input name="AirTemperatureMinimum" description="Daily air temperature minimum" datatype="DOUBLE" variableCategory="" min="-25" max="45" default="15" unit="°C" uri="http://" inputtype="variable" />
+    <Input name="GreenLeafAreaIndex" description="Potential green leaf area index" datatype="DOUBLE" variableCategory="" min="0" max="25" default="2" unit="m2 m-2" uri="http://" inputtype="variable" />
+    <Input name="PhotosyntheticallyActiveRadiationDiffused_W_m2" description="Photosynthetically active radiation diffused (Wm-2)" datatype="DOUBLE" variableCategory="" min="0" max="500" default="100" unit="W m-2" uri="http://" inputtype="variable" />
+    <Input name="PhotosyntheticallyActiveRadiationDirect_W_m2" description="Photosynthetically active radiation direct (Wm-2)" datatype="DOUBLE" variableCategory="" min="0" max="500" default="100" unit="W m-2" uri="http://" inputtype="variable" />
+    <Input name="SUCROStypeDVS" description="SUCROS-type development stage code" datatype="DOUBLE" variableCategory="" min="0" max="2" default="0.5" unit="unitless" uri="http://" inputtype="variable" />
+    <Input name="MaximumLeafCO2AssimilationRateFunctionOfDVS_AMAXTB" description="Maximum leaf CO2 assimilation rate as function of DVS (AMAXTB)" datatype="DOUBLEARRAY" min="0" max="100" default="40" unit="[-; kg ha-1 hr-1]" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="LightUseEfficiencySingleLeafFunctionOfTavg_EFFTB" description="Light use efficiency single leaf function of average temperature (EFFTB)" datatype="DOUBLEARRAY" min="-10" max="50" default="1" unit="[°C; kg ha-1 hr-1 J-1 m2 s]" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="ExtinctionCoefficientDiffusedLightFunctionOfDVS_KDIFTB" description="Extinction coefficient for diffuse visible light as function of DVS (KDIFTB)" datatype="DOUBLEARRAY" min="0" max="1" default="0.5" unit="[-; unitless]" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="ReductionFactorOfAMAXFunctionOfTavg_TMPFTB" description="Reduction factor of AMAX as function of average temperature (TMPFTB)" datatype="DOUBLEARRAY" min="0" max="55" default="0.5" unit="[°C; unitless]" uri="" inputtype="parameter" parametercategory="" />
+  </Inputs>
+  <Outputs>
+    <Output name="InstantaneousGrossCO2AssimilationWholeCanopyRate" description="Instantaneous gross CO2 assimilation of the whole canopy rate" datatype="DOUBLE" min="0" max="100" unit="kg CO2 ha-1 hr-1" uri="http://" />
+  </Outputs>
+  <Algorithm language="C#" platform="Bioma" filename="InstantaneousAssimilation.cs" />
+  <Parametersets>
+    <Parameterset name="Default" description="Paramters default value" />
+  </Parametersets>
+</ModelUnit>

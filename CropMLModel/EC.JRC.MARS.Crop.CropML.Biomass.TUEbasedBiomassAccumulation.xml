@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModelUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" modelid="EC.JRC.MARS.Crop.CropML.Biomass.TUEbasedBiomassAccumulation" name="TUEbasedBiomassAccumulation" timestep="0" version="1.0.0.0">
+  <Description>
+    <Title>EC.JRC.MARS.Crop.CropML.Biomass.TUEbasedBiomassAccumulation</Title>
+    <Authors>Creator:;    Date:;    Publisher:;    </Authors>
+    <Abstract>TUE-based biomass accumulation - Stockle, C.O., Donatelli, M., Nelson, R., 2003. CropSyst, a cropping system simulation model. European Journal of Agronomy, 18, 289-307. - </Abstract>
+  </Description>
+  <Inputs>
+    <Input name="VapourPressureDeficit" description="Vapour pressure deficit" datatype="DOUBLE" variableCategory="" min="0" max="12.31" default="1" unit="kPa" uri="http://" inputtype="variable" />
+    <Input name="TranspirationRate" description="Potential traspiration rate" datatype="DOUBLE" variableCategory="" min="0" max="10" default="1" unit="cm d-1" uri="http://" inputtype="variable" />
+    <Input name="BiomassTranspirationDependent" description="Biomass transpiration dependent" datatype="DOUBLE" variableCategory="" min="0" max="70000" default="500" unit="Kg/ha" uri="http://" inputtype="variable" />
+    <Input name="DevelopmentStageCode" description="Development stage decimal code" datatype="DOUBLE" variableCategory="" min="0" max="4" default="2.5" unit="unitless" uri="http://" inputtype="variable" />
+    <Input name="TranspirationBiomassCoefficient" description="Transpiration Biomass Coefficient" datatype="DOUBLE" min="3" max="10" default="5" unit="(kg/m²)kPa)/m)" uri="" inputtype="parameter" parametercategory="" />
+  </Inputs>
+  <Outputs>
+    <Output name="BiomassTranspirationDependent" description="Biomass transpiration dependent" datatype="DOUBLE" min="0" max="70000" unit="Kg/ha" uri="http://" />
+    <Output name="BiomassTranspirationDependentRate" description="Biomass transpiration dependent rate" datatype="DOUBLE" min="0" max="200" unit="kg m-2 d-1" uri="http://" />
+  </Outputs>
+  <Algorithm language="C#" platform="Bioma" filename="TUEbasedBiomassAccumulation.cs" />
+  <Parametersets>
+    <Parameterset name="Default" description="Paramters default value" />
+  </Parametersets>
+</ModelUnit>

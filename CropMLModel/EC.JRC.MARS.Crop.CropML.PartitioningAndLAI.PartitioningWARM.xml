@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModelUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" modelid="EC.JRC.MARS.Crop.CropML.PartitioningAndLAI.PartitioningWARM" name="PartitioningWARM" timestep="0" version="1.0.0.0">
+  <Description>
+    <Title>EC.JRC.MARS.Crop.CropML.PartitioningAndLAI.PartitioningWARM</Title>
+    <Authors>Creator:;    Date:;    Publisher:;    </Authors>
+    <Abstract>Aboveground biomass partitioning - Confalonieri, R., Gusberti, D., Acutis, M., 2006. Comparison of WOFOST, CropSyst and WARM for simulating rice growth (Japonica type – short cycle varieties). Italian Journal of Agrometeorology, 3, 7-16 - </Abstract>
+  </Description>
+  <Inputs>
+    <Input name="AbovegroundBiomassRate" description="Potential aboveground biomass" datatype="DOUBLE" variableCategory="" min="0" max="200" default="20" unit="kg ha-1 day-1" uri="http://" inputtype="variable" />
+    <Input name="LeavesBiomass" description="Potential leaves biomass" datatype="DOUBLE" variableCategory="" min="0" max="35000" default="1000" unit="kg ha-1" uri="http://" inputtype="variable" />
+    <Input name="StemsBiomass" description="Potential stems biomass" datatype="DOUBLE" variableCategory="" min="0" max="35000" default="1000" unit="kg ha-1" uri="http://" inputtype="variable" />
+    <Input name="StorageOrgansBiomass" description="Potential storage organs biomass" datatype="DOUBLE" variableCategory="" min="0" max="35000" default="1000" unit="kg ha-1" uri="http://" inputtype="variable" />
+    <Input name="DevelopmentStageCode" description="Development stage decimal code" datatype="DOUBLE" variableCategory="" min="0" max="4" default="2.5" unit="unitless" uri="http://" inputtype="variable" />
+    <Input name="Sterility" description="Total sterility" datatype="DOUBLE" variableCategory="" min="0" max="0.7" default="0.05" unit="unitless" uri="http://" inputtype="variable" />
+    <Input name="PartitioningToLeavesAtEmergence" description="Biomass partitioning to leaves at emergence" datatype="DOUBLE" min="0.3" max="0.95" default="0.7" unit="unitless" uri="" inputtype="parameter" parametercategory="" />
+  </Inputs>
+  <Outputs>
+    <Output name="LeavesBiomass" description="Potential leaves biomass" datatype="DOUBLE" min="0" max="35000" unit="kg ha-1" uri="http://" />
+    <Output name="LeavesBiomassRate" description="Potential leaves biomass" datatype="DOUBLE" min="0" max="200" unit="kg ha-1 day-1" uri="http://" />
+    <Output name="StemsBiomass" description="Potential stems biomass" datatype="DOUBLE" min="0" max="35000" unit="kg ha-1" uri="http://" />
+    <Output name="StemsBiomassRate" description="Potential stems biomass" datatype="DOUBLE" min="0" max="200" unit="kg ha-1 day-1" uri="http://" />
+    <Output name="StorageOrgansBiomass" description="Potential storage organs biomass" datatype="DOUBLE" min="0" max="35000" unit="kg ha-1" uri="http://" />
+    <Output name="StorageOrgansBiomassRate" description="Potential storage organs biomass" datatype="DOUBLE" min="0" max="200" unit="kg ha-1 day-1" uri="http://" />
+  </Outputs>
+  <Algorithm language="C#" platform="Bioma" filename="PartitioningWARM.cs" />
+  <Parametersets>
+    <Parameterset name="Default" description="Paramters default value" />
+  </Parametersets>
+</ModelUnit>

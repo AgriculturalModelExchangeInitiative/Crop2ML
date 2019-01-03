@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModelUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" modelid="EC.JRC.MARS.Crop.CropML.RUE.CO2effectOnRUE_STICS" name="CO2effectOnRUE_STICS" timestep="0" version="1.0.0.0">
+  <Description>
+    <Title>EC.JRC.MARS.Crop.CropML.RUE.CO2effectOnRUE_STICS</Title>
+    <Authors>Creator:;    Date:;    Publisher:;    </Authors>
+    <Abstract>CO2 effect on radiation use efficiency - Stockle, C.O., Donatelli, M., Nelson, R., 2003. CropSyst, a cropping systems simulation model. European Journal of Agronomy, 18, 289-307 - </Abstract>
+  </Description>
+  <Inputs>
+    <Input name="CO2concentration" description="CO2 concentration" datatype="DOUBLE" variableCategory="" min="330" max="1000" default="350" unit="ppm" uri="http://" inputtype="variable" />
+    <Input name="IsC3" description="Is C3" datatype="INT" min="0" max="1" default="0" unit="unitless" uri="" inputtype="parameter" parametercategory="" />
+  </Inputs>
+  <Outputs>
+    <Output name="GrowthRatioCO2" description="RUE correction factor due to CO2" datatype="DOUBLE" min="1" max="1.5" unit="unitless" uri="http://" />
+  </Outputs>
+  <Algorithm language="C#" platform="Bioma" filename="CO2effectOnRUE_STICS.cs" />
+  <Parametersets>
+    <Parameterset name="Default" description="Paramters default value" />
+  </Parametersets>
+</ModelUnit>

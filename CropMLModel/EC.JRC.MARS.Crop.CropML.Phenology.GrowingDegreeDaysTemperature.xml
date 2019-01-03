@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModelUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" modelid="EC.JRC.MARS.Crop.CropML.Phenology.GrowingDegreeDaysTemperature" name="GrowingDegreeDaysTemperature" timestep="0" version="1.0.0.0">
+  <Description>
+    <Title>EC.JRC.MARS.Crop.CropML.Phenology.GrowingDegreeDaysTemperature</Title>
+    <Authors>Creator:;    Date:;    Publisher:;    </Authors>
+    <Abstract>Growing degree days based on temperature - Confalonieri, R., Gusberti, D., Acutis, M., 2006. Comparison of WOFOST, CropSyst and WARM for simulating rice growth (Japonica type – short cycle varieties). Italian Journal of Agrometeorology, 3, 7-16 - </Abstract>
+  </Description>
+  <Inputs>
+    <Input name="AirTemperatureMaximum" description="Daily air temperature maximum" datatype="DOUBLE" variableCategory="" min="-30" max="55" default="25" unit="°C" uri="http://" inputtype="variable" />
+    <Input name="AirTemperatureMinimum" description="Daily air temperature minimum" datatype="DOUBLE" variableCategory="" min="-25" max="45" default="15" unit="°C" uri="http://" inputtype="variable" />
+    <Input name="GrowingDegreeDaysTemperature" description="Potential growing degree days calculated on temperature" datatype="DOUBLE" variableCategory="" min="0" max="8000" default="100" unit="°C-day" uri="http://" inputtype="variable" />
+    <Input name="BaseTemperatureDevelopment" description="Base temperature for development" datatype="DOUBLE" min="-10" max="40" default="10" unit="°C" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="CutoffTemperatureDevelopment" description="Cutoff temperature for development" datatype="DOUBLE" min="10" max="50" default="40" unit="°C" uri="" inputtype="parameter" parametercategory="" />
+  </Inputs>
+  <Outputs>
+	<Output name="GrowingDegreeDaysTemperatureRate" description="Potential growing degree days calculated on temperature (daily rate)" datatype="DOUBLE" min="0" max="8000" unit="°C-day" uri="http://" />
+    <Output name="GrowingDegreeDaysTemperature" description="Potential growing degree days calculated on temperature (cumulated value)" datatype="DOUBLE" min="0" max="8000" unit="°C-day" uri="http://" />
+  </Outputs>
+  <Algorithm language="C#" platform="Bioma" filename="GrowingDegreeDaysTemperature.cs" />
+  <Parametersets>
+    <Parameterset name="Default" description="Paramters default value" />
+  </Parametersets>
+</ModelUnit>

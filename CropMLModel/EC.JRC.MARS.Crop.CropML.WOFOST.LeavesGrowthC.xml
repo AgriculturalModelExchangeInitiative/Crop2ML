@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModelUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" modelid="EC.JRC.MARS.Crop.CropML.WOFOST.LeavesGrowthC" name="LeavesGrowthC" timestep="0" version="1.0.0.0">
+  <Description>
+    <Title>EC.JRC.MARS.Crop.CropML.WOFOST.LeavesGrowthC</Title>
+    <Authors>Creator:;    Date:;    Publisher:;    </Authors>
+    <Abstract>Calculate leaves growth and death - Composite strategy. See references of the associated strategies: NewLeavesGrowth, LeavesDeathForSelfShading, LeavesDeathForSenescence. - </Abstract>
+  </Description>
+  <Inputs>
+    <Input name="AirTemperatureMaximum" description="Daily air temperature maximum" datatype="DOUBLE" variableCategory="" min="-30" max="55" default="25" unit="°C" uri="http://" inputtype="variable" />
+    <Input name="AirTemperatureMinimum" description="Daily air temperature minimum" datatype="DOUBLE" variableCategory="" min="-25" max="45" default="15" unit="°C" uri="http://" inputtype="variable" />
+    <Input name="DryWeightLivingLeaves_WLT" description="Dry weight of living leaves" datatype="DOUBLE" variableCategory="" min="0" max="10000" default="10" unit="kg ha-1 day-1" uri="http://" inputtype="variable" />
+    <Input name="PartitioningFactorToLeavesRate_FL" description="Partitioning factor to leaves rate" datatype="DOUBLE" variableCategory="" min="0" max="1" default="0.5" unit="unitless" uri="http://" inputtype="variable" />
+    <Input name="PartitioningFactorToRootsRate_FR" description="Partitioning factor to roots rate" datatype="DOUBLE" variableCategory="" min="0" max="1" default="0.5" unit="unitless" uri="http://" inputtype="variable" />
+    <Input name="TotalBiomassRate_DMI" description="Total biomass rate" datatype="DOUBLE" variableCategory="" min="0" max="10000" default="10" unit="kg ha-1 day-1" uri="http://" inputtype="variable" />
+    <Input name="DryWeightLivingLeaves_WLV" description="Dry weight of living leaves" datatype="DOUBLE" variableCategory="" min="0" max="100000" default="100" unit="kg ha-1" uri="http://" inputtype="variable" />
+    <Input name="LeavesDeadDueToSenescence" description="Leaves dead due to senescence" datatype="DOUBLE" variableCategory="" min="0" max="100000" default="100" unit="kg ha-1" uri="http://" inputtype="variable" />
+    <Input name="SUCROStypeDVS" description="SUCROS-type development stage code" datatype="DOUBLE" variableCategory="" min="0" max="2" default="0.5" unit="unitless" uri="http://" inputtype="variable" />
+    <Input name="TotalLeafAreaIndex" description="Potential total leaf area index" datatype="DOUBLE" variableCategory="" min="0" max="25" default="2" unit="m2 m-2" uri="http://" inputtype="variable" />
+    <Input name="ExtinctionCoefficientDiffusedLightFunctionOfDVS_KDIFTB" description="Extinction coefficient for diffuse visible light as function of DVS (KDIFTB)" datatype="DOUBLEARRAY" min="0" max="1" default="0.5" unit="[-; -]" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="LowerThresholdTemperatureForAgingOfLeaves_TBASE" description="Lower threshold temperature for aging of leaves (TBASE)" datatype="DOUBLE" min="18" max="-5" default="8" unit="°C" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="LifeSpanOfLeavesGrowingAt35Celsius_SPAN" description="Life span of leaves growing at 35°C (SPAN)" datatype="DOUBLE" min="10" max="400" default="50" unit="unitless" uri="" inputtype="parameter" parametercategory="" />
+  </Inputs>
+  <Outputs>
+    <Output name="DryWeightLivingLeaves_WLT" description="Dry weight of living leaves" datatype="DOUBLE" min="0" max="10000" unit="kg ha-1 day-1" uri="http://" />
+    <Output name="LeavesDeathDueToSelfShading_DSLV2" description="Leaves death due to self shading" datatype="DOUBLE" min="0" max="100" unit="kg ha-1 day-1" uri="http://" />
+    <Output name="LeavesDeathDueToSenescence" description="Leaves death due to senescence" datatype="DOUBLE" min="0" max="100" unit="kg ha-1 day-1" uri="http://" />
+    <Output name="LeavesDeadDueToSenescence" description="Leaves dead due to senescence" datatype="DOUBLE" min="0" max="100000" unit="kg ha-1" uri="http://" />
+    <Output name="LeavesBiomassRate" description="Potential leaves biomass" datatype="DOUBLE" min="0" max="200" unit="kg ha-1 day-1" uri="http://" />
+    <Output name="LeavesDeadBiomassRate" description="Leaves death biomass rate" datatype="DOUBLE" min="0" max="100" unit="kg ha-1 day-1" uri="http://" />
+    <Output name="LeavesBiomass" description="Potential leaves biomass" datatype="DOUBLE" min="0" max="35000" unit="kg ha-1" uri="http://" />
+    <Output name="LeavesDeadBiomass" description="Leaves dead biomass" datatype="DOUBLE" min="0" max="100000" unit="kg ha-1" uri="http://" />
+  </Outputs>
+  <Algorithm language="C#" platform="Bioma" filename="LeavesGrowthC.cs" />
+  <Parametersets>
+    <Parameterset name="Default" description="Paramters default value" />
+  </Parametersets>
+</ModelUnit>

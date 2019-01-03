@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModelUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" modelid="EC.JRC.MARS.Crop.CropML.OrgansDeath.LeavesDeathForSenescence" name="LeavesDeathForSenescence" timestep="0" version="1.0.0.0">
+  <Description>
+    <Title>EC.JRC.MARS.Crop.CropML.OrgansDeath.LeavesDeathForSenescence</Title>
+    <Authors>Creator:;    Date:;    Publisher:;    </Authors>
+    <Abstract>Calculate leaves death due to senescence - Van Keulen, H., Wolf, J., 1986. Modelling of agricultural production: weather soils and crops. Simulation Monographs. Pudoc, Wageningen, The Netherlands, pp. 479. - </Abstract>
+  </Description>
+  <Inputs>
+    <Input name="AirTemperatureMaximum" description="Daily air temperature maximum" datatype="DOUBLE" variableCategory="" min="-30" max="55" default="25" unit="°C" uri="http://" inputtype="variable" />
+    <Input name="AirTemperatureMinimum" description="Daily air temperature minimum" datatype="DOUBLE" variableCategory="" min="-25" max="45" default="15" unit="°C" uri="http://" inputtype="variable" />
+    <Input name="DryWeightLivingLeaves_WLT" description="Dry weight of living leaves" datatype="DOUBLE" variableCategory="" min="0" max="10000" default="10" unit="kg ha-1 day-1" uri="http://" inputtype="variable" />
+    <Input name="LeavesDeadDueToSenescence" description="Leaves dead due to senescence" datatype="DOUBLE" variableCategory="" min="0" max="100000" default="100" unit="kg ha-1" uri="http://" inputtype="variable" />
+    <Input name="LowerThresholdTemperatureForAgingOfLeaves_TBASE" description="Lower threshold temperature for aging of leaves (TBASE)" datatype="DOUBLE" min="18" max="-5" default="8" unit="°C" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="LifeSpanOfLeavesGrowingAt35Celsius_SPAN" description="Life span of leaves growing at 35°C (SPAN)" datatype="DOUBLE" min="10" max="400" default="50" unit="unitless" uri="" inputtype="parameter" parametercategory="" />
+  </Inputs>
+  <Outputs>
+    <Output name="LeavesDeathDueToSenescence" description="Leaves death due to senescence" datatype="DOUBLE" min="0" max="100" unit="kg ha-1 day-1" uri="http://" />
+    <Output name="LeavesDeadDueToSenescence" description="Leaves dead due to senescence" datatype="DOUBLE" min="0" max="100000" unit="kg ha-1" uri="http://" />
+  </Outputs>
+  <Algorithm language="C#" platform="Bioma" filename="LeavesDeathForSenescence.cs" />
+  <Parametersets>
+    <Parameterset name="Default" description="Paramters default value" />
+  </Parametersets>
+</ModelUnit>

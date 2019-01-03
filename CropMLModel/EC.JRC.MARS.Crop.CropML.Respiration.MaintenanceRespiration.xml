@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModelUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" modelid="EC.JRC.MARS.Crop.CropML.Respiration.MaintenanceRespiration" name="MaintenanceRespiration" timestep="0" version="1.0.0.0">
+  <Description>
+    <Title>EC.JRC.MARS.Crop.CropML.Respiration.MaintenanceRespiration</Title>
+    <Authors>Creator:;    Date:;    Publisher:;    </Authors>
+    <Abstract>Calculate maintenance respiration - Van Keulen, H., Wolf, J., 1986. Modelling of agricultural production: weather soils and crops. Simulation Monographs. Pudoc, Wageningen, The Netherlands, pp. 479. - </Abstract>
+  </Description>
+  <Inputs>
+    <Input name="AirTemperatureMaximum" description="Daily air temperature maximum" datatype="DOUBLE" variableCategory="" min="-30" max="55" default="25" unit="°C" uri="http://" inputtype="variable" />
+    <Input name="AirTemperatureMinimum" description="Daily air temperature minimum" datatype="DOUBLE" variableCategory="" min="-25" max="45" default="15" unit="°C" uri="http://" inputtype="variable" />
+    <Input name="DailyGrossCH2OAssimilationRate_GASS" description="Daily gross CH2O assimilation rate" datatype="DOUBLE" variableCategory="" min="0" max="10000" default="10" unit="kg CH2O ha-1 day-1" uri="http://" inputtype="variable" />
+    <Input name="DryWeightLivingRoots_WRT" description="Dry weight of living roots" datatype="DOUBLE" variableCategory="" min="0" max="10000" default="10" unit="kg ha-1 day-1" uri="http://" inputtype="variable" />
+    <Input name="DryWeightLivingLeaves_WLV" description="Dry weight of living leaves" datatype="DOUBLE" variableCategory="" min="0" max="100000" default="100" unit="kg ha-1" uri="http://" inputtype="variable" />
+    <Input name="DryWeightLivingStems_WST" description="Dry weight of living stems" datatype="DOUBLE" variableCategory="" min="0" max="10000" default="10" unit="kg ha-1 day-1" uri="http://" inputtype="variable" />
+    <Input name="DryWeightLivingStorageOrgans_WSO" description="Dry weight of living storage organs" datatype="DOUBLE" variableCategory="" min="0" max="10000" default="10" unit="kg ha-1 day-1" uri="http://" inputtype="variable" />
+    <Input name="MaintenanceRespiration_MRES" description="Maintenance respiration" datatype="DOUBLE" variableCategory="" min="0" max="100000" default="100" unit="kg ha-1" uri="http://" inputtype="variable" />
+    <Input name="SUCROStypeDVS" description="SUCROS-type development stage code" datatype="DOUBLE" variableCategory="" min="0" max="2" default="0.5" unit="unitless" uri="http://" inputtype="variable" />
+    <Input name="ReductionFactorForSenescenceFunctionOfDVS_RFSETB" description="Reduction factor for senescence function of DVS (RFSETB)" datatype="DOUBLEARRAY" min="0" max="3" default="1" unit="[-, unitless]" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="RelativeMaintenanceRespirationOfRoots_RMR" description="Relative maintenance respiration of roots (RMR)" datatype="DOUBLE" min="0" max="0.5" default="0.01" unit="[kg CH2O kg-1 d-1]" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="RelativeMaintenanceRespirationOfLeaves_RML" description="Relative maintenance respiration of leaves (RML)" datatype="DOUBLE" min="0" max="0.5" default="0.02" unit="[kg CH2O kg-1 d-1]" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="RelativeMaintenanceRespirationOfStems_RMS" description="Relative maintenance respiration of stems (RMS)" datatype="DOUBLE" min="0" max="0.5" default="0.015" unit="[kg CH2O kg-1 d-1]" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="RelativeMaintenanceRespirationOfStorageOrgans_RMO" description="Relative maintenance respiration of storage organs (RMO)" datatype="DOUBLE" min="0" max="0.5" default="0.003" unit="[kg CH2O kg-1 d-1]" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="RelativeIncreaseRespirationRatePer10degreeTempIncrease_Q10" description="Relative increase respiration rate per 10-degree temperature increase (Q10)" datatype="DOUBLE" min="0" max="5" default="2" unit="[-]" uri="" inputtype="parameter" parametercategory="" />
+  </Inputs>
+  <Outputs>
+    <Output name="AssimilationAfterMaintenanceRespirationRate_ASRC" description="Assimilation after maintenance respiration rate" datatype="DOUBLE" min="0" max="10000" unit="kg CH2O ha-1 day-1" uri="http://" />
+    <Output name="MaintenanceRespirationRate_MRES" description="Maintenance respiration rate" datatype="DOUBLE" min="0" max="10000" unit="kg CO2 ha-1 day-1" uri="http://" />
+    <Output name="MaintenanceRespiration_MRES" description="Maintenance respiration" datatype="DOUBLE" min="0" max="100000" unit="kg ha-1" uri="http://" />
+  </Outputs>
+  <Algorithm language="C#" platform="Bioma" filename="MaintenanceRespiration.cs" />
+  <Parametersets>
+    <Parameterset name="Default" description="Paramters default value" />
+  </Parametersets>
+</ModelUnit>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModelUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" modelid="EC.JRC.MARS.Crop.CropML.CropSyst.BiomassAccumulationC" name="BiomassAccumulationC" timestep="0" version="1.0.0.0">
+  <Description>
+    <Title>EC.JRC.MARS.Crop.CropML.CropSyst.BiomassAccumulationC</Title>
+    <Authors>Creator:;    Date:;    Publisher:;    </Authors>
+    <Abstract>Daily biomass accumulation - Composite strategy. Stockle, C.O., Donatelli, M., Nelson, R., 2003. CropSyst, a cropping system simulation model. European Journal of Agronomy, 18, 289-307. See also references of the associated strategies: NightTemperature, RUEbasedBiomassAccumulation, TUEbasedBiomassAccumulation. - </Abstract>
+  </Description>
+  <Inputs>
+    <Input name="AirTemperatureMinimum" description="Daily air temperature minimum" datatype="DOUBLE" variableCategory="" min="-25" max="45" default="15" unit="°C" uri="http://" inputtype="variable" />
+    <Input name="RUEActualRate" description="Actual radiation use efficiency" datatype="DOUBLE" variableCategory="" min="0" max="8" default="3" unit="g MJ-1 day-1" uri="http://" inputtype="variable" />
+    <Input name="AbsorbedSolarRadiationRate" description="Potential absorbed solar radiation (green LAI)" datatype="DOUBLE" variableCategory="" min="0" max="50" default="10" unit="MJ m-2 day-1" uri="http://" inputtype="variable" />
+    <Input name="AbovegroundBiomass" description="Potential aboveground biomass" datatype="DOUBLE" variableCategory="" min="0" max="50000" default="1500" unit="kg ha-1" uri="http://" inputtype="variable" />
+    <Input name="DevelopmentStageCode" description="Development stage decimal code" datatype="DOUBLE" variableCategory="" min="0" max="4" default="2.5" unit="unitless" uri="http://" inputtype="variable" />
+    <Input name="VapourPressureDeficit" description="Vapour pressure deficit" datatype="DOUBLE" variableCategory="" min="0" max="12.31" default="1" unit="kPa" uri="http://" inputtype="variable" />
+    <Input name="TranspirationRate" description="Potential traspiration rate" datatype="DOUBLE" variableCategory="" min="0" max="10" default="1" unit="cm d-1" uri="http://" inputtype="variable" />
+    <Input name="BiomassRadiationDependent" description="Biomass radiation dependent" datatype="DOUBLE" variableCategory="" min="0" max="70000" default="500" unit="Kg/ha" uri="http://" inputtype="variable" />
+    <Input name="BiomassTranspirationDependent" description="Biomass transpiration dependent" datatype="DOUBLE" variableCategory="" min="0" max="70000" default="500" unit="Kg/ha" uri="http://" inputtype="variable" />
+    <Input name="PARtoGlobalRadiationFactor" description="Factor to convert global solar radiation to PAR" datatype="DOUBLE" min="0.4" max="0.6" default="0.5" unit="unitless" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="TranspirationBiomassCoefficient" description="Transpiration Biomass Coefficient" datatype="DOUBLE" min="3" max="10" default="5" unit="(kg/m²)kPa)/m)" uri="" inputtype="parameter" parametercategory="" />
+  </Inputs>
+  <Outputs>
+    <Output name="NightTemperatureFactor" description="Night TemperatureFactor" datatype="DOUBLE" min="0" max="1" unit="unitless" uri="http://" />
+    <Output name="BiomassRadiationDependentRate" description="Biomass radiation dependent rate" datatype="DOUBLE" min="0" max="200" unit="kg m-2 d-1" uri="http://" />
+    <Output name="BiomassTranspirationDependentRate" description="Biomass transpiration dependent rate" datatype="DOUBLE" min="0" max="200" unit="kg m-2 d-1" uri="http://" />
+    <Output name="BiomassRadiationDependent" description="Biomass radiation dependent" datatype="DOUBLE" min="0" max="70000" unit="Kg/ha" uri="http://" />
+    <Output name="BiomassTranspirationDependent" description="Biomass transpiration dependent" datatype="DOUBLE" min="0" max="70000" unit="Kg/ha" uri="http://" />
+    <Output name="AbovegroundBiomass" description="Potential aboveground biomass" datatype="DOUBLE" min="0" max="50000" unit="kg ha-1" uri="http://" />
+    <Output name="AbovegroundBiomassRate" description="Potential aboveground biomass" datatype="DOUBLE" min="0" max="200" unit="kg ha-1 day-1" uri="http://" />
+  </Outputs>
+  <Algorithm language="C#" platform="Bioma" filename="BiomassAccumulationC.cs" />
+  <Parametersets>
+    <Parameterset name="Default" description="Paramters default value" />
+  </Parametersets>
+</ModelUnit>

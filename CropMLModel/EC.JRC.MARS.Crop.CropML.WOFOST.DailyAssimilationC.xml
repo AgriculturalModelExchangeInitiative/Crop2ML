@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModelUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" modelid="EC.JRC.MARS.Crop.CropML.WOFOST.DailyAssimilationC" name="DailyAssimilationC" timestep="0" version="1.0.0.0">
+  <Description>
+    <Title>EC.JRC.MARS.Crop.CropML.WOFOST.DailyAssimilationC</Title>
+    <Authors>Creator:;    Date:;    Publisher:;    </Authors>
+    <Abstract>Daily CO2 assimilation - Composite strategy. See references of the associated strategies: InstantaneousAssimilation. - </Abstract>
+  </Description>
+  <Inputs>
+    <Input name="MinimumTempOfSevenDays" description="Minimum temperature of the last seven days" datatype="DOUBLEARRAY" variableCategory="" min="-40" max="40" default="0" unit="°C" uri="http://" inputtype="variable" />
+    <Input name="NumberOfCanopyLayers" description="Number of canopy layers" datatype="INT" variableCategory="" min="0" max="100" default="3" unit="unitless" uri="http://" inputtype="variable" />
+    <Input name="AirTemperatureMaximum" description="Daily air temperature maximum" datatype="DOUBLE" variableCategory="" min="-30" max="55" default="25" unit="°C" uri="http://" inputtype="variable" />
+    <Input name="AirTemperatureMinimum" description="Daily air temperature minimum" datatype="DOUBLE" variableCategory="" min="-25" max="45" default="15" unit="°C" uri="http://" inputtype="variable" />
+    <Input name="AmplitudeOfSineOfSolarHeight_COSLD" description="Amplitude of sine of solar height" datatype="DOUBLE" variableCategory="" min="0" max="10000" default="2" unit="unitless" uri="http://" inputtype="variable" />
+    <Input name="DailyShortwaveRadiation_AVRAD" description="Daily shortwave radiation" datatype="DOUBLE" variableCategory="" min="0" max="60000000" default="17000000" unit="J m-2 day-1" uri="http://" inputtype="variable" />
+    <Input name="DailyTotalOfEffectiveSolarHeight_DSINBE" description="Daily total of effective solar height" datatype="DOUBLE" variableCategory="" min="0" max="10000" default="2" unit="s" uri="http://" inputtype="variable" />
+    <Input name="DayLenght" description="Day lenght" datatype="DOUBLE" variableCategory="" min="0" max="24" default="12" unit="unitless" uri="http://" inputtype="variable" />
+    <Input name="DiffuseIrradiationPerpendicularToDirectionOfLight_DIFPP" description="Diffuse irradiation perpendicular to direction of light" datatype="DOUBLE" variableCategory="" min="0" max="60000000" default="17000000" unit="J m-2 s-1" uri="http://" inputtype="variable" />
+    <Input name="SeasonalOffsetOfSineOfSolarHeight_SINLD" description="Seasonal offset of sine of solar height" datatype="DOUBLE" variableCategory="" min="0" max="10000" default="2" unit="unitless" uri="http://" inputtype="variable" />
+    <Input name="GreenLeafAreaIndex" description="Potential green leaf area index" datatype="DOUBLE" variableCategory="" min="0" max="25" default="2" unit="m2 m-2" uri="http://" inputtype="variable" />
+    <Input name="GrossCH2OAssimilation" description="Gross CH2O assimilation" datatype="DOUBLE" variableCategory="" min="0" max="100000" default="100" unit="kg CH2O ha-1" uri="http://" inputtype="variable" />
+    <Input name="GrossCO2Assimilation" description="Gross CO2 assimilation" datatype="DOUBLE" variableCategory="" min="0" max="100000" default="100" unit="kg CO2 ha-1" uri="http://" inputtype="variable" />
+    <Input name="SUCROStypeDVS" description="SUCROS-type development stage code" datatype="DOUBLE" variableCategory="" min="0" max="2" default="0.5" unit="unitless" uri="http://" inputtype="variable" />
+    <Input name="ReductionFactorOfGrossAssimFunctionOfLowTmin_TMNFTB" description="Reduction factor of gross assimilation rate as function of low minimum temperature (TMNFTB)" datatype="DOUBLEARRAY" min="-2" max="5" default="0.5" unit="[°C; -]" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="NumberOfInstantsInADayForWhichGrossPhotosynthesisIsEstimated" description="Number of instants in a day for which gross photosynthesis is estimated" datatype="INT" min="1" max="24" default="3" unit="[-]" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="LeafAreaIndexAtEmergence_LAIEM" description="Leaf area index at emergence (LAIEM)" datatype="DOUBLE" min="0.01" max="0.1" default="0.1" unit="[m2 m-2]" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="InitialTotalCropDryWeight_TDWI" description="Initial total crop dry weight (TDWI)" datatype="DOUBLE" min="0" max="300" default="50" unit="[kg ha-1]" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="FractionOfTotalDryMatterToRootsFunctionOfDVS_FRTB" description="Fraction of total dry matter to roots as function of development stage (FRTB)" datatype="DOUBLEARRAY" min="0" max="3" default="0.5" unit="[-; unitless]" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="FractionOfAboveGroundDryMatterToLeavesFunctionOfDVS_FLTB" description="Fraction of aboveground dry matter to leaves as function of development stage (FLTB)" datatype="DOUBLEARRAY" min="0" max="3" default="0.5" unit="[-; unitless]" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="FractionOfAboveGroundDryMatterToStemsFunctionOfDVS_FSTB" description="Fraction of aboveground dry matter to stems as function of development stage (FSTB)" datatype="DOUBLEARRAY" min="0" max="3" default="0.5" unit="[-; unitless]" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="FractionOfAboveGroundDryMatterToStorageOrgansFunctionOfDVS_FOTB" description="Fraction of aboveground dry matter to storage organs as function of development stage (FOTB)" datatype="DOUBLEARRAY" min="0" max="3" default="0.5" unit="[-; unitless]" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="SpecificLeafAreaFunctionOfDVS_SLATB" description="Specific leaf area as a function of DVS (SLATB)" datatype="DOUBLEARRAY" min="0" max="2.2" default="0.01" unit="[-, ha kg-1]" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="SpecificStemAreaFunctionOfDVS_SSATB" description="Specific stem area as a function of DVS (SSATB)" datatype="DOUBLEARRAY" min="0" max="2.2" default="0.01" unit="[-, ha kg-1]" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="MaximumLeafCO2AssimilationRateFunctionOfDVS_AMAXTB" description="Maximum leaf CO2 assimilation rate as function of DVS (AMAXTB)" datatype="DOUBLEARRAY" min="0" max="100" default="40" unit="[-; kg ha-1 hr-1]" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="LightUseEfficiencySingleLeafFunctionOfTavg_EFFTB" description="Light use efficiency single leaf function of average temperature (EFFTB)" datatype="DOUBLEARRAY" min="-10" max="50" default="1" unit="[°C; kg ha-1 hr-1 J-1 m2 s]" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="ExtinctionCoefficientDiffusedLightFunctionOfDVS_KDIFTB" description="Extinction coefficient for diffuse visible light as function of DVS (KDIFTB)" datatype="DOUBLEARRAY" min="0" max="1" default="0.5" unit="[-; unitless]" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="ReductionFactorOfAMAXFunctionOfTavg_TMPFTB" description="Reduction factor of AMAX as function of average temperature (TMPFTB)" datatype="DOUBLEARRAY" min="0" max="55" default="0.5" unit="[°C; unitless]" uri="" inputtype="parameter" parametercategory="" />
+  </Inputs>
+  <Outputs>
+    <Output name="TotalBiomass" description="Total biomass" datatype="DOUBLE" min="0" max="100000" unit="kg ha-1" uri="http://" />
+    <Output name="AbovegroundBiomass" description="Potential aboveground biomass" datatype="DOUBLE" min="0" max="50000" unit="kg ha-1" uri="http://" />
+    <Output name="LeavesBiomass" description="Potential leaves biomass" datatype="DOUBLE" min="0" max="35000" unit="kg ha-1" uri="http://" />
+    <Output name="StemsBiomass" description="Potential stems biomass" datatype="DOUBLE" min="0" max="35000" unit="kg ha-1" uri="http://" />
+    <Output name="StorageOrgansBiomass" description="Potential storage organs biomass" datatype="DOUBLE" min="0" max="35000" unit="kg ha-1" uri="http://" />
+    <Output name="RootBiomass" description="Root biomass (total)" datatype="DOUBLE" min="0" max="35000" unit="kg ha-1" uri="http://" />
+    <Output name="GreenLeafAreaIndex" description="Potential green leaf area index" datatype="DOUBLE" min="0" max="25" unit="m2 m-2" uri="http://" />
+    <Output name="GreenLeafAreaIndexExponential" description="Temperature driven green leaf area index exponential" datatype="DOUBLE" min="0" max="25" unit="m2 m-2" uri="http://" />
+    <Output name="GreenLeafAreaIndexFromSLA" description="Green leaf area index from specific leaf area" datatype="DOUBLE" min="0" max="25" unit="m2 m-2" uri="http://" />
+    <Output name="DailyGrossCO2AssimilationRate_DTGA" description="Daily gross CO2 assimilation rate" datatype="DOUBLE" min="0" max="10000" unit="kg CO2 ha-1 day-1" uri="http://" />
+    <Output name="GrossCO2Assimilation" description="Gross CO2 assimilation" datatype="DOUBLE" min="0" max="100000" unit="kg CO2 ha-1" uri="http://" />
+    <Output name="DailyGrossCH2OAssimilationRate_GASS" description="Daily gross CH2O assimilation rate" datatype="DOUBLE" min="0" max="10000" unit="kg CH2O ha-1 day-1" uri="http://" />
+    <Output name="GrossCH2OAssimilation" description="Gross CH2O assimilation" datatype="DOUBLE" min="0" max="100000" unit="kg CH2O ha-1" uri="http://" />
+  </Outputs>
+  <Algorithm language="C#" platform="Bioma" filename="DailyAssimilationC.cs" />
+  <Parametersets>
+    <Parameterset name="Default" description="Paramters default value" />
+  </Parametersets>
+</ModelUnit>
