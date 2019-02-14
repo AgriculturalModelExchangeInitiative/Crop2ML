@@ -1,4 +1,4 @@
-<!ELEMENT ModelComposition (Description,Inputs?,Outputs?,Composition,Algorithm,Parametersets,Testsets)>
+<!ELEMENT ModelComposition (Description,Composition,Parametersets?,Testsets?)>
 <!ATTLIST ModelComposition
   name CDATA #REQUIRED
   id CDATA #REQUIRED
@@ -11,10 +11,11 @@
 
 <!ELEMENT Composition (Model+,Links)>
 
-<!ELEMENT Model>
+<!ELEMENT Model EMPTY>
 <!ATTLIST Model
   name CDATA #REQUIRED
   id CDATA #REQUIRED
+  filename CDATA #REQUIRED
   displayx CDATA #IMPLIED
   displayy CDATA #IMPLIED>
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Model PUBLIC " " "https://raw.githubusercontent.com/AgriculturalModelExchangeInitiative/xml_representation/master/ModelUnit.dtd">
-<ModelUnit modelid="1" name="NetRadiation" timestep="1" version="1.0">
+<ModelUnit modelid="Sirius.EnergyBalance" name="NetRadiation" timestep="1" version="1.0">
 
     <Description>
         <Title>NetRadiation Model</Title>
@@ -66,7 +66,7 @@
         netOutGoingLongWaveRadiation = Nolr;
      
        ]]>
-     </Algorithm
+     </Algorithm>
      
      <Algorithm language="C++" platform=""><![CDATA[
      	double Nsr, clearSkySolarRadiation, averageT, surfaceEmissivity, cloudCoverFactor, Nolr;
@@ -80,7 +80,7 @@
     	netOutGoingLongWaveRadiation = Nolr;
      
        ]]>
-     </Algorithm
+     </Algorithm>
      
      <Algorithm language="Fortran" platform=""><![CDATA[
      	REAL Nsr, Nolr, clearSkySolarRadiation, averageT, surfaceEmissivity, cloudCoverFactor
@@ -95,7 +95,7 @@
 		netRadiationEquivalentEvaporation = netRadiation / lambdaV * 1000;
      
        ]]>
-     </Algorithm
+     </Algorithm>
      
      <Parametersets>
         <Parameterset name="set1" description="some values in there" >

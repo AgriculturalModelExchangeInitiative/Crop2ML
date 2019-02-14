@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE Model PUBLIC " " "https://raw.githubusercontent.com/AgriculturalModelExchangeInitiative/xml_representation/master/ModelComposition.dtd">
+<!DOCTYPE Model PUBLIC " " "https://simplace.net/dtd/ModelComposition.dtd">
 <ModelComposition name="EnergyBalance" id="Sirius.EnergyBalance" version="001" timestep = "1">
   <Description>
     <Title>EnergyBalance</Title>
@@ -9,19 +9,19 @@
     <Abstract>see documentation</Abstract>
   </Description>
   <Composition>
-    <Model name="NetRadiation" id="NetRadiation.EnergyBalance" filename="Example_Sirius_NetRadiation.xml" />
-    <Model name="NetRadiationEquivalent" id="NetRadiationEquivalent.EnergyBalance" filename="Example_Sirius_NetRadiationEquivalent.xml" />
-    <Model name="PriestlyTaylor" id="PriestlyTaylor.EnergyBalance" filename="Example_Sirius_PriestlyTaylor.xml" />
-    <Model name="Conductance" id="Conductance.EnergyBalance" filename="Example_Sirius_Conductance.xml" />
-    <Model name="DiffusionLimitedEvaporation" id="DiffusionLimitedEvaporation.EnergyBalance" filename="Example_Sirius_DiffusionLimitedEvaporation.xml" />
-    <Model name="Penman" id="Penman.EnergyBalance" filename="Example_Sirius_Penman.xml" />
-    <Model name="PtSoil" id="PtSoil.EnergyBalance" filename="Example_Sirius_PtSoil.xml" />
-    <Model name="SoilEvaporation" id="SoilEvaporation.EnergyBalance" filename="Example_Sirius_SoilEvaporation.xml" />
-    <Model name="EvapoTranspiration" id="EvapoTranspiration.EnergyBalance" filename="Example_Sirius_EvapoTranspiration.xml" />
-    <Model name="SoilHeatFlux" id="SoilHeatFlux.EnergyBalance" filename="Example_Sirius_SoilHeatFlux.xml" />
-    <Model name="PotentialTranspiration" id="PotentialTranspiration.EnergyBalance" filename="Example_Sirius_PotentialTranspiration.xml" />
-    <Model name="CropHeatFlux" id="CropHeatFlux.EnergyBalance" filename="Example_Sirius_CropHeatFlux.xml" />
-    <Model name="CanopyTemperature" id="CanopyTemperature.EnergyBalance" filename="Example_Sirius_CanopyTemperature.xml" />
+    <Model name="NetRadiation" id="Sirius.EnergyBalance.NetRadiation" filename="Example_Sirius_NetRadiation.xml" />
+    <Model name="NetRadiationEquivalent" id="Sirius.EnergyBalance.NetRadiationEquivalent" filename="Example_Sirius_NetRadiationEquivalent.xml" />
+    <Model name="PriestlyTaylor" id="Sirius.EnergyBalance.PriestlyTaylor" filename="Example_Sirius_PriestlyTaylor.xml" />
+    <Model name="Conductance" id="Sirius.EnergyBalance.Conductance" filename="Example_Sirius_Conductance.xml" />
+    <Model name="DiffusionLimitedEvaporation" id="Sirius.EnergyBalance.DiffusionLimitedEvaporation" filename="Example_Sirius_DiffusionLimitedEvaporation.xml" />
+    <Model name="Penman" id="Sirius.EnergyBalance.Penman" filename="Example_Sirius_Penman.xml" />
+    <Model name="PtSoil" id="Sirius.EnergyBalance.PtSoil" filename="Example_Sirius_PtSoil.xml" />
+    <Model name="SoilEvaporation" id="Sirius.EnergyBalance.SoilEvaporation" filename="Example_Sirius_SoilEvaporation.xml" />
+    <Model name="EvapoTranspiration" id="Sirius.EnergyBalance.EvapoTranspiration" filename="Example_Sirius_EvapoTranspiration.xml" />
+    <Model name="SoilHeatFlux" id="Sirius.EnergyBalance.SoilHeatFlux" filename="Example_Sirius_SoilHeatFlux.xml" />
+    <Model name="PotentialTranspiration" id="Sirius.EnergyBalance.PotentialTranspiration" filename="Example_Sirius_PotentialTranspiration.xml" />
+    <Model name="CropHeatFlux" id="Sirius.EnergyBalance.CropHeatFlux" filename="Example_Sirius_CropHeatFlux.xml" />
+    <Model name="CanopyTemperature" id="Sirius.EnergyBalance.CanopyTemperature" filename="Example_Sirius_CanopyTemperature.xml" />
 
     <Links>
       <InputLink target="NetRadiation.minTair" source="minTair" />

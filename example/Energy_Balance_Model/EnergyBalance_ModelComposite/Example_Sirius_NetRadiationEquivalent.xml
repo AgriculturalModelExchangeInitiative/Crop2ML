@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Model PUBLIC " " "https://raw.githubusercontent.com/AgriculturalModelExchangeInitiative/xml_representation/master/ModelUnit.dtd">
-<ModelUnit modelid="1" name="NetRadiationEquivalentEvaporation" timestep="1" version="1.0">
+<ModelUnit modelid="Sirius.EnergyBalance" name="NetRadiationEquivalentEvaporation" timestep="1" version="1.0">
     <Description>
         <Title>NetRadiationEquivalentEvaporation Model</Title>
         <Authors>Pierre Martre</Authors>
