@@ -1,4 +1,4 @@
-<!ELEMENT ModelComposition (Description,Inputs?,Outputs?,Algorithm,Composition,Parametersets?,Testsets?)>
+<!ELEMENT ModelComposition (Description,Inputs?,Outputs?,Algorithm?,Composition,Parametersets?,Testsets?)>
 <!ATTLIST ModelComposition
   name CDATA #REQUIRED
   id CDATA #REQUIRED
