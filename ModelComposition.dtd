@@ -1,4 +1,4 @@
-<!ELEMENT ModelComposition (Description,Composition,Parametersets?,Testsets?)>
+<!ELEMENT ModelComposition (Description,Inputs?,Outputs?,Algorithm,Composition,Parametersets?,Testsets?)>
 <!ATTLIST ModelComposition
   name CDATA #REQUIRED
   id CDATA #REQUIRED
@@ -61,6 +61,44 @@
   source NMTOKEN #REQUIRED
   target NMTOKEN #REQUIRED>
 
+<!ELEMENT Inputs (Input)+>
+<!ATTLIST Inputs>
+
+<!ELEMENT Input EMPTY>
+<!ATTLIST Input
+  name NMTOKEN #REQUIRED
+  datatype (STRING|STRINGARRAY|STRINGLIST|DATE|DATEARRAY|DATELIST|DOUBLE|DOUBLEARRAY|DOUBLELIST|INT|INTARRAY|INTLIST|BOOLEAN) #REQUIRED 
+  description CDATA #REQUIRED
+  default CDATA #IMPLIED
+  max CDATA #IMPLIED
+  min CDATA #IMPLIED
+  inputtype (variable|parameter) #REQUIRED
+  parametercategory (constant|species|genotypic|soil|private) #IMPLIED
+  variablecategory (state|rate|auxiliary) #IMPLIED
+  unit CDATA #IMPLIED
+  uri CDATA #IMPLIED>
+
+<!ELEMENT Outputs (Output*)>
+<!ATTLIST Outputs>
+
+<!ELEMENT Output EMPTY>
+<!ATTLIST Output
+  name NMTOKEN #REQUIRED
+  datatype (STRING|STRINGARRAY|STRINGLIST|DATE|DATEARRAY|DATELIST|DOUBLE|DOUBLEARRAY|DOUBLELIST|INT|INTARRAY|INTLIST|BOOLEAN) #REQUIRED 
+  description CDATA #REQUIRED
+  max CDATA #IMPLIED
+  min CDATA #IMPLIED
+  variablecategory (state|rate|auxiliary) #IMPLIED
+  unit CDATA #IMPLIED
+  uri CDATA #IMPLIED>
+  
+<!ELEMENT Algorithm (#PCDATA)>
+<!ATTLIST Algorithm
+  language CDATA #REQUIRED
+  platform CDATA #IMPLIED
+  filename CDATA #IMPLIED
+  function CDATA #IMPLIED>
+  
 <!ELEMENT Parameterset (Param*)>
 <!ATTLIST Parameterset
   description CDATA #REQUIRED
