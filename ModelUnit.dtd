@@ -70,7 +70,7 @@
   inputtype (variable|parameter) #REQUIRED
   parametercategory (constant|species|genotypic|soil|private) #IMPLIED
   variablecategory (state|rate|auxiliary) #IMPLIED
-  unit CDATA #IMPLIED
+  unit CDATA #REQUIRED
   uri CDATA #IMPLIED>
 
 <!ELEMENT Output EMPTY>
@@ -81,7 +81,7 @@
   max CDATA #IMPLIED
   min CDATA #IMPLIED
   variablecategory (state|rate|auxiliary) #IMPLIED
-  unit CDATA #IMPLIED
+  unit CDATA #REQUIRED
   uri CDATA #IMPLIED>
 
 <!ELEMENT Parameterset (Param*)>
