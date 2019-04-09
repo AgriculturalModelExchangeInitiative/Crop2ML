@@ -1,8 +1,14 @@
 ============
 **Usecases**
 ============
-We describe some case studies involving the declarative representation of legacy models in Crop2ML format of 
-some crop modeling platforms.
+From some legacy model units of crop modeling platforms we show:
+- their representation in crop2ml format (metadata and algorithm)
+- transformation in fortran codes
+- Test of model units
+
+1- Priestly-Taylor potential evapotranspiration of DSSAT model
+
+1-1- DSSAT fortran code
 
 .. code-block:: fortran
 
@@ -104,6 +110,14 @@ some crop modeling platforms.
     ! XHLAI   Leaf area index (m2[leaf] / m2[ground])
 
 
+1-2- Creation of Crop2ML package
+
+
+1-3- Crop2ML representation of model unit
+
+metadata
+-------- 
+
 .. code-block:: xml
 
     <?xml version="1.0" encoding="UTF-8"?>
@@ -149,7 +163,8 @@ some crop modeling platforms.
 
     </ModelUnit>
 
-
+Algorithm
+---------
 .. code-block:: cython
 
     cdef float ALBEDO, EEQ, SLANG, TD
@@ -166,6 +181,9 @@ some crop modeling platforms.
     elif (TMAX < 5.0):
         EO = EEQ*0.01*exp(0.18*(TMAX+20.0))
     EO = max(EO, 0.0001)
+
+
+1-4- Fortran code generated
 
 .. code-block:: fortran
 
@@ -261,6 +279,9 @@ some crop modeling platforms.
             END IF
             EO = MAX(EO, 0.0001)
         END SUBROUTINE petpt_
+
+
+1-5- Test in jupyterlab
 
 .. nbinput:: ipython3
     :execution-count: 5
