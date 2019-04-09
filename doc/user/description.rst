@@ -167,7 +167,7 @@ composed by their attributes which declarations are:
 
 *	 and their corresponding value
 
-*Outputs* MUST contain zero or more output elements. 
+*Outputs* MUST contain one or more output elements. 
 
 .. code-block:: xml
 
@@ -275,7 +275,8 @@ This language support:
    * standard math and logical operations
    * variable declaration and initialization
    * assignment
--- in progress
+-- in progress 
+
 
 Parametersets element
 ^^^^^^^^^^^^^^^^^^^^^
