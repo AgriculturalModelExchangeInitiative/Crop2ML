@@ -1,0 +1,94 @@
+<!ELEMENT Package (Description,CompositeModel,ModelUnits+,Src?,Tests?,Graphs?,Data?)>
+<!ATTLIST Package
+  name CDATA #REQUIRED
+  id CDATA #REQUIRED
+  version CDATA #IMPLIED
+  licence CDATA #REQUIRED
+  crop2mlVersion CDATA #REQUIRED
+>
+<!ELEMENT Description (Author+,Reference?,Abstract,Doc)>
+<!ATTLIST Description>
+<!ELEMENT Author (Firstname,Lastname,Email,Institution)>
+<!ATTLIST Author>
+<!ELEMENT Firstname (#PCDATA)>
+<!ATTLIST Firstname>
+<!ELEMENT Lastname (#PCDATA)>
+<!ATTLIST Lastname>
+<!ELEMENT Email (#PCDATA)>
+<!ATTLIST Email>
+<!ELEMENT Institution (#PCDATA)>
+<!ATTLIST Institution>
+<!ELEMENT Reference (#PCDATA)>
+<!ATTLIST Reference>
+<!ELEMENT Abstract (#PCDATA)>
+<!ATTLIST Abstract>
+<!ELEMENT Doc (#PCDATA)>
+<!ATTLIST Doc>
+<!ELEMENT CompositeModel (Dependency*)>
+<!ATTLIST CompositeModel
+  name CDATA #REQUIRED
+  id CDATA #REQUIRED
+  version CDATA #REQUIRED
+>
+<!ELEMENT Dependency EMPTY>
+<!ATTLIST Dependency
+  pkgename CDATA #REQUIRED
+  type CDATA #REQUIRED
+  name CDATA #REQUIRED
+  version CDATA #REQUIRED
+  licence CDATA #REQUIRED
+>
+<!ELEMENT ModelUnits (ModelUnit)+>
+<!ATTLIST ModelUnits>
+<!ELEMENT ModelUnit (Function_dependency*)>
+<!ATTLIST ModelUnit
+  name CDATA #REQUIRED
+  id CDATA #REQUIRED
+  version CDATA #REQUIRED
+>
+<!ELEMENT Function_dependency EMPTY>
+<!ATTLIST Function_dependency
+  pkgename CDATA #REQUIRED
+  name CDATA #REQUIRED
+  version CDATA #REQUIRED
+>
+<!ELEMENT Data EMPTY>
+<!ATTLIST Data path CDATA #REQUIRED>
+<!ELEMENT Src (Languages, Platforms)>
+<!ATTLIST Src path CDATA #REQUIRED>
+<!ELEMENT Languages (Pyx?,Py?, Cs?, Java?, Fortran?, Cpp?, R?)>
+<!ATTLIST Languages>
+<!ELEMENT Pyx EMPTY>
+<!ATTLIST Pyx>
+<!ELEMENT Py EMPTY>
+<!ATTLIST Py>
+<!ELEMENT Cs EMPTY>
+<!ATTLIST Cs>
+<!ELEMENT Java EMPTY>
+<!ATTLIST Java>
+<!ELEMENT Fortran EMPTY>
+<!ATTLIST Fortran>
+<!ELEMENT Cpp EMPTY>
+<!ATTLIST Cpp>
+<!ELEMENT R EMPTY>
+<!ATTLIST R>
+<!ELEMENT Tests (Languages, Platforms)>
+<!ATTLIST Tests path CDATA #REQUIRED>
+<!ELEMENT Platforms (Openalea?,Bioma?, Simplace?, Record?, Dssat?, Apsim?, Stics?)>
+<!ATTLIST Platforms>
+<!ELEMENT Openalea EMPTY>
+<!ATTLIST Openalea>
+<!ELEMENT Bioma EMPTY>
+<!ATTLIST Bioma>
+<!ELEMENT Simplace EMPTY>
+<!ATTLIST Simplace>
+<!ELEMENT Record EMPTY>
+<!ATTLIST Record>
+<!ELEMENT Dssat EMPTY>
+<!ATTLIST Dssat>
+<!ELEMENT Apsim EMPTY>
+<!ATTLIST Apsim>
+<!ELEMENT Stics EMPTY>
+<!ATTLIST Stics>
+<!ELEMENT Graphs EMPTY>
+<!ATTLIST Graphs path CDATA #REQUIRED>
