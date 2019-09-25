@@ -1,4 +1,4 @@
-<!ELEMENT ModelComposition (Description,Inputs?,Outputs?,Algorithm?,Composition,Parametersets?,Testsets?)>
+<!ELEMENT ModelComposition (Description,Inputs?,Outputs?,Initialization?, Algorithm?,Composition,Parametersets?,Testsets?)>
 <!ATTLIST ModelComposition
   name CDATA #REQUIRED
   id CDATA #REQUIRED
@@ -91,7 +91,13 @@
   variablecategory (state|rate|auxiliary) #IMPLIED
   unit CDATA #IMPLIED
   uri CDATA #IMPLIED>
-  
+
+<!ELEMENT Initialization (#PCDATA)>
+<!ATTLIST Initialization
+	name CDATA #REQUIRED
+	language CDATA #REQUIRED
+  filename CDATA #IMPLIED>
+  	
 <!ELEMENT Algorithm (#PCDATA)>
 <!ATTLIST Algorithm
   language CDATA #REQUIRED
