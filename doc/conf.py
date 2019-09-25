@@ -58,7 +58,6 @@ extensions = [
     'nbsphinx'
 	]
 
-
 # try to add more extensions which are not default
 # but still useful
 # based on the fact that the extension is installed on the system
