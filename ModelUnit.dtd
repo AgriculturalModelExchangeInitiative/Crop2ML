@@ -1,3 +1,20 @@
+<!--
+FILE : ModelUnit.dtd
+
+CREATED : 2018
+
+LAST MODIFIED : 2020
+
+AUTHOR : Agricultural Models Exchange Initiative
+
+DESCRIPTION : This document contains a DTD corresponding to the syntax rules
+  defined in the Crop2ML model unit's Specification for Crop2ML 1.1. This
+  specification is available at
+    https://raw.githubusercontent.com/AgriculturalModelExchangeInitiative/crop2ml/master/ModelUnit.dtd
+
+COPYRIGHT : (2018).
+-->
+
 <!ELEMENT ModelUnit (Description,Inputs?,Outputs?,Initialization?,Function*, Algorithm+,Parametersets,Testsets)>
 <!ATTLIST ModelUnit
   name CDATA #REQUIRED

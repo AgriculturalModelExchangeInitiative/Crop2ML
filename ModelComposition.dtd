@@ -1,3 +1,20 @@
+<!--
+FILE : ModelComposition.dtd
+
+CREATED : 2018
+
+LAST MODIFIED : 2020
+
+AUTHOR : Agricultural Models Exchange Initiative
+
+DESCRIPTION : This document contains a DTD corresponding to the syntax rules
+  defined in the Crop2ML model composite's Specification for Crop2ML 1.1. This
+  specification is available at
+    https://raw.githubusercontent.com/AgriculturalModelExchangeInitiative/crop2ml/master/ModelComposition.dtd
+
+COPYRIGHT : (2018).
+-->
+
 <!ELEMENT ModelComposition (Description,Inputs?,Outputs?,Initialization?, Algorithm?,Composition,Parametersets?,Testsets?)>
 <!ATTLIST ModelComposition
   name CDATA #REQUIRED
