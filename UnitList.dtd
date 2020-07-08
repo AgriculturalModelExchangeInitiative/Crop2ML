@@ -15,7 +15,7 @@ DESCRIPTION : This document contains a DTD corresponding to the syntax rules
 COPYRIGHT : (2018).
 -->
 
-<!ELEMENT UnitList (Unit)+>
+<!ELEMENT UnitList (UnitV)+>
 <!ATTLIST UnitList 
   id CDATA #REQUIRED
   name CDATA #REQUIRED
@@ -23,10 +23,11 @@ COPYRIGHT : (2018).
   version CDATA #REQUIRED
 >
 
-<!ELEMENT Unit EMPTY>
-<!ATTLIST Unit
+<!ELEMENT UnitV EMPTY>
+<!ATTLIST UnitV
   symbol CDATA #REQUIRED
   value CDATA #REQUIRED
   offset CDATA #REQUIRED
-  prefixable CDATA #IMPLIED
+  factor CDATA #REQUIRED
+  prefixable (False|True) #IMPLIED
   tex_repr CDATA #IMPLIED>
