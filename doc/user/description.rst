@@ -1,8 +1,13 @@
 **Crop2ML Description**
 =======================
-| In Crop2ML, a model is either a model unit or a composition of models. A ModelUnit  represents the atomic unit of a crop model define by the 
-	modelers. A model composition  is a model resulting from the composition of two or more atomic model or composite models.
-| These models have a specific formal definition in Crop2ML.
+| A crop2ML model is a representation of a biophysical process involved in plant and crop growth and development
+   into a Crop2ML format. Crop2ML offers a high modularity in process description.
+ Thus, a crop2ML model is either a model unit or a model composite. 
+
+| A Crop2ML model unit is a crop2ML model with a fine granularity. It means that it doesn't depend on another model. 
+| A Crop2ML model composite is a composition of two or more model unit or model composite.
+
+| These two types of Crop2ML models each have a specific formal definition.
 
 Formal definition of a Model Unit in Crop2ML
 --------------------------------------------
@@ -269,12 +274,14 @@ In order to avoid this multiplicity of languages, Crop2Ml project defines an int
 algo part and develops a package used for translating to the different supported languages.
 This language uses a restriction of Cython grammar to take into account the expressivness of python language and the use of a set of C types.
 This language support:
+
    * basic types defined in inputs and outputs metadata
    * conditionals (if / else if / else)
    * loop structure (while, for)
    * standard math and logical operations
    * variable declaration and initialization
    * assignment
+   
 -- in progress 
 
 

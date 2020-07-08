@@ -1,0 +1,153 @@
+<!--
+FILE : cellml_1_1.dtd
+
+CREATED : 26 August 2002
+
+LAST MODIFIED : 29 September 2003
+
+AUTHOR : Autumn A. Cuellar (a.cuellar@auckland.ac.nz)
+         Warren Hedley
+         The Bioengineering Institute
+         The University of Auckland
+
+DESCRIPTION : This document contains a DTD corresponding to the syntax rules
+  defined in the Developer's Specification for CellML 1.1. This
+  specification is available at
+    http://www.cellml.org/private/specification/unstable/index.html
+
+SYSTEM IDENTIFIER : http://www.cellml.org/cellml/cellml_1_1.dtd
+
+COPYRIGHT : (2002) Bioengineering Institute, The University of Auckland.
+-->
+
+<!ENTITY % use_mathml_dtd "IGNORE">
+<![%use_mathml_dtd;[
+  <!ENTITY % mathml-charent.module "IGNORE">
+  <!ENTITY % mathml_dtd_path
+    "'http://www.w3.org/TR/MathML2/dtd/mathml2.dtd'">
+  <!ENTITY % mathml_dtd PUBLIC "-//W3C//DTD MathML 2.0//EN"
+    %mathml_dtd_path;>
+
+  %mathml_dtd;
+
+  <!ATTLIST %cn.qname;    
+    %MATHML.Common.attrib;
+    %att-type;
+    %att-base;
+    %att-definition;
+    %att-encoding;
+    cellml:units      CDATA           #REQUIRED
+  >
+]]>
+
+<!ENTITY % cellml_common_attributes "
+  xmlns               CDATA           #IMPLIED
+  xmlns:cellml        CDATA           #IMPLIED
+  xmlns:cmeta         CDATA           #IMPLIED
+  cmeta:id            ID              #IMPLIED
+">
+
+<!ELEMENT model (import | units | component | group | connection)*>
+<!ATTLIST model
+  %cellml_common_attributes;
+  name                CDATA           #REQUIRED
+>
+
+<!ELEMENT import (units | component)*>
+<!ATTLIST import
+  %cellml_common_attributes;
+  xlink:type          (simple)        #FIXED "simple"
+  xlink:href          CDATA           #REQUIRED
+>
+
+<!ELEMENT component (units | variable | reaction | math)*>
+<!ATTLIST component
+  %cellml_common_attributes;
+  name                CDATA           #REQUIRED
+  component_ref       CDATA           #IMPLIED
+>
+
+<!ELEMENT variable EMPTY>
+<!ATTLIST variable
+  %cellml_common_attributes;
+  name                CDATA           #REQUIRED
+  public_interface    (in|out|none)   #IMPLIED
+  private_interface   (in|out|none)   #IMPLIED
+  units               CDATA           #REQUIRED
+  initial_value       CDATA           #IMPLIED
+>
+
+<!ELEMENT connection (map_components | map_variables+)>
+<!ATTLIST connection
+  %cellml_common_attributes;
+>
+
+<!ELEMENT map_components EMPTY>
+<!ATTLIST map_components
+  %cellml_common_attributes;
+  component_1         CDATA           #REQUIRED
+  component_2         CDATA           #REQUIRED
+>
+
+<!ELEMENT map_variables EMPTY>
+<!ATTLIST map_variables
+  %cellml_common_attributes;
+  variable_1          CDATA           #REQUIRED
+  variable_2          CDATA           #REQUIRED
+>
+
+<!ELEMENT units (unit*)>
+<!ATTLIST units
+  %cellml_common_attributes;
+  name                CDATA           #REQUIRED
+  units_ref           CDATA           #IMPLIED
+  base_units          (yes|no)        #IMPLIED
+>
+
+<!ELEMENT unit EMPTY>
+<!ATTLIST unit
+  %cellml_common_attributes;
+  multiplier          CDATA           #IMPLIED
+  prefix              CDATA           #IMPLIED
+  units               CDATA           #REQUIRED
+  exponent            CDATA           #IMPLIED
+  offset              CDATA           #IMPLIED
+>
+
+<!ELEMENT group (relationship_ref | component_ref)+>
+<!ATTLIST group
+  %cellml_common_attributes;
+>
+
+<!ELEMENT relationship_ref EMPTY>
+<!ATTLIST relationship_ref
+  %cellml_common_attributes;
+  relationship (encapsulation|containment) #IMPLIED
+>
+
+<!ELEMENT component_ref (component_ref*)>
+<!ATTLIST component_ref
+  %cellml_common_attributes;
+  component           CDATA           #REQUIRED
+>
+
+<!ELEMENT reaction (variable_ref+)>
+<!ATTLIST reaction
+  %cellml_common_attributes;
+  reversible          (yes|no)        #IMPLIED
+>   
+
+<!ELEMENT variable_ref (role+)>
+<!ATTLIST variable_ref
+  %cellml_common_attributes;
+  variable            CDATA           #REQUIRED
+>
+
+<!ELEMENT role (math?)>
+<!ATTLIST role
+  %cellml_common_attributes;
+  role (reactant|product|activator|catalyst|inhibitor|modifier|rate) #REQUIRED
+  direction (forward|backward|both)   #IMPLIED
+  delta_variable      CDATA           #IMPLIED
+  stoichiometry       CDATA           #IMPLIED
+>

@@ -2,3 +2,6 @@ path.py
 six
 nbformat
 nbsphinx
+sphinx>2,<3
+sphinx-hoverxref
+sphinx_rtd_theme

@@ -18,12 +18,14 @@ Contents:
    :numbered:
       
 	What is Crop2ML? <user/overview.rst>
-	Crop2ML description <user/description.rst>
-    	Crop2ML package <user/package.rst>
+	Crop2ML Specification <user/index_spec.rst>
+   Crop2ML package <user/package.rst>
 	Usecases <user/usecases.rst>
 	License <user/license.rst>
 	Publication <user/Publication.rst>
 	Glossary <user/glossary.rst>
+   authors
+   history
 
 
 .. include:: ../AUTHORS.rst

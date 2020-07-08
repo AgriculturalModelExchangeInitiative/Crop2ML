@@ -76,7 +76,7 @@ inheritance_node_attrs = dict(shape='ellipse', fontsize=12,
                               color='orange', style='filled')
 
 # Add any paths that contain templates here, relative to this directory.
-templates_path = ['_templates']
+templates_path = ['_templates', 'static/templates']
 
 # The suffix of source filenames.
 source_suffix = '.rst'
@@ -182,11 +182,12 @@ html_theme = 'default'
 # here, relative to this directory. They are copied after the builtin
 # static files, so a file named "default.css" will overwrite the builtin
 # "default.css".
-html_static_path = ['_static']
+html_static_path = ['_static', 'static/']
+html_css_files = ['css/crop2ml.css']
 
 # If not '', a 'Last updated on:' timestamp is inserted at every page
 # bottom, using the given strftime format.
-# html_last_updated_fmt = '%b %d, %Y'
+html_last_updated_fmt = '%b %d, %Y'
 
 # If true, SmartyPants will be used to convert quotes and dashes to
 # typographically correct entities.
@@ -320,3 +321,4 @@ texinfo_documents = [
 # use apidoc to generate developer doc
 
 # #}
+
