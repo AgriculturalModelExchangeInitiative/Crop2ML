@@ -283,7 +283,7 @@ Algorithm
 
 1-5- Test in jupyterlab
 
-.. nbinput::ipython3
+.. nbinput:: ipython3
     :execution-count: 5
 
     Program test_test1_PETPT
