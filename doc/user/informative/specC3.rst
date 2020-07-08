@@ -1,4 +1,4 @@
-.. _specC2:
+.. _specC3:
 
 .. include:: ../sectionM1_elements.inc
   :start-after: marker_inputsC_start

@@ -485,7 +485,7 @@ The ``TestSets`` element
 .. __specM_modelcomposite:
 
 The ``ModelComposition`` element
-------------------------------
+--------------------------------
 
 The top-level element information item in a Crop2ML model composite infoset MUST be referred to as the :code:`ModelComposition` element.
 
@@ -587,7 +587,7 @@ The :code:`Algorithm` element MAY implement the mathematical behaviour of the mo
 .. _specM_compositionC:
 
 The ``Composition`` element
--------------------------
+---------------------------
 
 The :code:`Composition` element makes the difference between a model unit and a model composite.
 
@@ -661,7 +661,7 @@ The :code:`ParameterSets` element allows to parameterize the model composite.
 
 ..The :code:`ParameterSets` element information item is a child of a :code:`ModelComposition` element.
 
-  It contains the same attributes as those of the :code:`ParameterSets` element of a :code:`ModelUnit`.
+  It contains the same elements type as those of the :code:`ParameterSets` element of a :code:`ModelUnit`.
 
 	
 .. marker_parametersetsC_end
@@ -677,10 +677,10 @@ The :code:`TestSets` element allows to make unit tests on the model composite.
 
 ..The :code:`TestSets` element information item is a child of a :code:`ModelComposition` element.
 
-  It contains the same attributes as those of the :code:`ParameterSets` element of a :code:`ModelUnit`.
+  It contains the same elements as those of the :code:`TestSets` element of a :code:`ModelUnit`.
 
 	
-..marker_testsets_end
+..marker_testsetsC_end
 
 
 
