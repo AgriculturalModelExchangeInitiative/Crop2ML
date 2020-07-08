@@ -41,7 +41,8 @@ The structure of your new project looks like this:
 Crop2ML XML files
 ^^^^^^^^^^^^^^^^^
 Crop2ML directory contains model metadata and experiment files (XML files) of atomic models and composite model.
-The name of atomic model must start with "unit_" and the name of composite model by "composition_".
+
+The name of atomic model must start with **unit_** and the name of composite model by **composition_**.
 
 Crop2ML algorithm
 ^^^^^^^^^^^^^^^^^
@@ -69,7 +70,8 @@ To add a crop2ML package, modeller should use Cookiecutter-Crop2ML.
 Requirements to use the cookiecutter template:
 ----------------------------------------------
  - Python 2.7 or 3.5
- - [Cookiecutter Python package](http://cookiecutter.readthedocs.org/en/latest/installation.html) >= 1.4.0: This can be installed with pip by or conda depending on how you manage your Python packages:
+ 
+ - `Cookiecutter Python package <http://cookiecutter.readthedocs.org/en/latest/installation.html>`_ >= 1.4.0: This can be installed with pip by or conda depending on how you manage your Python packages:
 
 .. code-block:: bash
 

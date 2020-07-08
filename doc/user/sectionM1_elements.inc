@@ -1,6 +1,7 @@
 .. _sectionM1:
 
-.. marker_model_start
+.. 
+   marker_model_start
 
 .. _specM_modelunit:
 
@@ -11,7 +12,7 @@ The top-level element information item in a Crop2ML model unit infoset MUST be r
 
 .. code-block:: xml
 
-		         <?xml version="1.0" encoding= ?> (1)
+				   <?xml version="1.0" encoding= ?> (1)
 		         <!DOCTYPE ModelUnit PUBLIC " " "https://raw.githubusercontent.com/AgriculturalModelExchangeInitiative/crop2ml/master/ModelUnit.dtd"> (2)
 		         <ModelUnit modelid=" " timestep=" " name=" " version=""> (3)
 			         ....
@@ -27,17 +28,16 @@ The top-level element information item in a Crop2ML model unit infoset MUST be r
 
       * The value of the :code:`name` attribute must obey a number of constraints
 
-.. marker_model_start2
+.. 
+   marker_model_start2
 
       * The value of the :code:`modelid` attribute MUST ensure the provenance of the model. It is composed by an identifier of the platform and model package that provides the model and the name of the model unit separated by a dot. It is used to reference the model elsewhere and must be an unique identifier.
             
-         | **Eg**. SQ.EnergyBalance.CropHeatFlux where SQ.EnergyBalance means that it is a strategy of Energy Balance component of SiriusQuality (SQ) model  and CropHeatFlux the name of the model unit
+        **Eg**. SQ.EnergyBalance.CropHeatFlux where SQ.EnergyBalance means that it is a strategy of Energy Balance component of SiriusQuality (SQ) model  and CropHeatFlux the name of the model unit
          
       * The value of the :code:`version` corresponds to a state of evolution of the model unit. It is defined by numbering.
 
-
    2. A :code:`ModelUnit` element MAY contain a :code:`timestep` attribute. Without this attribute, a time step of one day is considered. 
-
 
    3. A :code:`ModelUnit` element MUST contain one additional specific element child:
       
@@ -51,21 +51,20 @@ The top-level element information item in a Crop2ML model unit infoset MUST be r
 
       #. A :code:`TestSets` element
 
-
    4. A :code:`ModelUnit` element MUST contain one or more :code:`Algorithm` element children
-
 
    5. A :code:`ModelUnit` element MAY contain one :code:`Initialization` element children
 
-
    6. A :code:`ModelUnit` element MAY contain one or more :code:`Function` element children
 
+.. 
+   marker_model_end 
 
-.. marker_model_end 
+.. 
+   marker_description_start
 
-.. marker_description_start
+.. _specM_description:
 
-.. _specM_description::
 
 The ``Description`` element
 ---------------------------
@@ -75,45 +74,49 @@ This element gives the general information on the model and is composed of a set
 .. code-block:: xml
 		
 		          <ModelUnit modelid=" " timestep=" " name=" " version =" ">
-			               <Description>
-				                    <Title>title</Title>
-				                    <Authors>authors</Authors>
-				                    <Institution>institution</Institution>
-				                    <Reference>reference</Reference>
-				                    <Abstract><![CDATA[abstract]]></Abstract>
-			               </Description>
+			      	  <Description>
+				      	  <Title>title</Title>
+				          <Authors>authors</Authors>
+				          <Institution>institution</Institution>
+				          <Reference>reference</Reference>
+				          <Abstract><![CDATA[abstract]]></Abstract>
+			           </Description>
 			               ...
 		          </ModelUnit>
 
 
-..The :code:`Description` element information item is a child of :code:`ModelUnit` element.
+.. container:: issue-2-1-12
 
-   1. It MUST contain :code:`Title`, :code:`Authors`, :code:`Institution`, and :code:`Abstract` elements with text content.
+   The :code:`Description` element information item is a child of :code:`ModelUnit` element.
 
-      * The value of :code:`Title` element is the explicit name of the model and is based on no constraint. It gives the meaning of the process.
+      1. It MUST contain :code:`Title`, :code:`Authors`, :code:`Institution`, and :code:`Abstract` elements with text content.
+
+         * The value of :code:`Title` element is the explicit name of the model and is based on no constraint. It gives the meaning of the process.
+         
+         * The value of :code:`Authors` element is the names of the authors of the implemented model in a specific platform.
+
+         * The value of :code:`Institution` element is the name of the institution providing the component.
+
+         * The value of :code:`Abstract` element is a brief description of the meaning of the process and provide the context of some experimental conditions used to calibrate the models.
+
+      2. A :code:`Description` element MAY contain :code:`Reference` and :code:`URI` element.
       
-      * The value of :code:`Authors` element is the names of the authors of the implemented model in a specific platform.
+         * The value of :code:`Reference` provides the reference of scientific knowledge of the process. 
+         
+         * The value of :code:`URI` provides the link of the documentation of the process. 
 
-      * The value of :code:`Institution` element is the name of the institution providing the component.
+.. 
+   marker_description_end
 
-      * The value of :code:`Abstract` element is a brief description of the meaning of the process and provide the context of some experimental conditions used to calibrate the models.
-
-   2. A:code:`Description` element MAY contain :code:`Reference` and :code:`Uri` element.
-   
-      * The value of :code:`Reference` provides the reference of scientific knowledge of the process. 
-      
-      * The value of :code:`URI` provides the link of the documentation of the process. 
-
-.. marker_description_end
-
-.. marker_inputs_start
+.. 
+   marker_inputs_start
 
 .. _specM_inputs:
 
 The ``Inputs`` element
 ----------------------
 
-..The :code:`Inputs` element information item is a child of a :code:`ModelUnit` element.
+The :code:`Inputs` element information item is a child of a :code:`ModelUnit` element.
 
 .. code-block:: xml
 
@@ -141,19 +144,18 @@ The ``Inputs`` element
 
       (3) The :code:`datatype` attribute
          
-          The value of a :datatype:`name`attribute is the data type of the value of input. A set of types is defined in Crop2ML as
+          The value of a :code:`datatype` attribute is the data type of the value that input can take. A set of types is defined in Crop2ML as
 
       (4) An :code:`Unit` attribute MUST be associated to each variable or parameter. Crop2Ml uses by default the SI units or their composition.
    
             |  Eg: unit of Temperature is "degC",
             |  unit of thermal time is "degC*d", d represents "day".
-            |  The symbole :code:`*`is used for the product of two units.
-            |  The symbole :code:`/`is used for the division of two units.
-            |  The symbole :code:`**`is used for the exponential of two units.
-            |  An empty unit is expressed by : "dimensionless".          
-.. marker_inputs_start2
-
-.. container:: issue-2-3-01
+            |  The symbole :code:`*` is used for the product of two units.
+            |  The symbole :code:`/` is used for the division of two units.
+            |  The symbole :code:`**` is used for the exponential of two units.
+            |  An empty :code:`unit` is expressed by : "dimensionless".          
+.. 
+   marker_inputs_start2
 
       (5) The :code:`inputtype` attribute
 
@@ -190,9 +192,11 @@ The ``Inputs`` element
           They state the domain of validity of the variables and parameters and constitute a criteria of model composability.
 
 
-.. marker_inputs_end
+.. 
+   marker_inputs_end
 
-.. marker_outputs_start
+.. 
+   marker_outputs_start
 
 .. _specM_outputs:
 
@@ -235,10 +239,12 @@ The ``Outputs`` element
 
 | The meanings and constraints of different attributes are the same as those of :code:`Input` element.
 
-.. marker_outputs_end
+.. 
+   marker_outputs_end
 
 
-.. marker_algorithm_start
+.. 
+   marker_algorithm_start
 
 .. _specM_algorithm:
 
@@ -268,7 +274,7 @@ The *Algorithm* element implements the mathematical behaviour of the model compo
       (2) The :code:`filename` attribute
 
    The model specifications defined in Inputs and outputs are sufficient to generate the signature of the function or a skeleton of class in a specific language.
-   So, in this code, It'is just necessary to express a snippet of code to describe the dynamic of the model.
+   So, in this code, It is just necessary to express a snippet of code to describe the dynamic of the model.
 
    This is an example of algorithm of Diffusion Limited Evaporation of Energy Balance component implemented in C++.
    In this case all variables used have already declared in the model specification.
@@ -287,27 +293,29 @@ The *Algorithm* element implements the mathematical behaviour of the model compo
 
 .. container:: issue-2-3-4
 
-Six languages are supported : Fortran, Java, C++, C#, Python and R.
-In order to avoid a re-implementation in this multiplicity of languages, Crop2Ml defines a minimal language CyML based on an intersection of the above languages.
+   Six languages are supported : Fortran, Java, C++, C#, Python and R.
+   In order to avoid a re-implementation in this multiplicity of languages, Crop2Ml defines a minimal language CyML based on an intersection of the above languages.
 
-You can visit a full documentation of CyML  `Here <pycrop2ml/readthedocs.fr>`_
+   You can visit a full documentation of CyML  `Here <https:/pycrop2ml.readthedocs.io/>`_ .
 
-*Algorithm implemented in CyML*
+   *Algorithm implemented in CyML*
 
-.. code-block:: cython
+   .. code-block:: cython
 
-   if deficitOnTopLayers / 1000 <= 0:
-      diffusionLimitedEvaporation = 8.3 * 1000
-   else:
-      if deficitOnTopLayers / 1000 < 25:
-         diffusionLimitedEvaporation = (2 * soilDiffusionConstant * soilDiffusionConstant / (deficitOnTopLayers / 1000)) * 1000
+      if deficitOnTopLayers / 1000 <= 0:
+         diffusionLimitedEvaporation = 8.3 * 1000
       else:
-         diffusionLimitedEvaporation = 0
+         if deficitOnTopLayers / 1000 < 25:
+            diffusionLimitedEvaporation = (2 * soilDiffusionConstant * soilDiffusionConstant / (deficitOnTopLayers / 1000)) * 1000
+         else:
+            diffusionLimitedEvaporation = 0
 
-.. marker_algorithm_end
+.. 
+   marker_algorithm_end
 
 
-.. marker_initialization_start
+.. 
+   marker_initialization_start
 
 .. _specM_initialization:
 
@@ -337,11 +345,13 @@ Any model requires the initialization of its state variables.
 
       The name of initialisation process is prefixed by *init.* followed by the name of the model.
 
-   2. An :code:`Initialization` element MAY contain the :code:`filename` attribute to specify the path of the initialization file 
+   3. An :code:`Initialization` element MAY contain the :code:`filename` attribute to specify the path of the initialization file 
 
-.. marker_initialization_end
+.. 
+   marker_initialization_end
 
-.. marker_function_start
+.. 
+   marker_function_start
 
 .. _specM_function:
 
@@ -384,9 +394,11 @@ Function element is related to a mathematical function or service that can be ca
    In this case, it won't be declared as a :code:`Function` but as a Crop2ML model with no physiology meaning.
 
 
-.. marker_function_end
+.. 
+   marker_function_end
 
-.. marker_parametersets_start
+.. 
+   marker_parametersets_start
 
 .. _specM_parametersets:
 
@@ -426,9 +438,11 @@ The ``ParameterSets`` element
 
       The value of the :code:`name` attribute MUST already be specified as a value of the :code:`name` attribute of an :code:`input` element.
 	
-.. marker_parametersets_end
+.. 
+   marker_parametersets_end
 
-.. marker_testsets_start
+.. 
+   marker_testsets_start
 
 .. _specM_testsets:
 
@@ -475,14 +489,16 @@ The ``TestSets`` element
 
    5. Each :code:`Test` element MUST contain one or more :code:`InputValue` and :code:`OutputValue` elements.
 
-      The checking consists of run the model with the values of :code:`InputValue` elements and compare the result with the values of :code:`OutputValue`elements.
+      The checking consists of run the model with the values of :code:`InputValue` elements and compare the result with the values of :code:`OutputValue` elements.
 
-..marker_testsets_end
+..
+   marker_testsets_end
 
 
-.. marker_modelC_start
+.. 
+   marker_modelC_start
 
-.. __specM_modelcomposite:
+.. _specM_modelcomposite:
 
 The ``ModelComposition`` element
 --------------------------------
@@ -517,11 +533,13 @@ The top-level element information item in a Crop2ML model composite infoset MUST
 
       In this case an algorithm is provided.
 
-.. marker_modelC_end 
+.. 
+   marker_modelC_end 
 
-.. marker_descriptionC_start
+.. 
+   marker_descriptionC_start
 
-.. _specM_descriptionC::
+.. _specM_descriptionC:
 
 The ``Description`` element
 ---------------------------
@@ -533,9 +551,11 @@ This element gives the general information on the model compoite and is composed
 
    It contains the same attributes as those of the :code:`Description` element of :code:`ModelUnit`.
 
-.. marker_descriptionC_end
+.. 
+   marker_descriptionC_end
 
-.. marker_inputsC_start
+.. 
+   marker_inputsC_start
 
 .. _specM_inputsC:
 
@@ -548,10 +568,12 @@ The ``Inputs`` element
 
    #. Implicitly, all the previous states variables, the parameters and the exogeneous variables are the inputs of the model composite.
 
-.. marker_inputsC_end
+.. 
+   marker_inputsC_end
 
 
-.. marker_outputsC_start
+.. 
+   marker_outputsC_start
 
 .. _specM_outputsC:
 
@@ -564,10 +586,12 @@ The ``Outputs`` element
 
    #. Implicitly, all the current state variables are the outputs of the model composite.
 
-.. marker_outputsC_end
+.. 
+   marker_outputsC_end
 
 
-.. marker_algorithmC_start
+.. 
+   marker_algorithmC_start
 
 .. _specM_algorithmC:
 
@@ -580,9 +604,11 @@ The :code:`Algorithm` element MAY implement the mathematical behaviour of the mo
 
   It contains the same attributes as those of the :code:`Algorithm` element of a :code:`ModelUnit`.
 
-.. marker_algorithmC_end
+.. 
+   marker_algorithmC_end
 
-.. marker_compositionC_start
+.. 
+   marker_compositionC_start
 
 .. _specM_compositionC:
 
@@ -601,7 +627,7 @@ The :code:`Composition` element makes the difference between a model unit and a 
 
    2. A :code:`Composition` element MUST contain one :code:`Links` element
 
-      (1) The :code:`Links` element MAY be empty in the case where :code:`algorithm`element is specified.
+      (1) The :code:`Links` element MAY be empty in the case where :code:`algorithm` element is specified.
 
       (2) If not, the :code:`Links` element SHOULD have one or more :code:`InputLinks`, :code:`InternalLinks` and :code:`OutputLinks` elements.
 
@@ -630,10 +656,12 @@ The :code:`Composition` element makes the difference between a model unit and a 
           #. The value of a :code:`target` attribute MUST be composed of the name of a sub-model and the name of an input of this sub-model separated by dot.
 
 
-.. marker_compositionC_end
+.. 
+   marker_compositionC_end
 
 
-.. marker_initializationC_start
+.. 
+   marker_initializationC_start
 
 .. _specM_initializationC:
 
@@ -647,10 +675,12 @@ The :code:`Initialization` element MAY implement the initialization of all state
   It contains the same attributes as those of the :code:`Initialization` element of a :code:`ModelUnit`.
 
 
-.. marker_initializationC_end
+.. 
+   marker_initializationC_end
 
 
-.. marker_parametersetsC_start
+.. 
+   marker_parametersetsC_start
 
 .. _specM_parametersetsC:
 
@@ -664,9 +694,11 @@ The :code:`ParameterSets` element allows to parameterize the model composite.
   It contains the same elements type as those of the :code:`ParameterSets` element of a :code:`ModelUnit`.
 
 	
-.. marker_parametersetsC_end
+.. 
+   marker_parametersetsC_end
 
-.. marker_testsetsC_start
+.. 
+   marker_testsetsC_start
 
 .. _specM_testsetsC:
 
@@ -680,7 +712,8 @@ The :code:`TestSets` element allows to make unit tests on the model composite.
   It contains the same elements as those of the :code:`TestSets` element of a :code:`ModelUnit`.
 
 	
-..marker_testsetsC_end
+..
+   marker_testsetsC_end
 
 
 
