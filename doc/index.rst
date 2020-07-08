@@ -9,8 +9,8 @@ Contents:
     :Version: |version|
     :Release: |release|
     :Date: |today|
-    :Author: See `authors`_ section
-    :ChangeLog: See `changelog`_ section
+    :Author: See :ref:`authors` section
+    :ChangeLog: See :ref:`changelog` section
 	
 	
 .. toctree::
@@ -26,7 +26,6 @@ Contents:
 	Glossary <user/glossary.rst>
    authors
    history
-
 
 .. include:: ../AUTHORS.rst
 
