@@ -12,11 +12,13 @@ The top-level element information item in a Crop2ML model unit infoset MUST be r
 
 .. code-block:: xml
 
-				   <?xml version="1.0" encoding= ?> (1)
-		         <!DOCTYPE ModelUnit PUBLIC " " "https://raw.githubusercontent.com/AgriculturalModelExchangeInitiative/crop2ml/master/ModelUnit.dtd"> (2)
-		         <ModelUnit modelid=" " timestep=" " name=" " version=""> (3)
-			         ....
-		         </ModelUnit>
+   <?xml version="1.0" encoding= ?> (1)
+	<!DOCTYPE ModelUnit PUBLIC " " "https://raw.githubusercontent.com/AgriculturalModelExchangeInitiative/crop2ml/master/ModelUnit.dtd"> (2)
+	<ModelUnit modelid=" " timestep=" " name=" " version=""> (3)
+			....
+	</ModelUnit>
+.. 
+
 
    | (1) XML header with version 1.0 and "utf-8" encoding
 
