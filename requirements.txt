@@ -2,7 +2,6 @@ path.py
 six
 nbformat
 ipython
-nbsphinx
 sphinx
 sphinx-hoverxref
 sphinx_rtd_theme
