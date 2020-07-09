@@ -1,6 +1,7 @@
 path.py
 six
 nbformat
+nbsphinx
 ipython
 sphinx
 sphinx-hoverxref
