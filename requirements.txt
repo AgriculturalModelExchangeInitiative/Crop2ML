@@ -3,7 +3,7 @@ six
 nbformat
 ipython
 nbsphinx
-sphinx>2,<3
+sphinx
 sphinx-hoverxref
 sphinx_rtd_theme
 jupyter-sphinx
