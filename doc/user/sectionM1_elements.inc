@@ -511,13 +511,13 @@ The top-level element information item in a Crop2ML model composite infoset MUST
 
    2. A :code:`ModelComposition` element MAY contain a :code:`version` and a :code:`timestep` attribute. 
 
-   3. A :code:`ModelUnit` element MUST contain one of each additional specific element child:
+   3. A :code:`ModelComposition` element MUST contain one of each additional specific element child:
       
       #. A :code:`Description` element;
 
       #. An :code:`Composition` element;
 
-   4. A :code:`ModelUnit` element MAY contain one of each additional specific element child:
+   4. A :code:`ModelComposition` element MAY contain one of each additional specific element child:
 
       #. An :code:`Inputs` element;
 
