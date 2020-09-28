@@ -34,7 +34,8 @@ COPYRIGHT : (2018).
   id CDATA #REQUIRED
   filename CDATA #REQUIRED
   displayx CDATA #IMPLIED
-  displayy CDATA #IMPLIED>
+  displayy CDATA #IMPLIED
+  package_name CDATA #IMPLIED>
 
 <!ELEMENT Links (InputLink*,InternalLink*,OutputLink*)>
 <!ATTLIST Links>
