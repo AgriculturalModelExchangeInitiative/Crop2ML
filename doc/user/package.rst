@@ -23,7 +23,7 @@ The structure of your new project looks like this:
     │      ├── xml files
     │      ├── Algo/
     │
-    ├── src/                <- Executable code source in different language and platform
+    ├── src/                <- Executable source codes in different language and platform
     │   ├── pyx/
     │   ├── java/
     │   ├── py/
