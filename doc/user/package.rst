@@ -22,20 +22,23 @@ The structure of your new project looks like this:
     ├── crop2ml/          <- model units and composite in crop2ml format.
     │      ├── xml files
     │      ├── Algo/
-    |
     │
     ├── src/                <- Executable code source in different language and platform
     │   ├── pyx/
     │   ├── java/
     │   ├── py/
-        ├── R/
+        ├── r/
         ├── cpp/
         ├── cs/
         ├── f90/
-        ├── Bioma
-        ├── Simplace
-        ├── OpenAlea
-        ├── Record
+        ├── bioma
+        ├── simplace
+        ├── openalea
+        ├── record
+        ├── dssat
+        ├── stics
+        ├── apsim
+
 
 
 Crop2ML XML files
