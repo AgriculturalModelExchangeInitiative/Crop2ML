@@ -86,7 +86,7 @@ COPYRIGHT : (2018).
   min CDATA #IMPLIED
   inputtype (variable|parameter) #REQUIRED
   parametercategory (constant|species|genotypic|soil|private) #IMPLIED
-  variablecategory (state|rate|auxiliary) #IMPLIED
+  variablecategory (state|rate|auxiliary|exogenous) #IMPLIED
   unit CDATA #REQUIRED
   uri CDATA #IMPLIED>
 
@@ -97,7 +97,7 @@ COPYRIGHT : (2018).
   description CDATA #REQUIRED
   max CDATA #IMPLIED
   min CDATA #IMPLIED
-  variablecategory (state|rate|auxiliary) #IMPLIED
+  variablecategory (state|rate|auxiliary|exogenous) #IMPLIED
   unit CDATA #REQUIRED
   uri CDATA #IMPLIED>
 
@@ -130,4 +130,3 @@ COPYRIGHT : (2018).
 <!ATTLIST OutputValue name CDATA #REQUIRED >
 <!ATTLIST OutputValue description CDATA #IMPLIED >
 <!ATTLIST OutputValue precision CDATA #IMPLIED >
-
