@@ -23,7 +23,7 @@ COPYRIGHT : (2018).
   version CDATA #IMPLIED>
 
 
-<!ELEMENT Description (Title,Authors,Institution,URI?,Reference?,Abstract)>
+<!ELEMENT Description (Title,Authors,Institution,URI?,Reference?,Abstract, ShortDescription?)>
 <!ATTLIST Description>
 
 <!ELEMENT Composition (Model+,Links)>
@@ -63,6 +63,9 @@ COPYRIGHT : (2018).
 
 <!ELEMENT Abstract (#PCDATA)>
 <!ATTLIST Abstract>
+
+<!ELEMENT ShortDescription (#PCDATA)>
+<!ATTLIST ShortDescription>
 
 <!ELEMENT InputLink EMPTY>
 <!ATTLIST InputLink
@@ -152,4 +155,3 @@ COPYRIGHT : (2018).
 <!ATTLIST OutputValue name CDATA #REQUIRED >
 <!ATTLIST OutputValue description CDATA #IMPLIED >
 <!ATTLIST OutputValue precision CDATA #IMPLIED >
-
