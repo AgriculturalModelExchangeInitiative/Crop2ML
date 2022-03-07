@@ -105,5 +105,5 @@ COPYRIGHT : (2022).
 <!ATTLIST apsim>
 <!ELEMENT stics EMPTY>
 <!ATTLIST stics>
-<!ELEMENT siriusquality EMPTY>
-<!ATTLIST siriusquality>
+<!ELEMENT sirius EMPTY>
+<!ATTLIST sirius>
