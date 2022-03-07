@@ -33,6 +33,8 @@
     <Features>
         <TypeOfModel type="Modular"/>
         <IsPartOfLargerModel YesOrNo="Yes" name = "Wheat SiriusQuality Model" />
+        <ValidatedWithCropMStudio YesOrNo="Yes" />
+        <SourceRepository src="" />
     </Features>
     <Doc>
         <file></file>

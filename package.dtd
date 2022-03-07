@@ -41,7 +41,7 @@ COPYRIGHT : (2018).
 <!ELEMENT Encoder (Firstname,Lastname,Email,Institution)>
 <!ATTLIST Encoder>
 
-<!ELEMENT Features (TypeOfModel, IsPartOfLargerModel)>
+<!ELEMENT Features (TypeOfModel, IsPartOfLargerModel, ValidatedWithCropMStudio, SourceRepository)>
 <!ATTLIST Features>
 <!ELEMENT TypeOfModel (#PCDATA)>
 <!ATTLIST TypeOfModel 
@@ -50,6 +50,12 @@ COPYRIGHT : (2018).
 <!ATTLIST IsPartOfLargerModel 
           YesOrNo (Yes | No) #IMPLIED 
           name CDATA #REQUIRED>
+<!ELEMENT ValidatedWithCropMStudio (#PCDATA)>
+<!ATTLIST ValidatedWithCropMStudio 
+          YesOrNo (Yes | No) #IMPLIED >
+<!ELEMENT SourceRepository (#PCDATA)>
+<!ATTLIST SourceRepository  
+          src CDATA #REQUIRED>
 
 <!ELEMENT Doc (file*)>
 <!ATTLIST Doc>
