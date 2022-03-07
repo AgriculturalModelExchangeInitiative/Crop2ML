@@ -22,7 +22,7 @@ COPYRIGHT : (2018).
   timestep CDATA #IMPLIED
   version CDATA #REQUIRED>
 
-<!ELEMENT Description (Title,Authors,Institution,URI?,Reference?,Abstract, ShortDescription?)>
+<!ELEMENT Description (Title,Authors,Institution,URI?,Reference?,ExtendedDescription, ShortDescription?)>
 <!ATTLIST Description>
 
 <!ELEMENT Inputs (Input)+>
@@ -73,8 +73,8 @@ COPYRIGHT : (2018).
 <!ELEMENT Reference (#PCDATA)>
 <!ATTLIST Reference>
 
-<!ELEMENT Abstract (#PCDATA)>
-<!ATTLIST Abstract>
+<!ELEMENT ExtendedDescription (#PCDATA)>
+<!ATTLIST ExtendedDescription>
 
 <!ELEMENT ShortDescription (#PCDATA)>
 <!ATTLIST ShortDescription>

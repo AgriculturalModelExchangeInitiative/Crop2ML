@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Package SYSTEM  "./package.dtd">
 <!-- crop2mlversion : used to specify which version of crop2ml DTD models are conformed to-->
-<Package id="id" name="package_name" version="package_version" licence="type_of_licence" crop2mlVersion="">
-    <Description>
+<Package name="package_name" version="package_version" licence="type_of_licence" crop2mlVersion="">
+    <Authors>
         <Author>
             <Firstname> firstname </Firstname>
             <Lastname> lastname</Lastname>
@@ -15,61 +15,47 @@
             <Email> email </Email>
             <Institution> institution </Institution>
         </Author>        
-        <Reference> some reference on the package</Reference>
-        <Abstract> goal of the package</Abstract>
-        <Doc />
-    </Description>
-    <!--A package contains one composite model which may have some dependencies-->    
-    <CompositeModel id ="mode id" name= "name" version="" >
-        <Dependency pkgename= "package_name" type= "function or model" name= "function_name or composite_name" version="num_of_version" licence=""/>
-        <Dependency pkgename= "package_name" type= "function or model" name= "function_name or composite_name" version="num_of_version" licence=""/>
-    </CompositeModel>
-    <!-- these model units are those which are defined only by this package-->
-    <ModelUnits>
-        <ModelUnit id="" name="" version="" >
-            <Function_dependency name="" pkgename="package_name"  version=""/>
-        </ModelUnit>
-    </ModelUnits>
-    <Src path="">
+    </Authors>
+    <Encoders>
+        <Encoder>
+            <Firstname> firstname </Firstname>
+            <Lastname> lastname</Lastname>
+            <Email> email </Email>
+            <Institution> institution </Institution>
+        </Encoder> 
+        <Encoder>
+            <Firstname> firstname </Firstname>
+            <Lastname> lastname</Lastname>
+            <Email> email </Email>
+            <Institution> institution </Institution>
+        </Encoder>        
+    </Encoders>
+    <Features>
+        <TypeOfModel> Component </TypeOfModel>
+        <IsPartOfLargerModel YesOrNo="Yes">Wheat SiriusQuality Model</IsPartOfLargerModel>
+    </Features>
+    <Doc>
+        <file></file>
+    </Doc>
+    <Transformation path="">
         <Languages>
-            <Pyx />
-            <Py />
-            <Cs />
-            <Java />
-            <Fortran />                
-            <Cpp />
-            <R />
+            <pyx />
+            <py />
+            <cs />
+            <java />
+            <f90 />                
+            <cpp />
+            <r />
         </Languages>
         <Platforms>
-            <Openalea />
-            <Bioma />
-            <Simplace/>
-            <Record />
-            <Dssat />
-            <Apsim/>
-            <Stics />            
+            <openalea />
+            <bioma />
+            <simplace/>
+            <record />
+            <dssat />
+            <apsim/>
+            <stics />
+            <siriusquality />            
         </Platforms>
-    </Src>
-    <Tests path="">
-        <Languages>
-            <Py />
-            <Cs />
-            <Java />
-            <Fortran />                
-            <Cpp />
-            <R />
-        </Languages>
-        <Platforms>
-            <Openalea />
-            <Bioma />
-            <Simplace/>
-            <Record />
-            <Dssat />
-            <Apsim/>
-            <Stics /> 
-        </Platforms>
-    </Tests>
-    <!--some graphs which help to the processes hierachy-->
-    <Graphs path=""></Graphs>
-    <Data path=""></Data>
+    </Transformation>
 </Package>

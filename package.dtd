@@ -1,13 +1,12 @@
-<!ELEMENT Package (Description,CompositeModel,ModelUnits+,Src?,Tests?,Graphs?,Data?)>
+<!ELEMENT Package (Authors,Encoders,Features, Doc?,Transformation,Dependencies?,Data*)>
 <!ATTLIST Package
   name CDATA #REQUIRED
-  id CDATA #REQUIRED
   version CDATA #IMPLIED
   licence CDATA #REQUIRED
   crop2mlVersion CDATA #REQUIRED
 >
-<!ELEMENT Description (Author+,Reference?,Abstract,Doc)>
-<!ATTLIST Description>
+<!ELEMENT Authors (Author+)>
+<!ATTLIST Authors>
 <!ELEMENT Author (Firstname,Lastname,Email,Institution)>
 <!ATTLIST Author>
 <!ELEMENT Firstname (#PCDATA)>
@@ -18,77 +17,75 @@
 <!ATTLIST Email>
 <!ELEMENT Institution (#PCDATA)>
 <!ATTLIST Institution>
-<!ELEMENT Reference (#PCDATA)>
-<!ATTLIST Reference>
-<!ELEMENT Abstract (#PCDATA)>
-<!ATTLIST Abstract>
-<!ELEMENT Doc (#PCDATA)>
+
+<!ELEMENT Encoders (Encoder+)>
+<!ATTLIST Encoders>
+<!ELEMENT Encoder (Firstname,Lastname,Email,Institution)>
+<!ATTLIST Encoder>
+
+<!ELEMENT Features (TypeOfModel, IsPartOfLargerModel)>
+<!ATTLIST Features>
+<!ELEMENT TypeOfModel (#PCDATA)>
+<!ATTLIST TypeOfModel >
+<!ELEMENT IsPartOfLargerModel (#PCDATA)>
+<!ATTLIST IsPartOfLargerModel 
+          YesOrNo (Yes | No) #REQUIRED >
+
+<!ELEMENT Doc (file*)>
 <!ATTLIST Doc>
-<!ELEMENT CompositeModel (Dependency*)>
-<!ATTLIST CompositeModel
-  name CDATA #REQUIRED
-  id CDATA #REQUIRED
-  version CDATA #REQUIRED
->
+<!ELEMENT file (#PCDATA)>
+<!ATTLIST file>
+
+
+<!ELEMENT Dependencies (Dependency*)>
+<!ATTLIST Dependencies>
 <!ELEMENT Dependency EMPTY>
 <!ATTLIST Dependency
-  pkgename CDATA #REQUIRED
-  type CDATA #REQUIRED
   name CDATA #REQUIRED
   version CDATA #REQUIRED
-  licence CDATA #REQUIRED
+  license CDATA #REQUIRED
 >
-<!ELEMENT ModelUnits (ModelUnit)+>
-<!ATTLIST ModelUnits>
-<!ELEMENT ModelUnit (Function_dependency*)>
-<!ATTLIST ModelUnit
-  name CDATA #REQUIRED
-  id CDATA #REQUIRED
-  version CDATA #REQUIRED
->
-<!ELEMENT Function_dependency EMPTY>
-<!ATTLIST Function_dependency
-  pkgename CDATA #REQUIRED
-  name CDATA #REQUIRED
-  version CDATA #REQUIRED
->
+
 <!ELEMENT Data EMPTY>
-<!ATTLIST Data path CDATA #REQUIRED>
-<!ELEMENT Src (Languages, Platforms)>
-<!ATTLIST Src path CDATA #REQUIRED>
-<!ELEMENT Languages (Pyx?,Py?, Cs?, Java?, Fortran?, Cpp?, R?)>
+<!ATTLIST Data 
+  path CDATA #REQUIRED
+  description CDATA #REQUIRED >
+
+
+<!ELEMENT Transformation (Languages, Platforms)>
+<!ATTLIST Transformation path CDATA #REQUIRED>
+<!ELEMENT Languages (pyx?,py?, cs?, java?, f90?, cpp?, r?)>
 <!ATTLIST Languages>
-<!ELEMENT Pyx EMPTY>
-<!ATTLIST Pyx>
-<!ELEMENT Py EMPTY>
-<!ATTLIST Py>
-<!ELEMENT Cs EMPTY>
-<!ATTLIST Cs>
-<!ELEMENT Java EMPTY>
-<!ATTLIST Java>
-<!ELEMENT Fortran EMPTY>
-<!ATTLIST Fortran>
-<!ELEMENT Cpp EMPTY>
-<!ATTLIST Cpp>
-<!ELEMENT R EMPTY>
-<!ATTLIST R>
-<!ELEMENT Tests (Languages, Platforms)>
-<!ATTLIST Tests path CDATA #REQUIRED>
-<!ELEMENT Platforms (Openalea?,Bioma?, Simplace?, Record?, Dssat?, Apsim?, Stics?)>
+<!ELEMENT pyx EMPTY>
+<!ATTLIST pyx>
+<!ELEMENT py EMPTY>
+<!ATTLIST py>
+<!ELEMENT cs EMPTY>
+<!ATTLIST cs>
+<!ELEMENT java EMPTY>
+<!ATTLIST java>
+<!ELEMENT f90 EMPTY>
+<!ATTLIST f90>
+<!ELEMENT cpp EMPTY>
+<!ATTLIST cpp>
+<!ELEMENT r EMPTY>
+<!ATTLIST r>
+
+<!ELEMENT Platforms (openalea?,bioma?, simplace?, record?, dssat?, apsim?, stics?, siriusquality?)>
 <!ATTLIST Platforms>
-<!ELEMENT Openalea EMPTY>
+<!ELEMENT openalea EMPTY>
 <!ATTLIST Openalea>
-<!ELEMENT Bioma EMPTY>
-<!ATTLIST Bioma>
-<!ELEMENT Simplace EMPTY>
-<!ATTLIST Simplace>
-<!ELEMENT Record EMPTY>
-<!ATTLIST Record>
-<!ELEMENT Dssat EMPTY>
-<!ATTLIST Dssat>
-<!ELEMENT Apsim EMPTY>
-<!ATTLIST Apsim>
-<!ELEMENT Stics EMPTY>
-<!ATTLIST Stics>
-<!ELEMENT Graphs EMPTY>
-<!ATTLIST Graphs path CDATA #REQUIRED>
+<!ELEMENT bioma EMPTY>
+<!ATTLIST bioma>
+<!ELEMENT simplace EMPTY>
+<!ATTLIST simplace>
+<!ELEMENT record EMPTY>
+<!ATTLIST record>
+<!ELEMENT dssat EMPTY>
+<!ATTLIST dssat>
+<!ELEMENT apsim EMPTY>
+<!ATTLIST apsim>
+<!ELEMENT stics EMPTY>
+<!ATTLIST stics>
+<!ELEMENT siriusquality EMPTY>
+<!ATTLIST siriusquality>
