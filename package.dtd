@@ -14,8 +14,6 @@ DESCRIPTION : This document contains a DTD corresponding to a Crop2ML package. T
 COPYRIGHT : (2018).
 -->
 
-
-
 <!ELEMENT Package (Authors,Encoders,Features, Doc?,Transformation,Dependencies?,Data*)>
 <!ATTLIST Package
   name CDATA #REQUIRED
