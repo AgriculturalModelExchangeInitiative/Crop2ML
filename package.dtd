@@ -25,7 +25,7 @@ COPYRIGHT : (2018).
 >
 <!ELEMENT Authors (Author+)>
 <!ATTLIST Authors>
-<!ELEMENT Author (Firstname,Lastname,Email,Institution)>
+<!ELEMENT Author (Firstname,Lastname,Email?,Institution?)>
 <!ATTLIST Author>
 <!ELEMENT Firstname (#PCDATA)>
 <!ATTLIST Firstname>
@@ -38,7 +38,7 @@ COPYRIGHT : (2018).
 
 <!ELEMENT Encoders (Encoder+)>
 <!ATTLIST Encoders>
-<!ELEMENT Encoder (Firstname,Lastname,Email,Institution)>
+<!ELEMENT Encoder (Firstname,Lastname,Email?,Institution?)>
 <!ATTLIST Encoder>
 
 <!ELEMENT Features (TypeOfModel, IsPartOfLargerModel, ValidatedWithCropMStudio, SourceRepository)>
