@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Package SYSTEM  "./package.dtd">
 <!-- crop2mlversion : used to specify which version of crop2ml DTD models are conformed to-->
-<Package name="package_name" version="package_version" licence="type_of_licence" crop2mlVersion="">
+<Package name="package_name" version="package_version" license="type_of_licence" crop2mlVersion="">
     <Authors>
         <Author>
             <Firstname> firstname </Firstname>
@@ -31,13 +31,13 @@
         </Encoder>        
     </Encoders>
     <Features>
-        <TypeOfModel> Component </TypeOfModel>
-        <IsPartOfLargerModel YesOrNo="Yes">Wheat SiriusQuality Model</IsPartOfLargerModel>
+        <TypeOfModel type="Modular"/>
+        <IsPartOfLargerModel YesOrNo="Yes" name = "Wheat SiriusQuality Model" />
     </Features>
     <Doc>
         <file></file>
     </Doc>
-    <Transformation path="">
+    <Transformation path="/src">
         <Languages>
             <pyx />
             <py />

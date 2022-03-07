@@ -1,8 +1,26 @@
+<!--
+FILE : package.dtd
+
+CREATED : 2022
+
+LAST MODIFIED : 2022
+
+AUTHOR : Agricultural Models Exchange Initiative
+
+DESCRIPTION : This document contains a DTD corresponding to a Crop2ML package. This
+  specification is available at
+    https://raw.githubusercontent.com/AgriculturalModelExchangeInitiative/crop2ml/master/package.dtd
+
+COPYRIGHT : (2018).
+-->
+
+
+
 <!ELEMENT Package (Authors,Encoders,Features, Doc?,Transformation,Dependencies?,Data*)>
 <!ATTLIST Package
   name CDATA #REQUIRED
   version CDATA #IMPLIED
-  licence CDATA #REQUIRED
+  license CDATA #REQUIRED
   crop2mlVersion CDATA #REQUIRED
 >
 <!ELEMENT Authors (Author+)>
@@ -26,10 +44,12 @@
 <!ELEMENT Features (TypeOfModel, IsPartOfLargerModel)>
 <!ATTLIST Features>
 <!ELEMENT TypeOfModel (#PCDATA)>
-<!ATTLIST TypeOfModel >
+<!ATTLIST TypeOfModel 
+          type (Single|Modular) #IMPLIED>
 <!ELEMENT IsPartOfLargerModel (#PCDATA)>
 <!ATTLIST IsPartOfLargerModel 
-          YesOrNo (Yes | No) #REQUIRED >
+          YesOrNo (Yes | No) #IMPLIED 
+          name CDATA #REQUIRED>
 
 <!ELEMENT Doc (file*)>
 <!ATTLIST Doc>
