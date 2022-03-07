@@ -23,14 +23,14 @@ COPYRIGHT : (2018).
 >
 <!ELEMENT Authors (FirstAndLastName, Institution?, Email?)>
 <!ATTLIST Authors>
-<!ELEMENT FirstAndLastName (#PCDATA)>
+<!ELEMENT FirstAndLastName (#PCDATA)> <!-- separated by comma  -->
 <!ATTLIST FirstAndLastName>
-<!ELEMENT Institution (#PCDATA)>
+<!ELEMENT Institution (#PCDATA)>    <!-- separated by comma  -->
 <!ATTLIST Institution>
-<!ELEMENT Email (#PCDATA)>
+<!ELEMENT Email (#PCDATA)>       <!-- As many emails as firstandlastNames  -->
 <!ATTLIST Email>
 
-<!ELEMENT Encoders (FirstAndLastName, Institution?, Email?)>
+<!ELEMENT Encoders (FirstAndLastName, Institution?, Email?)>  <!-- like authors  -->
 <!ATTLIST Encoders>
 
 <!ELEMENT Features (TypeOfModel, IsPartOfLargerModel, ValidatedWithCropMStudio, SourceRepository)>
