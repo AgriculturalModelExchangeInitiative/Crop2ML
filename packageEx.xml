@@ -3,32 +3,14 @@
 <!-- crop2mlversion : used to specify which version of crop2ml DTD models are conformed to-->
 <Package name="package_name" version="package_version" license="type_of_licence" crop2mlVersion="">
     <Authors>
-        <Author>
-            <Firstname> firstname </Firstname>
-            <Lastname> lastname</Lastname>
-            <Email> email </Email>
-            <Institution> institution </Institution>
-        </Author> 
-        <Author>
-            <Firstname> firstname </Firstname>
-            <Lastname> lastname</Lastname>
-            <Email> email </Email>
-            <Institution> institution </Institution>
-        </Author>        
+        <FirstAndLastName>firstname1 lastname1, firstname2 lastname2</FirstAndLastName>
+        <Institution> institution1, institution2</Institution>  
+        <Email> email1, email2 </Email>
     </Authors>
     <Encoders>
-        <Encoder>
-            <Firstname> firstname </Firstname>
-            <Lastname> lastname</Lastname>
-            <Email> email </Email>
-            <Institution> institution </Institution>
-        </Encoder> 
-        <Encoder>
-            <Firstname> firstname </Firstname>
-            <Lastname> lastname</Lastname>
-            <Email> email </Email>
-            <Institution> institution </Institution>
-        </Encoder>        
+        <FirstAndLastName>firstname1 lastname1, firstname2 lastname2</FirstAndLastName>
+        <Institution> institution1, institution2</Institution>  
+        <Email> email1, email2 </Email>
     </Encoders>
     <Features>
         <TypeOfModel type="Modular"/>

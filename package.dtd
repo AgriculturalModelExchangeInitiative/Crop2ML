@@ -23,23 +23,17 @@ COPYRIGHT : (2018).
   license CDATA #REQUIRED
   crop2mlVersion CDATA #REQUIRED
 >
-<!ELEMENT Authors (Author+)>
+<!ELEMENT Authors (FirstAndLastName, Institution?, Email?)>
 <!ATTLIST Authors>
-<!ELEMENT Author (Firstname,Lastname,Email?,Institution?)>
-<!ATTLIST Author>
-<!ELEMENT Firstname (#PCDATA)>
-<!ATTLIST Firstname>
-<!ELEMENT Lastname (#PCDATA)>
-<!ATTLIST Lastname>
-<!ELEMENT Email (#PCDATA)>
-<!ATTLIST Email>
+<!ELEMENT FirstAndLastName (#PCDATA)>
+<!ATTLIST FirstAndLastName>
 <!ELEMENT Institution (#PCDATA)>
 <!ATTLIST Institution>
+<!ELEMENT Email (#PCDATA)>
+<!ATTLIST Email>
 
-<!ELEMENT Encoders (Encoder+)>
+<!ELEMENT Encoders (FirstAndLastName, Institution?, Email?)>
 <!ATTLIST Encoders>
-<!ELEMENT Encoder (Firstname,Lastname,Email?,Institution?)>
-<!ATTLIST Encoder>
 
 <!ELEMENT Features (TypeOfModel, IsPartOfLargerModel, ValidatedWithCropMStudio, SourceRepository)>
 <!ATTLIST Features>
