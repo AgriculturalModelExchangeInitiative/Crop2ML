@@ -11,7 +11,7 @@ DESCRIPTION : This document contains a DTD corresponding to a Crop2ML package. T
   specification is available at
     https://raw.githubusercontent.com/AgriculturalModelExchangeInitiative/crop2ml/master/package.dtd
 
-COPYRIGHT : (2018).
+COPYRIGHT : (2022).
 -->
 
 <!ELEMENT Package (Authors,Encoders,Features, Doc?,Transformation,Dependencies?,Data*)>
