@@ -89,7 +89,7 @@ COPYRIGHT : (2022).
 <!ELEMENT r EMPTY>
 <!ATTLIST r>
 
-<!ELEMENT Platforms (openalea?,bioma?, simplace?, record?, dssat?, apsim?, stics?, siriusquality?)>
+<!ELEMENT Platforms (openalea?,bioma?, simplace?, record?, dssat?, apsim?, stics?, sirius?)>
 <!ATTLIST Platforms>
 <!ELEMENT openalea EMPTY>
 <!ATTLIST Openalea>
