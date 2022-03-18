@@ -38,10 +38,10 @@ COPYRIGHT : (2018).
   filename CDATA #IMPLIED
   function CDATA #IMPLIED>
 
-<!ELEMENT Parametersets (Parameterset+)>
+<!ELEMENT Parametersets (Parameterset*)>
 <!ATTLIST Parametersets>
 
-<!ELEMENT Testsets (Testset+)>
+<!ELEMENT Testsets (Testset*)>
 <!ATTLIST Testsets>
 
 <!ELEMENT Function (#PCDATA)>
@@ -108,15 +108,15 @@ COPYRIGHT : (2018).
 
 <!ELEMENT Parameterset (Param*)>
 <!ATTLIST Parameterset
-  description CDATA #IMPLIED
-  name NMTOKEN #IMPLIED
+  description CDATA #REQUIRED
+  name NMTOKEN #REQUIRED
   uri CDATA #IMPLIED>
 
 <!ELEMENT Testset (Test*)>
 <!ATTLIST Testset
-  description CDATA #IMPLIED
-  name CDATA #IMPLIED
-  parameterset NMTOKEN #IMPLIED
+  description CDATA #REQUIRED
+  name CDATA #REQUIRED
+  parameterset NMTOKEN #REQUIRED
   uri CDATA #IMPLIED>
 
 <!ELEMENT Test (InputValue*, OutputValue+)>
