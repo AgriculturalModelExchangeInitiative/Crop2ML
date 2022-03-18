@@ -108,15 +108,15 @@ COPYRIGHT : (2018).
 
 <!ELEMENT Parameterset (Param*)>
 <!ATTLIST Parameterset
-  description CDATA #REQUIRED
-  name NMTOKEN #REQUIRED
+  description CDATA #IMPLIED
+  name NMTOKEN #IMPLIED
   uri CDATA #IMPLIED>
 
-<!ELEMENT Testset (Test+)>
+<!ELEMENT Testset (Test*)>
 <!ATTLIST Testset
-  description CDATA #REQUIRED
-  name CDATA #REQUIRED
-  parameterset NMTOKEN #REQUIRED
+  description CDATA #IMPLIED
+  name CDATA #IMPLIED
+  parameterset NMTOKEN #IMPLIED
   uri CDATA #IMPLIED>
 
 <!ELEMENT Test (InputValue*, OutputValue+)>
