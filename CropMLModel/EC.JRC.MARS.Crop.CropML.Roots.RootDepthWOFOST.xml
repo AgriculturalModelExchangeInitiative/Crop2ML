@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModelUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" modelid="EC.JRC.MARS.Crop.CropML.Roots.RootDepthWOFOST" name="RootDepthWOFOST" timestep="0" version="1.0.0.0">
+  <Description>
+    <Title>EC.JRC.MARS.Crop.CropML.Roots.RootDepthWOFOST</Title>
+    <Authors>Creator:;    Date:;    Publisher:;    </Authors>
+    <Abstract>Calculate roots depth - Van Keulen, H., Wolf, J., 1986. Modelling of agricultural production: weather soils and crops. Simulation Monographs. Pudoc, Wageningen, The Netherlands, pp. 479. - </Abstract>
+  </Description>
+  <Inputs>
+    <Input name="RootDepth" description="Root depth" datatype="DOUBLE" variableCategory="" min="0" max="500" default="3" unit="cm" uri="http://" inputtype="variable" />
+    <Input name="PartitioningFactorToRootsRate_FR" description="Partitioning factor to roots rate" datatype="DOUBLE" variableCategory="" min="0" max="1" default="0.5" unit="unitless" uri="http://" inputtype="variable" />
+    <Input name="MaximumRootingDepth_RDM" description="Maximum rooting depth (RDM)" datatype="DOUBLE" min="0" max="1000" default="30" unit="[cm]" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="MaximumDailyIncreaseInRootingDepth_RRI" description="Maximum daily increase in rooting depth (RRI)" datatype="DOUBLE" min="0" max="10" default="1.2" unit="[cm day-1]" uri="" inputtype="parameter" parametercategory="" />
+  </Inputs>
+  <Outputs>
+    <Output name="RootDepthRate" description="Roots depth rate" datatype="DOUBLE" min="0" max="10" unit="cm day-1" uri="http://" />
+    <Output name="RootDepth" description="Root depth" datatype="DOUBLE" min="0" max="500" unit="cm" uri="http://" />
+  </Outputs>
+  <Algorithm language="C#" platform="Bioma" filename="RootDepthWOFOST.cs" />
+  <Parametersets>
+    <Parameterset name="Default" description="Paramters default value" />
+  </Parametersets>
+</ModelUnit>

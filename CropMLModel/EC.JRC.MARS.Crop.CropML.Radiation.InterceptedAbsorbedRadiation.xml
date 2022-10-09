@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModelUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" modelid="EC.JRC.MARS.Crop.CropML.Radiation.InterceptedAbsorbedRadiation" name="InterceptedAbsorbedRadiation" timestep="0" version="1.0.0.0">
+  <Description>
+    <Title>EC.JRC.MARS.Crop.CropML.Radiation.InterceptedAbsorbedRadiation</Title>
+    <Authors>Creator:;    Date:;    Publisher:;    </Authors>
+    <Abstract>Intercepted and absorbed radiation - Monsi, M., Saeki, T., 1953. Über den Lichtfaktor in den Pflanzengesellschaften und seine Bedeutung für die Stoffproduktion. Japanese Journal of Botany, 14, 22-52 - </Abstract>
+  </Description>
+  <Inputs>
+    <Input name="GlobalSolarRadiation" description="Global solar radiation" datatype="DOUBLE" variableCategory="" min="0" max="50" default="10" unit="MJ m-2" uri="http://" inputtype="variable" />
+    <Input name="AbsorbedSolarRadiation" description="Absorbed solar radiation (green LAI)" datatype="DOUBLE" variableCategory="" min="0" max="8000" default="300" unit="MJ m-2" uri="http://" inputtype="variable" />
+    <Input name="InterceptedSolarRadiation" description="Intercepted solar radiation (total LAI)" datatype="DOUBLE" variableCategory="" min="0" max="8000" default="300" unit="MJ m-2" uri="http://" inputtype="variable" />
+    <Input name="DevelopmentStageCode" description="Development stage decimal code" datatype="DOUBLE" variableCategory="" min="0" max="4" default="2.5" unit="unitless" uri="http://" inputtype="variable" />
+    <Input name="GreenLeafAreaIndex" description="Potential green leaf area index" datatype="DOUBLE" variableCategory="" min="0" max="25" default="2" unit="m2 m-2" uri="http://" inputtype="variable" />
+    <Input name="TotalLeafAreaIndex" description="Potential total leaf area index" datatype="DOUBLE" variableCategory="" min="0" max="25" default="2" unit="m2 m-2" uri="http://" inputtype="variable" />
+    <Input name="ExtinctionCoefficientSolarRadiation" description="Extinction coefficient for solar radiation" datatype="DOUBLE" min="0.1" max="0.9" default="0.5" unit="unitless" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="TranspirationBiomassCoefficient" description="Transpiration Biomass Coefficient" datatype="DOUBLE" min="3" max="10" default="5" unit="(kg/m²)kPa)/m)" uri="" inputtype="parameter" parametercategory="" />
+  </Inputs>
+  <Outputs>
+    <Output name="AbsorbedSolarRadiationRate" description="Potential absorbed solar radiation (green LAI)" datatype="DOUBLE" min="0" max="50" unit="MJ m-2 day-1" uri="http://" />
+    <Output name="InterceptedSolarRadiationRate" description="Potential intercepted solar radiation (total LAI)" datatype="DOUBLE" min="0" max="50" unit="MJ m-2 day-1" uri="http://" />
+    <Output name="AbsorbedSolarRadiation" description="Absorbed solar radiation (green LAI)" datatype="DOUBLE" min="0" max="8000" unit="MJ m-2" uri="http://" />
+    <Output name="InterceptedSolarRadiation" description="Intercepted solar radiation (total LAI)" datatype="DOUBLE" min="0" max="8000" unit="MJ m-2" uri="http://" />
+  </Outputs>
+  <Algorithm language="C#" platform="Bioma" filename="InterceptedAbsorbedRadiation.cs" />
+  <Parametersets>
+    <Parameterset name="Default" description="Paramters default value" />
+  </Parametersets>
+</ModelUnit>

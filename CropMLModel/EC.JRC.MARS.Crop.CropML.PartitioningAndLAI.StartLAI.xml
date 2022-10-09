@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModelUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" modelid="EC.JRC.MARS.Crop.CropML.PartitioningAndLAI.StartLAI" name="StartLAI" timestep="0" version="1.0.0.0">
+  <Description>
+    <Title>EC.JRC.MARS.Crop.CropML.PartitioningAndLAI.StartLAI</Title>
+    <Authors>Creator:;    Date:;    Publisher:;    </Authors>
+    <Abstract>Controls initial and re-start LAI -  Donatelli, M., Confalonieri, R., unpublished. - </Abstract>
+  </Description>
+  <Inputs>
+    <Input name="GreenLeafAreaIndex" description="Potential green leaf area index" datatype="DOUBLE" variableCategory="" min="0" max="25" default="2" unit="m2 m-2" uri="http://" inputtype="variable" />
+    <Input name="TotalLeafAreaIndex" description="Potential total leaf area index" datatype="DOUBLE" variableCategory="" min="0" max="25" default="2" unit="m2 m-2" uri="http://" inputtype="variable" />
+    <Input name="DevelopmentStageCode" description="Development stage decimal code" datatype="DOUBLE" variableCategory="" min="0" max="4" default="2.5" unit="unitless" uri="http://" inputtype="variable" />
+    <Input name="InitialLeafAreaIndex" description="Initial leaf area index" datatype="DOUBLE" min="0.001" max="0.5" default="0.03" unit="m2 m-2" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="MinimumInitialGreenLeafAreaIndex" description="Maximum initial green leaf area index" datatype="DOUBLE" min="0.05" max="0.2" default="0.1" unit="m2 m-2" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="LeafAreaIndexInitialValueShape" description="Leaf area index initial value shape" datatype="DOUBLE" min="1" max="2" default="1.5" unit="unitless" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="DevelopmentStageCritical" description="Development stage beyond which ther is no re-growth" datatype="DOUBLE" min="1" max="3" default="3" unit="unitless" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="ReGrowthDevelopmentStageCritical" description="Development stage critical for re-growth" datatype="DOUBLE" min="1" max="2" default="1.5" unit="unitless" uri="" inputtype="parameter" parametercategory="" />
+  </Inputs>
+  <Outputs>
+    <Output name="StartLAI" description="Start LAI (also used for re-start after damages)" datatype="DOUBLE" min="0" max="0.1" unit="m2 m-2" uri="http://" />
+    <Output name="GreenLeafAreaIndex" description="Potential green leaf area index" datatype="DOUBLE" min="0" max="25" unit="m2 m-2" uri="http://" />
+  </Outputs>
+  <Algorithm language="C#" platform="Bioma" filename="StartLAI.cs" />
+  <Parametersets>
+    <Parameterset name="Default" description="Paramters default value" />
+  </Parametersets>
+</ModelUnit>

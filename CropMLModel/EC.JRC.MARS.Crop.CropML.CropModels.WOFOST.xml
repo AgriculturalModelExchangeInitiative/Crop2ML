@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModelUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" modelid="EC.JRC.MARS.Crop.CropML.CropModels.WOFOST" name="WOFOST" timestep="0" version="1.0.0.0">
+  <Description>
+    <Title>EC.JRC.MARS.Crop.CropML.CropModels.WOFOST</Title>
+    <Authors>Creator:;    Date:;    Publisher:;    </Authors>
+    <Abstract>WOFOST model for crop growth and development - Composite strategy. See references of the associated strategies: PotentialPhenologyC, DailyAssimilationC, RespirationC, OrgansGrowthC, LeafAreaIndexC, PotentialTranspirationWOFOST. - </Abstract>
+  </Description>
+  <Inputs>
+    <Input name="AirTemperatureMaximum" description="Daily air temperature maximum" datatype="DOUBLE" variableCategory="" min="-30" max="55" default="25" unit="°C" uri="http://" inputtype="variable" />
+    <Input name="AirTemperatureMinimum" description="Daily air temperature minimum" datatype="DOUBLE" variableCategory="" min="-25" max="45" default="15" unit="°C" uri="http://" inputtype="variable" />
+    <Input name="DayLenght" description="Day lenght" datatype="DOUBLE" variableCategory="" min="0" max="24" default="12" unit="unitless" uri="http://" inputtype="variable" />
+    <Input name="GrowingDegreeDays" description="Potential growing degree days" datatype="DOUBLE" variableCategory="" min="0" max="8000" default="100" unit="°C-day" uri="http://" inputtype="variable" />
+    <Input name="GrowingDegreeDaysTemperature" description="Potential growing degree days calculated on temperature" datatype="DOUBLE" variableCategory="" min="0" max="8000" default="100" unit="°C-day" uri="http://" inputtype="variable" />
+    <Input name="NumberOfCanopyLayers" description="Number of canopy layers" datatype="INT" variableCategory="" min="0" max="100" default="3" unit="unitless" uri="http://" inputtype="variable" />
+    <Input name="ReferenceEvapotranspiration" description="Reference evapotranspiration" datatype="DOUBLE" variableCategory="" min="0" max="20" default="0" unit="mm d-1" uri="http://" inputtype="variable" />
+    <Input name="DailyShortwaveRadiation_AVRAD" description="Daily shortwave radiation" datatype="DOUBLE" variableCategory="" min="0" max="60000000" default="17000000" unit="J m-2 day-1" uri="http://" inputtype="variable" />
+    <Input name="DayOfTheYear" description="Day of the year" datatype="INT" variableCategory="" min="1" max="365" default="1" unit="day" uri="http://" inputtype="variable" />
+    <Input name="Latitude" description="Latitude (°, decimal)" datatype="DOUBLE" variableCategory="" min="-90" max="90" default="45" unit="°" uri="http://" inputtype="variable" />
+    <Input name="DryWeightDeadRoots_DWRT" description="Dry weight of dead roots" datatype="DOUBLE" variableCategory="" min="0" max="10000" default="10" unit="kg ha-1 day-1" uri="http://" inputtype="variable" />
+    <Input name="DryWeightDeadStems_DWST" description="Dry weight of dead stems" datatype="DOUBLE" variableCategory="" min="0" max="10000" default="10" unit="kg ha-1 day-1" uri="http://" inputtype="variable" />
+    <Input name="DryWeightDeadStorageOrgans_DWSO" description="Dry weight of dead storage organs" datatype="DOUBLE" variableCategory="" min="0" max="10000" default="10" unit="kg ha-1 day-1" uri="http://" inputtype="variable" />
+    <Input name="DryWeightLivingRoots_WRT" description="Dry weight of living roots" datatype="DOUBLE" variableCategory="" min="0" max="10000" default="10" unit="kg ha-1 day-1" uri="http://" inputtype="variable" />
+    <Input name="DryWeightLivingLeaves_WLV" description="Dry weight of living leaves" datatype="DOUBLE" variableCategory="" min="0" max="100000" default="100" unit="kg ha-1" uri="http://" inputtype="variable" />
+    <Input name="DryWeightLivingStems_WST" description="Dry weight of living stems" datatype="DOUBLE" variableCategory="" min="0" max="10000" default="10" unit="kg ha-1 day-1" uri="http://" inputtype="variable" />
+    <Input name="DryWeightLivingStorageOrgans_WSO" description="Dry weight of living storage organs" datatype="DOUBLE" variableCategory="" min="0" max="10000" default="10" unit="kg ha-1 day-1" uri="http://" inputtype="variable" />
+    <Input name="GreenLeafAreaIndex" description="Potential green leaf area index" datatype="DOUBLE" variableCategory="" min="0" max="25" default="2" unit="m2 m-2" uri="http://" inputtype="variable" />
+    <Input name="GreenLeafAreaIndexExponential" description="Temperature driven green leaf area index exponential" datatype="DOUBLE" variableCategory="" min="0" max="25" default="2" unit="m2 m-2" uri="http://" inputtype="variable" />
+    <Input name="GreenLeafAreaIndexFromSLA" description="Green leaf area index from specific leaf area" datatype="DOUBLE" variableCategory="" min="0" max="25" default="2" unit="m2 m-2" uri="http://" inputtype="variable" />
+    <Input name="GrossCO2Assimilation" description="Gross CO2 assimilation" datatype="DOUBLE" variableCategory="" min="0" max="100000" default="100" unit="kg CO2 ha-1" uri="http://" inputtype="variable" />
+    <Input name="GrossCH2OAssimilation" description="Gross CH2O assimilation" datatype="DOUBLE" variableCategory="" min="0" max="100000" default="100" unit="kg CH2O ha-1" uri="http://" inputtype="variable" />
+    <Input name="LeavesDeadDueToSenescence" description="Leaves dead due to senescence" datatype="DOUBLE" variableCategory="" min="0" max="100000" default="100" unit="kg ha-1" uri="http://" inputtype="variable" />
+    <Input name="MaintenanceRespiration_MRES" description="Maintenance respiration" datatype="DOUBLE" variableCategory="" min="0" max="100000" default="100" unit="kg ha-1" uri="http://" inputtype="variable" />
+    <Input name="PartitioningFactorToRoots_FR" description="Partitioning factor to roots" datatype="DOUBLE" variableCategory="" min="0" max="500" default="100" unit="unitless" uri="http://" inputtype="variable" />
+    <Input name="PartitioningFactorToLeaves_FL" description="Partitioning factor to leaves" datatype="DOUBLE" variableCategory="" min="0" max="500" default="100" unit="unitless" uri="http://" inputtype="variable" />
+    <Input name="PartitioningFactorToStems_FS" description="Partitioning factor to stems" datatype="DOUBLE" variableCategory="" min="0" max="500" default="100" unit="unitless" uri="http://" inputtype="variable" />
+    <Input name="PartitioningFactorToStorageOrgans_FO" description="Partitioning factor to storage organs" datatype="DOUBLE" variableCategory="" min="0" max="500" default="100" unit="unitless" uri="http://" inputtype="variable" />
+    <Input name="PhotosyntheticStemArea" description="Photosynthetic stem area" datatype="DOUBLE" variableCategory="" min="0" max="0.5" default="0.1" unit="m2 m-2 day-1" uri="http://" inputtype="variable" />
+    <Input name="PhotosyntheticPodArea" description="Photosynthetic pod area" datatype="DOUBLE" variableCategory="" min="0" max="0.5" default="0.1" unit="m2 m-2 day-1" uri="http://" inputtype="variable" />
+    <Input name="RootDepth" description="Root depth" datatype="DOUBLE" variableCategory="" min="0" max="500" default="3" unit="cm" uri="http://" inputtype="variable" />
+    <Input name="SUCROStypeDVS" description="SUCROS-type development stage code" datatype="DOUBLE" variableCategory="" min="0" max="2" default="0.5" unit="unitless" uri="http://" inputtype="variable" />
+    <Input name="TotalBiomass" description="Total biomass" datatype="DOUBLE" variableCategory="" min="0" max="100000" default="100" unit="kg ha-1" uri="http://" inputtype="variable" />
+    <Input name="TotalLeafAreaIndexExponential" description="Temperature driven total leaf area index exponential" datatype="DOUBLE" variableCategory="" min="0" max="25" default="2" unit="m2 m-2" uri="http://" inputtype="variable" />
+    <Input name="TotalLeafAreaIndex" description="Potential total leaf area index" datatype="DOUBLE" variableCategory="" min="0" max="25" default="2" unit="m2 m-2" uri="http://" inputtype="variable" />
+    <Input name="TotalLeafAreaIndexFromSLA" description="Total leaf area index from specific leaf area" datatype="DOUBLE" variableCategory="" min="0" max="25" default="2" unit="m2 m-2" uri="http://" inputtype="variable" />
+    <Input name="GrowingDegreeDaysToReachEmergence_TSUMEM" description="Temperature sum from sowing to emergence (TSUMEM)" datatype="DOUBLE" min="10" max="400" default="100" unit="°C-day" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="GrowingDegreeDaysToReachFlowering_TSUM1" description="Temperature sum from emergence to anthesis" datatype="DOUBLE" min="200" max="5000" default="800" unit="°C-day" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="GrowingDegreeDaysToReachMaturity_TSUM2" description="Temperature sum from anthesis to maturity" datatype="DOUBLE" min="200" max="5000" default="800" unit="°C-day" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="DevelopmentStageAtHarvest_DVSEND" description="Development stage at harvest" datatype="DOUBLE" min="0" max="4" default="2" unit="°C-day" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="BaseTemperatureForEmergence_TBASEM" description="Base temperature for development" datatype="DOUBLE" min="-10" max="40" default="10" unit="°C" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="MaximumTemperatureForEmergence_TEFFMX" description="Cutoff temperature for development" datatype="DOUBLE" min="10" max="50" default="40" unit="°C" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="DailyIncreaseTempSumFunctionOfAverageT_DTSMTB" description="Daily increase in temperature sum as function of average daily temperature (DTSMTB)" datatype="DOUBLEARRAY" min="-10" max="60" default="0" unit="[°C, °C-day]" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="PhotoInhibition_DLC" description="Daylenght to inhibit flowering" datatype="DOUBLE" min="1" max="24" default="14" unit="hour" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="PhotoInsensitivity_DLO" description="Daylenght for insensitivity of photoperiod" datatype="DOUBLE" min="1" max="24" default="6" unit="hour" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="VERNBASE" description="Base vernalisation requirements" datatype="DOUBLE" min="0" max="1000" default="0" unit="days" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="VERNDVS" description="Critical development stage after which the effect of vernalisation is halted" datatype="DOUBLE" min="0" max="4" default="1" unit="unitless" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="VERNRTB" description="Rate of vernalisation as a function of daily mean temp" datatype="DOUBLEARRAY" min="0" max="1" default="0" unit="unitless" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="VERNSAT" description="Saturated vernalisation requirements" datatype="DOUBLE" min="0" max="1000" default="0" unit="days" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="ExtinctionCoefficientDiffusedLightFunctionOfDVS_KDIFTB" description="Extinction coefficient for diffuse visible light as function of DVS (KDIFTB)" datatype="DOUBLEARRAY" min="0" max="1" default="0.5" unit="[-; unitless]" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="InitialTotalCropDryWeight_TDWI" description="Initial total crop dry weight (TDWI)" datatype="DOUBLE" min="0" max="300" default="50" unit="[kg ha-1]" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="LeafAreaIndexAtEmergence_LAIEM" description="Leaf area index at emergence (LAIEM)" datatype="DOUBLE" min="0.01" max="0.1" default="0.1" unit="[m2 m-2]" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="LightUseEfficiencySingleLeafFunctionOfTavg_EFFTB" description="Light use efficiency single leaf function of average temperature (EFFTB)" datatype="DOUBLEARRAY" min="-10" max="50" default="1" unit="[°C; kg ha-1 hr-1 J-1 m2 s]" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="MaximumLeafCO2AssimilationRateFunctionOfDVS_AMAXTB" description="Maximum leaf CO2 assimilation rate as function of DVS (AMAXTB)" datatype="DOUBLEARRAY" min="0" max="100" default="40" unit="[-; kg ha-1 hr-1]" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="NumberOfInstantsInADayForWhichGrossPhotosynthesisIsEstimated" description="Number of instants in a day for which gross photosynthesis is estimated" datatype="INT" min="1" max="24" default="3" unit="[-]" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="ReductionFactorOfAMAXFunctionOfTavg_TMPFTB" description="Reduction factor of AMAX as function of average temperature (TMPFTB)" datatype="DOUBLEARRAY" min="0" max="55" default="0.5" unit="[°C; unitless]" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="ReductionFactorOfGrossAssimFunctionOfLowTmin_TMNFTB" description="Reduction factor of gross assimilation rate as function of low minimum temperature (TMNFTB)" datatype="DOUBLEARRAY" min="-2" max="5" default="0.5" unit="[°C; -]" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="LowerThresholdTemperatureForAgingOfLeaves_TBASE" description="Base temperature for aging of leaves (TBASE)" datatype="DOUBLE" min="-5" max="50" default="11" unit="°C" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="MaximumRelativeIncreaseInLAI_RGRLAI" description="Maximum relative increase in leaf area index (RGRLAI)" datatype="DOUBLE" min="0" max="0.8" default="0.009" unit="m2 m-2 day-1" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="SpecificLeafAreaFunctionOfDVS_SLATB" description="Specific leaf area as a function of DVS (SLATB)" datatype="DOUBLEARRAY" min="0" max="2.2" default="0.01" unit="[-, ha kg-1]" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="SpecificPodArea_SPA" description="Specific pod area (SPA)" datatype="DOUBLE" min="0" max="0.0005" default="0" unit="[ha kg-1]" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="SpecificStemAreaFunctionOfDVS_SSATB" description="Specific stem area as a function of DVS (SSATB)" datatype="DOUBLEARRAY" min="0" max="2.2" default="0.01" unit="[-, ha kg-1]" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="LifeSpanOfLeavesGrowingAt35Celsius_SPAN" description="Life span of leaves growing at 35°C (SPAN)" datatype="DOUBLE" min="10" max="400" default="50" unit="unitless" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="MaximumDailyIncreaseInRootingDepth_RRI" description="Maximum daily increase in rooting depth (RRI)" datatype="DOUBLE" min="0" max="10" default="1.2" unit="[cm day-1]" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="MaximumRootingDepth_RDM" description="Maximum rooting depth (RDM)" datatype="DOUBLE" min="0" max="1000" default="30" unit="[cm]" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="RelativeDeathRateOfRootsFunctionOfDVS_RDRRTB" description="Relative death rate of roots as a function of development stage (RDRRTB)" datatype="DOUBLEARRAY" min="0" max="3" default="0.1" unit="[-, unitless]" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="RelativeDeathRateOfStemsFunctionOfDVS_RDRSTB" description="Relative death rate of stems as a function of development stage (RDRSTB)" datatype="DOUBLEARRAY" min="0" max="3" default="0.1" unit="[-, unitless]" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="EfficiencyOfConversionIntoRoots_CVR" description="Efficiency of conversion into roots (CVR)" datatype="DOUBLE" min="0" max="1" default="0.754" unit="[-]" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="EfficiencyOfConversionIntoLeaves_CVL" description="Efficiency of conversion into leaves (CVL)" datatype="DOUBLE" min="0" max="1" default="0.754" unit="[-]" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="EfficiencyOfConversionIntoStems_CVS" description="Efficiency of conversion into stems (CVS)" datatype="DOUBLE" min="0" max="1" default="0.754" unit="[-]" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="EfficiencyOfConversionIntoStorageOrgans_CVO" description="EfficiencyOfConversionIntoStorageOrgans_CVO" datatype="DOUBLE" min="0" max="1" default="0.684" unit="[-]" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="ReductionFactorForSenescenceFunctionOfDVS_RFSETB" description="Reduction factor for senescence function of DVS (RFSETB)" datatype="DOUBLEARRAY" min="0" max="3" default="1" unit="[-, unitless]" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="RelativeMaintenanceRespirationOfRoots_RMR" description="Relative maintenance respiration of roots (RMR)" datatype="DOUBLE" min="0" max="0.5" default="0.01" unit="[kg CH2O kg-1 d-1]" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="RelativeMaintenanceRespirationOfLeaves_RML" description="Relative maintenance respiration of leaves (RML)" datatype="DOUBLE" min="0" max="0.5" default="0.02" unit="[kg CH2O kg-1 d-1]" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="RelativeMaintenanceRespirationOfStems_RMS" description="Relative maintenance respiration of stems (RMS)" datatype="DOUBLE" min="0" max="0.5" default="0.015" unit="[kg CH2O kg-1 d-1]" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="RelativeMaintenanceRespirationOfStorageOrgans_RMO" description="Relative maintenance respiration of storage organs (RMO)" datatype="DOUBLE" min="0" max="0.5" default="0.003" unit="[kg CH2O kg-1 d-1]" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="RelativeIncreaseRespirationRatePer10degreeTempIncrease_Q10" description="Relative increase respiration rate per 10-degree temperature increase (Q10)" datatype="DOUBLE" min="0" max="5" default="2" unit="[-]" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="FractionOfTotalDryMatterToRootsFunctionOfDVS_FRTB" description="Fraction of total dry matter to roots as function of development stage (FRTB)" datatype="DOUBLEARRAY" min="0" max="3" default="0.5" unit="[-; unitless]" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="FractionOfAboveGroundDryMatterToLeavesFunctionOfDVS_FLTB" description="Fraction of aboveground dry matter to leaves as function of development stage (FLTB)" datatype="DOUBLEARRAY" min="0" max="3" default="0.5" unit="[-; unitless]" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="FractionOfAboveGroundDryMatterToStemsFunctionOfDVS_FSTB" description="Fraction of aboveground dry matter to stems as function of development stage (FSTB)" datatype="DOUBLEARRAY" min="0" max="3" default="0.5" unit="[-; unitless]" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="FractionOfAboveGroundDryMatterToStorageOrgansFunctionOfDVS_FOTB" description="Fraction of aboveground dry matter to storage organs as function of development stage (FOTB)" datatype="DOUBLEARRAY" min="0" max="3" default="0.5" unit="[-; unitless]" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="MaximumPlantHeight" description="Maximum plant height" datatype="INT" min="0" max="300" default="100" unit="cm" uri="" inputtype="parameter" parametercategory="" />
+  </Inputs>
+  <Outputs>
+    <Output name="PhotoPeriodFactor" description="Photoperiod factor" datatype="DOUBLE" min="0" max="1" unit="unitless" uri="http://" />
+    <Output name="GrowingDegreeDaysTemperatureRate" description="Potential daily rate of growing degree days accumulation based on temperature" datatype="DOUBLE" min="0" max="50" unit="°C-day day-1" uri="http://" />
+    <Output name="GrowingDegreeDaysTemperature" description="Potential growing degree days calculated on temperature" datatype="DOUBLE" min="0" max="8000" unit="°C-day" uri="http://" />
+    <Output name="GrowingDegreeDaysRate" description="Potential daily rate of growing degree days accumulation" datatype="DOUBLE" min="0" max="50" unit="°C-day day-1" uri="http://" />
+    <Output name="SUCROStypeDVSRate" description="SUCROS-type development stage code rate" datatype="DOUBLE" min="0" max="2" unit="unitless" uri="http://" />
+    <Output name="DevelopmentStageCode" description="Development stage decimal code" datatype="DOUBLE" min="0" max="4" unit="unitless" uri="http://" />
+    <Output name="GrowingDegreeDays" description="Potential growing degree days" datatype="DOUBLE" min="0" max="8000" unit="°C-day" uri="http://" />
+    <Output name="SUCROStypeDVS" description="SUCROS-type development stage code" datatype="DOUBLE" min="0" max="2" unit="unitless" uri="http://" />
+    <Output name="TranspirationRate" description="Potential traspiration rate" datatype="DOUBLE" min="0" max="10" unit="cm d-1" uri="http://" />
+    <Output name="Transpiration" description="Transpiration potential" datatype="DOUBLE" min="0" max="10000" unit="mm" uri="http://" />
+    <Output name="SeasonalOffsetOfSineOfSolarHeight_SINLD" description="Seasonal offset of sine of solar height" datatype="DOUBLE" min="0" max="10000" unit="unitless" uri="http://" />
+    <Output name="AmplitudeOfSineOfSolarHeight_COSLD" description="Amplitude of sine of solar height" datatype="DOUBLE" min="0" max="10000" unit="unitless" uri="http://" />
+    <Output name="DayLenght" description="Day lenght" datatype="DOUBLE" min="0" max="24" unit="unitless" uri="http://" />
+    <Output name="DailyTotalOfEffectiveSolarHeight_DSINBE" description="Daily total of effective solar height" datatype="DOUBLE" min="0" max="10000" unit="s" uri="http://" />
+    <Output name="DiffuseIrradiationPerpendicularToDirectionOfLight_DIFPP" description="Diffuse irradiation perpendicular to direction of light" datatype="DOUBLE" min="0" max="60000000" unit="J m-2 s-1" uri="http://" />
+    <Output name="AbovegroundBiomassRate" description="Potential aboveground biomass" datatype="DOUBLE" min="0" max="200" unit="kg ha-1 day-1" uri="http://" />
+    <Output name="AssimilationAfterMaintenanceRespirationRate_ASRC" description="Assimilation after maintenance respiration rate" datatype="DOUBLE" min="0" max="10000" unit="kg CH2O ha-1 day-1" uri="http://" />
+    <Output name="DailyGrossCH2OAssimilationRate_GASS" description="Daily gross CH2O assimilation rate" datatype="DOUBLE" min="0" max="10000" unit="kg CH2O ha-1 day-1" uri="http://" />
+    <Output name="DailyGrossCO2AssimilationRate_DTGA" description="Daily gross CO2 assimilation rate" datatype="DOUBLE" min="0" max="10000" unit="kg CO2 ha-1 day-1" uri="http://" />
+    <Output name="DryWeightDeadRoots_DWRT" description="Dry weight of dead roots" datatype="DOUBLE" min="0" max="10000" unit="kg ha-1 day-1" uri="http://" />
+    <Output name="DryWeightDeadStems_DWST" description="Dry weight of dead stems" datatype="DOUBLE" min="0" max="10000" unit="kg ha-1 day-1" uri="http://" />
+    <Output name="DryWeightDeadStorageOrgans_DWSO" description="Dry weight of dead storage organs" datatype="DOUBLE" min="0" max="10000" unit="kg ha-1 day-1" uri="http://" />
+    <Output name="DryWeightLivingRoots_WRT" description="Dry weight of living roots" datatype="DOUBLE" min="0" max="10000" unit="kg ha-1 day-1" uri="http://" />
+    <Output name="DryWeightLivingLeaves_WLT" description="Dry weight of living leaves" datatype="DOUBLE" min="0" max="10000" unit="kg ha-1 day-1" uri="http://" />
+    <Output name="DryWeightLivingStems_WST" description="Dry weight of living stems" datatype="DOUBLE" min="0" max="10000" unit="kg ha-1 day-1" uri="http://" />
+    <Output name="DryWeightLivingStorageOrgans_WSO" description="Dry weight of living storage organs" datatype="DOUBLE" min="0" max="10000" unit="kg ha-1 day-1" uri="http://" />
+    <Output name="GreenLeafAreaIndexExponentialRate" description="Temperature driven green leaf area index exponential rate" datatype="DOUBLE" min="-0.8" max="0.8" unit="m2 m-2 day-1" uri="http://" />
+    <Output name="GreenLeafAreaIndexFromSLARate" description="Green leaf area index from specific leaf area rate" datatype="DOUBLE" min="-0.8" max="0.8" unit="m2 m-2 day-1" uri="http://" />
+    <Output name="GreenLeafAreaIndexRate" description="Potential green leaf area index" datatype="DOUBLE" min="-0.8" max="0.8" unit="m2 m-2 day-1" uri="http://" />
+    <Output name="LeavesBiomassRate" description="Potential leaves biomass" datatype="DOUBLE" min="0" max="200" unit="kg ha-1 day-1" uri="http://" />
+    <Output name="LeavesDeadBiomassRate" description="Leaves death biomass rate" datatype="DOUBLE" min="0" max="100" unit="kg ha-1 day-1" uri="http://" />
+    <Output name="LeavesDeathDueToSelfShading_DSLV2" description="Leaves death due to self shading" datatype="DOUBLE" min="0" max="100" unit="kg ha-1 day-1" uri="http://" />
+    <Output name="LeavesDeathDueToSenescence" description="Leaves death due to senescence" datatype="DOUBLE" min="0" max="100" unit="kg ha-1 day-1" uri="http://" />
+    <Output name="MaintenanceRespirationRate_MRES" description="Maintenance respiration rate" datatype="DOUBLE" min="0" max="10000" unit="kg CO2 ha-1 day-1" uri="http://" />
+    <Output name="PartitioningFactorToRootsRate_FR" description="Partitioning factor to roots rate" datatype="DOUBLE" min="0" max="1" unit="unitless" uri="http://" />
+    <Output name="PartitioningFactorToLeavesRate_FL" description="Partitioning factor to leaves rate" datatype="DOUBLE" min="0" max="1" unit="unitless" uri="http://" />
+    <Output name="PartitioningFactorToStemsRate_FS" description="Partitioning factor to stems rate" datatype="DOUBLE" min="0" max="1" unit="unitless" uri="http://" />
+    <Output name="PartitioningFactorToStorageOrgansRate_FO" description="Partitioning factor to storage organs rate" datatype="DOUBLE" min="0" max="1" unit="unitless" uri="http://" />
+    <Output name="PhotosyntheticStemArea" description="Photosynthetic stem area" datatype="DOUBLE" min="0" max="0.5" unit="m2 m-2 day-1" uri="http://" />
+    <Output name="PhotosyntheticPodArea" description="Photosynthetic pod area" datatype="DOUBLE" min="0" max="0.5" unit="m2 m-2 day-1" uri="http://" />
+    <Output name="RootDepthRate" description="Roots depth rate" datatype="DOUBLE" min="0" max="10" unit="cm day-1" uri="http://" />
+    <Output name="TotalBiomassRate" description="Total biomass rate" datatype="DOUBLE" min="0" max="10000" unit="kg ha-1 day-1" uri="http://" />
+    <Output name="TotalLeafAreaIndexExponentialRate" description="Temperature driven total leaf area index exponential rate" datatype="DOUBLE" min="-0.8" max="0.8" unit="m2 m-2 day-1" uri="http://" />
+    <Output name="TotalLeafAreaIndexFromSLARate" description="Total leaf area index from specific leaf area rate" datatype="DOUBLE" min="-0.8" max="0.8" unit="m2 m-2 day-1" uri="http://" />
+    <Output name="TotalLeafAreaIndexRate" description="Potential total leaf area index" datatype="DOUBLE" min="0" max="0.8" unit="m2 m-2 day-1" uri="http://" />
+    <Output name="AbovegroundBiomass" description="Potential aboveground biomass" datatype="DOUBLE" min="0" max="50000" unit="kg ha-1" uri="http://" />
+    <Output name="GreenLeafAreaIndex" description="Potential green leaf area index" datatype="DOUBLE" min="0" max="25" unit="m2 m-2" uri="http://" />
+    <Output name="GreenLeafAreaIndexExponential" description="Temperature driven green leaf area index exponential" datatype="DOUBLE" min="0" max="25" unit="m2 m-2" uri="http://" />
+    <Output name="GreenLeafAreaIndexFromSLA" description="Green leaf area index from specific leaf area" datatype="DOUBLE" min="0" max="25" unit="m2 m-2" uri="http://" />
+    <Output name="GrossCH2OAssimilation" description="Gross CH2O assimilation" datatype="DOUBLE" min="0" max="100000" unit="kg CH2O ha-1" uri="http://" />
+    <Output name="GrossCO2Assimilation" description="Gross CO2 assimilation" datatype="DOUBLE" min="0" max="100000" unit="kg CO2 ha-1" uri="http://" />
+    <Output name="LeavesBiomass" description="Potential leaves biomass" datatype="DOUBLE" min="0" max="35000" unit="kg ha-1" uri="http://" />
+    <Output name="LeavesDeadBiomass" description="Leaves dead biomass" datatype="DOUBLE" min="0" max="100000" unit="kg ha-1" uri="http://" />
+    <Output name="LeavesDeadDueToSenescence" description="Leaves dead due to senescence" datatype="DOUBLE" min="0" max="100000" unit="kg ha-1" uri="http://" />
+    <Output name="MaintenanceRespiration_MRES" description="Maintenance respiration" datatype="DOUBLE" min="0" max="100000" unit="kg ha-1" uri="http://" />
+    <Output name="PartitioningFactorToRoots_FR" description="Partitioning factor to roots" datatype="DOUBLE" min="0" max="500" unit="unitless" uri="http://" />
+    <Output name="PartitioningFactorToLeaves_FL" description="Partitioning factor to leaves" datatype="DOUBLE" min="0" max="500" unit="unitless" uri="http://" />
+    <Output name="PartitioningFactorToStems_FS" description="Partitioning factor to stems" datatype="DOUBLE" min="0" max="500" unit="unitless" uri="http://" />
+    <Output name="PartitioningFactorToStorageOrgans_FO" description="Partitioning factor to storage organs" datatype="DOUBLE" min="0" max="500" unit="unitless" uri="http://" />
+    <Output name="RootBiomass" description="Root biomass (total)" datatype="DOUBLE" min="0" max="35000" unit="kg ha-1" uri="http://" />
+    <Output name="RootDepth" description="Root depth" datatype="DOUBLE" min="0" max="500" unit="cm" uri="http://" />
+    <Output name="StemsBiomass" description="Potential stems biomass" datatype="DOUBLE" min="0" max="35000" unit="kg ha-1" uri="http://" />
+    <Output name="StorageOrgansBiomass" description="Potential storage organs biomass" datatype="DOUBLE" min="0" max="35000" unit="kg ha-1" uri="http://" />
+    <Output name="TotalBiomass" description="Total biomass" datatype="DOUBLE" min="0" max="100000" unit="kg ha-1" uri="http://" />
+    <Output name="TotalLeafAreaIndex" description="Potential total leaf area index" datatype="DOUBLE" min="0" max="25" unit="m2 m-2" uri="http://" />
+    <Output name="TotalLeafAreaIndexExponential" description="Temperature driven total leaf area index exponential" datatype="DOUBLE" min="0" max="25" unit="m2 m-2" uri="http://" />
+    <Output name="TotalLeafAreaIndexFromSLA" description="Total leaf area index from specific leaf area" datatype="DOUBLE" min="0" max="25" unit="m2 m-2" uri="http://" />
+    <Output name="TotalPhotosyntheticAreaIndex" description="Total photosynthetic area index rate" datatype="DOUBLE" min="0" max="0.5" unit="m2 m-2 day-1" uri="http://" />
+  </Outputs>
+  <Algorithm language="C#" platform="Bioma" filename="WOFOST.cs" />
+  <Parametersets>
+    <Parameterset name="Default" description="Paramters default value" />
+  </Parametersets>
+</ModelUnit>

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModelUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" modelid="EC.JRC.MARS.Crop.CropML.CropModels.WARM" name="WARM" timestep="0" version="1.0.0.0">
+  <Description>
+    <Title>EC.JRC.MARS.Crop.CropML.CropModels.WARM</Title>
+    <Authors>Creator:;    Date:;    Publisher:;    </Authors>
+    <Abstract>WARM model for rice growth and development - Confalonieri, R., Acutis, M., Donatelli, M. - Composite strategy. See also references of the associated strategies: PotentialPhenologyC, PanicleHeight, SterilityC, Blast, RUEactualC, InterceptedAbsorbedRadiation, RUEbasedBiomassAccumulation, PartitioningWARM, SpecificLeafAreaWARM, LeafLife - </Abstract>
+  </Description>
+  <Inputs>
+    <Input name="AirTemperatureMaximum" description="Daily air temperature maximum" datatype="DOUBLE" variableCategory="" min="-30" max="55" default="25" unit="°C" uri="http://" inputtype="variable" />
+    <Input name="AirTemperatureMinimum" description="Daily air temperature minimum" datatype="DOUBLE" variableCategory="" min="-25" max="45" default="15" unit="°C" uri="http://" inputtype="variable" />
+    <Input name="DayLenght" description="Day lenght" datatype="DOUBLE" variableCategory="" min="0" max="24" default="12" unit="unitless" uri="http://" inputtype="variable" />
+    <Input name="GrowingDegreeDays" description="Potential growing degree days" datatype="DOUBLE" variableCategory="" min="0" max="8000" default="100" unit="°C-day" uri="http://" inputtype="variable" />
+    <Input name="GrowingDegreeDaysTemperature" description="Potential growing degree days calculated on temperature" datatype="DOUBLE" variableCategory="" min="0" max="8000" default="100" unit="°C-day" uri="http://" inputtype="variable" />
+    <Input name="RUETemperatureEffect" description="Effect of temperature on radiation use efficiency" datatype="DOUBLE" variableCategory="" min="0" max="300" default="50" unit="unitless" uri="http://" inputtype="variable" />
+    <Input name="GlobalSolarRadiation" description="Global solar radiation" datatype="DOUBLE" variableCategory="" min="0" max="50" default="10" unit="MJ m-2" uri="http://" inputtype="variable" />
+    <Input name="RUESaturationEffect" description="Effect of saturation of the enzymatic chains on radiation use efficiency" datatype="DOUBLE" variableCategory="" min="0" max="300" default="50" unit="unitless" uri="http://" inputtype="variable" />
+    <Input name="DevelopmentStageCode" description="Development stage decimal code" datatype="DOUBLE" variableCategory="" min="0" max="4" default="2.5" unit="unitless" uri="http://" inputtype="variable" />
+    <Input name="RUESenescenceEffect" description="Effect of senescence on radiation use efficiency" datatype="DOUBLE" variableCategory="" min="0" max="300" default="50" unit="unitless" uri="http://" inputtype="variable" />
+    <Input name="RUEActual" description="Actual radiation use efficiency" datatype="DOUBLE" variableCategory="" min="0" max="2400" default="20" unit="g MJ-1" uri="http://" inputtype="variable" />
+    <Input name="CO2concentration" description="CO2 concentration" datatype="DOUBLE" variableCategory="" min="330" max="1000" default="350" unit="ppm" uri="http://" inputtype="variable" />
+    <Input name="Sterility" description="Total sterility" datatype="DOUBLE" variableCategory="" min="0" max="0.7" default="0.05" unit="unitless" uri="http://" inputtype="variable" />
+    <Input name="ReferenceEvapotranspiration" description="Reference evapotranspiration" datatype="DOUBLE" variableCategory="" min="0" max="20" default="0" unit="mm d-1" uri="http://" inputtype="variable" />
+    <Input name="AbovegroundBiomass" description="Potential aboveground biomass" datatype="DOUBLE" variableCategory="" min="0" max="50000" default="1500" unit="kg ha-1" uri="http://" inputtype="variable" />
+    <Input name="AbsorbedSolarRadiation" description="Absorbed solar radiation (green LAI)" datatype="DOUBLE" variableCategory="" min="0" max="8000" default="300" unit="MJ m-2" uri="http://" inputtype="variable" />
+    <Input name="GreenLeafAreaIndex" description="Potential green leaf area index" datatype="DOUBLE" variableCategory="" min="0" max="25" default="2" unit="m2 m-2" uri="http://" inputtype="variable" />
+    <Input name="InterceptedSolarRadiation" description="Intercepted solar radiation (total LAI)" datatype="DOUBLE" variableCategory="" min="0" max="8000" default="300" unit="MJ m-2" uri="http://" inputtype="variable" />
+    <Input name="LeavesBiomass" description="Potential leaves biomass" datatype="DOUBLE" variableCategory="" min="0" max="35000" default="1000" unit="kg ha-1" uri="http://" inputtype="variable" />
+    <Input name="StemsBiomass" description="Potential stems biomass" datatype="DOUBLE" variableCategory="" min="0" max="35000" default="1000" unit="kg ha-1" uri="http://" inputtype="variable" />
+    <Input name="StorageOrgansBiomass" description="Potential storage organs biomass" datatype="DOUBLE" variableCategory="" min="0" max="35000" default="1000" unit="kg ha-1" uri="http://" inputtype="variable" />
+    <Input name="TotalLeafAreaIndex" description="Potential total leaf area index" datatype="DOUBLE" variableCategory="" min="0" max="25" default="2" unit="m2 m-2" uri="http://" inputtype="variable" />
+    <Input name="Transpiration" description="Transpiration potential" datatype="DOUBLE" variableCategory="" min="0" max="10000" default="100" unit="mm" uri="http://" inputtype="variable" />
+    <Input name="WaterUptake" description="Water uptake potential" datatype="DOUBLE" variableCategory="" min="0" max="10000" default="100" unit="mm" uri="http://" inputtype="variable" />
+    <Input name="GrowingDegreeDaysToReachEmergence" description="Growing degree days to reach emergence" datatype="DOUBLE" min="10" max="400" default="100" unit="°C-day" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="GrowingDegreeDaysToReachFlowering" description="Growing degree days to reach flowering" datatype="DOUBLE" min="200" max="5000" default="800" unit="°C-day" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="GrowingDegreeDaysToReachMaturity" description="Growing degree days to reach maturity" datatype="DOUBLE" min="200" max="5000" default="800" unit="°C-day" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="GrowingDegreeDaysToReachHarvest" description="Growing degree days to reach harvest" datatype="DOUBLE" min="10" max="600" default="100" unit="°C-day" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="BaseTemperatureDevelopment" description="Base temperature for development" datatype="DOUBLE" min="-10" max="40" default="10" unit="°C" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="CutoffTemperatureDevelopment" description="Cutoff temperature for development" datatype="DOUBLE" min="10" max="50" default="40" unit="°C" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="PhotoInhibition" description="Daylenght to inhibit flowering" datatype="DOUBLE" min="1" max="24" default="14" unit="hour" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="PhotoInsensitivity" description="Daylenght for insensitivity of photoperiod" datatype="DOUBLE" min="1" max="24" default="6" unit="hour" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="HighTemperature" description="High temperature for optimal vernalization" datatype="DOUBLE" min="0" max="20" default="5" unit="°C" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="LowTemperature" description="Low temperature for optimal vernalization" datatype="DOUBLE" min="-10" max="10" default="0" unit="°C" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="MinimumFactor" description="Minimum vernalization factor" datatype="DOUBLE" min="0" max="1" default="0" unit="unitless" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="A" description="Vernalization A parameter" datatype="DOUBLE" min="4" max="10" default="7" unit="°C" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="DaysToStartVernalization" description="Days requirement to start vernalization" datatype="DOUBLE" min="0" max="30" default="0" unit="unitless" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="DaysToCompleteVernalization" description="Days requirement to complete vernalization" datatype="DOUBLE" min="20" max="200" default="50" unit="unitless" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="BetaFunctionCShapeParameter" description="Beta function C shape parameter for temperature limitation to RUE" datatype="DOUBLE" min="1" max="2" default="1.8" unit="unitless" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="BaseTemperatureForGrowth" description="Base temperature for growth" datatype="DOUBLE" min="-10" max="20" default="12" unit="°C" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="OptimumTemperatureForGrowth" description="Optimum temperature for growth" datatype="DOUBLE" min="8" max="40" default="28" unit="°C" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="MaximumTemperatureForGrowth" description="Maximum temperature for growth" datatype="DOUBLE" min="15" max="50" default="35" unit="°C" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="ThresholdRadiationForSaturation" description="Threshold radiation for saturation" datatype="DOUBLE" min="15" max="35" default="25" unit="MJ m-2 day-1" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="IsC3" description="Is C3" datatype="INT" min="0" max="1" default="0" unit="unitless" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="MaximumRadiationUseEfficiency" description="Maximum radiation use efficiency" datatype="DOUBLE" min="1.5" max="7" default="3" unit="g MJ-1" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="ExtinctionCoefficientSolarRadiation" description="Extinction coefficient for solar radiation" datatype="DOUBLE" min="0.1" max="0.9" default="0.5" unit="unitless" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="FullCanopyCoefficient" description="ET crop coefficient at full canopy" datatype="DOUBLE" min="0" max="1.18" default="0.8" unit="unitless" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="FullCanopyWaterUptakeMaximum" description="Full canopy water uptake maximum " datatype="DOUBLE" min="7" max="13" default="9" unit="kg m-2 d-1" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="MaximumPanicleHeight" description="Maximum panicle height" datatype="DOUBLE" min="0" max="300" default="100" unit="cm" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="PartitioningToLeavesAtEmergence" description="Biomass partitioning to leaves at emergence" datatype="DOUBLE" min="0.3" max="0.95" default="0.7" unit="unitless" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="PARtoGlobalRadiationFactor" description="Factor to convert global solar radiation to PAR" datatype="DOUBLE" min="0.4" max="0.6" default="0.5" unit="unitless" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="SpecificLeafAreaAtEmergence" description="Specific leaf area at emergence" datatype="DOUBLE" min="2" max="60" default="27" unit="m2 kg-1" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="SpecificLeafAreaAtTillering" description="Specific leaf area at tillering" datatype="DOUBLE" min="2" max="60" default="18" unit="m2 kg-1" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="LeafDuration" description="Leaf life" datatype="DOUBLE" min="200" max="1100" default="600" unit="°C-day" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="MaximumRootingDepth" description="Maximum rooting depth" datatype="DOUBLE" min="7" max="100" default="30" unit="cm" uri="" inputtype="parameter" parametercategory="" />
+  </Inputs>
+  <Outputs>
+    <Output name="GrowingDegreeDaysTemperature" description="Potential growing degree days calculated on temperature" datatype="DOUBLE" min="0" max="8000" unit="°C-day" uri="http://" />
+    <Output name="GrowingDegreeDaysTemperatureRate" description="Potential daily rate of growing degree days accumulation based on temperature" datatype="DOUBLE" min="0" max="50" unit="°C-day day-1" uri="http://" />
+    <Output name="PhotoPeriodFactor" description="Photoperiod factor" datatype="DOUBLE" min="0" max="1" unit="unitless" uri="http://" />
+    <Output name="DailyVernalizationRate" description="Daily contribution to vernalization" datatype="DOUBLE" min="0" max="1" unit="unitless" uri="http://" />
+    <Output name="VernalizationCum" description="Cumulated contribution to vernalization" datatype="DOUBLE" min="0" max="100" unit="unitless" uri="http://" />
+    <Output name="VernalizationFactor" description="Vernalization factor" datatype="DOUBLE" min="0" max="1" unit="unitless" uri="http://" />
+    <Output name="GrowingDegreeDays" description="Potential growing degree days" datatype="DOUBLE" min="0" max="8000" unit="°C-day" uri="http://" />
+    <Output name="DevelopmentStageCode" description="Development stage decimal code" datatype="DOUBLE" min="0" max="4" unit="unitless" uri="http://" />
+    <Output name="GrowingDegreeDaysRate" description="Potential daily rate of growing degree days accumulation" datatype="DOUBLE" min="0" max="50" unit="°C-day day-1" uri="http://" />
+    <Output name="RUETemperatureEffect" description="Effect of temperature on radiation use efficiency" datatype="DOUBLE" min="0" max="300" unit="unitless" uri="http://" />
+    <Output name="RUETemperatureEffectRate" description="Effect of temperature on radiation use efficiency" datatype="DOUBLE" min="0" max="1" unit="unitless" uri="http://" />
+    <Output name="RUESaturationEffect" description="Effect of saturation of the enzymatic chains on radiation use efficiency" datatype="DOUBLE" min="0" max="300" unit="unitless" uri="http://" />
+    <Output name="RUESaturationEffectRate" description="Effect of saturation of the enzymatic chains on radiation use efficiency" datatype="DOUBLE" min="0" max="1" unit="unitless" uri="http://" />
+    <Output name="RUESenescenceEffect" description="Effect of senescence on radiation use efficiency" datatype="DOUBLE" min="0" max="300" unit="unitless" uri="http://" />
+    <Output name="RUESenescenceEffectRate" description="Effect of senescence on radiation use efficiency" datatype="DOUBLE" min="0" max="1" unit="unitless" uri="http://" />
+    <Output name="GrowthRatioCO2" description="RUE correction factor due to CO2" datatype="DOUBLE" min="1" max="1.5" unit="unitless" uri="http://" />
+    <Output name="RUEActual" description="Actual radiation use efficiency" datatype="DOUBLE" min="0" max="2400" unit="g MJ-1" uri="http://" />
+    <Output name="RUEActualRate" description="Actual radiation use efficiency" datatype="DOUBLE" min="0" max="8" unit="g MJ-1 day-1" uri="http://" />
+    <Output name="AbovegroundBiomassRate" description="Potential aboveground biomass" datatype="DOUBLE" min="0" max="200" unit="kg ha-1 day-1" uri="http://" />
+    <Output name="AbsorbedSolarRadiationRate" description="Potential absorbed solar radiation (green LAI)" datatype="DOUBLE" min="0" max="50" unit="MJ m-2 day-1" uri="http://" />
+    <Output name="GreenLeafAreaIndexRate" description="Potential green leaf area index" datatype="DOUBLE" min="-0.8" max="0.8" unit="m2 m-2 day-1" uri="http://" />
+    <Output name="InterceptedSolarRadiationRate" description="Potential intercepted solar radiation (total LAI)" datatype="DOUBLE" min="0" max="50" unit="MJ m-2 day-1" uri="http://" />
+    <Output name="LeavesBiomassRate" description="Potential leaves biomass" datatype="DOUBLE" min="0" max="200" unit="kg ha-1 day-1" uri="http://" />
+    <Output name="StemsBiomassRate" description="Potential stems biomass" datatype="DOUBLE" min="0" max="200" unit="kg ha-1 day-1" uri="http://" />
+    <Output name="StorageOrgansBiomassRate" description="Potential storage organs biomass" datatype="DOUBLE" min="0" max="200" unit="kg ha-1 day-1" uri="http://" />
+    <Output name="TotalLeafAreaIndexRate" description="Potential total leaf area index" datatype="DOUBLE" min="0" max="0.8" unit="m2 m-2 day-1" uri="http://" />
+    <Output name="TranspirationRate" description="Potential traspiration rate" datatype="DOUBLE" min="0" max="10" unit="cm d-1" uri="http://" />
+    <Output name="WaterUptakeRate" description="Water uptake potential rate" datatype="DOUBLE" min="0" max="10" unit="kg m-2 d-1" uri="http://" />
+    <Output name="AbovegroundBiomass" description="Potential aboveground biomass" datatype="DOUBLE" min="0" max="50000" unit="kg ha-1" uri="http://" />
+    <Output name="AbsorbedSolarRadiation" description="Absorbed solar radiation (green LAI)" datatype="DOUBLE" min="0" max="8000" unit="MJ m-2" uri="http://" />
+    <Output name="GreenLeafAreaIndex" description="Potential green leaf area index" datatype="DOUBLE" min="0" max="25" unit="m2 m-2" uri="http://" />
+    <Output name="InterceptedSolarRadiation" description="Intercepted solar radiation (total LAI)" datatype="DOUBLE" min="0" max="8000" unit="MJ m-2" uri="http://" />
+    <Output name="LeavesBiomass" description="Potential leaves biomass" datatype="DOUBLE" min="0" max="35000" unit="kg ha-1" uri="http://" />
+    <Output name="PanicleHeight" description="Panicle height" datatype="DOUBLE" min="0" max="300" unit="cm" uri="http://" />
+    <Output name="RootDepth" description="Root depth" datatype="DOUBLE" min="0" max="500" unit="cm" uri="http://" />
+    <Output name="StemsBiomass" description="Potential stems biomass" datatype="DOUBLE" min="0" max="35000" unit="kg ha-1" uri="http://" />
+    <Output name="StorageOrgansBiomass" description="Potential storage organs biomass" datatype="DOUBLE" min="0" max="35000" unit="kg ha-1" uri="http://" />
+    <Output name="TotalLeafAreaIndex" description="Potential total leaf area index" datatype="DOUBLE" min="0" max="25" unit="m2 m-2" uri="http://" />
+    <Output name="Transpiration" description="Transpiration potential" datatype="DOUBLE" min="0" max="10000" unit="mm" uri="http://" />
+    <Output name="WaterUptake" description="Water uptake potential" datatype="DOUBLE" min="0" max="10000" unit="mm" uri="http://" />
+  </Outputs>
+  <Algorithm language="C#" platform="Bioma" filename="WARM.cs" />
+  <Parametersets>
+    <Parameterset name="Default" description="Paramters default value" />
+  </Parametersets>
+</ModelUnit>
