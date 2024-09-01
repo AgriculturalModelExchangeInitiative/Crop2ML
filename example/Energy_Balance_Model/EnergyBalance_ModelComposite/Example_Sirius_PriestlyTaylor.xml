@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Model PUBLIC " " "https://raw.githubusercontent.com/AgriculturalModelExchangeInitiative/xml_representation/master/ModelUnit.dtd">
-<ModelUnit modelid="1" name="PriestlyTaylor" timestep="1" version="1.0">
+<ModelUnit modelid="Sirius.EnergyBalance" name="PriestlyTaylor" timestep="1" version="1.0">
     <Description>
         <Title>evapoTranspirationPriestlyTaylor  Model</Title>
         <Authors>Pierre Martre</Authors>
@@ -37,21 +37,21 @@
      	evapoTranspirationPriestlyTaylor = Math.max((Alpha * hslope * (netRadiationEquivalentEvaporation) / (hslope + psychrometricConstant)), 0);
      
        ]]>
-     </Algorithm
+     </Algorithm>
      
      <Algorithm language="C++" platform=""><![CDATA[
      
      	evapoTranspirationPriestlyTaylor = std::fmax((Alpha * hslope * (netRadiationEquivalentEvaporation) / (hslope + psychrometricConstant)), 0);
      
        ]]>
-     </Algorithm
+     </Algorithm>
      
      <Algorithm language="Fortran" platform=""><![CDATA[
      	evapoTranspirationPriestlyTaylor = MAX((Alpha * hslope * (netRadiationEquivalentEvaporation) / (hslope + psychrometricConstant)), 0)
      	
      
        ]]>
-     </Algorithm
+     </Algorithm>
       <Parametersets>
         <Parameterset name="set1" description="some values in there" >
         	<Param name="Alpha">1.5</Param>

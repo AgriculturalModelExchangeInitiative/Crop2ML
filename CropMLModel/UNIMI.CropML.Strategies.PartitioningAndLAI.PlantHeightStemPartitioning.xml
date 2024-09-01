@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModelUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" modelid="UNIMI.CropML.Strategies.PartitioningAndLAI.PlantHeightStemPartitioning" name="PlantHeightStemPartitioning" timestep="0" version="1.0.0.0">
+  <Description>
+    <Title>UNIMI.CropML.Strategies.PartitioningAndLAI.PlantHeightStemPartitioning</Title>
+    <Authors>Creator:roberto.confalonieri@unimi.it;    Date:10/13/2011;    Publisher:University of Milan;    </Authors>
+    <Abstract>Confalonieri, R., Bregaglio, S., Rosenmund, A.S., Acutis, M., Savin, I., 2011. A model for simulating the height of rice plants. European Journal of Agronomy, 34, 20-25. - Crop</Abstract>
+  </Description>
+  <Inputs>
+    <Input name="FSTBcumulated" description="Fraction of total dry matter partitioned to stems cumulated" datatype="DOUBLE" variableCategory="" min="0" max="10000000" default="0" unit="unitless" uri="http://" inputtype="variable" />
+    <Input name="FSTBtoday" description="Fraction of total dry matter partitioned to stems today" datatype="DOUBLE" variableCategory="" min="0" max="3" default="0.5" unit="unitless" uri="http://" inputtype="variable" />
+    <Input name="MaximumPlantHeight" description="Maximum plant height" datatype="INT" min="0" max="300" default="100" unit="cm" uri="" inputtype="parameter" parametercategory="" />
+  </Inputs>
+  <Outputs>
+    <Output name="PlantHeight" description="Plant potential height" datatype="DOUBLE" min="0" max="5" unit="m" uri="http://" />
+  </Outputs>
+  <Algorithm language="C#" platform="Bioma" filename="PlantHeightStemPartitioning.cs" />
+  <Parametersets>
+    <Parameterset name="Default" description="Paramters default value" />
+  </Parametersets>
+</ModelUnit>

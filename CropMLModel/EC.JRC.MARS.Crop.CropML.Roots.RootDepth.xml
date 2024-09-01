@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModelUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" modelid="EC.JRC.MARS.Crop.CropML.Roots.RootDepth" name="RootDepth" timestep="0" version="1.0.0.0">
+  <Description>
+    <Title>EC.JRC.MARS.Crop.CropML.Roots.RootDepth</Title>
+    <Authors>Creator:;    Date:;    Publisher:;    </Authors>
+    <Abstract>R. Confalonieri, M. Acutis -  - </Abstract>
+  </Description>
+  <Inputs>
+    <Input name="DevelopmentStageCode" description="Development stage decimal code" datatype="DOUBLE" variableCategory="" min="0" max="4" default="2.5" unit="unitless" uri="http://" inputtype="variable" />
+    <Input name="MaximumRootingDepth" description="Maximum rooting depth" datatype="DOUBLE" min="7" max="100" default="30" unit="cm" uri="" inputtype="parameter" parametercategory="" />
+  </Inputs>
+  <Outputs>
+    <Output name="RootDepth" description="Root depth" datatype="DOUBLE" min="0" max="500" unit="cm" uri="http://" />
+  </Outputs>
+  <Algorithm language="C#" platform="Bioma" filename="RootDepth.cs" />
+  <Parametersets>
+    <Parameterset name="Default" description="Paramters default value" />
+  </Parametersets>
+</ModelUnit>

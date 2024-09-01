@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModelUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" modelid="EC.JRC.MARS.Crop.CropML.PartitioningAndLAI.PartitioningWOFOST" name="PartitioningWOFOST" timestep="0" version="1.0.0.0">
+  <Description>
+    <Title>EC.JRC.MARS.Crop.CropML.PartitioningAndLAI.PartitioningWOFOST</Title>
+    <Authors>Creator:;    Date:;    Publisher:;    </Authors>
+    <Abstract>Calculate partitioning coefficients as function of development stage code - Van Keulen, H., Wolf, J., 1986. Modelling of agricultural production: weather soils and crops. Simulation Monographs. Pudoc, Wageningen, The Netherlands, pp. 479. - </Abstract>
+  </Description>
+  <Inputs>
+    <Input name="PartitioningFactorToRoots_FR" description="Partitioning factor to roots" datatype="DOUBLE" variableCategory="" min="0" max="500" default="100" unit="unitless" uri="http://" inputtype="variable" />
+    <Input name="PartitioningFactorToLeaves_FL" description="Partitioning factor to leaves" datatype="DOUBLE" variableCategory="" min="0" max="500" default="100" unit="unitless" uri="http://" inputtype="variable" />
+    <Input name="PartitioningFactorToStems_FS" description="Partitioning factor to stems" datatype="DOUBLE" variableCategory="" min="0" max="500" default="100" unit="unitless" uri="http://" inputtype="variable" />
+    <Input name="PartitioningFactorToStorageOrgans_FO" description="Partitioning factor to storage organs" datatype="DOUBLE" variableCategory="" min="0" max="500" default="100" unit="unitless" uri="http://" inputtype="variable" />
+    <Input name="SUCROStypeDVS" description="SUCROS-type development stage code" datatype="DOUBLE" variableCategory="" min="0" max="2" default="0.5" unit="unitless" uri="http://" inputtype="variable" />
+    <Input name="FractionOfTotalDryMatterToRootsFunctionOfDVS_FRTB" description="Fraction of total dry matter to roots as function of development stage (FRTB)" datatype="DOUBLEARRAY" min="0" max="3" default="0.5" unit="[-; unitless]" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="FractionOfAboveGroundDryMatterToLeavesFunctionOfDVS_FLTB" description="Fraction of aboveground dry matter to leaves as function of development stage (FLTB)" datatype="DOUBLEARRAY" min="0" max="3" default="0.5" unit="[-; unitless]" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="FractionOfAboveGroundDryMatterToStemsFunctionOfDVS_FSTB" description="Fraction of aboveground dry matter to stems as function of development stage (FSTB)" datatype="DOUBLEARRAY" min="0" max="3" default="0.5" unit="[-; unitless]" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="FractionOfAboveGroundDryMatterToStorageOrgansFunctionOfDVS_FOTB" description="Fraction of aboveground dry matter to storage organs as function of development stage (FOTB)" datatype="DOUBLEARRAY" min="0" max="3" default="0.5" unit="[-; unitless]" uri="" inputtype="parameter" parametercategory="" />
+  </Inputs>
+  <Outputs>
+    <Output name="PartitioningFactorToRootsRate_FR" description="Partitioning factor to roots rate" datatype="DOUBLE" min="0" max="1" unit="unitless" uri="http://" />
+    <Output name="PartitioningFactorToLeavesRate_FL" description="Partitioning factor to leaves rate" datatype="DOUBLE" min="0" max="1" unit="unitless" uri="http://" />
+    <Output name="PartitioningFactorToStemsRate_FS" description="Partitioning factor to stems rate" datatype="DOUBLE" min="0" max="1" unit="unitless" uri="http://" />
+    <Output name="PartitioningFactorToStorageOrgansRate_FO" description="Partitioning factor to storage organs rate" datatype="DOUBLE" min="0" max="1" unit="unitless" uri="http://" />
+    <Output name="PartitioningFactorToRoots_FR" description="Partitioning factor to roots" datatype="DOUBLE" min="0" max="500" unit="unitless" uri="http://" />
+    <Output name="PartitioningFactorToLeaves_FL" description="Partitioning factor to leaves" datatype="DOUBLE" min="0" max="500" unit="unitless" uri="http://" />
+    <Output name="PartitioningFactorToStems_FS" description="Partitioning factor to stems" datatype="DOUBLE" min="0" max="500" unit="unitless" uri="http://" />
+    <Output name="PartitioningFactorToStorageOrgans_FO" description="Partitioning factor to storage organs" datatype="DOUBLE" min="0" max="500" unit="unitless" uri="http://" />
+  </Outputs>
+  <Algorithm language="C#" platform="Bioma" filename="PartitioningWOFOST.cs" />
+  <Parametersets>
+    <Parameterset name="Default" description="Paramters default value" />
+  </Parametersets>
+</ModelUnit>

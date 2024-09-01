@@ -1,0 +1,10 @@
+path.py
+six
+nbformat
+nbsphinx
+ipython
+sphinx
+sphinx-hoverxref
+sphinx_rtd_theme
+jupyter-sphinx
+nbsphinx_link

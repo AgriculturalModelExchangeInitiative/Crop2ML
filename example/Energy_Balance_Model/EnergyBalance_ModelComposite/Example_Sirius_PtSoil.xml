@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Model PUBLIC " " "https://raw.githubusercontent.com/AgriculturalModelExchangeInitiative/xml_representation/master/ModelUnit.dtd">
-<ModelUnit modelid="1" name="PtSoil" timestep="1" version="1.0">
+<ModelUnit modelid="Sirius.EnergyBalance" name="PtSoil" timestep="1" version="1.0">
     <Description>
         <Title>PtSoil EnergyLimitedEvaporation Model</Title>
         <Authors>Pierre Martre</Authors>
@@ -60,7 +60,7 @@
      
      
        ]]>
-     </Algorithm
+     </Algorithm>
      
      <Algorithm language="C++" platform=""><![CDATA[
      	double AlphaE;
@@ -76,7 +76,7 @@
      
      
        ]]>
-     </Algorithm
+     </Algorithm>
      
      <Algorithm language="Fortran" platform=""><![CDATA[
      	REAL AlphaE
@@ -88,7 +88,7 @@
 		energyLimitedEvaporation = (evapoTranspirationPriestlyTaylor / Alpha) * AlphaE * tau     
      
        ]]>
-     </Algorithm
+     </Algorithm>
     <Parametersets>
         <Parameterset name="set1" description="some values in there" >
         	<Param name="tau">0.9983</Param>

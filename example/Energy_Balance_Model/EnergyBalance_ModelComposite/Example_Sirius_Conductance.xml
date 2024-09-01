@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Model PUBLIC " " "https://raw.githubusercontent.com/AgriculturalModelExchangeInitiative/xml_representation/master/ModelUnit.dtd">
-<ModelUnit modelid="1" name="Conductance" timestep="1" version="1.0">
+<ModelUnit modelid="Sirius.EnergyBalance" name="Conductance" timestep="1" version="1.0">
     <Description>
         <Title>Conductance Model</Title>
         <Authors>Pierre Martre</Authors>
@@ -46,14 +46,14 @@
         conductance = (wind * Math.pow(vonKarman, 2)) / (Math.log((heightWeatherMeasurements - d * h) / (zm * h)) * Math.log((heightWeatherMeasurements - d * h) / (zh * h)));
      
        ]]>
-     </Algorithm
+     </Algorithm>
      
      <Algorithm language="C++" platform=""><![CDATA[
 	    double h = std::fmax(10, plantHeight) / 100;
 	    conductance = (wind * pow(vonKarman, 2)) / (log((heightWeatherMeasurements - d * h) / (zm * h)) * log((heightWeatherMeasurements - d * h) / (zh * h)));
      
        ]]>
-     </Algorithm
+     </Algorithm>
      
      <Algorithm language="Fortran" platform=""><![CDATA[
      	Real h;
@@ -62,7 +62,7 @@
      
      
        ]]>
-     </Algorithm
+     </Algorithm>
     <Parametersets>
         <Parameterset name="set1" description="some values in there" >
         	<Param name="d">0.67</Param>

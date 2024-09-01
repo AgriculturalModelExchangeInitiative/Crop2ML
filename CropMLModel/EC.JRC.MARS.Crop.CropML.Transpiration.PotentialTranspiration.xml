@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModelUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" modelid="EC.JRC.MARS.Crop.CropML.Transpiration.PotentialTranspiration" name="PotentialTranspiration" timestep="0" version="1.0.0.0">
+  <Description>
+    <Title>EC.JRC.MARS.Crop.CropML.Transpiration.PotentialTranspiration</Title>
+    <Authors>Creator:;    Date:;    Publisher:;    </Authors>
+    <Abstract>Potential crop water transpiration - Stockle, C.O., Donatelli, M., Nelson, R., 2003. CropSyst, a cropping systems simulation model. European Journal of Agronomy, 18, 289-307 - </Abstract>
+  </Description>
+  <Inputs>
+    <Input name="GrowingDegreeDays" description="Potential growing degree days" datatype="DOUBLE" variableCategory="" min="0" max="8000" default="100" unit="°C-day" uri="http://" inputtype="variable" />
+    <Input name="GreenLeafAreaIndex" description="Potential green leaf area index" datatype="DOUBLE" variableCategory="" min="0" max="25" default="2" unit="m2 m-2" uri="http://" inputtype="variable" />
+    <Input name="ReferenceEvapotranspiration" description="Reference evapotranspiration" datatype="DOUBLE" variableCategory="" min="0" max="20" default="0" unit="mm d-1" uri="http://" inputtype="variable" />
+    <Input name="WaterUptakeRate" description="Water uptake potential rate" datatype="DOUBLE" variableCategory="" min="0" max="10" default="500" unit="kg m-2 d-1" uri="http://" inputtype="variable" />
+    <Input name="Transpiration" description="Transpiration potential" datatype="DOUBLE" variableCategory="" min="0" max="10000" default="100" unit="mm" uri="http://" inputtype="variable" />
+    <Input name="FullCanopyCoefficient" description="ET crop coefficient at full canopy" datatype="DOUBLE" min="0" max="1.18" default="0.8" unit="unitless" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="ExtinctionCoefficientSolarRadiation" description="Extinction coefficient for solar radiation" datatype="DOUBLE" min="0.1" max="0.9" default="0.5" unit="unitless" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="ThermalTimeToEmergence" description="Thermal time to emergence " datatype="DOUBLE" min="30" max="400" default="85" unit="C°-d" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="ThermalTimeToMaturity" description="Thermal time to maturity " datatype="DOUBLE" min="200" max="2000" default="1200" unit="C°-d" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="ThermalTimeToEndGreenLeafAreaIndex" description="Thermal time to end green leaf area index " datatype="DOUBLE" min="0" max="1200" default="600" unit="C°-d" uri="" inputtype="parameter" parametercategory="" />
+  </Inputs>
+  <Outputs>
+    <Output name="Transpiration" description="Transpiration potential" datatype="DOUBLE" min="0" max="10000" unit="mm" uri="http://" />
+    <Output name="TranspirationRate" description="Potential traspiration rate" datatype="DOUBLE" min="0" max="10" unit="cm d-1" uri="http://" />
+  </Outputs>
+  <Algorithm language="C#" platform="Bioma" filename="PotentialTranspiration.cs" />
+  <Parametersets>
+    <Parameterset name="Default" description="Paramters default value" />
+  </Parametersets>
+</ModelUnit>

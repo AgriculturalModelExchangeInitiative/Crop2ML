@@ -1,0 +1,28 @@
+{% if builder == "singlehtml" and not unofficial %}
+
+<!DOCTYPE html>
+<head>
+</head>
+<body>
+  <style scoped>
+    .crop2ml-spec ol {list-style-type: decimal;}
+    .crop2ml-spec .headerlink {display: none; }
+  </style>
+  {% block body %}
+
+      {{ body }}
+
+  {% endblock %}
+</body>
+</html>
+{% else %}
+  {% extends "!layout.html" %}
+  {% if unofficial %}
+  {% block document %}
+  {{super()}}
+  <a href="https://crop2ml.readthedocs.io/en/latest/?badge=latest">
+    <img style="position: fixed; top: 0; right: 0; border: 0;" src="{{ pathto('_static/images/unofficial_version_dark_background_red.png', 1) }}" alt="unofficial version"/>
+  </a>
+  {% endblock %}
+  {% endif %}
+{% endif %}

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModelUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" modelid="EC.JRC.MARS.Crop.CropML.PartitioningAndLAI.PanicleHeight" name="PanicleHeight" timestep="0" version="1.0.0.0">
+  <Description>
+    <Title>EC.JRC.MARS.Crop.CropML.PartitioningAndLAI.PanicleHeight</Title>
+    <Authors>Creator:;    Date:;    Publisher:;    </Authors>
+    <Abstract>Panicle height - Confalonieri, R., Mariani, L., Bocchi, S., 2004. PREDA: a prototype of a rice cold damage early warning system at high latitudes. Proceedings of the International Rice Cold Tolerance Workshop, Canberra, Australia, 22-23 July 2004 - </Abstract>
+  </Description>
+  <Inputs>
+    <Input name="DevelopmentStageCode" description="Development stage decimal code" datatype="DOUBLE" variableCategory="" min="0" max="4" default="2.5" unit="unitless" uri="http://" inputtype="variable" />
+    <Input name="MaximumPanicleHeight" description="Maximum panicle height" datatype="DOUBLE" min="0" max="300" default="100" unit="cm" uri="" inputtype="parameter" parametercategory="" />
+  </Inputs>
+  <Outputs>
+    <Output name="PanicleHeight" description="Panicle height" datatype="DOUBLE" min="0" max="300" unit="cm" uri="http://" />
+  </Outputs>
+  <Algorithm language="C#" platform="Bioma" filename="PanicleHeight.cs" />
+  <Parametersets>
+    <Parameterset name="Default" description="Paramters default value" />
+  </Parametersets>
+</ModelUnit>

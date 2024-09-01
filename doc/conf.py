@@ -40,6 +40,7 @@ sys.path.insert(0, os.path.join(project_root, 'src'))
 
 # If your documentation needs a minimal Sphinx version, state it here.
 # needs_sphinx = '1.0'
+from pygments.plugin import find_plugin_lexers
 
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
@@ -54,9 +55,9 @@ extensions = [
     'sphinx.ext.mathjax',
     'sphinx.ext.napoleon',
     'sphinx.ext.todo',
-    'sphinx.ext.viewcode'
+    'sphinx.ext.viewcode',
+    'nbsphinx'
 	]
-
 
 # try to add more extensions which are not default
 # but still useful
@@ -76,7 +77,7 @@ inheritance_node_attrs = dict(shape='ellipse', fontsize=12,
                               color='orange', style='filled')
 
 # Add any paths that contain templates here, relative to this directory.
-templates_path = ['_templates']
+templates_path = ['_templates', 'static/templates']
 
 # The suffix of source filenames.
 source_suffix = '.rst'
@@ -182,11 +183,12 @@ html_theme = 'default'
 # here, relative to this directory. They are copied after the builtin
 # static files, so a file named "default.css" will overwrite the builtin
 # "default.css".
-html_static_path = ['_static']
+html_static_path = ['_static', 'static/']
+html_css_files = ['css/crop2ml.css']
 
 # If not '', a 'Last updated on:' timestamp is inserted at every page
 # bottom, using the given strftime format.
-# html_last_updated_fmt = '%b %d, %Y'
+html_last_updated_fmt = '%b %d, %Y'
 
 # If true, SmartyPants will be used to convert quotes and dashes to
 # typographically correct entities.
@@ -320,3 +322,4 @@ texinfo_documents = [
 # use apidoc to generate developer doc
 
 # #}
+

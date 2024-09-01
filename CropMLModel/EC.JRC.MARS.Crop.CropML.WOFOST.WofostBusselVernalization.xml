@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModelUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" modelid="EC.JRC.MARS.Crop.CropML.WOFOST.WofostBusselVernalization" name="WofostBusselVernalization" timestep="0" version="1.0.0.0">
+  <Description>
+    <Title>EC.JRC.MARS.Crop.CropML.WOFOST.WofostBusselVernalization</Title>
+    <Authors>Creator:;    Date:;    Publisher:JRC;    </Authors>
+    <Abstract>Wofost Vernalization using the Bussel approach - Crop</Abstract>
+  </Description>
+  <Inputs>
+    <Input name="SUCROStypeDVS" description="SUCROS-type development stage code" datatype="DOUBLE" variableCategory="" min="0" max="2" default="0.5" unit="unitless" uri="http://" inputtype="variable" />
+    <Input name="AirTemperatureAverage" description="daily average of air temperature" datatype="DOUBLE" variableCategory="" min="-25" max="50" default="10" unit="°C" uri="http://" inputtype="variable" />
+    <Input name="VERNSAT" description="Saturated vernalisation requirements" datatype="DOUBLE" min="0" max="1000" default="0" unit="days" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="VERNBASE" description="Base vernalisation requirements" datatype="DOUBLE" min="0" max="1000" default="0" unit="days" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="VERNRTB" description="Rate of vernalisation as a function of daily mean temp" datatype="DOUBLEARRAY" min="0" max="1" default="0" unit="unitless" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="VERNDVS" description="Critical development stage after which the effect of vernalisation is halted" datatype="DOUBLE" min="0" max="4" default="1" unit="unitless" uri="" inputtype="parameter" parametercategory="" />
+  </Inputs>
+  <Outputs>
+    <Output name="VernalizationFactor" description="Vernalization factor" datatype="DOUBLE" min="0" max="1" unit="unitless" uri="http://" />
+    <Output name="VernalizationCum" description="Cumulated contribution to vernalization" datatype="DOUBLE" min="0" max="100" unit="unitless" uri="http://" />
+    <Output name="DailyVernalizationRate" description="Daily contribution to vernalization" datatype="DOUBLE" min="0" max="1" unit="unitless" uri="http://" />
+  </Outputs>
+  <Algorithm language="C#" platform="Bioma" filename="WofostBusselVernalization.cs" />
+  <Parametersets>
+    <Parameterset name="Default" description="Paramters default value" />
+  </Parametersets>
+</ModelUnit>

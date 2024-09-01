@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Package SYSTEM  "./package.dtd">
+<!-- crop2mlversion : used to specify which version of crop2ml DTD models are conformed to-->
+<Package name="package_name" version="package_version" license="type_of_licence" crop2mlVersion="">
+    <Authors>
+        <FirstAndLastName>firstname1 lastname1, firstname2 lastname2</FirstAndLastName>
+        <Institution> institution1, institution2</Institution>  
+        <Email> email1, email2 </Email>
+    </Authors>
+    <Encoders>
+        <FirstAndLastName>firstname1 lastname1, firstname2 lastname2</FirstAndLastName>
+        <Institution> institution1, institution2</Institution>  
+        <Email> email1, email2 </Email>
+    </Encoders>
+    <Features>
+        <TypeOfModel type="Modular"/>
+        <IsPartOfLargerModel YesOrNo="Yes" name = "Wheat SiriusQuality Model" />
+        <ValidatedWithCropMStudio YesOrNo="Yes" />
+        <SourceRepository src="" />
+    </Features>
+    <Doc>
+        <file></file>
+    </Doc>
+    <Transformation path="/src">
+        <Languages>
+            <pyx />
+            <py />
+            <cs />
+            <java />
+            <f90 />                
+            <cpp />
+            <r />
+        </Languages>
+        <Platforms>
+            <openalea />
+            <bioma />
+            <simplace/>
+            <record />
+            <dssat />
+            <apsim/>
+            <stics />
+            <siriusquality />            
+        </Platforms>
+    </Transformation>
+</Package>

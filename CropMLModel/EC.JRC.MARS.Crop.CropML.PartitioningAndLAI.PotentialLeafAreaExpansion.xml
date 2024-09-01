@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModelUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" modelid="EC.JRC.MARS.Crop.CropML.PartitioningAndLAI.PotentialLeafAreaExpansion" name="PotentialLeafAreaExpansion" timestep="0" version="1.0.0.0">
+  <Description>
+    <Title>EC.JRC.MARS.Crop.CropML.PartitioningAndLAI.PotentialLeafAreaExpansion</Title>
+    <Authors>Creator:;    Date:;    Publisher:;    </Authors>
+    <Abstract>Leaf area expansion simulation - Stockle, C.O., Donatelli, M., Nelson, R., 2003. CropSyst, a cropping system simulation model. European Journal of Agronomy, 18, 289-307. - </Abstract>
+  </Description>
+  <Inputs>
+    <Input name="DevelopmentStageCode" description="Development stage decimal code" datatype="DOUBLE" variableCategory="" min="0" max="4" default="2.5" unit="unitless" uri="http://" inputtype="variable" />
+    <Input name="TotalLeafAreaIndex" description="Potential total leaf area index" datatype="DOUBLE" variableCategory="" min="0" max="25" default="2" unit="m2 m-2" uri="http://" inputtype="variable" />
+    <Input name="GreenLeafAreaIndex" description="Potential green leaf area index" datatype="DOUBLE" variableCategory="" min="0" max="25" default="2" unit="m2 m-2" uri="http://" inputtype="variable" />
+    <Input name="AbovegroundBiomass" description="Potential aboveground biomass" datatype="DOUBLE" variableCategory="" min="0" max="50000" default="1500" unit="kg ha-1" uri="http://" inputtype="variable" />
+    <Input name="AbovegroundBiomassRate" description="Potential aboveground biomass" datatype="DOUBLE" variableCategory="" min="0" max="200" default="20" unit="kg ha-1 day-1" uri="http://" inputtype="variable" />
+    <Input name="InitialLeafAreaIndex" description="Initial leaf area index" datatype="DOUBLE" min="0.001" max="0.08" default="0.03" unit="m2 m-2" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="SpecificLeafArea" description="Specific leaf area at emergence" datatype="DOUBLE" min="10" max="40" default="27" unit="m2 kg-1" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="StemLeafPartition" description="Stem leaf partition coefficient" datatype="DOUBLE" min="1" max="7" default="3.5" unit="unitless" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="HeightMaximum" description="Maximum plant height" datatype="DOUBLE" min="0" max="4" default="1" unit="m" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="LAIMaximum" description="Maximum leaf area index" datatype="DOUBLE" min="0" max="12" default="6" unit="m2/m2" uri="" inputtype="parameter" parametercategory="" />
+  </Inputs>
+  <Outputs>
+    <Output name="TotalLeafAreaIndexRate" description="Potential total leaf area index" datatype="DOUBLE" min="0" max="0.8" unit="m2 m-2 day-1" uri="http://" />
+    <Output name="GreenLeafAreaIndexRate" description="Potential green leaf area index" datatype="DOUBLE" min="-0.8" max="0.8" unit="m2 m-2 day-1" uri="http://" />
+    <Output name="PlantHeightRate" description="Plant height potential rate" datatype="DOUBLE" min="0" max="10" unit="m" uri="http://" />
+    <Output name="PlantHeight" description="Plant potential height" datatype="DOUBLE" min="0" max="5" unit="m" uri="http://" />
+    <Output name="GreenLeafAreaIndex" description="Potential green leaf area index" datatype="DOUBLE" min="0" max="25" unit="m2 m-2" uri="http://" />
+    <Output name="TotalLeafAreaIndex" description="Potential total leaf area index" datatype="DOUBLE" min="0" max="25" unit="m2 m-2" uri="http://" />
+  </Outputs>
+  <Algorithm language="C#" platform="Bioma" filename="PotentialLeafAreaExpansion.cs" />
+  <Parametersets>
+    <Parameterset name="Default" description="Paramters default value" />
+  </Parametersets>
+</ModelUnit>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModelUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" modelid="EC.JRC.MARS.Crop.CropML.Phenology.TemperatureSum" name="TemperatureSum" timestep="0" version="1.0.0.0">
+  <Description>
+    <Title>EC.JRC.MARS.Crop.CropML.Phenology.TemperatureSum</Title>
+    <Authors>Creator:;    Date:;    Publisher:;    </Authors>
+    <Abstract>Temperature sum based on the calculation of development rate - Van Keulen, H., Wolf, J., 1986. Modelling of agricultural production: weather soils and crops. Simulation Monographs. Pudoc, Wageningen, The Netherlands, pp. 479 - </Abstract>
+  </Description>
+  <Inputs>
+    <Input name="AirTemperatureAverage" description="daily average of air temperature" datatype="DOUBLE" variableCategory="" min="-25" max="50" default="10" unit="°C" uri="http://" inputtype="variable" />
+    <Input name="GrowingDegreeDaysTemperature" description="Potential growing degree days calculated on temperature" datatype="DOUBLE" variableCategory="" min="0" max="8000" default="100" unit="°C-day" uri="http://" inputtype="variable" />
+    <Input name="DailyIncreaseTempSumFunctionOfAverageT_DTSMTB" description="Daily increase in temperature sum as function of average daily temperature (DTSMTB)" datatype="DOUBLEARRAY" min="-10" max="60" default="0" unit="[°C, °C-day]" uri="" inputtype="parameter" parametercategory="" />
+  </Inputs>
+  <Outputs>
+    <Output name="GrowingDegreeDaysTemperature" description="Potential growing degree days calculated on temperature" datatype="DOUBLE" min="0" max="8000" unit="°C-day" uri="http://" />
+    <Output name="GrowingDegreeDaysTemperatureRate" description="Potential daily rate of growing degree days accumulation based on temperature" datatype="DOUBLE" min="0" max="50" unit="°C-day day-1" uri="http://" />
+  </Outputs>
+  <Algorithm language="C#" platform="Bioma" filename="TemperatureSum.cs" />
+  <Parametersets>
+    <Parameterset name="Default" description="Paramters default value" />
+  </Parametersets>
+</ModelUnit>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModelUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" modelid="EC.JRC.MARS.Crop.CropML.WARM.PotentialPhenologyC" name="PotentialPhenologyC" timestep="0" version="1.0.0.0">
+  <Description>
+    <Title>EC.JRC.MARS.Crop.CropML.WARM.PotentialPhenologyC</Title>
+    <Authors>Creator:;    Date:;    Publisher:;    </Authors>
+    <Abstract>Potential phenology - Composite strategy. See references of the associated strategies: GrowingDegreeDaysTemperature, PhotoPeriod, Vernalization - </Abstract>
+  </Description>
+  <Inputs>
+    <Input name="AirTemperatureMaximum" description="Daily air temperature maximum" datatype="DOUBLE" variableCategory="" min="-30" max="55" default="25" unit="°C" uri="http://" inputtype="variable" />
+    <Input name="AirTemperatureMinimum" description="Daily air temperature minimum" datatype="DOUBLE" variableCategory="" min="-25" max="45" default="15" unit="°C" uri="http://" inputtype="variable" />
+    <Input name="DayLenght" description="Day lenght" datatype="DOUBLE" variableCategory="" min="0" max="24" default="12" unit="unitless" uri="http://" inputtype="variable" />
+    <Input name="GrowingDegreeDays" description="Potential growing degree days" datatype="DOUBLE" variableCategory="" min="0" max="8000" default="100" unit="°C-day" uri="http://" inputtype="variable" />
+    <Input name="GrowingDegreeDaysTemperature" description="Potential growing degree days calculated on temperature" datatype="DOUBLE" variableCategory="" min="0" max="8000" default="100" unit="°C-day" uri="http://" inputtype="variable" />
+    <Input name="GrowingDegreeDaysToReachEmergence" description="Growing degree days to reach emergence" datatype="DOUBLE" min="10" max="400" default="100" unit="°C-day" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="GrowingDegreeDaysToReachFlowering" description="Growing degree days to reach flowering" datatype="DOUBLE" min="200" max="5000" default="800" unit="°C-day" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="GrowingDegreeDaysToReachMaturity" description="Growing degree days to reach maturity" datatype="DOUBLE" min="200" max="5000" default="800" unit="°C-day" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="GrowingDegreeDaysToReachHarvest" description="Growing degree days to reach harvest" datatype="DOUBLE" min="10" max="600" default="100" unit="°C-day" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="BaseTemperatureDevelopment" description="Base temperature for development" datatype="DOUBLE" min="-10" max="40" default="10" unit="°C" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="CutoffTemperatureDevelopment" description="Cutoff temperature for development" datatype="DOUBLE" min="10" max="50" default="40" unit="°C" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="PhotoInhibition" description="Daylenght to inhibit flowering" datatype="DOUBLE" min="1" max="24" default="14" unit="hour" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="PhotoInsensitivity" description="Daylenght for insensitivity of photoperiod" datatype="DOUBLE" min="1" max="24" default="6" unit="hour" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="HighTemperature" description="High temperature for optimal vernalization" datatype="DOUBLE" min="0" max="20" default="5" unit="°C" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="LowTemperature" description="Low temperature for optimal vernalization" datatype="DOUBLE" min="-10" max="10" default="0" unit="°C" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="MinimumFactor" description="Minimum vernalization factor" datatype="DOUBLE" min="0" max="1" default="0" unit="unitless" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="A" description="Vernalization A parameter" datatype="DOUBLE" min="4" max="10" default="7" unit="°C" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="DaysToStartVernalization" description="Days requirement to start vernalization" datatype="DOUBLE" min="0" max="30" default="0" unit="unitless" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="DaysToCompleteVernalization" description="Days requirement to complete vernalization" datatype="DOUBLE" min="20" max="200" default="50" unit="unitless" uri="" inputtype="parameter" parametercategory="" />
+  </Inputs>
+  <Outputs>
+    <Output name="GrowingDegreeDaysTemperature" description="Potential growing degree days calculated on temperature" datatype="DOUBLE" min="0" max="8000" unit="°C-day" uri="http://" />
+    <Output name="GrowingDegreeDaysTemperatureRate" description="Potential daily rate of growing degree days accumulation based on temperature" datatype="DOUBLE" min="0" max="50" unit="°C-day day-1" uri="http://" />
+    <Output name="PhotoPeriodFactor" description="Photoperiod factor" datatype="DOUBLE" min="0" max="1" unit="unitless" uri="http://" />
+    <Output name="DailyVernalizationRate" description="Daily contribution to vernalization" datatype="DOUBLE" min="0" max="1" unit="unitless" uri="http://" />
+    <Output name="VernalizationCum" description="Cumulated contribution to vernalization" datatype="DOUBLE" min="0" max="100" unit="unitless" uri="http://" />
+    <Output name="VernalizationFactor" description="Vernalization factor" datatype="DOUBLE" min="0" max="1" unit="unitless" uri="http://" />
+    <Output name="GrowingDegreeDays" description="Potential growing degree days" datatype="DOUBLE" min="0" max="8000" unit="°C-day" uri="http://" />
+    <Output name="DevelopmentStageCode" description="Development stage decimal code" datatype="DOUBLE" min="0" max="4" unit="unitless" uri="http://" />
+    <Output name="GrowingDegreeDaysRate" description="Potential daily rate of growing degree days accumulation" datatype="DOUBLE" min="0" max="50" unit="°C-day day-1" uri="http://" />
+  </Outputs>
+  <Algorithm language="C#" platform="Bioma" filename="PotentialPhenologyC.cs" />
+  <Parametersets>
+    <Parameterset name="Default" description="Paramters default value" />
+  </Parametersets>
+</ModelUnit>

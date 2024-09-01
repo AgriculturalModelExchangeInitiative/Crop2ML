@@ -1,0 +1,179 @@
+/* @import url("../theme.css"); */
+
+.rst-content tt.literal, .rst-content tt.literal, .rst-content code.literal {
+    color: darkslategray;
+    font-family: "Consolas", "Menlo", "Deja Vu Sans Mono", "Bitstream Vera Sans Mono", "Monospace";
+}
+
+.wy-plain-list-decimal, .rst-content .section ol, .rst-content ol.arabic, article ol {
+    margin-bottom: 5px;
+}
+
+.wy-table td, .rst-content table.docutils td, .rst-content table.field-list td {
+    vertical-align: top;
+}
+
+pre {
+    border: none;
+    background-color: #eeeeee;
+    color: darkslategray;
+}
+
+.highlight {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: #eeeeee;
+}
+
+div.figure a.image-reference {
+    border: none;
+}
+
+div[class^="issue"], div[class*=" issue"] {
+    background-color: none;
+    line-height: 24px;
+    margin: 0;
+    font-size: 16px;
+    /* margin-bottom: 24px; */
+}
+
+div[class^="issue"], div[class*=" issue"] > ol {
+    margin-bottom: 0;
+}
+
+li {
+    margin-bottom: 12px;
+}
+
+.shortlist * {
+    margin-bottom: 3px;
+}
+
+.issue-title {
+    font-weight: 700;
+    font-size: large;
+}
+
+.highlight-issue {
+    background-color: rgb(254, 240, 219);
+    font-weight: 500;
+    padding: 10px;
+}
+
+.dothis {
+    border-left: 5px solid rgb(174, 189, 145);
+    background: rgb(242, 249, 227);
+    padding: 3px 3px 3px 8px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    line-height: 24px;
+    font-family: "Lato", "proxima-nova", "Helvetica Neue", "Arial", sans-serif;
+}
+
+.dothis > .guilabel {
+    color: rgb(30, 46, 0);
+}
+
+/* Toggle container class for displaying/hiding the "Show more" and "Show Crop2ML syntax" blocks */
+
+.toggle .header {
+    display: block;
+    clear: both;
+    color: darkslategray;
+    text-align: right;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.toggle .header p:after {
+    content: " +";
+}
+
+.toggle .header.open p:after {
+    content: " -";
+}
+
+.infospec {
+    /* border-top: 1px solid #b9c6dd; */
+    background: #e1eaf0;
+    color: #444444;
+    padding: 10px;
+
+    margin-top: 0;
+    margin-bottom: 15px;
+    margin-left: 0;
+    margin-right: 0;
+
+    line-height: 24px;
+    font-family: "Lato", "proxima-nova", "Helvetica Neue", "Arial", sans-serif;
+}
+
+.infolib {
+    /* border-top: 1px solid #b9c6dd; */
+    background: #e7f0e1;
+    color: #444444;
+    padding: 10px;
+
+    margin-top: 0;
+    margin-bottom: 15px;
+    margin-left: 0;
+    margin-right: 0;
+
+    line-height: 24px;
+    font-family: "Lato", "proxima-nova", "Helvetica Neue", "Arial", sans-serif;
+}
+
+.nb {
+    border-left: 5px solid sandybrown;
+    background: rgb(255, 243, 206);
+    padding: 3px 3px 3px 8px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    line-height: 24px;
+    font-family: "Lato", "proxima-nova", "Helvetica Neue", "Arial", sans-serif;
+}
+
+.heading1 {
+    color: #444444;
+    font-family: "Roboto Slab","ff-tisa-web-pro","Georgia",Arial,sans-serif;
+    font-size: 200%;
+    font-weight: 700;
+    padding-bottom: 20px;
+}
+
+.heading2 {
+    color: #444444;
+    font-family: "Roboto Slab", "ff-tisa-web-pro", "Georgia", "Arial", sans-serif;
+    font-size: 150%;
+    font-weight: 700;
+}
+
+.heading3 {
+    color: #444444;
+    font-family: "Roboto Slab", "ff-tisa-web-pro", "Georgia", "Arial", sans-serif;
+    font-size: 120%;
+    font-weight: 700;
+}
+
+.heading4 {
+    color: #444444;
+    font-family: "Roboto Slab", "ff-tisa-web-pro", "Georgia", "Arial", sans-serif;
+    font-size: 120%;
+    font-weight: 600;
+}
+
+.terminal {
+    border: none;
+    color: white;
+    background-color: #777777;
+    padding: 5px 0px 0px 10px;
+    font-family: "Consolas", "Deja Vu Sans Mono", "Bitstream Vera Sans Mono", monospace;
+    font-size: 0.85em;
+}
+
+table.align-default {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+

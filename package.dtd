@@ -1,0 +1,109 @@
+<!--
+FILE : package.dtd
+
+CREATED : 2022
+
+LAST MODIFIED : 2022
+
+AUTHOR : Agricultural Models Exchange Initiative
+
+DESCRIPTION : This document contains a DTD corresponding to a Crop2ML package. This
+  specification is available at
+    https://raw.githubusercontent.com/AgriculturalModelExchangeInitiative/crop2ml/master/package.dtd
+
+COPYRIGHT : (2022).
+-->
+
+<!ELEMENT Package (Authors,Encoders,Features, Doc?,Transformation,Dependencies?,Data*)>
+<!ATTLIST Package
+  name CDATA #REQUIRED
+  version CDATA #IMPLIED
+  license CDATA #REQUIRED
+  crop2mlVersion CDATA #REQUIRED
+>
+<!ELEMENT Authors (FirstAndLastName, Institution?, Email?)>
+<!ATTLIST Authors>
+<!ELEMENT FirstAndLastName (#PCDATA)> <!-- separated by comma  -->
+<!ATTLIST FirstAndLastName>
+<!ELEMENT Institution (#PCDATA)>    <!-- separated by comma  -->
+<!ATTLIST Institution>
+<!ELEMENT Email (#PCDATA)>       <!-- As many emails as firstandlastNames  -->
+<!ATTLIST Email>
+
+<!ELEMENT Encoders (FirstAndLastName, Institution?, Email?)>  <!-- like authors  -->
+<!ATTLIST Encoders>
+
+<!ELEMENT Features (TypeOfModel, IsPartOfLargerModel, ValidatedWithCropMStudio, SourceRepository)>
+<!ATTLIST Features>
+<!ELEMENT TypeOfModel (#PCDATA)>
+<!ATTLIST TypeOfModel 
+          type (Single|Modular) #IMPLIED>
+<!ELEMENT IsPartOfLargerModel (#PCDATA)>
+<!ATTLIST IsPartOfLargerModel 
+          YesOrNo (Yes | No) #IMPLIED 
+          name CDATA #REQUIRED>
+<!ELEMENT ValidatedWithCropMStudio (#PCDATA)>
+<!ATTLIST ValidatedWithCropMStudio 
+          YesOrNo (Yes | No) #IMPLIED >
+<!ELEMENT SourceRepository (#PCDATA)>
+<!ATTLIST SourceRepository  
+          src CDATA #REQUIRED>
+
+<!ELEMENT Doc (file*)>
+<!ATTLIST Doc>
+<!ELEMENT file (#PCDATA)>
+<!ATTLIST file>
+
+
+<!ELEMENT Dependencies (Dependency*)>
+<!ATTLIST Dependencies>
+<!ELEMENT Dependency EMPTY>
+<!ATTLIST Dependency
+  name CDATA #REQUIRED
+  version CDATA #REQUIRED
+  license CDATA #REQUIRED
+>
+
+<!ELEMENT Data EMPTY>
+<!ATTLIST Data 
+  path CDATA #REQUIRED
+  description CDATA #REQUIRED >
+
+
+<!ELEMENT Transformation (Languages, Platforms)>
+<!ATTLIST Transformation path CDATA #REQUIRED>
+<!ELEMENT Languages (pyx?,py?, cs?, java?, f90?, cpp?, r?)>
+<!ATTLIST Languages>
+<!ELEMENT pyx EMPTY>
+<!ATTLIST pyx>
+<!ELEMENT py EMPTY>
+<!ATTLIST py>
+<!ELEMENT cs EMPTY>
+<!ATTLIST cs>
+<!ELEMENT java EMPTY>
+<!ATTLIST java>
+<!ELEMENT f90 EMPTY>
+<!ATTLIST f90>
+<!ELEMENT cpp EMPTY>
+<!ATTLIST cpp>
+<!ELEMENT r EMPTY>
+<!ATTLIST r>
+
+<!ELEMENT Platforms (openalea?,bioma?, simplace?, record?, dssat?, apsim?, stics?, sirius?)>
+<!ATTLIST Platforms>
+<!ELEMENT openalea EMPTY>
+<!ATTLIST Openalea>
+<!ELEMENT bioma EMPTY>
+<!ATTLIST bioma>
+<!ELEMENT simplace EMPTY>
+<!ATTLIST simplace>
+<!ELEMENT record EMPTY>
+<!ATTLIST record>
+<!ELEMENT dssat EMPTY>
+<!ATTLIST dssat>
+<!ELEMENT apsim EMPTY>
+<!ATTLIST apsim>
+<!ELEMENT stics EMPTY>
+<!ATTLIST stics>
+<!ELEMENT sirius EMPTY>
+<!ATTLIST sirius>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModelUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" modelid="EC.JRC.MARS.Crop.CropML.AgromanagmentC" name="AgromanagmentC" timestep="0" version="1.0.0.0">
+  <Description>
+    <Title>EC.JRC.MARS.Crop.CropML.AgromanagmentC</Title>
+    <Authors>Creator:;    Date:;    Publisher:;    </Authors>
+    <Abstract>Agromanagement for the CropSyst model (potential conditions) - Fiorani, D., Donatelli, M. - Composite strategy. See also references of the associated strategies: CropOperations - </Abstract>
+  </Description>
+  <Inputs />
+  <Outputs />
+  <Algorithm language="C#" platform="Bioma" filename="AgromanagmentC.cs" />
+  <Parametersets>
+    <Parameterset name="Default" description="Paramters default value" />
+  </Parametersets>
+</ModelUnit>

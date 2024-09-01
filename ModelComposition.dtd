@@ -1,4 +1,21 @@
-<!ELEMENT ModelComposition (Description,Inputs?,Outputs?,Composition,Algorithm,Parametersets,Testsets)>
+<!--
+FILE : ModelComposition.dtd
+
+CREATED : 2018
+
+LAST MODIFIED : 2020
+
+AUTHOR : Agricultural Models Exchange Initiative
+
+DESCRIPTION : This document contains a DTD corresponding to the syntax rules
+  defined in the Crop2ML model composite's Specification for Crop2ML 1.1. This
+  specification is available at
+    https://raw.githubusercontent.com/AgriculturalModelExchangeInitiative/crop2ml/master/ModelComposition.dtd
+
+COPYRIGHT : (2018).
+-->
+
+<!ELEMENT ModelComposition (Description,Inputs?,Outputs?,Initialization?, Algorithm?,Composition,Parametersets?,Testsets?)>
 <!ATTLIST ModelComposition
   name CDATA #REQUIRED
   id CDATA #REQUIRED
@@ -6,17 +23,19 @@
   version CDATA #IMPLIED>
 
 
-<!ELEMENT Description (Title,Authors,Institution,URI?,Reference?,Abstract)>
+<!ELEMENT Description (Title,Authors,Institution,URI?,Reference?,ExtendedDescription, ShortDescription?)>
 <!ATTLIST Description>
 
 <!ELEMENT Composition (Model+,Links)>
 
-<!ELEMENT Model>
+<!ELEMENT Model EMPTY>
 <!ATTLIST Model
   name CDATA #REQUIRED
   id CDATA #REQUIRED
+  filename CDATA #REQUIRED
   displayx CDATA #IMPLIED
-  displayy CDATA #IMPLIED>
+  displayy CDATA #IMPLIED
+  package_name CDATA #IMPLIED>
 
 <!ELEMENT Links (InputLink*,InternalLink*,OutputLink*)>
 <!ATTLIST Links>
@@ -42,8 +61,11 @@
 <!ELEMENT Reference (#PCDATA)>
 <!ATTLIST Reference>
 
-<!ELEMENT Abstract (#PCDATA)>
-<!ATTLIST Abstract>
+<!ELEMENT ExtendedDescription (#PCDATA)>
+<!ATTLIST ExtendedDescription>
+
+<!ELEMENT ShortDescription (#PCDATA)>
+<!ATTLIST ShortDescription>
 
 <!ELEMENT InputLink EMPTY>
 <!ATTLIST InputLink
@@ -60,6 +82,50 @@
   source NMTOKEN #REQUIRED
   target NMTOKEN #REQUIRED>
 
+<!ELEMENT Inputs (Input)+>
+<!ATTLIST Inputs>
+
+<!ELEMENT Input EMPTY>
+<!ATTLIST Input
+  name NMTOKEN #REQUIRED
+  datatype (STRING|STRINGARRAY|STRINGLIST|DATE|DATEARRAY|DATELIST|DOUBLE|DOUBLEARRAY|DOUBLELIST|INT|INTARRAY|INTLIST|BOOLEAN) #REQUIRED 
+  description CDATA #REQUIRED
+  default CDATA #IMPLIED
+  max CDATA #IMPLIED
+  min CDATA #IMPLIED
+  inputtype (variable|parameter) #REQUIRED
+  parametercategory (constant|species|genotypic|soil|private) #IMPLIED
+  variablecategory (state|rate|auxiliary) #IMPLIED
+  unit CDATA #IMPLIED
+  uri CDATA #IMPLIED>
+
+<!ELEMENT Outputs (Output*)>
+<!ATTLIST Outputs>
+
+<!ELEMENT Output EMPTY>
+<!ATTLIST Output
+  name NMTOKEN #REQUIRED
+  datatype (STRING|STRINGARRAY|STRINGLIST|DATE|DATEARRAY|DATELIST|DOUBLE|DOUBLEARRAY|DOUBLELIST|INT|INTARRAY|INTLIST|BOOLEAN) #REQUIRED 
+  description CDATA #REQUIRED
+  max CDATA #IMPLIED
+  min CDATA #IMPLIED
+  variablecategory (state|rate|auxiliary) #IMPLIED
+  unit CDATA #IMPLIED
+  uri CDATA #IMPLIED>
+
+<!ELEMENT Initialization (#PCDATA)>
+<!ATTLIST Initialization
+	name CDATA #REQUIRED
+	language CDATA #REQUIRED
+  filename CDATA #IMPLIED>
+  	
+<!ELEMENT Algorithm (#PCDATA)>
+<!ATTLIST Algorithm
+  language CDATA #REQUIRED
+  platform CDATA #IMPLIED
+  filename CDATA #IMPLIED
+  function CDATA #IMPLIED>
+  
 <!ELEMENT Parameterset (Param*)>
 <!ATTLIST Parameterset
   description CDATA #REQUIRED
@@ -89,4 +155,3 @@
 <!ATTLIST OutputValue name CDATA #REQUIRED >
 <!ATTLIST OutputValue description CDATA #IMPLIED >
 <!ATTLIST OutputValue precision CDATA #IMPLIED >
-

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModelUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" modelid="EC.JRC.MARS.Crop.CropML.CropSyst.RUEactualC" name="RUEactualC" timestep="0" version="1.0.0.0">
+  <Description>
+    <Title>EC.JRC.MARS.Crop.CropML.CropSyst.RUEactualC</Title>
+    <Authors>Creator:;    Date:;    Publisher:;    </Authors>
+    <Abstract>Actual radiation use efficiency - Composite strategy. See references of the associated strategies: SaturationRUE, SenescenceRUE, TemperatureRUE, CO2effectOnRUE - </Abstract>
+  </Description>
+  <Inputs>
+    <Input name="AirTemperatureMaximum" description="Daily air temperature maximum" datatype="DOUBLE" variableCategory="" min="-30" max="55" default="25" unit="°C" uri="http://" inputtype="variable" />
+    <Input name="AirTemperatureMinimum" description="Daily air temperature minimum" datatype="DOUBLE" variableCategory="" min="-25" max="45" default="15" unit="°C" uri="http://" inputtype="variable" />
+    <Input name="RUETemperatureEffect" description="Effect of temperature on radiation use efficiency" datatype="DOUBLE" variableCategory="" min="0" max="300" default="50" unit="unitless" uri="http://" inputtype="variable" />
+    <Input name="RUEActual" description="Actual radiation use efficiency" datatype="DOUBLE" variableCategory="" min="0" max="2400" default="20" unit="g MJ-1" uri="http://" inputtype="variable" />
+    <Input name="CO2concentration" description="CO2 concentration" datatype="DOUBLE" variableCategory="" min="330" max="1000" default="350" unit="ppm" uri="http://" inputtype="variable" />
+    <Input name="BaseTemperatureForGrowth" description="Base temperature for growth" datatype="DOUBLE" min="-10" max="20" default="12" unit="°C" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="OptimumTemperatureForGrowth" description="Optimum temperature for growth" datatype="DOUBLE" min="8" max="40" default="28" unit="°C" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="IsC3" description="Is C3" datatype="INT" min="0" max="1" default="0" unit="unitless" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="MaximumRadiationUseEfficiency" description="Maximum radiation use efficiency" datatype="DOUBLE" min="0.1" max="8" default="3" unit="g MJ-1" uri="" inputtype="parameter" parametercategory="" />
+  </Inputs>
+  <Outputs>
+    <Output name="RUETemperatureEffect" description="Effect of temperature on radiation use efficiency" datatype="DOUBLE" min="0" max="300" unit="unitless" uri="http://" />
+    <Output name="RUETemperatureEffectRate" description="Effect of temperature on radiation use efficiency" datatype="DOUBLE" min="0" max="1" unit="unitless" uri="http://" />
+    <Output name="GrowthRatioCO2" description="RUE correction factor due to CO2" datatype="DOUBLE" min="1" max="1.5" unit="unitless" uri="http://" />
+    <Output name="RUEActual" description="Actual radiation use efficiency" datatype="DOUBLE" min="0" max="2400" unit="g MJ-1" uri="http://" />
+    <Output name="RUEActualRate" description="Actual radiation use efficiency" datatype="DOUBLE" min="0" max="8" unit="g MJ-1 day-1" uri="http://" />
+  </Outputs>
+  <Algorithm language="C#" platform="Bioma" filename="RUEactualC.cs" />
+  <Parametersets>
+    <Parameterset name="Default" description="Paramters default value" />
+  </Parametersets>
+</ModelUnit>

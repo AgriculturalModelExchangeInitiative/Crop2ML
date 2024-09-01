@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModelUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" modelid="EC.JRC.MARS.Crop.CropML.WOFOST.LeafAreaIndexC" name="LeafAreaIndexC" timestep="0" version="1.0.0.0">
+  <Description>
+    <Title>EC.JRC.MARS.Crop.CropML.WOFOST.LeafAreaIndexC</Title>
+    <Authors>Creator:;    Date:;    Publisher:;    </Authors>
+    <Abstract>Leaf area index evolution - Composite strategy. See references of the associated strategies: ExponentialLeafAreaExpansion, SLAbasedLeafAreaExpansion. - </Abstract>
+  </Description>
+  <Inputs>
+    <Input name="AirTemperatureMaximum" description="Daily air temperature maximum" datatype="DOUBLE" variableCategory="" min="-30" max="55" default="25" unit="°C" uri="http://" inputtype="variable" />
+    <Input name="AirTemperatureMinimum" description="Daily air temperature minimum" datatype="DOUBLE" variableCategory="" min="-25" max="45" default="15" unit="°C" uri="http://" inputtype="variable" />
+    <Input name="DryWeightLivingStems_WST" description="Dry weight of living stems" datatype="DOUBLE" variableCategory="" min="0" max="10000" default="10" unit="kg ha-1 day-1" uri="http://" inputtype="variable" />
+    <Input name="DryWeightLivingStorageOrgans_WSO" description="Dry weight of living storage organs" datatype="DOUBLE" variableCategory="" min="0" max="10000" default="10" unit="kg ha-1 day-1" uri="http://" inputtype="variable" />
+    <Input name="LeavesBiomassRate" description="Potential leaves biomass" datatype="DOUBLE" variableCategory="" min="0" max="200" default="15" unit="kg ha-1 day-1" uri="http://" inputtype="variable" />
+    <Input name="GreenLeafAreaIndexExponential" description="Temperature driven green leaf area index exponential" datatype="DOUBLE" variableCategory="" min="0" max="25" default="2" unit="m2 m-2" uri="http://" inputtype="variable" />
+    <Input name="GreenLeafAreaIndexFromSLA" description="Green leaf area index from specific leaf area" datatype="DOUBLE" variableCategory="" min="0" max="25" default="2" unit="m2 m-2" uri="http://" inputtype="variable" />
+    <Input name="PhotosyntheticPodArea" description="Photosynthetic pod area" datatype="DOUBLE" variableCategory="" min="0" max="0.5" default="0.1" unit="m2 m-2 day-1" uri="http://" inputtype="variable" />
+    <Input name="PhotosyntheticStemArea" description="Photosynthetic stem area" datatype="DOUBLE" variableCategory="" min="0" max="0.5" default="0.1" unit="m2 m-2 day-1" uri="http://" inputtype="variable" />
+    <Input name="SUCROStypeDVS" description="SUCROS-type development stage code" datatype="DOUBLE" variableCategory="" min="0" max="2" default="0.5" unit="unitless" uri="http://" inputtype="variable" />
+    <Input name="TotalLeafAreaIndexExponential" description="Temperature driven total leaf area index exponential" datatype="DOUBLE" variableCategory="" min="0" max="25" default="2" unit="m2 m-2" uri="http://" inputtype="variable" />
+    <Input name="TotalLeafAreaIndexFromSLA" description="Total leaf area index from specific leaf area" datatype="DOUBLE" variableCategory="" min="0" max="25" default="2" unit="m2 m-2" uri="http://" inputtype="variable" />
+    <Input name="LowerThresholdTemperatureForAgingOfLeaves_TBASE" description="Base temperature for aging of leaves (TBASE)" datatype="DOUBLE" min="-5" max="50" default="11" unit="°C" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="MaximumRelativeIncreaseInLAI_RGRLAI" description="Maximum relative increase in leaf area index (RGRLAI)" datatype="DOUBLE" min="0" max="0.8" default="0.009" unit="m2 m-2 day-1" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="SpecificPodArea_SPA" description="Specific pod area (SPA)" datatype="DOUBLE" min="0" max="0.0005" default="0" unit="[ha kg-1]" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="SpecificLeafAreaFunctionOfDVS_SLATB" description="Specific leaf area as a function of DVS (SLATB)" datatype="DOUBLEARRAY" min="0" max="2.2" default="0.01" unit="[-, ha kg-1]" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="SpecificStemAreaFunctionOfDVS_SSATB" description="Specific stem area as a function of DVS (SSATB)" datatype="DOUBLEARRAY" min="0" max="2.2" default="0.01" unit="[-, ha kg-1]" uri="" inputtype="parameter" parametercategory="" />
+  </Inputs>
+  <Outputs>
+    <Output name="GreenLeafAreaIndexExponentialRate" description="Temperature driven green leaf area index exponential rate" datatype="DOUBLE" min="-0.8" max="0.8" unit="m2 m-2 day-1" uri="http://" />
+    <Output name="GreenLeafAreaIndexFromSLARate" description="Green leaf area index from specific leaf area rate" datatype="DOUBLE" min="-0.8" max="0.8" unit="m2 m-2 day-1" uri="http://" />
+    <Output name="PhotosyntheticPodArea" description="Photosynthetic pod area" datatype="DOUBLE" min="0" max="0.5" unit="m2 m-2 day-1" uri="http://" />
+    <Output name="PhotosyntheticStemArea" description="Photosynthetic stem area" datatype="DOUBLE" min="0" max="0.5" unit="m2 m-2 day-1" uri="http://" />
+    <Output name="TotalLeafAreaIndexExponentialRate" description="Temperature driven total leaf area index exponential rate" datatype="DOUBLE" min="-0.8" max="0.8" unit="m2 m-2 day-1" uri="http://" />
+    <Output name="TotalLeafAreaIndexFromSLARate" description="Total leaf area index from specific leaf area rate" datatype="DOUBLE" min="-0.8" max="0.8" unit="m2 m-2 day-1" uri="http://" />
+    <Output name="GreenLeafAreaIndexExponential" description="Temperature driven green leaf area index exponential" datatype="DOUBLE" min="0" max="25" unit="m2 m-2" uri="http://" />
+    <Output name="GreenLeafAreaIndexFromSLA" description="Green leaf area index from specific leaf area" datatype="DOUBLE" min="0" max="25" unit="m2 m-2" uri="http://" />
+    <Output name="TotalLeafAreaIndexExponential" description="Temperature driven total leaf area index exponential" datatype="DOUBLE" min="0" max="25" unit="m2 m-2" uri="http://" />
+    <Output name="TotalLeafAreaIndexFromSLA" description="Total leaf area index from specific leaf area" datatype="DOUBLE" min="0" max="25" unit="m2 m-2" uri="http://" />
+    <Output name="GreenLeafAreaIndexRate" description="Potential green leaf area index" datatype="DOUBLE" min="-0.8" max="0.8" unit="m2 m-2 day-1" uri="http://" />
+    <Output name="TotalLeafAreaIndexRate" description="Potential total leaf area index" datatype="DOUBLE" min="0" max="0.8" unit="m2 m-2 day-1" uri="http://" />
+    <Output name="GreenLeafAreaIndex" description="Potential green leaf area index" datatype="DOUBLE" min="0" max="25" unit="m2 m-2" uri="http://" />
+    <Output name="TotalPhotosyntheticAreaIndex" description="Total photosynthetic area index rate" datatype="DOUBLE" min="0" max="0.5" unit="m2 m-2 day-1" uri="http://" />
+    <Output name="TotalLeafAreaIndex" description="Potential total leaf area index" datatype="DOUBLE" min="0" max="25" unit="m2 m-2" uri="http://" />
+  </Outputs>
+  <Algorithm language="C#" platform="Bioma" filename="LeafAreaIndexC.cs" />
+  <Parametersets>
+    <Parameterset name="Default" description="Paramters default value" />
+  </Parametersets>
+</ModelUnit>

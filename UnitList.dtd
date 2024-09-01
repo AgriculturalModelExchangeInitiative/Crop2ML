@@ -1,0 +1,33 @@
+<!--
+FILE : UnitLIst.dtd
+
+CREATED : 2018
+
+LAST MODIFIED : 2020
+
+AUTHOR : Agricultural Models Exchange Initiative
+
+DESCRIPTION : This document contains a DTD corresponding to the syntax rules
+  defined in the variables or parameters units'Specification for Crop2ML 1.1. This
+  specification is available at
+    https://raw.githubusercontent.com/AgriculturalModelExchangeInitiative/crop2ml/master/UnitList.dtd
+
+COPYRIGHT : (2018).
+-->
+
+<!ELEMENT UnitList (UnitV)+>
+<!ATTLIST UnitList 
+  id CDATA #REQUIRED
+  name CDATA #REQUIRED
+  platform CDATA #REQUIRED
+  version CDATA #REQUIRED
+>
+
+<!ELEMENT UnitV EMPTY>
+<!ATTLIST UnitV
+  symbol CDATA #REQUIRED
+  value CDATA #REQUIRED
+  offset CDATA #REQUIRED
+  factor CDATA #REQUIRED
+  prefixable (False|True) #IMPLIED
+  tex_repr CDATA #IMPLIED>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModelUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" modelid="EC.JRC.MARS.Crop.CropML.Phenology.PhotoPeriod" name="PhotoPeriod" timestep="0" version="1.0.0.0">
+  <Description>
+    <Title>EC.JRC.MARS.Crop.CropML.Phenology.PhotoPeriod</Title>
+    <Authors>Creator:;    Date:;    Publisher:;    </Authors>
+    <Abstract>Photoperiod effect on development - Stockle, C.O., Donatelli, M., Nelson, R., 2003. CropSyst, a cropping systems simulation model. European Journal of Agronomy, 18, 289-307 - </Abstract>
+  </Description>
+  <Inputs>
+    <Input name="DayLenght" description="Day lenght" datatype="DOUBLE" variableCategory="" min="0" max="24" default="12" unit="unitless" uri="http://" inputtype="variable" />
+    <Input name="PhotoInhibition" description="Daylenght to inhibit flowering" datatype="DOUBLE" min="1" max="24" default="14" unit="hour" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="PhotoInsensitivity" description="Daylenght for insensitivity of photoperiod" datatype="DOUBLE" min="1" max="24" default="6" unit="hour" uri="" inputtype="parameter" parametercategory="" />
+  </Inputs>
+  <Outputs>
+    <Output name="PhotoPeriodFactor" description="Photoperiod factor" datatype="DOUBLE" min="0" max="1" unit="unitless" uri="http://" />
+  </Outputs>
+  <Algorithm language="C#" platform="Bioma" filename="PhotoPeriod.cs" />
+  <Parametersets>
+    <Parameterset name="Default" description="Paramters default value" />
+  </Parametersets>
+</ModelUnit>

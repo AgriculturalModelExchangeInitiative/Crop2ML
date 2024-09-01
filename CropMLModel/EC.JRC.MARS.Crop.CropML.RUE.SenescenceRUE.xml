@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModelUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" modelid="EC.JRC.MARS.Crop.CropML.RUE.SenescenceRUE" name="SenescenceRUE" timestep="0" version="1.0.0.0">
+  <Description>
+    <Title>EC.JRC.MARS.Crop.CropML.RUE.SenescenceRUE</Title>
+    <Authors>Creator:;    Date:;    Publisher:;    </Authors>
+    <Abstract>Senescence effect on radiation use efficiency - Confalonieri, R., Gusberti, D., Acutis, M., 2006. Comparison of WOFOST, CropSyst and WARM for simulating rice growth (Japonica type – short cycle varieties). Italian Journal of Agrometeorology, 3, 7-16 - </Abstract>
+  </Description>
+  <Inputs>
+    <Input name="DevelopmentStageCode" description="Development stage decimal code" datatype="DOUBLE" variableCategory="" min="0" max="4" default="2.5" unit="unitless" uri="http://" inputtype="variable" />
+    <Input name="RUESenescenceEffect" description="Effect of senescence on radiation use efficiency" datatype="DOUBLE" variableCategory="" min="0" max="300" default="50" unit="unitless" uri="http://" inputtype="variable" />
+  </Inputs>
+  <Outputs>
+    <Output name="RUESenescenceEffect" description="Effect of senescence on radiation use efficiency" datatype="DOUBLE" min="0" max="300" unit="unitless" uri="http://" />
+    <Output name="RUESenescenceEffectRate" description="Effect of senescence on radiation use efficiency" datatype="DOUBLE" min="0" max="1" unit="unitless" uri="http://" />
+  </Outputs>
+  <Algorithm language="C#" platform="Bioma" filename="SenescenceRUE.cs" />
+  <Parametersets>
+    <Parameterset name="Default" description="Paramters default value" />
+  </Parametersets>
+</ModelUnit>

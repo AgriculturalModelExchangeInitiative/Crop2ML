@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModelUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" modelid="EC.JRC.MARS.Crop.CropML.Transpiration.PotentialTranspirationWOFOST" name="PotentialTranspirationWOFOST" timestep="0" version="1.0.0.0">
+  <Description>
+    <Title>EC.JRC.MARS.Crop.CropML.Transpiration.PotentialTranspirationWOFOST</Title>
+    <Authors>Creator:;    Date:;    Publisher:;    </Authors>
+    <Abstract>Potential transpiration - Van Keulen, H., Wolf, J., 1986. Modelling of agricultural production: weather soils and crops. Simulation Monographs. Pudoc, Wageningen, The Netherlands, pp. 479 - </Abstract>
+  </Description>
+  <Inputs>
+    <Input name="SUCROStypeDVS" description="SUCROS-type development stage code" datatype="DOUBLE" variableCategory="" min="0" max="2" default="0.5" unit="unitless" uri="http://" inputtype="variable" />
+    <Input name="TotalPhotosyntheticAreaIndex" description="Total photosynthetic area index rate" datatype="DOUBLE" variableCategory="" min="0" max="0.5" default="0.1" unit="m2 m-2 day-1" uri="http://" inputtype="variable" />
+    <Input name="Transpiration" description="Transpiration potential" datatype="DOUBLE" variableCategory="" min="0" max="10000" default="100" unit="mm" uri="http://" inputtype="variable" />
+    <Input name="ExtinctionCoefficientToday" description="Extinction coefficient today" datatype="DOUBLE" variableCategory="" min="0" max="1" default="0.5" unit="unitless" uri="http://" inputtype="variable" />
+    <Input name="ReferenceEvapotranspiration" description="Reference evapotranspiration" datatype="DOUBLE" variableCategory="" min="0" max="20" default="0" unit="mm d-1" uri="http://" inputtype="variable" />
+    <Input name="ExtinctionCoefficientDiffusedLightFunctionOfDVS_KDIFTB" description="Extinction coefficient for diffuse visible light as function of DVS (KDIFTB)" datatype="DOUBLEARRAY" min="0" max="1" default="0.5" unit="[-; unitless]" uri="" inputtype="parameter" parametercategory="" />
+  </Inputs>
+  <Outputs>
+    <Output name="TranspirationRate" description="Potential traspiration rate" datatype="DOUBLE" min="0" max="10" unit="cm d-1" uri="http://" />
+    <Output name="Transpiration" description="Transpiration potential" datatype="DOUBLE" min="0" max="10000" unit="mm" uri="http://" />
+  </Outputs>
+  <Algorithm language="C#" platform="Bioma" filename="PotentialTranspirationWOFOST.cs" />
+  <Parametersets>
+    <Parameterset name="Default" description="Paramters default value" />
+  </Parametersets>
+</ModelUnit>

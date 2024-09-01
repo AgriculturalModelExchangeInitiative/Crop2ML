@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModelUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" modelid="EC.JRC.MARS.Crop.CropML.PartitioningAndLAI.LeafLife" name="LeafLife" timestep="0" version="1.0.0.0">
+  <Description>
+    <Title>EC.JRC.MARS.Crop.CropML.PartitioningAndLAI.LeafLife</Title>
+    <Authors>Creator:;    Date:;    Publisher:;    </Authors>
+    <Abstract>Leaf life - Confalonieri, R., Gusberti, D., Acutis, M., 2006. Comparison of WOFOST, CropSyst and WARM for simulating rice growth (Japonica type – short cycle varieties). Italian Journal of Agrometeorology, 3, 7-16 - </Abstract>
+  </Description>
+  <Inputs>
+    <Input name="GrowingDegreeDaysRate" description="Potential daily rate of growing degree days accumulation" datatype="DOUBLE" variableCategory="" min="0" max="50" default="5" unit="°C-day day-1" uri="http://" inputtype="variable" />
+    <Input name="GreenLeafAreaIndex" description="Potential green leaf area index" datatype="DOUBLE" variableCategory="" min="0" max="25" default="2" unit="m2 m-2" uri="http://" inputtype="variable" />
+    <Input name="GreenLeafAreaIndexRate" description="Potential green leaf area index" datatype="DOUBLE" variableCategory="" min="-0.8" max="0.8" default="0.1" unit="m2 m-2 day-1" uri="http://" inputtype="variable" />
+    <Input name="TotalLeafAreaIndex" description="Potential total leaf area index" datatype="DOUBLE" variableCategory="" min="0" max="25" default="2" unit="m2 m-2" uri="http://" inputtype="variable" />
+    <Input name="DeadLeafAreaIndex" description="Potential dead leaf area index" datatype="DOUBLE" variableCategory="" min="0" max="25" default="2" unit="m2 m-2" uri="http://" inputtype="variable" />
+    <Input name="LeafDuration" description="Leaf life" datatype="DOUBLE" min="200" max="1100" default="600" unit="°C-day" uri="" inputtype="parameter" parametercategory="" />
+  </Inputs>
+  <Outputs>
+    <Output name="DeadLeafAreaIndex" description="Potential dead leaf area index" datatype="DOUBLE" min="0" max="25" unit="m2 m-2" uri="http://" />
+    <Output name="DeadLeafAreaIndexRate" description="Potential dead leaf area index" datatype="DOUBLE" min="0" max="0.8" unit="m2 m-2 day-1" uri="http://" />
+    <Output name="GreenLeafAreaIndex" description="Potential green leaf area index" datatype="DOUBLE" min="0" max="25" unit="m2 m-2" uri="http://" />
+    <Output name="TotalLeafAreaIndex" description="Potential total leaf area index" datatype="DOUBLE" min="0" max="25" unit="m2 m-2" uri="http://" />
+  </Outputs>
+  <Algorithm language="C#" platform="Bioma" filename="LeafLife.cs" />
+  <Parametersets>
+    <Parameterset name="Default" description="Paramters default value" />
+  </Parametersets>
+</ModelUnit>

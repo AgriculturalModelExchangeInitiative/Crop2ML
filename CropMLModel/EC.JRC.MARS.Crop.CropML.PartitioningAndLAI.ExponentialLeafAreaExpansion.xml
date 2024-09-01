@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModelUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" modelid="EC.JRC.MARS.Crop.CropML.PartitioningAndLAI.ExponentialLeafAreaExpansion" name="ExponentialLeafAreaExpansion" timestep="0" version="1.0.0.0">
+  <Description>
+    <Title>EC.JRC.MARS.Crop.CropML.PartitioningAndLAI.ExponentialLeafAreaExpansion</Title>
+    <Authors>Creator:;    Date:;    Publisher:;    </Authors>
+    <Abstract>Temperature-driven exponential leaf area expansion - Van Keulen, H., Wolf, J., 1986. Modelling of agricultural production: weather soils and crops. Simulation Monographs. Pudoc, Wageningen, The Netherlands, pp. 479. - </Abstract>
+  </Description>
+  <Inputs>
+    <Input name="TotalLeafAreaIndexExponential" description="Temperature driven total leaf area index exponential" datatype="DOUBLE" variableCategory="" min="0" max="25" default="2" unit="m2 m-2" uri="http://" inputtype="variable" />
+    <Input name="GreenLeafAreaIndexExponential" description="Temperature driven green leaf area index exponential" datatype="DOUBLE" variableCategory="" min="0" max="25" default="2" unit="m2 m-2" uri="http://" inputtype="variable" />
+    <Input name="AirTemperatureMaximum" description="Daily air temperature maximum" datatype="DOUBLE" variableCategory="" min="-30" max="55" default="25" unit="°C" uri="http://" inputtype="variable" />
+    <Input name="AirTemperatureMinimum" description="Daily air temperature minimum" datatype="DOUBLE" variableCategory="" min="-25" max="45" default="15" unit="°C" uri="http://" inputtype="variable" />
+    <Input name="LowerThresholdTemperatureForAgingOfLeaves_TBASE" description="Base temperature for aging of leaves (TBASE)" datatype="DOUBLE" min="-5" max="50" default="11" unit="°C" uri="" inputtype="parameter" parametercategory="" />
+    <Input name="MaximumRelativeIncreaseInLAI_RGRLAI" description="Maximum relative increase in leaf area index (RGRLAI)" datatype="DOUBLE" min="0" max="0.8" default="0.009" unit="m2 m-2 day-1" uri="" inputtype="parameter" parametercategory="" />
+  </Inputs>
+  <Outputs>
+    <Output name="TotalLeafAreaIndexExponentialRate" description="Temperature driven total leaf area index exponential rate" datatype="DOUBLE" min="-0.8" max="0.8" unit="m2 m-2 day-1" uri="http://" />
+    <Output name="GreenLeafAreaIndexExponentialRate" description="Temperature driven green leaf area index exponential rate" datatype="DOUBLE" min="-0.8" max="0.8" unit="m2 m-2 day-1" uri="http://" />
+    <Output name="GreenLeafAreaIndexExponential" description="Temperature driven green leaf area index exponential" datatype="DOUBLE" min="0" max="25" unit="m2 m-2" uri="http://" />
+    <Output name="TotalLeafAreaIndexExponential" description="Temperature driven total leaf area index exponential" datatype="DOUBLE" min="0" max="25" unit="m2 m-2" uri="http://" />
+  </Outputs>
+  <Algorithm language="C#" platform="Bioma" filename="ExponentialLeafAreaExpansion.cs" />
+  <Parametersets>
+    <Parameterset name="Default" description="Paramters default value" />
+  </Parametersets>
+</ModelUnit>
