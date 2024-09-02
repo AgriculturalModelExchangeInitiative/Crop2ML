@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//SIMPLACE/DTD GRP 1.0//EN" "https://simplace.net/dtd/GroupComponent.dtd">
+<configuration class="soil.temperature.SoilTemperature">
+	<simgroup>
+		<simcomponent id="SnowCoverCalculator" class="net.simplace.sim.components.soil.temperature.SnowCoverCalculator">
+			<input id="cCarbonContent" source="SoilTemperature.cCarbonContent" />
+			<input id="Albedo" source="SoilTemperature.cAlbedo" />
+			<input id="iTempMax" source="SoilTemperature.iAirTemperatureMax" />
+			<input id="iTempMin" source="SoilTemperature.iAirTemperatureMin" />
+			<input id="iRadiation" source="SoilTemperature.iGlobalSolarRadiation" />
+			<input id="iRAIN" source="SoilTemperature.iRAIN" />
+			<input id="iCropResidues" source="SoilTemperature.iCropResidues" />
+			<input id="iPotentialSoilEvaporation" source="SoilTemperature.iPotentialSoilEvaporation" />
+			<input id="iLeafAreaIndex" source="SoilTemperature.iLeafAreaIndex" />
+			<input id="iSoilTempArray" source="STMPsimCalculator.SoilTempArray" />
+			<output id="SoilSurfaceTemperature" destination="SoilTemperature.SoilSurfaceTemperature" />
+			<output id="SnowIsolationIndex" destination="SoilTemperature.SnowIsolationIndex" />
+			<output id="SnowWaterContent" destination="SoilTemperature.SnowWaterContent" />
+			<output id="rSnowWaterContentRate" destination="SoilTemperature.rSnowWaterContentRate" />
+		    <output id="rSoilSurfaceTemperatureRate" destination="SoilTemperature.rSoilSurfaceTemperatureRate" />
+		    <output id="rAgeOfSnowRate" destination="SoilTemperature.rAgeOfSnowRate" />
+			<output id="AgeOfSnow" destination="SoilTemperature.AgeOfSnow" />
+		
+		
+		</simcomponent>
+		<simcomponent id="STMPsimCalculator" class="net.simplace.sim.components.soil.temperature.STMPsimCalculator">
+			<input id="cSoilLayerDepth" source="SoilTemperature.cSoilLayerDepth" />
+			<input id="cFirstDayMeanTemp" source="SoilTemperature.cFirstDayMeanTemp" />
+			<input id="cAVT" source="SoilTemperature.cAverageGroundTemperature" />
+			<input id="cABD" source="SoilTemperature.cAverageBulkDensity" />
+			<input id="cDampingDepth" source="SoilTemperature.cDampingDepth" />
+			<input id="iSoilSurfaceTemperature" source="SnowCoverCalculator.SoilSurfaceTemperature" />
+			<input id="iSoilWaterContent" source="SoilTemperature.iSoilWaterContent" />
+			<output id="SoilTempArray" destination="SoilTemperature.SoilTempArray" />
+			<output id="rSoilTempArrayRate" destination="SoilTemperature.rSoilTempArrayRate" />
+		</simcomponent>
+	</simgroup>
+	<testdefs>
+		<testdef id="0">
+			<exogenous>
+				<var id="SoilTemperature.cCarbonContent" >10</var>
+				<var id="SoilTemperature.iAirTemperatureMax" >3</var>
+				<var id="SoilTemperature.iAirTemperatureMin" >-9</var>
+				<var id="SoilTemperature.iGlobalSolarRadiation" >1.4</var>
+				<var id="SoilTemperature.iRAIN" >6</var>
+				<var id="SoilTemperature.iCropResidues" >30</var>
+				<var id="SoilTemperature.iPotentialSoilEvaporation" >0.6</var>
+				<var id="SoilTemperature.iLeafAreaIndex" >0.1</var>
+				<var id="SoilTemperature.cSoilLayerDepth" >0.1,0.5,1.5</var>
+				<var id="SoilTemperature.cFirstDayMeanTemp" >15</var>
+				<var id="SoilTemperature.cAverageGroundTemperature" >9</var>
+				<var id="SoilTemperature.cAverageBulkDensity" >1.4</var>
+				<var id="SoilTemperature.cDampingDepth" >6</var>
+				<var id="SoilTemperature.iSoilWaterContent" >0.3</var>
+			</exogenous>
+			<state>
+				<var id="SoilTemperature.SoilTempArray" >2.6,5.4,8.6,12.2,11.4,10.6,9.8,9.0</var>
+				<var id="SoilTemperature.SnowWaterContent" >5</var>
+				<var id="SoilTemperature.AgeOfSnow" >5</var>
+				<var id="SoilTemperature.SoilSurfaceTemperature" >1.8397688</var>
+			</state>
+			<check>
+				<var id="SoilTemperature.SoilTempArray" ></var>
+				<var id="SoilTemperature.SoilSurfaceTemperature" ></var>
+				<var id="SoilTemperature.SnowIsolationIndex" ></var>
+				<var id="SoilTemperature.SnowWaterContent" ></var>
+			</check>
+		</testdef>
+	</testdefs>
+</configuration>

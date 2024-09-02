@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//SIMPLACE/DTD GRP 1.0//EN" "http://simplace.net/dtd/GroupComponent.dtd">
+<configuration class="net.simplace.sim.components.Simplace_Soil_Temperature.SoilTemperature">
+    <simgroup>
+        <simcomponent id="SnowCoverCalculator" class="net.simplace.sim.components.Simplace_Soil_Temperature.SnowCoverCalculator">
+            <input id="cCarbonContent" source="SoilTemperature.cCarbonContent"/>
+            <input id="Albedo" source="SoilTemperature.cAlbedo"/>
+            <input id="iTempMax" source="SoilTemperature.iAirTemperatureMax"/>
+            <input id="iTempMin" source="SoilTemperature.iAirTemperatureMin"/>
+            <input id="iRadiation" source="SoilTemperature.iGlobalSolarRadiation"/>
+            <input id="iRAIN" source="SoilTemperature.iRAIN"/>
+            <input id="iCropResidues" source="SoilTemperature.iCropResidues"/>
+            <input id="iPotentialSoilEvaporation" source="SoilTemperature.iPotentialSoilEvaporation"/>
+            <input id="iLeafAreaIndex" source="SoilTemperature.iLeafAreaIndex"/>
+            <input id="iSoilTempArray" source="STMPsimCalculator.SoilTempArray"/>
+            <input id="pInternalAlbedo" source="SoilTemperature.pInternalAlbedo"/>
+            <input id="SnowWaterContent" source="SoilTemperature.SnowWaterContent"/>
+            <input id="SoilSurfaceTemperature" source="SoilTemperature.SoilSurfaceTemperature"/>
+            <input id="AgeOfSnow" source="SoilTemperature.AgeOfSnow"/>
+            <output id="SoilSurfaceTemperature" destination="SoilTemperature.SoilSurfaceTemperature"/>
+            <output id="SnowIsolationIndex" destination="SoilTemperature.SnowIsolationIndex"/>
+            <output id="SnowWaterContent" destination="SoilTemperature.SnowWaterContent"/>
+            <output id="rSnowWaterContentRate" destination="SoilTemperature.rSnowWaterContentRate"/>
+            <output id="rSoilSurfaceTemperatureRate" destination="SoilTemperature.rSoilSurfaceTemperatureRate"/>
+            <output id="rAgeOfSnowRate" destination="SoilTemperature.rAgeOfSnowRate"/>
+            <output id="AgeOfSnow" destination="SoilTemperature.AgeOfSnow"/></simcomponent>
+        <simcomponent id="STMPsimCalculator" class="net.simplace.sim.components.Simplace_Soil_Temperature.STMPsimCalculator">
+            <input id="cSoilLayerDepth" source="SoilTemperature.cSoilLayerDepth"/>
+            <input id="cFirstDayMeanTemp" source="SoilTemperature.cFirstDayMeanTemp"/>
+            <input id="cAVT" source="SoilTemperature.cAverageGroundTemperature"/>
+            <input id="cABD" source="SoilTemperature.cAverageBulkDensity"/>
+            <input id="cDampingDepth" source="SoilTemperature.cDampingDepth"/>
+            <input id="iSoilWaterContent" source="SoilTemperature.iSoilWaterContent"/>
+            <input id="rSoilTempArrayRate" source="SoilTemperature.rSoilTempArrayRate"/>
+            <input id="pSoilLayerDepth" source="SoilTemperature.pSoilLayerDepth"/>
+            <input id="iSoilSurfaceTemperature" source="SnowCoverCalculator.SoilSurfaceTemperature"/>
+            <output id="SoilTempArray" destination="SoilTemperature.SoilTempArray"/>
+            <output id="rSoilTempArrayRate" destination="SoilTemperature.rSoilTempArrayRate"/></simcomponent></simgroup></configuration>
