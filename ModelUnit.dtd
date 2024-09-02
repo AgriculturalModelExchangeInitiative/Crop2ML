@@ -15,7 +15,7 @@ DESCRIPTION : This document contains a DTD corresponding to the syntax rules
 COPYRIGHT : (2018).
 -->
 
-<!ELEMENT ModelUnit (Description,Inputs?,Outputs?,Initialization?,Function*, Algorithm+,Parametersets,Testsets)>
+<!ELEMENT ModelUnit (Description,Inputs,Outputs,Initialization?,Function*, Algorithm,Parametersets,Testsets)>
 <!ATTLIST ModelUnit
   name CDATA #REQUIRED
   modelid CDATA #REQUIRED
