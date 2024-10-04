@@ -14,12 +14,13 @@ DESCRIPTION : This document contains a DTD corresponding to a Crop2ML package. T
 COPYRIGHT : (2022).
 -->
 
-<!ELEMENT Package (Authors,Encoders,Features, Doc?,Transformation,Dependencies?,Data*)>
+<!ELEMENT Package (Authors,Encoders,Features, Doc?,Transformation,Dependencies?,Data*, DOI)>
 <!ATTLIST Package
   name CDATA #REQUIRED
   version CDATA #IMPLIED
   license CDATA #REQUIRED
   crop2mlVersion CDATA #REQUIRED
+  DOI #REQUIRED
 >
 <!ELEMENT Authors (FirstAndLastName, Institution?, Email?)>
 <!ATTLIST Authors>
